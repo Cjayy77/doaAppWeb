@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOA - Device Optical Aid</title>
+    <meta name="description" content="DOA is an app that helps users with myopia, hyperopia and astigmatism by adjusting their screen visibility in real-time">
+    <meta name="keywords" content="DOA, DOA App, Vision app, Purple app, Three circles app, Three ovals app, Vision correction, Myopia correction, accessibility app">
+    <meta name="author" content="CJ_">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        // Add this to your existing DOMContentLoaded event listener
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const wasActive = item.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+            otherItem.classList.remove('active');
+        });
+        
+        // Toggle clicked item
+        if (!wasActive) {
+            item.classList.add('active');
+        }
+    });
+});
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
+        <div class="nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Enhance your<br><span class="vision-text">digital vision</span></h1>
+            <p class="hero-subtitle">Experience crystal-clear digital content without glasses. Smart screen correction tailored to your eyes.</p>
+            <a href="#how-it-works" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <section class="how-it-works animate-on-scroll" id="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <span class="step-number">01</span>
+                <h3>Enter Your Prescription</h3>
+                <p>Simply input your eyeglass prescription for myopia, hyperopia, or/and astigmatism.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-number">02</span>
+                <h3>Smart Calculation</h3>
+                <p>Our advanced algorithm calculates the perfect correction layer based on your unique prescription.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-number">03</span>
+                <h3>Enjoy Clear Vision</h3>
+                <p>Experience crystal clear vision across all your digital activities within the app without wearing glasses.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features animate-on-scroll" id="features">
+        <h2 class="section-title">All-in-One Digital Vision Solution</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Smart Browser</h3>
+                <p>Access your favorite web apps like TikTok, Pinterest, and more with perfect clarity. Built-in adblock for distraction-free browsing.</p>
+            </div>
+            <div class="feature-card">
+                <h3>PDF Reader</h3>
+                <p>Enjoy your favorite books and documents with our integrated PDF reader, designed for comfortable extended reading.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Universal Video Player</h3>
+                <p>Watch videos in any format (MOV, MKV, MP4) with crystal clear vision and smart eye protection features.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Prescription Perfect™</h3>
+                <p>Advanced digital correction for myopia, hyperopia, and astigmatism, personalized to your exact needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing animate-on-scroll" id="pricing">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Free</h3>
+                <div class="price">$0</div>
+                <ul class="price-features">
+                    <li>3 hours daily correction time</li>
+                    <li>Basic web browser</li>
+                    <li>PDF reader</li>
+                    <li>Video player support</li>
+                    <li>Basic ad blocking</li>
+                </ul>
+                <a href="#download" class="cta-button">Get Started</a>
+            </div>
+            <div class="price-card premium">
+                <div class="premium-badge">Most Popular</div>
+                <h3>Premium</h3>
+                <div class="price">$9.99<span>/month</span></div>
+                <div class="yearly-price">or $99.99/year (save 17%)</div>
+                <ul class="price-features">
+                    <li>Unlimited correction time</li>
+                    <li>No ads</li>
+                    <li>Advanced web browser ad blocking</li>
+                    <li>Enhanced PDF features</li>
+                    <li>Premium video player</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="#premium" class="cta-button premium">Go Premium</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="faq animate-on-scroll" id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>How does DOA work?</h3>
+                <p>DOA applies a specialized digital correction layer to your screen that adjusts the display based on your prescription, allowing you to see clearly without wearing glasses. Our advanced algorithms process the display in real-time to provide optimal clarity.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Will it work with my prescription?</h3>
+                <p>DOA supports a wide range of prescriptions including myopia (up to -6.00D), hyperopia (up to +4.00D), and astigmatism (up to -2.50D). For prescriptions outside these ranges, please contact our support team for personalized assistance.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I still use the app after my 3 hours passed?</h3>
+                <p>Yes! You are free to continue using the app and its services like the web browser and the media player even if your 3-hour limit is reached.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does DOA work with all devices?</h3>
+                <p>DOA is compatible with most modern smartphones, tablets, and computers running iOS 14+, Android 10+, Windows 10+, and macOS 11+. Check our compatibility page for a full list of supported devices.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is my prescription data secure?</h3>
+                <p>Absolutely! We take your privacy seriously. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
+                <p>Enhancing digital vision for a clearer world</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="Terms of Service.html">Terms of Service</a>
+                    <a href="privacy policy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="#faq">FAQ</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DOA - Device Optical Aid. All rights reserved.</p>
+            <p class="cj">CJ_</p>
+        </div>
+    </footer>
+</body>
+</html>
