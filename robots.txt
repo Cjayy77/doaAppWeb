@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Point to sitemap
+Sitemap: https://doa-app-web.vercel.app/sitemap.xml
