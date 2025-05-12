@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download DOA - Device Optical Aid</title>
+    <meta name="description" content="Download DOA app for Android">
+    <meta name="keywords" content="DOA, DOA App, Download DOA, Vision app download">
+    <meta name="author" content="CJ_">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
+        <div class="nav-links">
+            <a href="home.html#how-it-works">How It Works</a>
+            <a href="home.html#features">Features</a>
+            <a href="home.html#pricing">Pricing</a>
+            <a href="home.html#faq">FAQ</a>
+        </div>
+    </nav>    <section class="download-main animate-on-scroll">
+        <div class="download-container">
+            <div class="download-box">
+                <img src="android-chrome-512x512.png" alt="DOA App Icon" class="app-icon">
+                <h2>DOA - Device Optical Aid</h2>
+                <p class="version">Version 1.0.0</p>
+                <p class="size">Size: 15.2 MB</p>
+                <button class="download-button">
+                    <svg class="download-icon" viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 13l-4-4h8l-4 4zm0-9v6"></path>
+                    </svg>
+                    Download APK
+                </button>
+                <p class="download-info">For Android 10.0 and above</p>
+            </div>
+            
+            <div class="features-highlight">
+                <h3>What's included in this version:</h3>
+                <ul>
+                    <li>Real-time vision correction for myopia, hyperopia, and astigmatism</li>
+                    <li>Smart Browser with built-in ad blocking</li>
+                    <li>PDF Reader for comfortable document viewing</li>
+                    <li>Universal Video Player with eye protection features</li>
+                    <li>3 hours daily correction time (Free plan)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="safety-note animate-on-scroll">
+        <div class="safety-container">
+            <h3>📱 Safe Installation</h3>
+            <p>When installing APK files, you may need to allow installation from unknown sources in your device settings. DOA is completely safe and virus-free. All our APK files are signed and verified for your security.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
+                <p>Enhancing digital vision for a clearer world</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="Terms of Service.html">Terms of Service</a>
+                    <a href="privacy policy.html">Privacy Policy</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="home.html#faq">FAQ</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DOA - Device Optical Aid. All rights reserved.</p>
+            <p class="cj">CJ_</p>
+        </div>
+    </footer>
+</body>
+</html>
