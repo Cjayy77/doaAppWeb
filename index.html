@@ -201,13 +201,19 @@ document.querySelectorAll('.faq-item').forEach(item => {
         </div>
     </footer>
  <script>
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
 
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    if (burger && navLinks) {
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        burger.classList.toggle('active');
+      });
+    }
   });
 </script>
+
 
 </body>
 </html>
