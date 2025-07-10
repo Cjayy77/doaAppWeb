@@ -43,15 +43,23 @@ document.querySelectorAll('.faq-item').forEach(item => {
     </script>
 </head>
 <body>
-    <nav class="navbar">
-        <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
-        <div class="nav-links">
-            <a href="#how-it-works">How It Works</a>
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
-        </div>
-    </nav>
+ <nav class="navbar">
+  <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
+
+  <div class="nav-links" id="navLinks">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <div class="burger" id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
 
     <section class="hero">
         <div class="hero-content">
