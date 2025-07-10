@@ -105,14 +105,20 @@
             <p class="cj">CJ_</p>
         </div>
     </footer>
- <script>
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const burger = document.querySelector('.burger');
+    const navLinks = document.querySelector('.nav-links');
 
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+    if (burger && navLinks) {
+      burger.addEventListener('click', function () {
+        burger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    }
   });
 </script>
+
 
 </body>
 </html>
