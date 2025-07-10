@@ -35,7 +35,7 @@
     padding: 1rem 2rem;
     gap: 1rem;
     border-radius: 10px;
-    border-color:#8a2be2;
+    border: 1px solid #8a2be2;
     z-index: 1000;
     transition: all 0.3s ease;
   }
