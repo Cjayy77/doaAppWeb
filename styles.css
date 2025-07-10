@@ -15,7 +15,7 @@
 .burger span {
   width: 25px;
   height: 3px;
-  background: #fff;
+  background: #8a2be2;
   transition: 0.3s;
   border-radius: 2px;
 }
@@ -35,6 +35,7 @@
     padding: 1rem 2rem;
     gap: 1rem;
     border-radius: 10px;
+    border-color:#8a2be2;
     z-index: 1000;
   }
 }
