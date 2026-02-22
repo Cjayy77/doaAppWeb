@@ -1,125 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get DOA - Device Optical Aid</title>
-    <meta name="description" content="Download DOA app for Android">
-    <meta name="keywords" content="DOA, DOA App, Download DOA, Vision app download">
-    <meta name="author" content="CJ_">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="doaTransparent.png">
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get DOA — Device Optical Aid</title>
+<meta name="description" content="Download DOA app for Android and Windows">
+<meta name="keywords" content="DOA, DOA App, Download DOA, Vision app download">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --bg2: #F2F1EC;
+    --ink: #1C1B18;
+    --ink2: #5C5B56;
+    --ink3: #9C9B96;
+    --accent: #8a2be2;
+    --accent2: #b066ff;
+    --accent-light: #f0e6ff;
+    --card: #FFFFFF;
+    --border: #E8E7E2;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-            document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
-        });
-    </script>
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 90px;
+    background: rgba(250,250,247,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 54px; width: auto; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink2);
+    text-decoration: none; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -4px; left: 0; background: var(--accent); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { display: flex; gap: 10px; align-items: center; }
+  .btn-ghost {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 500; color: var(--ink);
+    background: none; border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--bg2); }
+  .btn-primary {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 9px 20px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: #7a20d2; transform: translateY(-1px); }
+
+  /* Burger */
+  .burger { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001; }
+  .burger span { width: 25px; height: 3px; background: var(--accent); transition: 0.3s; border-radius: 2px; }
+  .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .burger.active span:nth-child(2) { opacity: 0; }
+  .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    min-height: 100vh;
+    padding: 130px 40px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: 0.25; pointer-events: none;
+  }
+  .blob1 { width: 500px; height: 500px; background: #d4a8ff; top: -80px; right: -100px; }
+  .blob2 { width: 350px; height: 350px; background: #c3b1ff; bottom: 100px; left: -80px; }
+
+  .page-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+
+  /* ── HEADER ── */
+  .page-header { text-align: center; margin-bottom: 64px; }
+  .section-tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+    background: var(--accent-light); padding: 4px 12px; border-radius: 100px;
+  }
+  h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(36px, 6vw, 64px);
+    line-height: 1.0; letter-spacing: -2px; font-weight: 800;
+    margin-bottom: 16px;
+  }
+  h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .page-sub { font-size: 18px; color: var(--ink2); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── DOWNLOAD CARDS ── */
+  .download-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .dl-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px;
+    display: flex; flex-direction: column;
+    transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .dl-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(138,43,226,0.1); border-color: var(--accent); }
+  .dl-card.featured { border-color: var(--accent); background: linear-gradient(135deg, rgba(138,43,226,0.04), rgba(176,102,255,0.02)); }
+
+  .dl-card-badge {
+    position: absolute; top: 16px; right: 16px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px;
+  }
+  .badge-new { background: var(--accent-light); color: var(--accent); }
+  .badge-beta { background: rgba(255,165,0,0.1); color: #c97700; }
+
+  .dl-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .dl-icon {
+    width: 60px; height: 60px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; flex-shrink: 0;
+  }
+  .dl-icon-win { background: rgba(138,43,226,0.1); }
+  .dl-icon-android { background: rgba(52,211,153,0.1); }
+  .dl-card-title { font-family: 'League Spartan', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .dl-card-sub { font-size: 13px; color: var(--ink3); }
+
+  .dl-meta { display: flex; gap: 16px; margin-bottom: 24px; }
+  .dl-meta-item { display: flex; flex-direction: column; }
+  .dl-meta-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2px; }
+  .dl-meta-value { font-size: 14px; font-weight: 600; color: var(--ink); }
+
+  .dl-features { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .dl-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink2); }
+  .dl-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .dl-features li.warn::before { content: '⚠'; color: #c97700; }
+
+  .dl-btn {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600;
+    padding: 14px 24px; border-radius: 10px; border: none;
+    cursor: pointer; text-decoration: none; display: flex;
+    align-items: center; justify-content: center; gap: 10px;
+    transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .dl-btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+  }
+  .dl-btn-primary::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  .dl-btn-primary:hover::before { left: 100%; }
+  .dl-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(138,43,226,0.35); }
+  .dl-btn-secondary {
+    background: var(--bg2); color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .dl-btn-secondary:hover { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .dl-btn-disabled {
+    background: var(--bg2); color: var(--ink3);
+    border: 1.5px solid var(--border); cursor: not-allowed;
+  }
+  .dl-btn-note { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 10px; }
+
+  /* ── NOTICE BANNER ── */
+  .notice-banner {
+    background: rgba(255,165,0,0.08);
+    border: 1.5px solid rgba(255,165,0,0.25);
+    border-radius: var(--radius-sm);
+    padding: 20px 24px;
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 32px;
+  }
+  .notice-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .notice-text { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+  .notice-text strong { color: var(--ink); font-weight: 600; }
+
+  /* ── SAFETY NOTE ── */
+  .safety-card {
+    background: var(--accent-light);
+    border: 1.5px solid rgba(138,43,226,0.2);
+    border-radius: var(--radius-sm);
+    padding: 24px 28px;
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .safety-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .safety-text h4 { font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .safety-text p { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+
+  /* ── PREMIUM CALLOUT ── */
+  .premium-callout {
+    background: var(--ink);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .premium-callout-left h3 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 24px; font-weight: 800; color: #F5F4EF;
+    letter-spacing: -0.5px; margin-bottom: 6px;
+  }
+  .premium-callout-left p { font-size: 15px; color: #9C9B96; max-width: 420px; line-height: 1.5; }
+  .premium-callout-left p strong { color: #34D399; }
+  .btn-callout {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600; white-space: nowrap;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 13px 28px; border-radius: 10px;
+    cursor: pointer; text-decoration: none; transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .btn-callout::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  .btn-callout:hover::before { left: 100%; }
+  .btn-callout:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(138,43,226,0.4); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); color: #9C9B96; padding: 48px 40px 28px; margin-top: 80px; }
+  .footer-inner { max-width: 1000px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+  .footer-logo img { height: 46px; width: auto; margin-bottom: 10px; }
+  .footer-desc { font-size: 13px; color: #6C6B66; line-height: 1.6; max-width: 220px; }
+  .footer-links { display: flex; gap: 48px; }
+  .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4A47; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .footer-col a { font-size: 13px; color: #6C6B66; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: #F5F4EF; }
+  .footer-divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 8px; }
+  .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.active {
+      display: flex; flex-direction: column;
+      position: absolute; top: 90px; right: 20px;
+      background: rgba(250,250,247,0.97); padding: 16px 24px;
+      gap: 14px; border-radius: 10px; border: 1px solid var(--accent);
+      z-index: 1000; box-shadow: 0 8px 32px rgba(138,43,226,0.15);
+    }
+    .burger { display: flex; }
+    .nav-cta { display: none; }
+    .page { padding: 110px 20px 60px; }
+    .download-grid { grid-template-columns: 1fr; }
+    .premium-callout { flex-direction: column; text-align: center; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .page-header { animation: fadeUp 0.6s ease both 0.1s; }
+  .notice-banner { animation: fadeUp 0.6s ease both 0.2s; }
+  .download-grid { animation: fadeUp 0.6s ease both 0.3s; }
+  .safety-card { animation: fadeUp 0.6s ease both 0.4s; }
+  .premium-callout { animation: fadeUp 0.6s ease both 0.5s; }
+</style>
 </head>
 <body>
-<nav class="navbar">
-  <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
 
-  <div class="nav-links" id="navLinks">
-    <a href="index.html#how-it-works">How It Works</a>
-    <a href="index.html#features">Features</a>
-    <a href="index.html#pricing">Pricing</a>
-    <a href="index.html#faq">FAQ</a>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#how-it-works">How It Works</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="index.html" class="btn-ghost">← Back to site</a>
   </div>
-
   <div class="burger" id="burger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
-    
-    <section class="download-main animate-on-scroll">
-        <div class="download-container">
-            <div class="download-box">
-                <img src="android-chrome-512x512.png" alt="DOA App Icon" class="app-icon">
-                <h2>DOA - Device Optical Aid (Beta)</h2>
-                <p class="version">Version 1.0.0</p>
-                <p class="size">Size: 55.2 MB</p>
-                <a class="download-button" href="https://github.com/Cjayy77/doaAppWeb/releases/download/v1.0.1/DOA.App.Beta.apk" download>
-  <svg class="download-icon" viewBox="0 0 24 24" width="24" height="24">
-    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 13l-4-4h8l-4 4zm0-9v6"></path>
-  </svg>
-  Download APK
-</a>
+<!-- PAGE -->
+<div class="page">
+  <div class="hero-bg-blob blob1"></div>
+  <div class="hero-bg-blob blob2"></div>
+  <div class="page-inner">
 
-                <p class="download-info">For Android 10.0 and above(Development for the mobile app has been stopped for an uncertain amount of time, thus, some features will not work as expected, and a lot of glitches might occur. A desktop app is currently in development. Every user registering or is currently registered in the app will benefit a free premium subscription. Thank you for your understanding.)</p>
-            </div>
-            
-            <div class="features-highlight">
-                <h3>What's included in this version:</h3>
-                <ul>
-                    <li>Real-time vision correction for myopia, hyperopia, and astigmatism (still in development)</li>
-                    <li>Smart Browser with built-in ad blocking</li>
-                    <li>PDF Reader for comfortable document viewing</li>
-                    <li>Universal Video Player with eye protection features</li>
-                    <li>3 hours daily correction time (Free plan)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    <!-- HEADER -->
+    <div class="page-header">
+      <span class="section-tag">Early Access</span>
+      <h1>Get DOA.<br>See <em>clearly.</em></h1>
+      <p class="page-sub">Download the app for your platform and start seeing your screen without glasses.</p>
+    </div>
 
-    <section class="safety-note animate-on-scroll">
-        <div class="safety-container">
-            <h3>📱 Safe Installation</h3>
-            <p>When installing APK files, you may need to allow installation from unknown sources in your device settings. DOA is completely safe and virus-free. All our APK files are signed and verified for your security.</p>
-        </div>
-    </section>
+    <!-- NOTICE -->
+    <div class="notice-banner">
+      <div class="notice-icon">📢</div>
+      <div class="notice-text">
+        <strong>Development update:</strong> Mobile (Android) development is paused while we build the desktop app. The Android APK is available as a beta — some features are incomplete and glitches may occur. <strong>All registered users automatically receive free Premium</strong> as a thank-you for your patience.
+      </div>
+    </div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
-                <p>Enhancing digital vision for a clearer world</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <a href="Terms of Service.html">Terms of Service</a>
-                    <a href="privacy policy.html">Privacy Policy</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <a href="index.html#faq">FAQ</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-            </div>
+    <!-- DOWNLOAD CARDS -->
+    <div class="download-grid">
+
+      <!-- Windows -->
+      <div class="dl-card featured">
+        <span class="dl-card-badge badge-new">In Development</span>
+        <div class="dl-card-header">
+          <div class="dl-icon dl-icon-win">🪟</div>
+          <div>
+            <div class="dl-card-title">Windows App</div>
+            <div class="dl-card-sub">Desktop — Windows 10 &amp; 11</div>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 DOA - Device Optical Aid. All rights reserved.</p>
-            <p class="cj">CJ_</p>
+        <div class="dl-meta">
+          <div class="dl-meta-item">
+            <span class="dl-meta-label">Status</span>
+            <span class="dl-meta-value">Coming soon</span>
+          </div>
+          <div class="dl-meta-item">
+            <span class="dl-meta-label">Platform</span>
+            <span class="dl-meta-value">Windows 10+</span>
+          </div>
         </div>
-    </footer>
+        <ul class="dl-features">
+          <li>Full-screen real-time vision correction</li>
+          <li>GPU shader — 60fps, near-zero lag</li>
+          <li>System tray toggle + keyboard shortcut</li>
+          <li>Multi-monitor support (Premium)</li>
+          <li>Blue light &amp; color blindness filters</li>
+        </ul>
+        <button class="dl-btn dl-btn-disabled" disabled>
+          <span>⏳</span> Notify me when ready
+        </button>
+        <p class="dl-btn-note">Join the waitlist on the <a href="index.html#waitlist" style="color:var(--accent);text-decoration:none;font-weight:600;">homepage</a> to get notified first.</p>
+      </div>
+
+      <!-- Android -->
+      <div class="dl-card">
+        <span class="dl-card-badge badge-beta">Beta</span>
+        <div class="dl-card-header">
+          <div class="dl-icon dl-icon-android">🤖</div>
+          <div>
+            <div class="dl-card-title">Android App</div>
+            <div class="dl-card-sub">Mobile — Android 10+</div>
+          </div>
+        </div>
+        <div class="dl-meta">
+          <div class="dl-meta-item">
+            <span class="dl-meta-label">Version</span>
+            <span class="dl-meta-value">1.0.1 Beta</span>
+          </div>
+          <div class="dl-meta-item">
+            <span class="dl-meta-label">Size</span>
+            <span class="dl-meta-value">55.2 MB</span>
+          </div>
+          <div class="dl-meta-item">
+            <span class="dl-meta-label">Requires</span>
+            <span class="dl-meta-value">Android 10+</span>
+          </div>
+        </div>
+        <ul class="dl-features">
+          <li>Smart Browser with built-in ad blocking</li>
+          <li>PDF Reader for comfortable document viewing</li>
+          <li>Universal Video Player with eye protection</li>
+          <li>3 hours daily correction time (Free plan)</li>
+          <li class="warn">Vision correction still in development</li>
+          <li class="warn">Some features incomplete — glitches may occur</li>
+        </ul>
+        <a class="dl-btn dl-btn-primary" href="https://github.com/Cjayy77/doaAppWeb/releases/download/v1.0.1/DOA.App.Beta.apk" download>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5z"/>
+          </svg>
+          Download APK
+        </a>
+        <p class="dl-btn-note">APK file · Requires sideloading on Android</p>
+      </div>
+
+    </div><!-- /download-grid -->
+
+    <!-- SAFETY NOTE -->
+    <div class="safety-card">
+      <div class="safety-icon">🔒</div>
+      <div class="safety-text">
+        <h4>Safe to install</h4>
+        <p>When installing APK files, Android may ask you to allow installation from unknown sources. DOA is completely safe and virus-free — all APK files are signed and verified. You can re-disable unknown sources after installation.</p>
+      </div>
+    </div>
+
+    <!-- PREMIUM CALLOUT -->
+    <div class="premium-callout">
+      <div class="premium-callout-left">
+        <h3>Already registered? You get Premium — free.</h3>
+        <p>Every user who registers during the beta period receives a <strong>free Premium subscription</strong> automatically. No payment required. Thank you for being early.</p>
+      </div>
+      <a href="index.html#pricing" class="btn-callout">See what's included →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <img src="doaTransparent.png" alt="DOA Logo">
+        </div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="Terms of Service.html">Terms of Service</a></li>
+            <li><a href="privacy policy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2025 DOA - Device Optical Aid. All rights reserved.</span>
+      <span class="cj">CJ_</span>
+    </div>
+  </div>
+</footer>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (burger && navLinks) {
-      burger.addEventListener('click', function () {
-        burger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-    }
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    burger.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      burger.classList.remove('active');
+    });
   });
 </script>
-
-
 </body>
 </html>
