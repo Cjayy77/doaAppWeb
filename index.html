@@ -1,223 +1,974 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOA - Device Optical Aid</title>
-    <meta name="description" content="DOA, the Device Optical Aid is a vision app that helps users with myopia, hyperopia and astigmatism by adjusting their screen visibility in real-time">
-    <meta name="keywords" content="DOA, DOA App, Device Optical Aid, Vision app, Purple app, Three circles app, Three ovals app, Vision correction, Myopia correction, accessibility app">
-    <meta name="author" content="CJ_">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="doaTransparent.png">
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        // Add this to your existing DOMContentLoaded event listener
-document.querySelectorAll('.faq-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const wasActive = item.classList.contains('active');
-        
-        // Close all FAQ items
-        document.querySelectorAll('.faq-item').forEach(otherItem => {
-            otherItem.classList.remove('active');
-        });
-        
-        // Toggle clicked item
-        if (!wasActive) {
-            item.classList.add('active');
-        }
-    });
-});
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOA — Device Optical Aid</title>
+<meta name="description" content="DOA, the Device Optical Aid is a vision app that helps users with myopia, hyperopia and astigmatism by adjusting their screen visibility in real-time">
+<meta name="keywords" content="DOA, DOA App, Device Optical Aid, Vision app, Vision correction, Myopia correction, accessibility app">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --bg2: #F2F1EC;
+    --ink: #1C1B18;
+    --ink2: #5C5B56;
+    --ink3: #9C9B96;
+    --accent: #8a2be2;
+    --accent2: #b066ff;
+    --accent-light: #f0e6ff;
+    --card: #FFFFFF;
+    --border: #E8E7E2;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-            document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
-        });
-    </script>
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 90px;
+    background: rgba(250,250,247,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; }
+  .nav-logo img { height: 54px; width: auto; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500;
+    color: var(--ink2); text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -4px; left: 0;
+    background: var(--accent); transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { display: flex; gap: 10px; align-items: center; }
+  .btn-ghost {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 500;
+    color: var(--ink); background: none; border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--bg2); }
+  .btn-primary {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600;
+    color: #fff; background: var(--accent);
+    border: none; padding: 9px 20px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: #7a20d2; transform: translateY(-1px); }
+
+  /* Burger */
+  .burger {
+    display: none; flex-direction: column; cursor: pointer;
+    gap: 5px; z-index: 1001;
+  }
+  .burger span { width: 25px; height: 3px; background: var(--accent); transition: 0.3s; border-radius: 2px; }
+  .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .burger.active span:nth-child(2) { opacity: 0; }
+  .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 140px 40px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(90px); opacity: 0.3; pointer-events: none;
+  }
+  .blob1 { width: 520px; height: 520px; background: #d4a8ff; top: -80px; right: -120px; }
+  .blob2 { width: 400px; height: 400px; background: #c3b1ff; bottom: 0; left: -100px; }
+  .blob3 { width: 300px; height: 300px; background: #e8d4ff; top: 35%; left: 8%; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 100px; padding: 6px 14px 6px 10px;
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    margin-bottom: 32px; position: relative;
+  }
+  .hero-badge-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(138,43,226,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(138,43,226,0); }
+  }
+
+  h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    max-width: 900px;
+    margin-bottom: 24px;
+    position: relative;
+    font-weight: 800;
+  }
+  h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--ink2); max-width: 520px;
+    margin-bottom: 40px; font-weight: 400;
+    line-height: 1.6; position: relative;
+  }
+
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; }
+  .btn-big {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 16px; font-weight: 600;
+    padding: 14px 32px; border-radius: 10px; cursor: pointer;
+    transition: all 0.25s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-dark { background: var(--accent); color: #fff; border: none; }
+  .btn-dark:hover { background: #7a20d2; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(138,43,226,0.35); }
+  .btn-outline { background: var(--card); color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  /* ── MOCKUP ── */
+  .hero-mockup {
+    margin-top: 64px;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+  }
+  .mockup-window {
+    background: #1C1B18;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+  .mockup-bar {
+    background: #2A2A27;
+    padding: 12px 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mockup-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .mockup-screen {
+    background: #1C1B18;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .mockup-card {
+    background: #2A2A27;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .mockup-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #6C6B66; text-transform: uppercase; margin-bottom: 12px; }
+  .mockup-value { font-family: 'League Spartan', sans-serif; font-size: 32px; font-weight: 700; color: #F5F4EF; }
+  .mockup-value span { font-size: 14px; color: #9C9B96; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; }
+  .mockup-tag {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px; margin-top: 8px;
+  }
+  .tag-green { background: rgba(52,211,153,0.15); color: #34D399; }
+  .tag-purple { background: rgba(138,43,226,0.15); color: #b066ff; }
+  .tag-soft { background: rgba(176,102,255,0.12); color: #c084ff; }
+  .mockup-blur-demo { grid-column: 1 / -1; background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 16px; align-items: center; }
+  .blur-before, .blur-after { flex: 1; }
+  .blur-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6B66; margin-bottom: 8px; }
+  .blur-text-blurry { font-size: 18px; color: #9C9B96; filter: blur(3px); padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-text-clear { font-size: 18px; color: #F5F4EF; padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-arrow { color: var(--accent2); font-size: 24px; flex-shrink: 0; }
+  .slider-demo { margin-top: 4px; }
+  .slider-track { height: 4px; background: #3A3A37; border-radius: 2px; position: relative; }
+  .slider-fill { height: 100%; width: 72%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
+  .slider-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: -6px; left: 72%; transform: translateX(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+
+  /* ── SECTION SHARED ── */
+  .section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+    background: var(--accent-light); padding: 4px 12px; border-radius: 100px;
+  }
+  h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -1.5px; line-height: 1.0;
+    margin-bottom: 20px; font-weight: 800;
+  }
+  h2 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-style: italic;
+  }
+  .section-sub { font-size: 18px; color: var(--ink2); max-width: 520px; line-height: 1.6; }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--ink); color: #F5F4EF; }
+  .how-section .section-tag { background: rgba(138,43,226,0.2); }
+  .how-section h2 { color: #F5F4EF; }
+  .how-section .section-sub { color: #9C9B96; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .step-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 32px;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .step-card:hover { transform: translateY(-4px); border-color: rgba(138,43,226,0.4); }
+  .step-num {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 72px; line-height: 1; font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    position: absolute; top: 16px; right: 24px;
+    pointer-events: none;
+  }
+  .step-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 20px;
+    background: rgba(138,43,226,0.15);
+  }
+  .step-card h3 { font-size: 20px; font-weight: 600; color: #F5F4EF; margin-bottom: 10px; }
+  .step-card p { font-size: 15px; color: #9C9B96; line-height: 1.6; }
+
+  /* ── FEATURES ── */
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+  .feature-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(138,43,226,0.1); border-color: var(--accent); }
+  .feature-card.wide { grid-column: 1 / -1; }
+  .feature-icon { font-size: 32px; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .feature-card p { font-size: 15px; color: var(--ink2); line-height: 1.6; }
+  .feature-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .chip {
+    font-size: 12px; font-weight: 600; padding: 4px 12px;
+    border-radius: 100px; border: 1.5px solid var(--border);
+    color: var(--ink2); background: var(--bg);
+  }
+
+  /* ── VISION TYPES ── */
+  .visiontypes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .vtype-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 24px;
+    text-align: center; transition: all 0.3s;
+  }
+  .vtype-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(138,43,226,0.12); }
+  .vtype-emoji { font-size: 36px; margin-bottom: 12px; }
+  .vtype-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .vtype-card p { font-size: 13px; color: var(--ink2); }
+
+  /* ── FILTERS ── */
+  .filters-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .filter-card {
+    border-radius: var(--radius-sm); padding: 24px;
+    border: 1.5px solid var(--border); background: var(--card);
+    transition: all 0.3s;
+  }
+  .filter-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .filter-swatch { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 14px; }
+  .swatch-blue { background: linear-gradient(135deg, #3B5BDB, #74C0FC); }
+  .swatch-warm { background: linear-gradient(135deg, #FF922B, #FFD43B); }
+  .swatch-cb { background: linear-gradient(135deg, #8a2be2, #b066ff); }
+  .filter-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .filter-card p { font-size: 13px; color: var(--ink2); }
+
+  /* ── PRIVACY CALLOUT ── */
+  .privacy-bar {
+    background: var(--accent-light);
+    border: 1.5px solid rgba(138,43,226,0.2);
+    border-radius: var(--radius);
+    padding: 28px 36px;
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .privacy-bar-icon { font-size: 32px; margin-top: 2px; }
+  .privacy-bar h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+  .privacy-bar p { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+  .privacy-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .privacy-tag {
+    font-size: 12px; font-weight: 600; padding: 4px 12px;
+    background: rgba(138,43,226,0.1); color: var(--accent);
+    border-radius: 100px; border: 1px solid rgba(138,43,226,0.2);
+  }
+
+  /* ── PRICING ── */
+  .pricing-section { background: var(--bg2); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+  .pricing-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 36px;
+    position: relative; transition: all 0.3s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
+  .pricing-card.featured {
+    background: linear-gradient(135deg, rgba(138,43,226,0.12), rgba(176,102,255,0.08));
+    border-color: var(--accent);
+  }
+  .featured-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 4px 16px; border-radius: 100px;
+  }
+  .pricing-name { font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+  .pricing-price {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 52px; line-height: 1; margin-bottom: 4px; letter-spacing: -2px; font-weight: 800;
+  }
+  .pricing-period { font-size: 14px; color: var(--ink3); margin-bottom: 6px; }
+  .pricing-yearly { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+  .pricing-divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; }
+  .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pricing-features li.no { color: var(--ink3); }
+  .pricing-features li.no::before { content: '✕'; color: var(--ink3); }
+  .btn-pricing {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    width: 100%; padding: 13px; border-radius: 8px;
+    font-size: 15px; font-weight: 600; cursor: pointer; border: none;
+    transition: all 0.25s;
+  }
+  .btn-pricing-free { background: var(--bg2); color: var(--ink); }
+  .btn-pricing-free:hover { background: var(--border); }
+  .btn-pricing-premium {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .btn-pricing-premium::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  .btn-pricing-premium:hover::before { left: 100%; }
+  .btn-pricing-premium:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+  .pricing-handled { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 10px; }
+
+  /* ── WAITLIST ── */
+  .waitlist-section { background: var(--ink); text-align: center; }
+  .waitlist-section h2 { color: #F5F4EF; }
+  .waitlist-section .section-sub { color: #9C9B96; margin: 0 auto 40px; }
+  .waitlist-section .section-tag { background: rgba(138,43,226,0.2); }
+  .email-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; }
+  .email-input {
+    flex: 1; font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; padding: 13px 18px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px; background: rgba(255,255,255,0.06);
+    color: #F5F4EF; outline: none; transition: border-color 0.2s;
+  }
+  .email-input::placeholder { color: #6C6B66; }
+  .email-input:focus { border-color: var(--accent); }
+  .btn-join {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none;
+    padding: 13px 24px; border-radius: 8px; cursor: pointer;
+    white-space: nowrap; transition: all 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .btn-join::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  .btn-join:hover::before { left: 100%; }
+  .btn-join:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+  .waitlist-note { font-size: 13px; color: #6C6B66; margin-top: 14px; }
+  .waitlist-count { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .wc-avatars { display: flex; }
+  .wc-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    border: 2px solid var(--ink); margin-left: -10px;
+    font-size: 14px; display: flex; align-items: center; justify-content: center;
+    background: var(--bg2);
+  }
+  .wc-avatar:first-child { margin-left: 0; }
+  .wc-text { font-size: 14px; color: #9C9B96; }
+  .wc-text strong { color: #F5F4EF; }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); overflow: hidden;
+    cursor: pointer; position: relative;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .faq-item::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .faq-item:hover { border-color: rgba(138,43,226,0.3); transform: translateX(3px); }
+  .faq-item:hover::before { opacity: 1; }
+  .faq-q {
+    width: 100%; padding: 20px 24px; text-align: left; background: none; border: none;
+    font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 600;
+    color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  }
+  .faq-q .arrow { transition: transform 0.3s; font-size: 18px; color: var(--accent); font-weight: 400; }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    font-size: 15px; color: var(--ink2); line-height: 1.7;
+    padding: 0 24px;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-item.open { border-color: var(--accent); }
+  .faq-item.open::before { opacity: 1; }
+
+  .ph-badge { text-align: center; margin-top: 48px; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--ink); color: #9C9B96; padding: 64px 40px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand { max-width: 300px; }
+  .footer-logo img { height: 50px; width: auto; margin-bottom: 12px; }
+  .footer-desc { font-size: 14px; line-height: 1.6; color: #6C6B66; margin-top: 10px; }
+  .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4A47; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 14px; color: #6C6B66; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: #F5F4EF; }
+  .footer-divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 24px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 8px; }
+  .footer-bottom a { color: #4A4A47; text-decoration: none; }
+  .footer-bottom a:hover { color: #9C9B96; }
+  .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero > * { animation: fadeUp 0.7s ease both; }
+  .hero-badge { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.35s; }
+  .hero-actions { animation-delay: 0.45s; }
+  .hero-mockup { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.active {
+      display: flex; flex-direction: column;
+      position: absolute; top: 90px; right: 20px;
+      background: rgba(250,250,247,0.97);
+      padding: 16px 24px; gap: 14px;
+      border-radius: 10px; border: 1px solid var(--accent);
+      z-index: 1000; box-shadow: 0 8px 32px rgba(138,43,226,0.15);
+    }
+    .burger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 120px 20px 60px; }
+    h1 { letter-spacing: -1px; }
+    .steps-grid, .features-grid, .visiontypes-grid, .pricing-grid, .filters-row { grid-template-columns: 1fr; }
+    .feature-card.wide { grid-column: auto; }
+    .mockup-screen { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .email-form { flex-direction: column; }
+    .section { padding: 60px 20px; }
+    .privacy-bar { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
 </head>
 <body>
- <nav class="navbar">
-  <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
 
-  <div class="nav-links" id="navLinks">
-    <a href="#how-it-works">How It Works</a>
-    <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#waitlist" class="btn-ghost">Join waitlist</a>
+    <a href="download.html" class="btn-primary">Download ↓</a>
   </div>
-
   <div class="burger" id="burger">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-blob blob1"></div>
+  <div class="hero-bg-blob blob2"></div>
+  <div class="hero-bg-blob blob3"></div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Enhance your<br><span class="vision-text">digital vision</span></h1>
-            <p class="hero-subtitle">Experience clearer digital content without glasses. Smart screen correction tailored to your eyes.</p>
-            <a href="download.html" class="cta-button">Get started</a>
-        </div>
-    </section>
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Now in early access · Windows &amp; macOS
+  </div>
 
-    <section class="how-it-works animate-on-scroll" id="how-it-works">
-        <h2 class="section-title">How It Works</h2>
-        <div class="steps-container">
-            <div class="step-card">
-                <span class="step-number">01</span>
-                <h3>Enter Your Prescription</h3>
-                <p>Simply input your eyeglass prescription for myopia, hyperopia, or/and astigmatism.</p>
-            </div>
-            <div class="step-card">
-                <span class="step-number">02</span>
-                <h3>Smart Calculation</h3>
-                <p>Our advanced algorithm calculates the perfect correction layer based on your unique prescription.</p>
-            </div>
-            <div class="step-card">
-                <span class="step-number">03</span>
-                <h3>Enjoy Clear Vision</h3>
-                <p>Experience improved clarity across all your digital activities within your browser without wearing glasses.</p>
-            </div>
-        </div>
-    </section>
+  <h1>Enhance your<br><em>digital vision</em></h1>
 
-    <section class="features animate-on-scroll" id="features">
-        <h2 class="section-title">All-in-One Digital Vision Solution</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Smart Browser(mobile app)</h3>
-                <p>Access your favorite web apps like TikTok, Pinterest, and more with perfect clarity. Built-in adblock for distraction-free browsing.</p>
-            </div>
-            <div class="feature-card">
-                <h3>File Reader(mobile app)</h3>
-                <p>Enjoy your favorite ebooks, mangas and documents with our integrated file reader, designed for comfortable extended reading.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Universal Video Player(mobile app)</h3>
-                <p>Watch videos in any format (MOV, MKV, MP4, etc) with crystal clear vision and smart eye protection features.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Prescription Perfect™</h3>
-                <p>Advanced digital correction for myopia, hyperopia, astigmatism, and presbyopia personalized to your exact needs.</p>
-            </div>
-        </div>
-    </section>
+  <p class="hero-sub">
+    Experience clearer digital content without glasses. Smart screen correction tailored to your eyes — in real time.
+  </p>
 
-    <section class="pricing animate-on-scroll" id="pricing">
-        <h2 class="section-title">Choose Your Plan</h2>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h3>Free</h3>
-                <div class="price">$0</div>
-                <ul class="price-features">
-                    <li>3 hours daily correction time</li>
-                    <li>1 saved prescription</li>
-                    <li>3 tab limit(Browser extension)</li>
-                  
-                </ul>
-                <a href="/" class="cta-button">Get Started</a>
-            </div>
-            <div class="price-card premium">
-                <div class="premium-badge">Most Popular</div>
-                <h3>Premium</h3>
-                <div class="price">$7.99<span>/month</span></div>
-                <div class="yearly-price">or $79.99/year (save 17%)</div>
-                <ul class="price-features">
-                    <li>Unlimited correction time</li>
-                    <li>No tab limit</li>
-                    <li>No prescription limit</li>
-                    <li>Priority support</li>
-                </ul>
-                <a href="/" class="cta-button premium">Go Premium</a>
-                <h5>Payments handled by Creem</h5>
-            </div>
+  <div class="hero-actions">
+    <a href="download.html" class="btn-big btn-dark">Get started ↓</a>
+    <a href="#how-it-works" class="btn-big btn-outline">See how it works →</a>
+  </div>
+
+  <div class="hero-mockup">
+    <div class="mockup-window">
+      <div class="mockup-bar">
+        <div class="mockup-dot" style="background:#FF5F57"></div>
+        <div class="mockup-dot" style="background:#FEBC2E"></div>
+        <div class="mockup-dot" style="background:#28C840"></div>
+      </div>
+      <div class="mockup-screen">
+        <div class="mockup-card">
+          <div class="mockup-label">Active Prescription</div>
+          <div class="mockup-value">−3.25 <span>SPH</span></div>
+          <div class="mockup-tag tag-green">● Correction active</div>
         </div>
-    </section>
-    
-    <section class="faq animate-on-scroll" id="faq">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <h3>How does DOA work?</h3>
-                <p>DOA applies a specialized digital correction layer to your screen that replicates the effects of your prescription glasses, allowing you to see clearly without wearing them. Our advanced algorithms process the display in real-time to provide optimal clarity.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Will it work with my prescription?</h3>
-                <p>DOA supports a wide range of prescriptions including myopia (up to -6.00D), hyperopia (up to +4.00D), and astigmatism (up to -2.50D). For prescriptions outside these ranges, please contact our support team for personalized assistance.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Can I still use the app after my 3 hours passed?(mobile app)</h3>
-                <p>Yes! You are free to continue using the app and its services like the web browser and the media player even if your 3-hour correction limit is reached. For more correction time, you can upgrade to premium</p>
-            </div>
-            <div class="faq-item">
-                <h3>Does DOA work with all devices?</h3>
-                <p>DOA will be compatible with most modern smartphones, tablets, and computers running iOS 14+, Android 10+, Windows 10+, and macOS 11+. Support for all the mentionned devices will be added gradually.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Is my prescription data secure?</h3>
-                <p>Absolutely! We take your privacy seriously. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties.</p>
-            </div>
-             <div class="faq-item">
-                <h3>Why will the correction effect limited only within the app?</h3>
-                <p>Due to platform restrictions imposed by Apple and Android, the correction effect can only be applied within specific applications rather than system-wide. These limitations are set by the operating system and cannot be bypassed. Unless Apple and Android update their policies to allow broader implementation, this restriction will remain in place.</p>
-            </div>
+        <div class="mockup-card">
+          <div class="mockup-label">Astigmatism</div>
+          <div class="mockup-value">−1.50 <span>CYL @ 90°</span></div>
+          <div class="mockup-tag tag-purple">● Directional blur off</div>
         </div>
-        <br>
-<div style="text-align: center;">
-  <a href="https://www.producthunt.com/products/doa?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-doa" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=991633&theme=dark&t=1752484599999" alt="DOA - Device&#0032;optical&#0032;aid | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+        <div class="mockup-blur-demo">
+          <div class="blur-before">
+            <div class="blur-label">Without DOA</div>
+            <div class="blur-text-blurry">Enhance your digital vision with real-time prescription correction.</div>
+          </div>
+          <div class="blur-arrow">→</div>
+          <div class="blur-after">
+            <div class="blur-label">With DOA</div>
+            <div class="blur-text-clear">Enhance your digital vision with real-time prescription correction.</div>
+          </div>
+        </div>
+        <div class="mockup-card">
+          <div class="mockup-label">Blue Light Filter</div>
+          <div class="slider-demo">
+            <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+              <span style="font-size:12px;color:#6C6B66">Intensity</span>
+              <span style="font-size:12px;color:#F5F4EF">72%</span>
+            </div>
+            <div class="slider-track">
+              <div class="slider-fill"></div>
+              <div class="slider-thumb"></div>
+            </div>
+          </div>
+          <div class="mockup-tag tag-soft" style="margin-top:14px">● Warm tint on</div>
+        </div>
+        <div class="mockup-card">
+          <div class="mockup-label">Shader Performance</div>
+          <div class="mockup-value">60 <span>fps</span></div>
+          <div class="mockup-tag tag-green">● GPU-accelerated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<div class="how-section" id="how-it-works">
+<div class="section">
+  <span class="section-tag">How it works</span>
+  <h2>Three steps to<br><em>glasses-free</em> screens</h2>
+  <p class="section-sub">No hardware changes. No doctor visits. Just install, enter your prescription, and see clearly.</p>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">📋</div>
+      <h3>Enter Your Prescription</h3>
+      <p>Simply input your eyeglass prescription for myopia, hyperopia, or astigmatism. DOA supports SPH, CYL, AXIS, and ADD values.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">⚡</div>
+      <h3>Smart Calculation</h3>
+      <p>Our advanced GPU shader calculates the perfect correction layer in real time — predistorting every pixel based on your exact optics.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">👁️</div>
+      <h3>Enjoy Clear Vision</h3>
+      <p>Experience improved clarity across all your digital activities. Toggle DOA on or off instantly with a keyboard shortcut.</p>
+    </div>
+  </div>
 </div>
-        <br>
-    </section>
+</div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
-                <p>Enhancing digital vision for a clearer world</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <!--<a href="trick.html">Terms of Service</a>-->
-                    <a href="Terms of Service.html">Terms of Service</a>
-                    <a href="privacy policy.html">Privacy Policy</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <a href="#faq">FAQ</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 DOA - Device Optical Aid. All rights reserved.</p>
-             <p>Device Optical Aid is operated by Cedric Julien .E</p>
-            <p class="cj">CJ_</p>
-        </div>
-    </footer>
- <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.getElementById('burger');
-    const navLinks = document.getElementById('navLinks');
+<!-- FEATURES -->
+<section id="features">
+<div class="section">
+  <span class="section-tag">Features</span>
+  <h2>Built for every eye,<br>every <em>screen</em></h2>
+  <p class="section-sub">One shader. Full prescription support. Real-time 60fps performance across every app.</p>
 
-    if (burger && navLinks) {
-      burger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        burger.classList.toggle('active');
-      });
-    }
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Full Prescription Correction</h3>
+      <p>Maps your exact SPH, CYL, AXIS, and ADD values to GPU shader parameters. Supports myopia up to −6.00D, hyperopia up to +4.00D, and astigmatism up to −2.50D.</p>
+      <div class="feature-chips">
+        <span class="chip">Myopia</span>
+        <span class="chip">Hyperopia</span>
+        <span class="chip">Astigmatism</span>
+        <span class="chip">Presbyopia</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>60fps, Near-Zero Lag</h3>
+      <p>Runs entirely on your GPU. There's a 30–50ms overlay delay — imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
+      <div class="feature-chips">
+        <span class="chip">GPU-accelerated</span>
+        <span class="chip">HLSL shaders</span>
+        <span class="chip">60fps locked</span>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌈</div>
+      <h3>Visual Filters</h3>
+      <p>Blue light reduction and color blindness modes (Protanopia, Deuteranopia, Tritanopia) — all processed in a single shader pass. Works standalone, no prescription needed.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🖥️</div>
+      <h3>Multi-Monitor Support</h3>
+      <p>Apply different correction settings per monitor. Ideal for setups where screens are at different viewing distances — premium feature.</p>
+    </div>
+    <div class="feature-card wide">
+      <div class="feature-icon">🔒</div>
+      <h3>Privacy-First Design</h3>
+      <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design — not just by policy.</p>
+      <div class="privacy-bar">
+        <div class="privacy-bar-icon">🛡️</div>
+        <div>
+          <h4>What DOA never sees</h4>
+          <p>Some Windows elements are protected by the OS and will not appear in the corrected overlay — keeping your data private.</p>
+          <div class="privacy-list">
+            <span class="privacy-tag">Login screens &amp; passwords</span>
+            <span class="privacy-tag">Banking &amp; payment windows</span>
+            <span class="privacy-tag">UAC prompts</span>
+            <span class="privacy-tag">System notifications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- VISION TYPES -->
+<div style="background: var(--bg2);">
+<div class="section">
+  <span class="section-tag">Vision correction</span>
+  <h2>Every condition,<br><em>covered</em></h2>
+  <p class="section-sub">DOA's shader handles the full range of common refractive errors with precision.</p>
+
+  <div class="visiontypes-grid">
+    <div class="vtype-card">
+      <div class="vtype-emoji">🔭</div>
+      <h4>Myopia</h4>
+      <p>Near-sighted? The shader adds opposing sharpness at the correct focal distance for comfortable screen use.</p>
+    </div>
+    <div class="vtype-card">
+      <div class="vtype-emoji">🔬</div>
+      <h4>Hyperopia</h4>
+      <p>Far-sighted users who struggle to read small text benefit most — ideal for GPS and reading apps.</p>
+    </div>
+    <div class="vtype-card">
+      <div class="vtype-emoji">💫</div>
+      <h4>Astigmatism</h4>
+      <p>Directional blur corrected with CYL strength mapped to an axis-rotated Gaussian kernel.</p>
+    </div>
+    <div class="vtype-card">
+      <div class="vtype-emoji">📖</div>
+      <h4>Presbyopia</h4>
+      <p>Age-related near-vision loss compensated using your ADD power for comfortable reading.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- VISUAL FILTERS -->
+<section>
+<div class="section">
+  <span class="section-tag">Visual Filters</span>
+  <h2>More than just<br><em>vision correction</em></h2>
+  <p class="section-sub">Optional screen enhancements — works with or without a prescription active.</p>
+
+  <div class="filters-row">
+    <div class="filter-card">
+      <div class="filter-swatch swatch-blue"></div>
+      <h4>Blue Light Reduction</h4>
+      <p>Warm the screen to reduce eye strain during long sessions. Adjustable 0–100% intensity slider.</p>
+    </div>
+    <div class="filter-card">
+      <div class="filter-swatch swatch-warm"></div>
+      <h4>Warm Tint Mode</h4>
+      <p>Evening-optimized palette that's easier on your circadian rhythm without losing readability.</p>
+    </div>
+    <div class="filter-card">
+      <div class="filter-swatch swatch-cb"></div>
+      <h4>Color Blindness Modes</h4>
+      <p>Calibrated matrices for Protanopia, Deuteranopia, and Tritanopia — no setup or calibration needed.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PRICING -->
+<div class="pricing-section" id="pricing">
+<div class="section">
+  <span class="section-tag">Pricing</span>
+  <h2>Start free.<br>Go premium <em>when ready.</em></h2>
+  <p class="section-sub">No credit card required to get started.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-name">Free</div>
+      <div class="pricing-price">$0</div>
+      <div class="pricing-period">Forever free, no card needed</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>3 hours of shader use per day</li>
+        <li>1 saved prescription</li>
+        <li>Single monitor</li>
+        <li>Blue light &amp; visual filters</li>
+        <li class="no">Small watermark in corner</li>
+        <li class="no">Multi-monitor support</li>
+      </ul>
+      <button class="btn-pricing btn-pricing-free">Get started free</button>
+    </div>
+    <div class="pricing-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="pricing-name">Premium</div>
+      <div class="pricing-price">$7.99</div>
+      <div class="pricing-period">per month, cancel anytime</div>
+      <div class="pricing-yearly">or $79.99/year — save 17%</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Unlimited daily usage</li>
+        <li>Unlimited saved prescriptions</li>
+        <li>Multi-monitor support</li>
+        <li>Full visual filters suite</li>
+        <li>No watermark</li>
+        <li>Priority support</li>
+      </ul>
+      <button class="btn-pricing btn-pricing-premium">Get Premium →</button>
+      <p class="pricing-handled">Payments handled by Creem</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- WAITLIST -->
+<div class="waitlist-section" id="waitlist">
+<div class="section" style="text-align:center; padding:100px 40px;">
+  <div class="waitlist-count">
+    <div class="wc-avatars">
+      <div class="wc-avatar">👁️</div>
+      <div class="wc-avatar">🕶️</div>
+      <div class="wc-avatar">👓</div>
+      <div class="wc-avatar">✨</div>
+    </div>
+    <span class="wc-text"><strong>1,200+ people</strong> on the waitlist</span>
+  </div>
+  <span class="section-tag">Early Access</span>
+  <h2 style="color:#F5F4EF; margin-top:8px;">Be the first to see <em>clearly</em></h2>
+  <p class="section-sub" style="margin:16px auto 40px; color:#9C9B96;">Get notified when DOA launches. Early access users get 3 months of Premium free.</p>
+  <form class="email-form" onsubmit="handleJoin(event)">
+    <input class="email-input" type="email" placeholder="your@email.com" required id="waitlistEmail">
+    <button type="submit" class="btn-join">Join waitlist →</button>
+  </form>
+  <p class="waitlist-note" id="waitlist-confirm">No spam. Unsubscribe anytime. 🙏</p>
+</div>
+</div>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="section">
+  <span class="section-tag">FAQ</span>
+  <h2>Common questions,<br><em>straight answers</em></h2>
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q">How does DOA work? <span class="arrow">↓</span></button>
+      <div class="faq-a">DOA applies a specialized GPU shader correction layer to your screen that replicates the effects of your prescription glasses, allowing you to see clearly without wearing them. Our advanced algorithms process the display in real time — correcting blur before it even reaches your eyes.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Will it work with my prescription? <span class="arrow">↓</span></button>
+      <div class="faq-a">DOA supports a wide range of prescriptions including myopia (up to −6.00D), hyperopia (up to +4.00D), and astigmatism (up to −2.50D). For prescriptions outside these ranges, please contact our support team for personalized assistance.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Is there any noticeable lag? <span class="arrow">↓</span></button>
+      <div class="faq-a">There's a 30–50ms delay between screen updates and the corrected overlay display. This is imperceptible during reading, typing, and browsing — our primary use case. Competitive gaming may notice slight input lag, so we recommend disabling DOA for competitive play.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button>
+      <div class="faq-a">DOA corrects your screen — not your eyes. It's designed for screen use only, not for general vision or outdoor activities. Think of it as "putting your glasses on your display" when you're working. You'd still need glasses for other activities away from screens.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button>
+      <div class="faq-a">DOA will be compatible with most modern smartphones, tablets, and computers running iOS 14+, Android 10+, Windows 10+, and macOS 11+. Support for all mentioned devices will be added gradually, with Windows being the primary launch platform.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Is my prescription data secure? <span class="arrow">↓</span></button>
+      <div class="faq-a">Absolutely. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties. Anonymized, opt-in aggregate data may be used to help optometry research — but your individual data is yours alone.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">Why is the correction limited to within the app? <span class="arrow">↓</span></button>
+      <div class="faq-a">On mobile (iOS/Android), platform restrictions mean correction can only be applied within specific applications rather than system-wide. These are OS-level limitations set by Apple and Google. On Windows and macOS, DOA applies correction across your entire screen using a transparent overlay.</div>
+    </div>
+  </div>
+
+  <div class="ph-badge">
+    <a href="https://www.producthunt.com/products/doa?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-doa" target="_blank">
+      <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=991633&theme=dark&t=1752484599999" alt="DOA - Device optical aid | Product Hunt" style="width:250px;height:54px;" width="250" height="54">
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="doaTransparent.png" alt="DOA Logo">
+        </div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world. Real-time prescription correction for every screen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="Terms of Service.html">Terms of Service</a></li>
+          <li><a href="privacy policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2025 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Device Optical Aid is operated by Cedric Julien .E</span>
+      <span class="cj">CJ_</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Burger menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    burger.classList.toggle('active');
+  });
+  // Close nav on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      burger.classList.remove('active');
+    });
+  });
+
+  // Waitlist form
+  function handleJoin(e) {
+    e.preventDefault();
+    const email = document.getElementById('waitlistEmail').value;
+    const confirm = document.getElementById('waitlist-confirm');
+    confirm.textContent = `✅ ${email} is on the list! We'll be in touch.`;
+    confirm.style.color = '#34D399';
+    document.getElementById('waitlistEmail').value = '';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.step-card, .feature-card, .vtype-card, .filter-card, .pricing-card, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
   });
 </script>
-
 
 </body>
 </html>
@@ -251,6 +1002,7 @@ Users will actually appreciate this! 🎯*/
 
 Q: Is there any lag?
 A: There's a 30-50ms delay between screen updates and the corrected overlay display. This is imperceptible for reading, typing, and browsing (our primary use case). Competitive gaming may notice slight input lag.
+
 
 
 
