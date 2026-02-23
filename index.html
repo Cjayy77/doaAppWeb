@@ -26,6 +26,7 @@
     --radius: 16px;
     --radius-sm: 10px;
   }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
@@ -36,15 +37,29 @@
     overflow-x: hidden;
   }
 
-  /* ── NAV ── */
+  /* ─────────────────────────────
+     NAV
+  ───────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px; height: 90px;
-    background: rgba(250,250,247,0.85);
+    background: rgba(250,250,247,0.88);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
+    transition: background 0.45s ease, border-color 0.45s ease;
   }
+  nav.nav-dark {
+    background: rgba(28,27,24,0.92);
+    border-bottom-color: rgba(255,255,255,0.07);
+  }
+  nav.nav-dark .nav-links a { color: #9C9B96; }
+  nav.nav-dark .nav-links a:hover { color: #F5F4EF; }
+  nav.nav-dark .nav-links a::after { background: var(--accent2); }
+  nav.nav-dark .btn-ghost { color: #F5F4EF; border-color: rgba(255,255,255,0.14); }
+  nav.nav-dark .btn-ghost:hover { background: rgba(255,255,255,0.07); }
+  nav.nav-dark .burger span { background: #F5F4EF; }
+
   .nav-logo { display: flex; align-items: center; }
   .nav-logo img { height: 54px; width: auto; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -81,90 +96,117 @@
   .burger.active span:nth-child(2) { opacity: 0; }
   .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-  /* ── HERO ── */
+
+
+  /* ─────────────────────────────
+     HERO  (light)
+  ───────────────────────────── */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 140px 40px 80px; text-align: center; position: relative; overflow: hidden;
+    padding: 140px 40px 80px; text-align: center;
+    position: relative; overflow: hidden;
+    background: var(--bg);
   }
-  .hero-bg-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.3; pointer-events: none; }
-  .blob1 { width: 520px; height: 520px; background: #d4a8ff; top: -80px; right: -120px; }
-  .blob2 { width: 400px; height: 400px; background: #c3b1ff; bottom: 0; left: -100px; }
-  .blob3 { width: 300px; height: 300px; background: #e8d4ff; top: 35%; left: 8%; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.28; pointer-events: none; }
+  .blob1 { width: 520px; height: 520px; background: #d4a8ff; top: -80px; right: -100px; }
+  .blob2 { width: 380px; height: 380px; background: #c3b1ff; bottom: 40px; left: -80px; }
+  .blob3 { width: 280px; height: 280px; background: #e8d4ff; top: 38%; left: 10%; }
+
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--card); border: 1px solid var(--border);
     border-radius: 100px; padding: 6px 14px 6px 10px;
-    font-size: 13px; font-weight: 500; color: var(--ink2); margin-bottom: 32px; position: relative;
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    margin-bottom: 32px; position: relative; z-index: 1;
   }
-  .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
   @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(138,43,226,0.4); }
-    50% { box-shadow: 0 0 0 6px rgba(138,43,226,0); }
+    0%,100% { box-shadow: 0 0 0 0 rgba(138,43,226,0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(138,43,226,0); }
   }
   h1 {
     font-family: 'League Spartan', sans-serif;
     font-size: clamp(48px, 7vw, 88px); line-height: 1.0;
-    letter-spacing: -2px; max-width: 900px; margin-bottom: 24px; font-weight: 800; position: relative;
+    letter-spacing: -2px; max-width: 900px; margin-bottom: 24px;
+    font-weight: 800; position: relative; z-index: 1;
   }
   h1 em { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
-  .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--ink2); max-width: 520px; margin-bottom: 40px; font-weight: 400; line-height: 1.6; position: relative; }
-  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px); color: var(--ink2); max-width: 520px;
+    margin-bottom: 40px; line-height: 1.6; position: relative; z-index: 1;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
   .btn-big { font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 600; padding: 14px 32px; border-radius: 10px; cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
   .btn-dark { background: var(--accent); color: #fff; border: none; }
   .btn-dark:hover { background: #7a20d2; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(138,43,226,0.35); }
   .btn-outline { background: var(--card); color: var(--ink); border: 1.5px solid var(--border); }
   .btn-outline:hover { border-color: var(--accent); transform: translateY(-2px); }
 
-  /* ── MOCKUP ── */
-  .hero-mockup { margin-top: 64px; position: relative; width: 100%; max-width: 900px; }
-  .mockup-window { background: #1C1B18; border-radius: 14px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06); }
+  /* Mockup */
+  .hero-mockup { margin-top: 64px; width: 100%; max-width: 900px; position: relative; z-index: 1; }
+  .mockup-window { background: #1C1B18; border-radius: 14px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.06); }
   .mockup-bar { background: #2A2A27; padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
   .mockup-dot { width: 11px; height: 11px; border-radius: 50%; }
   .mockup-screen { background: #1C1B18; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .mockup-card { background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); }
-  .mockup-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #6C6B66; text-transform: uppercase; margin-bottom: 12px; }
-  .mockup-value { font-family: 'League Spartan', sans-serif; font-size: 32px; font-weight: 700; color: #F5F4EF; }
-  .mockup-value span { font-size: 14px; color: #9C9B96; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; }
-  .mockup-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
-  .tag-green { background: rgba(52,211,153,0.15); color: #34D399; }
+  .m-card { background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); }
+  .m-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #6C6B66; text-transform: uppercase; margin-bottom: 12px; }
+  .m-value { font-family: 'League Spartan', sans-serif; font-size: 32px; font-weight: 700; color: #F5F4EF; }
+  .m-value span { font-size: 14px; color: #9C9B96; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; }
+  .m-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
+  .tag-green  { background: rgba(52,211,153,0.15); color: #34D399; }
   .tag-purple { background: rgba(138,43,226,0.15); color: #b066ff; }
-  .tag-soft { background: rgba(176,102,255,0.12); color: #c084ff; }
-  .mockup-blur-demo { grid-column: 1 / -1; background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 16px; align-items: center; }
-  .blur-before, .blur-after { flex: 1; }
-  .blur-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6B66; margin-bottom: 8px; }
-  .blur-text-blurry { font-size: 18px; color: #9C9B96; filter: blur(3px); padding: 10px; background: #1C1B18; border-radius: 6px; }
-  .blur-text-clear { font-size: 18px; color: #F5F4EF; padding: 10px; background: #1C1B18; border-radius: 6px; }
-  .blur-arrow { color: var(--accent2); font-size: 24px; flex-shrink: 0; }
+  .tag-soft   { background: rgba(176,102,255,0.12); color: #c084ff; }
+  .blur-demo  { grid-column: 1/-1; background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 16px; align-items: center; }
+  .blur-col { flex: 1; }
+  .blur-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6B66; margin-bottom: 8px; }
+  .blur-blurry { font-size: 18px; color: #9C9B96; filter: blur(3px); padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-clear  { font-size: 18px; color: #F5F4EF; padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-arrow  { color: var(--accent2); font-size: 24px; flex-shrink: 0; }
   .slider-track { height: 4px; background: #3A3A37; border-radius: 2px; position: relative; margin-top: 8px; }
-  .slider-fill { height: 100%; width: 72%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
+  .slider-fill  { height: 100%; width: 72%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
   .slider-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: -6px; left: 72%; transform: translateX(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 
-  /* ── SHARED SECTION ── */
+  /* ─────────────────────────────
+     SHARED
+  ───────────────────────────── */
   .section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
   .section-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; background: var(--accent-light); padding: 4px 12px; border-radius: 100px; }
+  /* dark section overrides */
+  .dark-section .section-tag { background: rgba(138,43,226,0.2); color: var(--accent2); }
   h2 { font-family: 'League Spartan', sans-serif; font-size: clamp(32px, 5vw, 56px); letter-spacing: -1.5px; line-height: 1.0; margin-bottom: 20px; font-weight: 800; }
   h2 em { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: italic; }
   .section-sub { font-size: 18px; color: var(--ink2); max-width: 520px; line-height: 1.6; }
 
-  /* ── HOW IT WORKS ── */
+  /* ─────────────────────────────
+     HOW IT WORKS  (dark)
+  ───────────────────────────── */
   .how-section { background: var(--ink); }
-  .how-section .section-tag { background: rgba(138,43,226,0.2); }
   .how-section h2 { color: #F5F4EF; }
   .how-section .section-sub { color: #9C9B96; }
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-  .step-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 32px; position: relative; transition: transform 0.3s, border-color 0.3s; }
-  .step-card:hover { transform: translateY(-4px); border-color: rgba(138,43,226,0.4); }
+  .step-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 32px; position: relative;
+    transition: transform 0.3s ease, border-color 0.3s;
+  }
+  .step-card:hover { transform: translateY(-5px); border-color: rgba(138,43,226,0.45); }
   .step-num { font-family: 'League Spartan', sans-serif; font-size: 72px; line-height: 1; font-weight: 900; color: rgba(255,255,255,0.05); position: absolute; top: 16px; right: 24px; pointer-events: none; }
   .step-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; background: rgba(138,43,226,0.15); }
   .step-card h3 { font-size: 20px; font-weight: 600; color: #F5F4EF; margin-bottom: 10px; }
   .step-card p { font-size: 15px; color: #9C9B96; line-height: 1.6; }
 
-  /* ── FEATURES ── */
+  /* ─────────────────────────────
+     FEATURES  (light)
+  ───────────────────────────── */
   .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
-  .feature-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 32px; transition: all 0.3s; }
+  .feature-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.3s;
+  }
   .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(138,43,226,0.1); border-color: var(--accent); }
-  .feature-card.wide { grid-column: 1 / -1; }
+  .feature-card.wide { grid-column: 1/-1; }
   .feature-icon { font-size: 32px; margin-bottom: 16px; }
   .feature-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
   .feature-card p { font-size: 15px; color: var(--ink2); line-height: 1.6; }
@@ -177,32 +219,54 @@
   .privacy-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
   .privacy-tag { font-size: 12px; font-weight: 600; padding: 4px 12px; background: rgba(138,43,226,0.1); color: var(--accent); border-radius: 100px; border: 1px solid rgba(138,43,226,0.2); }
 
-  /* ── VISION TYPES ── */
+  /* ─────────────────────────────
+     VISION TYPES  (dark)
+  ───────────────────────────── */
+  .vt-section { background: var(--ink); }
+  .vt-section h2 { color: #F5F4EF; }
+  .vt-section .section-sub { color: #9C9B96; }
   .visiontypes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
-  .vtype-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 24px; text-align: center; transition: all 0.3s; }
-  .vtype-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(138,43,226,0.12); }
+  .vtype-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm); padding: 24px; text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+  }
+  .vtype-card:hover { transform: translateY(-4px); border-color: rgba(138,43,226,0.45); box-shadow: 0 8px 28px rgba(138,43,226,0.15); }
   .vtype-emoji { font-size: 36px; margin-bottom: 12px; }
-  .vtype-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .vtype-card p { font-size: 13px; color: var(--ink2); }
+  .vtype-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #F5F4EF; }
+  .vtype-card p { font-size: 13px; color: #9C9B96; }
 
-  /* ── FILTERS ── */
+  /* ─────────────────────────────
+     VISUAL FILTERS  (light)
+  ───────────────────────────── */
   .filters-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
-  .filter-card { border-radius: var(--radius-sm); padding: 24px; border: 1.5px solid var(--border); background: var(--card); transition: all 0.3s; }
-  .filter-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .filter-card {
+    border-radius: var(--radius-sm); padding: 24px;
+    border: 1.5px solid var(--border); background: var(--card);
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
+  .filter-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
   .filter-swatch { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 14px; }
   .swatch-blue { background: linear-gradient(135deg, #3B5BDB, #74C0FC); }
   .swatch-warm { background: linear-gradient(135deg, #FF922B, #FFD43B); }
-  .swatch-cb { background: linear-gradient(135deg, #8a2be2, #b066ff); }
+  .swatch-cb   { background: linear-gradient(135deg, #8a2be2, #b066ff); }
   .filter-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .filter-card p { font-size: 13px; color: var(--ink2); }
+  .filter-card p  { font-size: 13px; color: var(--ink2); }
 
-  /* ── PRICING ── */
+  /* ─────────────────────────────
+     PRICING  (light / bg2)
+  ───────────────────────────── */
   .pricing-section { background: var(--bg2); }
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
-  .pricing-card { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 36px; position: relative; transition: all 0.3s; }
+  .pricing-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 36px; position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
   .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
-  .pricing-card.featured { background: linear-gradient(135deg, rgba(138,43,226,0.12), rgba(176,102,255,0.08)); border-color: var(--accent); }
-  .featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 16px; border-radius: 100px; }
+  .pricing-card.featured { background: linear-gradient(135deg, rgba(138,43,226,0.1), rgba(176,102,255,0.07)); border-color: var(--accent); }
+  .pricing-card.featured:hover { box-shadow: 0 20px 56px rgba(138,43,226,0.18); }
+  .featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 16px; border-radius: 100px; white-space: nowrap; }
   .pricing-name { font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
   .pricing-price { font-family: 'League Spartan', sans-serif; font-size: 52px; line-height: 1; margin-bottom: 4px; letter-spacing: -2px; font-weight: 800; }
   .pricing-period { font-size: 14px; color: var(--ink3); margin-bottom: 6px; }
@@ -222,11 +286,12 @@
   .btn-pricing-premium:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
   .pricing-handled { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 10px; }
 
-  /* ── WAITLIST ── */
+  /* ─────────────────────────────
+     WAITLIST  (dark)
+  ───────────────────────────── */
   .waitlist-section { background: var(--ink); text-align: center; }
   .waitlist-section h2 { color: #F5F4EF; }
   .waitlist-section .section-sub { color: #9C9B96; margin: 0 auto 40px; }
-  .waitlist-section .section-tag { background: rgba(138,43,226,0.2); }
   .email-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; position: relative; }
   .email-input { flex: 1; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; padding: 13px 18px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; background: rgba(255,255,255,0.06); color: #F5F4EF; outline: none; transition: border-color 0.2s; }
   .email-input::placeholder { color: #6C6B66; }
@@ -236,22 +301,24 @@
   .btn-join:hover::before { left: 100%; }
   .btn-join:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
   .btn-join:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-  .waitlist-note { font-size: 13px; color: #6C6B66; margin-top: 14px; transition: color 0.3s; }
+  .waitlist-note { font-size: 13px; color: #6C6B66; margin-top: 14px; }
   .waitlist-count { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 32px; }
   .wc-avatars { display: flex; }
-  .wc-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); margin-left: -10px; font-size: 14px; display: flex; align-items: center; justify-content: center; background: var(--bg2); }
+  .wc-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); margin-left: -10px; font-size: 14px; display: flex; align-items: center; justify-content: center; background: #2A2A27; }
   .wc-avatar:first-child { margin-left: 0; }
   .wc-text { font-size: 14px; color: #9C9B96; }
   .wc-text strong { color: #F5F4EF; }
 
-  /* ── FAQ ── */
+  /* ─────────────────────────────
+     FAQ  (light)
+  ───────────────────────────── */
   .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
-  .faq-item { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; position: relative; transition: border-color 0.3s, transform 0.2s; }
-  .faq-item::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(135deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
+  .faq-item { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; position: relative; transition: border-color 0.3s, transform 0.2s; }
+  .faq-item::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
   .faq-item:hover { border-color: rgba(138,43,226,0.3); transform: translateX(3px); }
   .faq-item:hover::before { opacity: 1; }
   .faq-q { width: 100%; padding: 20px 24px; text-align: left; background: none; border: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-  .faq-q .arrow { transition: transform 0.3s; font-size: 18px; color: var(--accent); font-weight: 400; }
+  .faq-q .arrow { transition: transform 0.3s; font-size: 18px; color: var(--accent); }
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-size: 15px; color: var(--ink2); line-height: 1.7; padding: 0 24px; }
   .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
   .faq-item.open .arrow { transform: rotate(180deg); }
@@ -259,11 +326,12 @@
   .faq-item.open::before { opacity: 1; }
   .ph-badge { text-align: center; margin-top: 48px; }
 
-  /* ── FOOTER ── */
+  /* ─────────────────────────────
+     FOOTER  (dark)
+  ───────────────────────────── */
   footer { background: var(--ink); color: #9C9B96; padding: 64px 40px 32px; }
   .footer-inner { max-width: 1100px; margin: 0 auto; }
   .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
-  .footer-brand { max-width: 300px; }
   .footer-logo img { height: 50px; width: auto; margin-bottom: 12px; }
   .footer-desc { font-size: 14px; line-height: 1.6; color: #6C6B66; margin-top: 10px; }
   .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4A47; margin-bottom: 16px; }
@@ -274,20 +342,35 @@
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 8px; }
   .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  /* ─────────────────────────────
+     ANIMATIONS
+  ───────────────────────────── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   .hero > * { animation: fadeUp 0.7s ease both; }
-  .hero-badge { animation-delay: 0.1s; }
-  h1 { animation-delay: 0.2s; }
-  .hero-sub { animation-delay: 0.35s; }
+  .hero-badge   { animation-delay: 0.1s; }
+  h1            { animation-delay: 0.2s; }
+  .hero-sub     { animation-delay: 0.35s; }
   .hero-actions { animation-delay: 0.45s; }
-  .hero-mockup { animation-delay: 0.55s; }
+  .hero-mockup  { animation-delay: 0.55s; }
 
-  /* ── RESPONSIVE ── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─────────────────────────────
+     RESPONSIVE
+  ───────────────────────────── */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
-    .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 90px; right: 20px; background: rgba(250,250,247,0.97); padding: 16px 24px; gap: 14px; border-radius: 10px; border: 1px solid var(--accent); z-index: 1000; box-shadow: 0 8px 32px rgba(138,43,226,0.15); }
+    .nav-links.active {
+      display: flex; flex-direction: column;
+      position: absolute; top: 90px; right: 20px;
+      background: rgba(250,250,247,0.97);
+      padding: 16px 24px; gap: 14px; border-radius: 10px;
+      border: 1px solid var(--accent); z-index: 1000;
+      box-shadow: 0 8px 32px rgba(138,43,226,0.15);
+    }
+    nav.nav-dark .nav-links.active { background: rgba(36,35,32,0.97); }
     .burger { display: flex; }
     .nav-cta { display: none; }
     .hero { padding: 120px 20px 60px; }
@@ -300,13 +383,14 @@
     .section { padding: 60px 20px; }
     .privacy-bar { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; text-align: center; }
+    .wave svg { height: 48px; }
   }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="navbar">
   <a href="#" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#how-it-works">How It Works</a></li>
@@ -321,12 +405,12 @@
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════ HERO  (light) ═══════════ -->
 <section class="hero">
-  <div class="hero-bg-blob blob1"></div>
-  <div class="hero-bg-blob blob2"></div>
-  <div class="hero-bg-blob blob3"></div>
-  <div class="hero-badge"><div class="hero-badge-dot"></div>Now in early access · Windows &amp; macOS</div>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="hero-badge"><div class="badge-dot"></div>Now in early access · Windows &amp; macOS</div>
   <h1>Enhance your<br><em>digital vision</em></h1>
   <p class="hero-sub">Experience clearer digital content without glasses. Smart screen correction tailored to your eyes — in real time.</p>
   <div class="hero-actions">
@@ -341,66 +425,68 @@
         <div class="mockup-dot" style="background:#28C840"></div>
       </div>
       <div class="mockup-screen">
-        <div class="mockup-card">
-          <div class="mockup-label">Active Prescription</div>
-          <div class="mockup-value">−3.25 <span>SPH</span></div>
-          <div class="mockup-tag tag-green">● Correction active</div>
+        <div class="m-card">
+          <div class="m-label">Active Prescription</div>
+          <div class="m-value">−3.25 <span>SPH</span></div>
+          <div class="m-tag tag-green">● Correction active</div>
         </div>
-        <div class="mockup-card">
-          <div class="mockup-label">Astigmatism</div>
-          <div class="mockup-value">−1.50 <span>CYL @ 90°</span></div>
-          <div class="mockup-tag tag-purple">● Directional blur off</div>
+        <div class="m-card">
+          <div class="m-label">Astigmatism</div>
+          <div class="m-value">−1.50 <span>CYL @ 90°</span></div>
+          <div class="m-tag tag-purple">● Directional blur off</div>
         </div>
-        <div class="mockup-blur-demo">
-          <div class="blur-before">
-            <div class="blur-label">Without DOA</div>
-            <div class="blur-text-blurry">Enhance your digital vision with real-time prescription correction.</div>
+        <div class="blur-demo">
+          <div class="blur-col">
+            <div class="blur-lbl">Without DOA</div>
+            <div class="blur-blurry">Enhance your digital vision with real-time prescription correction.</div>
           </div>
           <div class="blur-arrow">→</div>
-          <div class="blur-after">
-            <div class="blur-label">With DOA</div>
-            <div class="blur-text-clear">Enhance your digital vision with real-time prescription correction.</div>
+          <div class="blur-col">
+            <div class="blur-lbl">With DOA</div>
+            <div class="blur-clear">Enhance your digital vision with real-time prescription correction.</div>
           </div>
         </div>
-        <div class="mockup-card">
-          <div class="mockup-label">Blue Light Filter</div>
+        <div class="m-card">
+          <div class="m-label">Blue Light Filter</div>
           <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:4px;">
             <span style="font-size:12px;color:#6C6B66">Intensity</span>
             <span style="font-size:12px;color:#F5F4EF">72%</span>
           </div>
           <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
-          <div class="mockup-tag tag-soft" style="margin-top:14px">● Warm tint on</div>
+          <div class="m-tag tag-soft" style="margin-top:14px">● Warm tint on</div>
         </div>
-        <div class="mockup-card">
-          <div class="mockup-label">Shader Performance</div>
-          <div class="mockup-value">60 <span>fps</span></div>
-          <div class="mockup-tag tag-green">● GPU-accelerated</div>
+        <div class="m-card">
+          <div class="m-label">Shader Performance</div>
+          <div class="m-value">60 <span>fps</span></div>
+          <div class="m-tag tag-green">● GPU-accelerated</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<div class="how-section" id="how-it-works">
+
+
+<!-- ═══════════ HOW IT WORKS  (dark) ═══════════ -->
+<div class="how-section dark-section" id="how-it-works" data-theme="dark">
   <div class="section">
     <span class="section-tag">How it works</span>
     <h2>Three steps to<br><em>glasses-free</em> screens</h2>
     <p class="section-sub">No hardware changes. No doctor visits. Just install, enter your prescription, and see clearly.</p>
     <div class="steps-grid">
-      <div class="step-card">
+      <div class="step-card reveal">
         <div class="step-num">01</div>
         <div class="step-icon">📋</div>
         <h3>Enter Your Prescription</h3>
         <p>Simply input your eyeglass prescription for myopia, hyperopia, or astigmatism. DOA supports SPH, CYL, AXIS, and ADD values.</p>
       </div>
-      <div class="step-card">
+      <div class="step-card reveal" style="transition-delay:0.1s">
         <div class="step-num">02</div>
         <div class="step-icon">⚡</div>
         <h3>Smart Calculation</h3>
         <p>Our advanced GPU shader calculates the perfect correction layer in real time — predistorting every pixel based on your exact optics.</p>
       </div>
-      <div class="step-card">
+      <div class="step-card reveal" style="transition-delay:0.2s">
         <div class="step-num">03</div>
         <div class="step-icon">👁️</div>
         <h3>Enjoy Clear Vision</h3>
@@ -410,14 +496,16 @@
   </div>
 </div>
 
-<!-- FEATURES -->
-<section id="features">
+
+
+<!-- ═══════════ FEATURES  (light) ═══════════ -->
+<section id="features" style="background:var(--bg);">
   <div class="section">
     <span class="section-tag">Features</span>
     <h2>Built for every eye,<br>every <em>screen</em></h2>
     <p class="section-sub">One shader. Full prescription support. Real-time 60fps performance across every app.</p>
     <div class="features-grid">
-      <div class="feature-card">
+      <div class="feature-card reveal">
         <div class="feature-icon">🎯</div>
         <h3>Full Prescription Correction</h3>
         <p>Maps your exact SPH, CYL, AXIS, and ADD values to GPU shader parameters. Supports myopia up to −6.00D, hyperopia up to +4.00D, and astigmatism up to −2.50D.</p>
@@ -425,7 +513,7 @@
           <span class="chip">Myopia</span><span class="chip">Hyperopia</span><span class="chip">Astigmatism</span><span class="chip">Presbyopia</span>
         </div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" style="transition-delay:0.1s">
         <div class="feature-icon">⚡</div>
         <h3>60fps, Near-Zero Lag</h3>
         <p>Runs entirely on your GPU. There's a 30–50ms overlay delay — imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
@@ -433,17 +521,17 @@
           <span class="chip">GPU-accelerated</span><span class="chip">HLSL shaders</span><span class="chip">60fps locked</span>
         </div>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" style="transition-delay:0.05s">
         <div class="feature-icon">🌈</div>
         <h3>Visual Filters</h3>
         <p>Blue light reduction and color blindness modes (Protanopia, Deuteranopia, Tritanopia) — all processed in a single shader pass. Works standalone, no prescription needed.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal" style="transition-delay:0.15s">
         <div class="feature-icon">🖥️</div>
         <h3>Multi-Monitor Support</h3>
         <p>Apply different correction settings per monitor. Ideal for setups where screens are at different viewing distances — premium feature.</p>
       </div>
-      <div class="feature-card wide">
+      <div class="feature-card wide reveal">
         <div class="feature-icon">🔒</div>
         <h3>Privacy-First Design</h3>
         <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design — not just by policy.</p>
@@ -465,43 +553,47 @@
   </div>
 </section>
 
-<!-- VISION TYPES -->
-<div style="background: var(--bg2);">
+
+
+<!-- ═══════════ VISION TYPES  (dark) ═══════════ -->
+<div class="vt-section dark-section" data-theme="dark">
   <div class="section">
     <span class="section-tag">Vision correction</span>
     <h2>Every condition,<br><em>covered</em></h2>
     <p class="section-sub">DOA's shader handles the full range of common refractive errors with precision.</p>
     <div class="visiontypes-grid">
-      <div class="vtype-card"><div class="vtype-emoji">🔭</div><h4>Myopia</h4><p>Near-sighted? The shader adds opposing sharpness at the correct focal distance for comfortable screen use.</p></div>
-      <div class="vtype-card"><div class="vtype-emoji">🔬</div><h4>Hyperopia</h4><p>Far-sighted users who struggle to read small text benefit most — ideal for GPS and reading apps.</p></div>
-      <div class="vtype-card"><div class="vtype-emoji">💫</div><h4>Astigmatism</h4><p>Directional blur corrected with CYL strength mapped to an axis-rotated Gaussian kernel.</p></div>
-      <div class="vtype-card"><div class="vtype-emoji">📖</div><h4>Presbyopia</h4><p>Age-related near-vision loss compensated using your ADD power for comfortable reading.</p></div>
+      <div class="vtype-card reveal"><div class="vtype-emoji">🔭</div><h4>Myopia</h4><p>Near-sighted? The shader adds opposing sharpness at the correct focal distance for comfortable screen use.</p></div>
+      <div class="vtype-card reveal" style="transition-delay:0.1s"><div class="vtype-emoji">🔬</div><h4>Hyperopia</h4><p>Far-sighted users who struggle to read small text benefit most — ideal for GPS and reading apps.</p></div>
+      <div class="vtype-card reveal" style="transition-delay:0.2s"><div class="vtype-emoji">💫</div><h4>Astigmatism</h4><p>Directional blur corrected with CYL strength mapped to an axis-rotated Gaussian kernel.</p></div>
+      <div class="vtype-card reveal" style="transition-delay:0.3s"><div class="vtype-emoji">📖</div><h4>Presbyopia</h4><p>Age-related near-vision loss compensated using your ADD power for comfortable reading.</p></div>
     </div>
   </div>
 </div>
 
-<!-- VISUAL FILTERS -->
-<section>
+
+
+<!-- ═══════════ VISUAL FILTERS  (light) ═══════════ -->
+<section style="background:var(--bg);">
   <div class="section">
     <span class="section-tag">Visual Filters</span>
     <h2>More than just<br><em>vision correction</em></h2>
     <p class="section-sub">Optional screen enhancements — works with or without a prescription active.</p>
     <div class="filters-row">
-      <div class="filter-card"><div class="filter-swatch swatch-blue"></div><h4>Blue Light Reduction</h4><p>Warm the screen to reduce eye strain during long sessions. Adjustable 0–100% intensity slider.</p></div>
-      <div class="filter-card"><div class="filter-swatch swatch-warm"></div><h4>Warm Tint Mode</h4><p>Evening-optimized palette that's easier on your circadian rhythm without losing readability.</p></div>
-      <div class="filter-card"><div class="filter-swatch swatch-cb"></div><h4>Color Blindness Modes</h4><p>Calibrated matrices for Protanopia, Deuteranopia, and Tritanopia — no setup or calibration needed.</p></div>
+      <div class="filter-card reveal"><div class="filter-swatch swatch-blue"></div><h4>Blue Light Reduction</h4><p>Warm the screen to reduce eye strain during long sessions. Adjustable 0–100% intensity slider.</p></div>
+      <div class="filter-card reveal" style="transition-delay:0.1s"><div class="filter-swatch swatch-warm"></div><h4>Warm Tint Mode</h4><p>Evening-optimized palette that's easier on your circadian rhythm without losing readability.</p></div>
+      <div class="filter-card reveal" style="transition-delay:0.2s"><div class="filter-swatch swatch-cb"></div><h4>Color Blindness Modes</h4><p>Calibrated matrices for Protanopia, Deuteranopia, and Tritanopia — no setup or calibration needed.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ═══════════ PRICING  (light / bg2 — no wave needed, same light family) ═══════════ -->
 <div class="pricing-section" id="pricing">
   <div class="section">
     <span class="section-tag">Pricing</span>
     <h2>Start free.<br>Go premium <em>when ready.</em></h2>
     <p class="section-sub">No credit card required to get started.</p>
     <div class="pricing-grid">
-      <div class="pricing-card">
+      <div class="pricing-card reveal">
         <div class="pricing-name">Free</div>
         <div class="pricing-price">$0</div>
         <div class="pricing-period">Forever free, no card needed</div>
@@ -516,7 +608,7 @@
         </ul>
         <button class="btn-pricing btn-pricing-free">Get started free</button>
       </div>
-      <div class="pricing-card featured">
+      <div class="pricing-card featured reveal" style="transition-delay:0.1s">
         <div class="featured-badge">Most Popular</div>
         <div class="pricing-name">Premium</div>
         <div class="pricing-price">$7.99</div>
@@ -538,8 +630,10 @@
   </div>
 </div>
 
-<!-- WAITLIST -->
-<div class="waitlist-section" id="waitlist">
+
+
+<!-- ═══════════ WAITLIST  (dark) ═══════════ -->
+<div class="waitlist-section dark-section" id="waitlist" data-theme="dark">
   <div class="section" style="text-align:center; padding:100px 40px;">
     <div class="waitlist-count">
       <div class="wc-avatars">
@@ -555,7 +649,6 @@
     <p class="section-sub" style="margin:16px auto 40px; color:#9C9B96;">Get notified when DOA launches. Early access users get 3 months of Premium free.</p>
     <form class="email-form" id="waitlistForm">
       <input class="email-input" type="email" name="EMAIL" placeholder="your@email.com" required id="waitlistEmail">
-      <!-- Mailchimp anti-bot honeypot — invisible to users, do NOT remove -->
       <div style="position:absolute; left:-5000px;" aria-hidden="true">
         <input type="text" name="b_97328c96475de66e7cad60b4c_3c78d33553" tabindex="-1" value="">
       </div>
@@ -565,19 +658,21 @@
   </div>
 </div>
 
-<!-- FAQ -->
-<section id="faq">
+
+
+<!-- ═══════════ FAQ  (light) ═══════════ -->
+<section id="faq" style="background:var(--bg);">
   <div class="section">
     <span class="section-tag">FAQ</span>
     <h2>Common questions,<br><em>straight answers</em></h2>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-q">How does DOA work? <span class="arrow">↓</span></button><div class="faq-a">DOA applies a specialized GPU shader correction layer to your screen that replicates the effects of your prescription glasses, allowing you to see clearly without wearing them. Our advanced algorithms process the display in real time — correcting blur before it even reaches your eyes.</div></div>
-      <div class="faq-item"><button class="faq-q">Will it work with my prescription? <span class="arrow">↓</span></button><div class="faq-a">DOA supports a wide range of prescriptions including myopia (up to −6.00D), hyperopia (up to +4.00D), and astigmatism (up to −2.50D). For prescriptions outside these ranges, please contact our support team for personalized assistance.</div></div>
-      <div class="faq-item"><button class="faq-q">Is there any noticeable lag? <span class="arrow">↓</span></button><div class="faq-a">There's a 30–50ms delay between screen updates and the corrected overlay display. This is imperceptible during reading, typing, and browsing — our primary use case. Competitive gaming may notice slight input lag, so we recommend disabling DOA for competitive play.</div></div>
-      <div class="faq-item"><button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button><div class="faq-a">DOA corrects your screen — not your eyes. It's designed for screen use only, not for general vision or outdoor activities. Think of it as "putting your glasses on your display" when you're working. You'd still need glasses for other activities away from screens.</div></div>
-      <div class="faq-item"><button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button><div class="faq-a">DOA will be compatible with most modern smartphones, tablets, and computers running iOS 14+, Android 10+, Windows 10+, and macOS 11+. Support for all mentioned devices will be added gradually, with Windows being the primary launch platform.</div></div>
-      <div class="faq-item"><button class="faq-q">Is my prescription data secure? <span class="arrow">↓</span></button><div class="faq-a">Absolutely. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties. Anonymized, opt-in aggregate data may be used to help optometry research — but your individual data is yours alone.</div></div>
-      <div class="faq-item"><button class="faq-q">Why is the correction limited to within the app? <span class="arrow">↓</span></button><div class="faq-a">On mobile (iOS/Android), platform restrictions mean correction can only be applied within specific applications rather than system-wide. These are OS-level limitations set by Apple and Google. On Windows and macOS, DOA applies correction across your entire screen using a transparent overlay.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">How does DOA work? <span class="arrow">↓</span></button><div class="faq-a">DOA applies a specialized GPU shader correction layer to your screen that replicates the effects of your prescription glasses, allowing you to see clearly without wearing them. Our advanced algorithms process the display in real time — correcting blur before it even reaches your eyes.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Will it work with my prescription? <span class="arrow">↓</span></button><div class="faq-a">DOA supports a wide range of prescriptions including myopia (up to −6.00D), hyperopia (up to +4.00D), and astigmatism (up to −2.50D). For prescriptions outside these ranges, please contact our support team for personalized assistance.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Is there any noticeable lag? <span class="arrow">↓</span></button><div class="faq-a">There's a 30–50ms delay between screen updates and the corrected overlay display. This is imperceptible during reading, typing, and browsing — our primary use case. Competitive gaming may notice slight input lag, so we recommend disabling DOA for competitive play.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button><div class="faq-a">DOA corrects your screen — not your eyes. It's designed for screen use only, not for general vision or outdoor activities. Think of it as "putting your glasses on your display" when you're working. You'd still need glasses for other activities away from screens.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button><div class="faq-a">DOA will be compatible with most modern smartphones, tablets, and computers running iOS 14+, Android 10+, Windows 10+, and macOS 11+. Support for all mentioned devices will be added gradually, with Windows being the primary launch platform.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Is my prescription data secure? <span class="arrow">↓</span></button><div class="faq-a">Absolutely. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties. Anonymized, opt-in aggregate data may be used to help optometry research — but your individual data is yours alone.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Why is the correction limited to within the app? <span class="arrow">↓</span></button><div class="faq-a">On mobile (iOS/Android), platform restrictions mean correction can only be applied within specific applications rather than system-wide. These are OS-level limitations set by Apple and Google. On Windows and macOS, DOA applies correction across your entire screen using a transparent overlay.</div></div>
     </div>
     <div class="ph-badge">
       <a href="https://www.producthunt.com/products/doa?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-doa" target="_blank">
@@ -587,11 +682,12 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
+<!-- ═══════════ FOOTER  (dark) ═══════════ -->
+<!-- No wave needed — FAQ is light and footer is dark, but footer starts naturally -->
+<footer data-theme="dark">
   <div class="footer-inner">
     <div class="footer-top">
-      <div class="footer-brand">
+      <div>
         <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
         <p class="footer-desc">Enhancing digital vision for a clearer world. Real-time prescription correction for every screen.</p>
       </div>
@@ -620,9 +716,6 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════
-     ONE SCRIPT BLOCK — nothing else below this
-     ═══════════════════════════════════════════ -->
 <script>
   // ── FAQ accordion ──
   document.querySelectorAll('.faq-item').forEach(item => {
@@ -634,7 +727,7 @@
   });
 
   // ── Burger menu ──
-  const burger = document.getElementById('burger');
+  const burger   = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   burger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
@@ -647,27 +740,30 @@
     });
   });
 
-  // ── Scroll reveal ──
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
+  // ── Adaptive nav ──
+  const navbar  = document.getElementById('navbar');
+  const darkEls = document.querySelectorAll('[data-theme="dark"]');
+  function updateNav() {
+    const mid = 45;
+    let dark = false;
+    darkEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) dark = true;
     });
-  }, { threshold: 0.1 });
+    navbar.classList.toggle('nav-dark', dark);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
 
-  document.querySelectorAll('.step-card, .feature-card, .vtype-card, .filter-card, .pricing-card, .faq-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
   // ── Mailchimp waitlist ──
   document.getElementById('waitlistForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const email   = document.getElementById('waitlistEmail').value;
     const confirm = document.getElementById('waitlist-confirm');
     const btn     = document.getElementById('joinBtn');
@@ -686,7 +782,6 @@
     window.mcCallback = function(data) {
       btn.textContent = 'Join waitlist →';
       btn.disabled = false;
-
       if (data.result === 'success') {
         confirm.textContent = '✅ You\'re on the list! We\'ll be in touch when DOA launches.';
         confirm.style.color = '#34D399';
@@ -699,7 +794,6 @@
         confirm.style.color = '#f87171';
         console.error('Mailchimp error:', data.msg);
       }
-
       const old = document.getElementById('mc-jsonp');
       if (old) old.remove();
     };
@@ -721,6 +815,5 @@
     }, 8000);
   });
 </script>
-
 </body>
 </html>
