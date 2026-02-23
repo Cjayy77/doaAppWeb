@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — DOA</title>
+<meta name="description" content="Get in touch with the DOA team for support, questions, or feedback.">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #1C1B18;
+    --bg2:        #232320;
+    --card:       #2A2A27;
+    --border:     rgba(255,255,255,0.08);
+    --ink:        #F5F4EF;
+    --ink2:       #9C9B96;
+    --ink3:       #6C6B66;
+    --accent:     #8a2be2;
+    --accent2:    #b066ff;
+    --accent-dim: rgba(138,43,226,0.15);
+    --radius:     12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink2);
+    line-height: 1.7;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 80px;
+    background: rgba(28,27,24,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-home {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; transition: 0.3s; }
+
+  /* ── PAGE LAYOUT ── */
+  main { flex: 1; padding: 140px 40px 100px; max-width: 1000px; margin: 0 auto; width: 100%; }
+
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); background: var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .page-hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -1.5px; line-height: 1.0;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .page-hero h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .page-hero p {
+    font-size: 17px; color: var(--ink2);
+    max-width: 480px; line-height: 1.7; margin-bottom: 56px;
+  }
+
+  /* ── TWO-COL LAYOUT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ── LEFT: INFO CARDS ── */
+  .info-stack { display: flex; flex-direction: column; gap: 16px; }
+
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    transition: border-color 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .info-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .info-card:hover { border-color: rgba(138,43,226,0.3); }
+  .info-card:hover::before { opacity: 1; }
+
+  .info-card-icon { font-size: 24px; margin-bottom: 12px; }
+  .info-card h3 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--ink);
+    margin-bottom: 6px; letter-spacing: -0.2px;
+  }
+  .info-card p { font-size: 14px; color: var(--ink2); line-height: 1.6; margin-bottom: 10px; }
+  .info-card a {
+    font-size: 14px; font-weight: 600; color: var(--accent2);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .info-card a:hover { color: var(--ink); }
+
+  /* Response time badge */
+  .response-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: #34D399;
+    background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);
+    padding: 3px 10px; border-radius: 100px; margin-top: 8px;
+  }
+  .response-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: #34D399; flex-shrink: 0;
+  }
+
+  /* ── RIGHT: FORM ── */
+  .form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px;
+  }
+  .form-card h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 22px; font-weight: 700; color: var(--ink);
+    letter-spacing: -0.4px; margin-bottom: 28px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .form-group label {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink3);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; color: var(--ink);
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 8px; padding: 12px 16px;
+    outline: none; transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--ink3); }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+    background: rgba(138,43,226,0.05);
+  }
+  .form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236C6B66' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+  }
+  .form-group select option { background: var(--card); color: var(--ink); }
+  .form-group textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+
+  .btn-submit {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600; color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; padding: 14px 32px; border-radius: 8px;
+    cursor: pointer; width: 100%; margin-top: 8px;
+    position: relative; overflow: hidden; transition: all 0.25s;
+  }
+  .btn-submit::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: 0.5s;
+  }
+  .btn-submit:hover::before { left: 100%; }
+  .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .form-note { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 12px; }
+
+  /* Success state */
+  .form-success {
+    display: none;
+    flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 40px 20px; gap: 16px;
+  }
+  .success-icon { font-size: 48px; }
+  .form-success h3 { font-family: 'League Spartan', sans-serif; font-size: 24px; font-weight: 700; color: var(--ink); }
+  .form-success p { font-size: 15px; color: var(--ink2); max-width: 320px; line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 48px 40px 32px; }
+  .footer-inner { max-width: 1000px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
+  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 40px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
+  .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: absolute; top: 80px; right: 20px;
+      background: var(--card); padding: 16px 20px; gap: 12px;
+      border-radius: 10px; border: 1px solid var(--border); z-index: 200;
+    }
+    .burger { display: flex; }
+    main { padding: 110px 20px 80px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-card { padding: 24px 20px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html" class="btn-home">← Back to site</a>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <div class="page-hero">
+    <span class="page-tag">Contact</span>
+    <h1>We're here.<br><em>Say something.</em></h1>
+    <p>Questions about your prescription, billing, or just want to share feedback — it all goes straight to me.</p>
+  </div>
+
+  <div class="contact-grid">
+
+    <!-- LEFT: INFO -->
+    <div class="info-stack">
+
+      <div class="info-card">
+        <div class="info-card-icon">✉️</div>
+        <h3>Email Support</h3>
+        <p>The fastest way to reach us. For billing issues, prescription questions, or bug reports.</p>
+        <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a>
+        <div><span class="response-badge">Usually within 48 hours</span></div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">❓</div>
+        <h3>Check the FAQ first</h3>
+        <p>Prescription ranges, lag, platform support — most common questions are already answered there.</p>
+        <a href="index.html#faq">Browse the FAQ →</a>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">⚖️</div>
+        <h3>Legal &amp; Privacy</h3>
+        <p>Questions about your data, account deletion, or our policies.</p>
+        <a href="privacy policy.html">Privacy Policy →</a><br><br>
+        <a href="Terms of Service.html">Terms of Service →</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-card">
+      <h2>Send a message</h2>
+
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="fname" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" id="femail" placeholder="your@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Topic</label>
+          <select id="ftopic">
+            <option value="" disabled selected>What's this about?</option>
+            <option value="support">App support / bug report</option>
+            <option value="prescription">Prescription question</option>
+            <option value="billing">Billing or subscription</option>
+            <option value="refund">Refund request</option>
+            <option value="privacy">Privacy or data request</option>
+            <option value="feedback">Feature feedback</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea id="fmessage" placeholder="Describe your question or issue in as much detail as you can..." required></textarea>
+        </div>
+
+        <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">Send message →</button>
+        <p class="form-note" id="formNote">We'll get back to you within 48 hours. 🙏</p>
+      </div>
+
+      <!-- Success state -->
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✅</div>
+        <h3>Message sent!</h3>
+        <p>We'll get back to you at your email address within 48 hours.</p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="Terms of Service.html">Terms of Service</a></li>
+            <li><a href="privacy policy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="download.html">Download</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2025 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Operated by Cedric Julien .E</span>
+      <span class="cj">CJ_</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Burger ──
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('navLinks');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+  // ── Form submit ──
+  // Sends via mailto as a simple fallback — no backend needed.
+  // When you have a proper backend or Formspree/EmailJS set up, swap this out.
+  function handleSubmit() {
+    const email   = document.getElementById('femail').value.trim();
+    const message = document.getElementById('fmessage').value.trim();
+    const name    = document.getElementById('fname').value.trim();
+    const topic   = document.getElementById('ftopic').value;
+    const note    = document.getElementById('formNote');
+    const btn     = document.getElementById('submitBtn');
+
+    if (!email || !message) {
+      note.textContent = '⚠️ Please fill in your email and message.';
+      note.style.color = '#f87171';
+      return;
+    }
+
+    const topicLabel = document.getElementById('ftopic').options[document.getElementById('ftopic').selectedIndex]?.text || 'General enquiry';
+    const subject    = encodeURIComponent(`[DOA Contact] ${topicLabel}`);
+    const body       = encodeURIComponent(`Name: ${name || 'Not provided'}\nEmail: ${email}\nTopic: ${topicLabel}\n\n${message}`);
+
+    window.location.href = `mailto:doaappsup@gmail.com?subject=${subject}&body=${body}`;
+
+    // Show success after a short delay
+    setTimeout(() => {
+      document.getElementById('contactForm').style.display = 'none';
+      const success = document.getElementById('formSuccess');
+      success.style.display = 'flex';
+    }, 800);
+  }
+</script>
+
+</body>
+</html>
