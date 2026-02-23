@@ -1,159 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - DOA</title>
-    <meta name="description" content="Here are the Terms of Service of the Device Optical Aid. Read our Terms of Service to understand the rules, responsibilities, and legal guidelines for using the app.">
-    <meta name="keywords" content="DOA, DOA App, Device Optical Aid, Vision app, Purple app, Three circles app, Three ovals app, Vision correction, Myopia correction, accessibility app">
-    <meta name="author" content="CJ_">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="doaTransparent.png">
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — DOA</title>
+<meta name="description" content="Read the Terms of Service for Device Optical Aid — rules, responsibilities, and legal guidelines for using the app.">
+<meta name="keywords" content="DOA, DOA App, Device Optical Aid, Vision correction, Terms of Service">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #1C1B18;
+    --bg2:         #232320;
+    --card:        #2A2A27;
+    --border:      rgba(255,255,255,0.08);
+    --ink:         #F5F4EF;
+    --ink2:        #9C9B96;
+    --ink3:        #6C6B66;
+    --accent:      #8a2be2;
+    --accent2:     #b066ff;
+    --accent-dim:  rgba(138,43,226,0.15);
+    --warn-dim:    rgba(251,191,36,0.12);
+    --warn:        #FBB924;
+    --radius:      12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink2);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 80px;
+    background: rgba(28,27,24,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-home {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO BAND ── */
+  .page-hero {
+    padding: 140px 40px 72px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); background: var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .page-hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800; letter-spacing: -1.5px; line-height: 1.0;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .page-hero h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .last-updated {
+    font-size: 13px; color: var(--ink3);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .last-updated::before {
+    content: ''; display: inline-block;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent2);
+  }
+
+  /* ── CONTENT ── */
+  .legal-body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+  }
+
+  .legal-section {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    padding: 32px 36px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .legal-section:hover { border-color: rgba(138,43,226,0.25); }
+  .legal-section::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .legal-section:hover::before { opacity: 1; }
+
+  /* Warning-tinted section (medical disclaimer) */
+  .legal-section.warn {
+    border-color: rgba(251,191,36,0.2);
+    background: linear-gradient(135deg, var(--card), rgba(251,191,36,0.04));
+  }
+  .legal-section.warn::before { background: linear-gradient(180deg, var(--warn), rgba(251,191,36,0.3)); opacity: 1; }
+  .legal-section.warn:hover { border-color: rgba(251,191,36,0.4); }
+
+  .section-number {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 10px; display: block;
+  }
+  .legal-section.warn .section-number { color: var(--warn); }
+
+  .legal-section h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.3px;
+    margin-bottom: 14px; line-height: 1.2;
+  }
+  .legal-section h3 {
+    font-size: 13px; font-weight: 700;
+    color: var(--ink); text-transform: uppercase;
+    letter-spacing: 0.07em; margin: 20px 0 10px;
+  }
+  .legal-section p {
+    font-size: 15px; color: var(--ink2);
+    line-height: 1.75; margin-bottom: 12px;
+  }
+  .legal-section p:last-child { margin-bottom: 0; }
+  .legal-section ul {
+    list-style: none; display: flex; flex-direction: column;
+    gap: 8px; margin: 8px 0 12px;
+  }
+  .legal-section ul li {
+    font-size: 15px; color: var(--ink2);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .legal-section ul li::before {
+    content: '—'; color: var(--accent2);
+    font-weight: 600; flex-shrink: 0; margin-top: 1px;
+  }
+  .legal-section.warn ul li::before { color: var(--warn); }
+  .legal-section a { color: var(--accent2); text-decoration: none; transition: color 0.2s; }
+  .legal-section a:hover { color: var(--ink); }
+
+  /* Highlight box */
+  .highlight-box {
+    background: var(--accent-dim);
+    border: 1px solid rgba(138,43,226,0.2);
+    border-radius: 10px; padding: 20px 24px;
+    margin: 16px 0 4px;
+  }
+  .highlight-box p { color: var(--ink); font-size: 14px; margin: 0; line-height: 1.7; }
+  .highlight-box strong { color: var(--accent2); }
+
+  .warn-box {
+    background: var(--warn-dim);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: 10px; padding: 20px 24px;
+    margin: 4px 0;
+  }
+  .warn-box p { color: var(--ink); font-size: 14px; margin: 0; line-height: 1.7; }
+  .warn-box strong { color: var(--warn); }
+
+  /* Contact card */
+  .contact-card {
+    background: var(--bg2); border-radius: 10px;
+    padding: 20px 24px; margin-top: 8px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .contact-card span { font-size: 13px; color: var(--ink3); }
+  .contact-card a { color: var(--accent2); font-size: 14px; text-decoration: none; }
+  .contact-card a:hover { color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 48px 40px 32px; }
+  .footer-inner { max-width: 800px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
+  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 40px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
+  .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
+    .burger { display: flex; }
+    .page-hero, .legal-body { padding-left: 20px; padding-right: 20px; }
+    .page-hero { padding-top: 110px; }
+    .legal-section { padding: 24px 20px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
 </head>
 <body>
-    <nav class="navbar">
-        <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#features">Features</a>
-            <a href="index.html#pricing">Pricing</a>
-            <a href="index.html#faq">FAQ</a>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html" class="btn-home">← Back to site</a>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <span class="page-tag">Legal</span>
+  <h1>Terms of <em>Service</em></h1>
+  <p class="last-updated">Last updated: February 23, 2026</p>
+</div>
+
+<!-- CONTENT -->
+<div class="legal-body">
+
+  <div class="legal-section">
+    <span class="section-number">01</span>
+    <h2>Acceptance of Terms</h2>
+    <p>By downloading, installing, or using the Device Optical Aid (DOA) desktop application ("the App"), you agree to be bound by these Terms of Service. If you do not agree, please do not install or use the App.</p>
+    <p>These terms apply to the Windows desktop application and any future platform releases (macOS, Linux). Use of the DOA website is also subject to these terms.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">02</span>
+    <h2>Description of Service</h2>
+    <p>DOA is a desktop application that applies real-time GPU shader-based visual correction to your screen. It is designed for users with refractive errors who want clearer screen readability without wearing glasses. The App provides:</p>
+    <ul>
+      <li>Screen-wide vision correction for myopia, hyperopia, astigmatism, and presbyopia</li>
+      <li>GPU-accelerated overlay rendering at up to 60fps</li>
+      <li>Visual filters including blue light reduction and color blindness correction modes</li>
+      <li>Multi-monitor support (Premium tier)</li>
+      <li>Prescription management and cloud sync via Firebase</li>
+    </ul>
+  </div>
+
+  <div class="legal-section warn">
+    <span class="section-number">03</span>
+    <h2>Medical Disclaimer</h2>
+    <div class="warn-box">
+      <p><strong>Important:</strong> DOA is not a medical device and is not regulated as one. It is not intended to replace prescription glasses, contact lenses, or any professional eye care treatment. The corrections applied by DOA are approximations based on user-entered prescription values and are not clinically validated substitutes for optical lenses.</p>
+    </div>
+    <p style="margin-top:16px;">If you experience eye strain, headaches, blurred vision, or discomfort while using DOA, stop use immediately and consult a qualified eye care professional. Regular eye examinations remain necessary regardless of DOA usage.</p>
+    <p>DOA makes no claim that its correction is medically equivalent to wearing prescription eyewear.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">04</span>
+    <h2>Screen Capture &amp; Overlay</h2>
+    <p>To apply vision correction, DOA captures your screen in real time using the Windows Graphics Capture API. By using the App you acknowledge and consent to this. You should be aware that:</p>
+    <ul>
+      <li>Screen capture occurs locally on your device — no frames are transmitted externally</li>
+      <li>DOA does not record, log, or store any screen content</li>
+      <li>Certain OS-protected windows (login screens, UAC prompts, banking apps) are excluded from capture by Windows automatically</li>
+      <li>You are solely responsible for ensuring DOA is not active during activities where you do not wish the screen to be processed locally</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">05</span>
+    <h2>Account Registration &amp; Security</h2>
+    <p>Some features require a DOA account. By registering you agree to:</p>
+    <ul>
+      <li>Provide accurate and current information</li>
+      <li>Maintain the security of your login credentials</li>
+      <li>Accept responsibility for all activity under your account</li>
+      <li>Notify us immediately at <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a> if you suspect unauthorized access</li>
+    </ul>
+    <p>One account may be used on a reasonable number of personal devices. Sharing accounts across multiple users is not permitted.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">06</span>
+    <h2>Free Tier Limitations</h2>
+    <p>The free tier of DOA is subject to the following restrictions, which are enforced technically:</p>
+    <ul>
+      <li>3 hours of active shader usage per calendar day</li>
+      <li>1 saved prescription at a time</li>
+      <li>Single monitor support only</li>
+      <li>A small, non-intrusive watermark rendered in the overlay</li>
+    </ul>
+    <p>Attempting to circumvent these limits — including by manipulating local storage, system clocks, or network traffic — is a violation of these Terms and may result in account suspension.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">07</span>
+    <h2>Premium Subscription, Payments &amp; Renewal</h2>
+    <p>Premium removes all free tier restrictions and unlocks:</p>
+    <ul>
+      <li>Unlimited daily shader usage</li>
+      <li>Unlimited saved prescriptions</li>
+      <li>Multi-monitor support</li>
+      <li>Full visual filters suite</li>
+      <li>No watermark</li>
+      <li>Priority support</li>
+    </ul>
+    <h3>Billing</h3>
+    <p>Subscriptions are billed monthly ($7.99/mo) or annually ($79.99/yr) and renew automatically unless cancelled before the renewal date. All payments are processed by <strong style="color:var(--ink)">Creem</strong>. DOA never stores your card details or billing information.</p>
+    <p>Cancellations take effect at the end of the current billing period. You retain Premium access until the period expires.</p>
+    <div class="highlight-box">
+      <p><strong>Early access coupon holders:</strong> If you received a free Premium code, it will not auto-renew into a paid subscription when it expires. You will be moved to the free tier automatically unless you choose to subscribe.</p>
+    </div>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">08</span>
+    <h2>Refund Policy</h2>
+    <p>We want every DOA user to have a good experience. If you are not satisfied, contact us within <strong style="color:var(--ink)">14 days</strong> of your purchase at <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a>.</p>
+    <p>Refunds are reviewed individually. Approved refunds are credited to the original payment method within <strong style="color:var(--ink)">5–10 business days</strong> depending on your bank or provider.</p>
+    <p>We reserve the right to decline refund requests where the subscription has been extensively used or where abuse of the refund process is suspected.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">09</span>
+    <h2>Privacy &amp; Data</h2>
+    <p>Your use of DOA is also governed by our <a href="privacy policy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. It explains in detail what data we collect, how we use it, and your rights regarding it.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">10</span>
+    <h2>Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use DOA for any unlawful purpose or in violation of any applicable law</li>
+      <li>Attempt to reverse-engineer, decompile, or extract the source code of the App</li>
+      <li>Modify, repackage, or redistribute the App or any part of it</li>
+      <li>Attempt to bypass, disable, or circumvent any security or licensing mechanism</li>
+      <li>Use automated tools to abuse the service or stress-test the infrastructure without permission</li>
+      <li>Impersonate any person or entity or misrepresent your affiliation</li>
+    </ul>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">11</span>
+    <h2>Intellectual Property</h2>
+    <p>The DOA application, its source code, shader logic, branding, design, and all related content are the intellectual property of Device Optical Aid, operated by Cedric Julien .E, and are protected by applicable copyright and intellectual property laws.</p>
+    <p>You are granted a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes. This license does not grant you any rights to the underlying code, assets, or technology.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">12</span>
+    <h2>Anti-Tampering</h2>
+    <p>DOA uses technical measures to protect its licensing and usage enforcement systems. Attempting to tamper with, patch, or disable these measures — including usage timers, watermark rendering, or subscription verification — is strictly prohibited and constitutes a material breach of these Terms.</p>
+    <p>Accounts found engaging in tampering may be permanently suspended without refund.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">13</span>
+    <h2>Termination</h2>
+    <p>We reserve the right to suspend or terminate your account and access to DOA at our discretion, including but not limited to violations of these Terms. Where reasonably possible, we will notify you before termination.</p>
+    <p>You may terminate your account at any time by contacting support. Upon termination, your data will be deleted in accordance with our Privacy Policy.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">14</span>
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, DOA and its operator shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the App — including but not limited to eye strain, vision issues, data loss, or loss of productivity.</p>
+    <p>Our total liability for any claim arising under these Terms shall not exceed the amount you paid for the App in the 12 months preceding the claim.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">15</span>
+    <h2>Disclaimer of Warranties</h2>
+    <p>DOA is provided "as is" and "as available" without warranties of any kind, express or implied. We do not guarantee that the App will be error-free, uninterrupted, or that the vision correction it applies will meet your individual needs. GPU compatibility, driver versions, and system configuration may affect performance.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">16</span>
+    <h2>Changes to These Terms</h2>
+    <p>We may update these Terms as the product evolves. When we make significant changes, registered users will be notified by email at least <strong style="color:var(--ink)">14 days</strong> before the changes take effect. Continued use of DOA after that date constitutes acceptance of the revised Terms.</p>
+    <p>The "Last Updated" date at the top of this page will always reflect the most recent revision.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">17</span>
+    <h2>Governing Law</h2>
+    <p>These Terms are governed by and construed in accordance with the laws applicable in Cameroon, without regard to conflict of law provisions. Any disputes arising from these Terms shall be resolved through good-faith negotiation before any formal proceedings are initiated.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">18</span>
+    <h2>Contact</h2>
+    <p>For questions about these Terms of Service, reach out to us:</p>
+    <div class="contact-card">
+      <span>Email</span>
+      <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a>
+      <span style="margin-top:8px">Website</span>
+      <a href="https://doa-app-web.vercel.app" target="_blank">doa-app-web.vercel.app</a>
+      <span style="margin-top:8px">Operated by</span>
+      <a style="color:var(--ink2);cursor:default">Cedric Julien .E · Douala, Cameroon</a>
+    </div>
+    <p style="margin-top:16px;">Also see our <a href="privacy policy.html">Privacy Policy</a> for data handling details.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">19</span>
+    <h2>Acknowledgment</h2>
+    <p>By installing and using DOA, you confirm that you have read, understood, and agreed to these Terms of Service and our Privacy Policy. If you do not agree, please uninstall the application.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="Terms of Service.html">Terms of Service</a></li>
+            <li><a href="privacy policy.html">Privacy Policy</a></li>
+          </ul>
         </div>
-    </nav>
-
-    <main class="legal-container">
-        <h1>Terms of Service</h1>
-        <p class="last-updated">Last Updated: March 11, 2025</p>
-
-        <h2>1. Acceptance of Terms</h2>
-        <p>By downloading, installing, or using the Device Optical Aid (DOA) application ("the App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the App.</p>
-
-        <h2>2. Description of Service</h2>
-        <p>DOA is a mobile application designed to assist users with visual impairments by providing:</p>
-        <ul>
-            <li>Visual correction features for myopia, hyperopia, and astigmatism</li>
-            <li>Built-in media viewer for videos, PDFs, ebooks, and manga</li>
-            <li>Integrated web browser with accessibility features</li>
-            <li>Color blindness testing and correction tools</li>
-        </ul>
-
-        <h2>3. Medical Disclaimer</h2>
-        <p><strong>IMPORTANT:</strong> DOA is not a medical device and is not intended to replace prescribed correction lenses or professional medical treatment. The App should not be used as a substitute for regular eye examinations or professional medical advice. If you experience any vision-related issues, please consult an eye care professional.</p>
-
-        <h2>4. User Registration and Account Security</h2>
-        <p>To use certain features of the App, you may need to create an account. You are responsible for:</p>
-        <ul>
-            <li>Providing accurate registration information</li>
-            <li>Maintaining the security of your account credentials</li>
-            <li>All activities that occur under your account</li>
-            <li>Notifying us immediately of any unauthorized use</li>
-        </ul>
-
-        <h2>5. Privacy and Data Collection</h2>
-        <p>Your use of the App is also governed by our <a href="privacy-policy.html">Privacy Policy</a>, which explains how we collect, use, and protect your personal information.</p>
-
-        <h2>6. User Content and Conduct</h2>
-        <p>When using the App, you agree to:</p>
-        <ul>
-            <li>Only upload content that you have the right to use</li>
-            <li>Not use the App for any illegal purposes</li>
-            <li>Not attempt to circumvent any security features</li>
-            <li>Not distribute harmful software or content</li>
-        </ul>
-
-        <h2>7. Prohibited Uses</h2>
-        <p>You may not use the App or its services for any unlawful purpose, to solicit others to perform unlawful acts, to violate international, federal, or local regulations, or to infringe upon the rights of others. We reserve the right to refuse service or terminate accounts found engaging in prohibited activity.</p>
-
-        <h2>8. Intellectual Property Rights</h2>
-        <p>The App and its original content, features, and functionality are owned by DOA and are protected by international copyright, trademark, and other intellectual property laws.</p>
-        <p>You agree not to reproduce, resell, or exploit any part of the App or its content without express written permission from DOA.</p>
-
-       <h2>9. Premium Features, Payments, and Subscription Renewal</h2>
-<p>Some features of the App may require a premium subscription. These features include:</p>
-<ul>
-    <li>Unlimited correction time</li>
-    <li>No tab limit</li>
-    <li>No prescription limit</li>
-    <li>Priority support</li>
-</ul>
-<p>By purchasing a subscription, you agree to:</p>
-<ul>
-    <li>Pay all applicable fees and taxes as outlined at checkout</li>
-    <li>Provide accurate and complete billing information</li>
-    <li>Accept the automatic renewal terms provided at the time of purchase</li>
-    <li>Understand that payments are processed securely through our payment partner, <strong>Creem</strong></li>
-</ul>
-<p>Subscriptions automatically renew at the end of each billing cycle unless cancelled prior to the renewal date. Users may cancel their subscription at any time through the app or by contacting support at <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a>. Cancellations will take effect at the end of the current billing cycle, and no further charges will be applied.</p>
-<p>Creem handles all payment processing and ensures that your payment information is securely encrypted and not stored by DOA. All subscription charges will appear under the name of our payment partner on your bank statement.</p>
-
-
-<h2>10. Refund Policy</h2>
-<p>We aim to ensure that every customer is satisfied with their DOA experience. If you encounter any issues, please contact our support team within <strong>14 days</strong> of your purchase at <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a>.</p>
-<p>Refunds are handled on a case-by-case basis in accordance with Creem’s payment terms and our internal review process. Approved refunds will be credited to the original payment method within <strong>5–10 business days</strong>, depending on your bank or payment provider.</p>
-<p>We reserve the right to decline refund requests if the service has been used extensively, abused, or if a large portion of the subscription period has already elapsed.</p>
-
-
-        <h2>11. Termination</h2>
-        <p>We reserve the right to terminate or suspend your account and access to the App for violations of these terms or for any other reason at our sole discretion.</p>
-
-        <h2>12. Changes to Terms</h2>
-        <p>We may modify these terms at any time. Continued use of the App after changes constitutes acceptance of the modified terms.</p>
-
-        <h2>13. Limitation of Liability</h2>
-        <p>To the maximum extent permitted by law, DOA shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the App.</p>
-
-        <h2>14. Disclaimer of Warranties</h2>
-        <p>The App is provided on an “as is” and “as available” basis. We make no warranties or representations of any kind, either express or implied, regarding the operation or availability of the App, or the information, content, or materials included therein.</p>
-
-        <h2>15. Anti-Tampering Technology Notice</h2>
-        <p>This App uses security technologies to protect user data and comply with app store requirements. The App may not function properly on modified, rooted, or jailbroken devices. These measures are implemented to ensure service integrity and platform compliance.</p>
-
-        <h2>16. Governing Law</h2>
-        <p>These terms shall be governed by and construed in accordance with the laws of your jurisdiction, without regard to its conflict of law provisions.</p>
-
-        <h2>17. Contact Information</h2>
-        <p>For questions about these Terms of Service, please contact us at:</p>
-        <p>Email: <a href="mailto:doaappsup@gmail.com">doaappsup@gmail.com</a></p>
-        <p>Website: <a href="https://doa-app-web.vercel.app" target="_blank">https://doa-app-web.vercel.app</a></p>
-        <p>Business Name: Device Optical Aid</p>
-        <p>Operated by: Cedric Julien Eboule</p>
-        <p>Business Location: Douala, Cameroon</p>
-
-        <h2>18. Acknowledgment</h2>
-        <p>By using DOA, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy.</p>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <img src="doa-logo-black-purple.JPG" class="logo" alt="DOA Logo">
-                <p>Enhancing digital vision for a clearer world</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                     <a href="Terms of Service.html">Terms of Service</a>
-                    <a href="privacy policy.html">Privacy Policy</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <a href="index.html#faq">FAQ</a>
-                    <a href="contact.html">Contact Us</a>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="download.html">Download</a></li>
+          </ul>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 DOA - Device Optical Aid. All rights reserved.</p>
-            <p>Device Optical Aid is operated by Cedric Julien Eboule</p>
-            <p class="cj">CJ_</p>
-        </div>
-    </footer>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Operated by Cedric Julien .E</span>
+      <span class="cj">CJ_</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('navLinks');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
 </body>
 </html>
-
-
-
-
-
-
