@@ -1,389 +1,838 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOA - Enhance Your Digital Vision</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;900&family=Bricolage+Grotesque:wght@300;500;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #8a2be2;
-            --primary-glow: rgba(138, 43, 226, 0.4);
-            --bg: #050505;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #FFFFFF;
-            --text-dim: #9C9B96;
-            --glass: blur(12px);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOA - Device Optical Aid</title>
+<meta name="description" content="DOA, the Device Optical Aid is a vision app that helps users with myopia, hyperopia and astigmatism by adjusting their screen visibility in real-time">
+<meta name="keywords" content="DOA, DOA App, Device Optical Aid, Vision app, Vision correction, Myopia correction, accessibility app, astigmatism app, deviceopticalaid, instagram vision app, tiktok vision app, purple vision app, reddit vision app, myopia app">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --bg2: #F2F1EC;
+    --ink: #1C1B18;
+    --ink2: #5C5B56;
+    --ink3: #9C9B96;
+    --accent: #8a2be2;
+    --accent2: #b066ff;
+    --accent-light: #f0e6ff;
+    --card: #FFFFFF;
+    --border: #E8E7E2;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; background: var(--bg); }
-        body {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            background: var(--bg);
-            color: var(--text-main);
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-        /* --- THE GLOW BACKGROUND --- */
-        .glow-engine {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.15), transparent 40%),
-                radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.1), transparent 40%);
-            z-index: -1;
-            pointer-events: none;
-        }
+  /* ─────────────────────────────
+     NAV
+  ───────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 90px;
+    background: rgba(250,250,247,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.45s ease, border-color 0.45s ease;
+  }
+  nav.nav-dark {
+    background: rgba(28,27,24,0.92);
+    border-bottom-color: rgba(255,255,255,0.07);
+  }
+  nav.nav-dark .nav-links a { color: #9C9B96; }
+  nav.nav-dark .nav-links a:hover { color: #F5F4EF; }
+  nav.nav-dark .nav-links a::after { background: var(--accent2); }
+  nav.nav-dark .btn-ghost { color: #F5F4EF; border-color: rgba(255,255,255,0.14); }
+  nav.nav-dark .btn-ghost:hover { background: rgba(255,255,255,0.07); }
+  nav.nav-dark .burger span { background: #F5F4EF; }
 
-        /* --- NAV REFACTOR --- */
-        nav {
-            position: fixed; top: 0; width: 100%; height: 80px;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 6%; z-index: 1000;
-            backdrop-filter: var(--glass);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-logo img { height: 45px; filter: drop-shadow(0 0 8px var(--primary)); }
-        .nav-links { display: flex; gap: 40px; list-style: none; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-dim); font-size: 14px; 
-            font-weight: 500; transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+  .nav-logo { display: flex; align-items: center; }
+  .nav-logo img { height: 54px; width: auto; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink2);
+    text-decoration: none; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -4px; left: 0; background: var(--accent); transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta { display: flex; gap: 10px; align-items: center; }
+  .btn-ghost {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 500; color: var(--ink);
+    background: none; border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { background: var(--bg2); }
+  .btn-primary {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 9px 20px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; cursor: pointer; gap: 5px; z-index: 1001; }
+  .burger span { width: 25px; height: 3px; background: var(--accent); transition: 0.3s; border-radius: 2px; }
+  .burger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .burger.active span:nth-child(2) { opacity: 0; }
+  .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        /* --- HERO: THE WOW FACTOR --- */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; text-align: center;
-            padding: 0 20px; position: relative;
-        }
-        .hero-badge {
-            background: rgba(138, 43, 226, 0.1);
-            border: 1px solid var(--primary);
-            padding: 6px 16px; border-radius: 100px;
-            font-size: 12px; color: var(--primary);
-            margin-bottom: 24px; text-transform: uppercase; letter-spacing: 2px;
-        }
-        h1 {
-            font-family: 'League Spartan', sans-serif;
-            font-size: clamp(50px, 10vw, 110px);
-            line-height: 0.9; letter-spacing: -4px;
-            margin-bottom: 20px;
-        }
-        h1 em {
-            font-style: normal; color: #fff;
-            text-shadow: 0 0 30px var(--primary-glow);
-            background: linear-gradient(to bottom, #fff, var(--primary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero-sub {
-            font-size: clamp(16px, 2vw, 20px); color: var(--text-dim);
-            max-width: 600px; margin-bottom: 40px;
-        }
 
-        /* --- MAGNETIC BUTTONS --- */
-        .btn-main {
-            background: var(--primary);
-            color: white; padding: 18px 38px;
-            border-radius: 12px; font-weight: 800;
-            text-decoration: none; transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            box-shadow: 0 0 20px var(--primary-glow);
-            display: inline-flex; align-items: center; gap: 10px;
-        }
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--primary);
-        }
 
-        /* --- THE BENTO GRID FEATURES --- */
-        .section { padding: 120px 6%; max-width: 1400px; margin: 0 auto; }
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: 240px; gap: 20px; margin-top: 60px;
-        }
-        .bento-card {
-            grid-column: span 4; background: var(--card-bg);
-            border: 1px solid var(--border); border-radius: 24px;
-            padding: 40px; backdrop-filter: var(--glass);
-            transition: 0.4s; position: relative; overflow: hidden;
-        }
-        .bento-card:hover {
-            border-color: var(--primary);
-            background: rgba(138, 43, 226, 0.05);
-            transform: translateY(-5px);
-        }
-        .bento-card.wide { grid-column: span 8; }
-        .bento-card h3 { font-family: 'League Spartan'; font-size: 28px; margin-bottom: 15px; }
-        .bento-card p { color: var(--text-dim); font-size: 16px; }
+  /* ─────────────────────────────
+     HERO  (light)
+  ───────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 140px 40px 80px; text-align: center;
+    position: relative; overflow: hidden;
+    background: var(--bg);
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.28; pointer-events: none; }
+  .blob1 { width: 520px; height: 520px; background: #d4a8ff; top: -80px; right: -100px; }
+  .blob2 { width: 380px; height: 380px; background: #c3b1ff; bottom: 40px; left: -80px; }
+  .blob3 { width: 280px; height: 280px; background: #e8d4ff; top: 38%; left: 10%; }
 
-        /* --- VISION TYPE CARDS --- */
-        .v-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px; margin-top: 50px;
-        }
-        .v-pill {
-            background: #111; border: 1px solid var(--border);
-            padding: 30px; border-radius: 20px; text-align: center;
-        }
-        .v-pill:hover { border-color: var(--primary); }
-        .v-emoji { font-size: 40px; margin-bottom: 15px; display: block; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 100px; padding: 6px 14px 6px 10px;
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    margin-bottom: 32px; position: relative; z-index: 1;
+  }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(138,43,226,0.4); }
+    50%      { box-shadow: 0 0 0 6px rgba(138,43,226,0); }
+  }
+  h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(48px, 7vw, 88px); line-height: 1.0;
+    letter-spacing: -2px; max-width: 900px; margin-bottom: 24px;
+    font-weight: 800; position: relative; z-index: 1;
+  }
+  h1 em { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px); color: var(--ink2); max-width: 520px;
+    margin-bottom: 40px; line-height: 1.6; position: relative; z-index: 1;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; position: relative; z-index: 1; }
+  .btn-big { font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 600; padding: 14px 32px; border-radius: 10px; cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-dark { background: var(--accent); color: #fff; border: none; }
+  .btn-dark:hover { background: #7a20d2; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(138,43,226,0.35); }
+  .btn-outline { background: var(--card); color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); transform: translateY(-2px); }
 
-        /* --- ANIMATIONS --- */
-        .reveal { opacity: 0; transform: translateY(30px) scale(0.95); transition: all 0.8s ease-out; }
-        .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+  /* Mockup */
+  .hero-mockup { margin-top: 64px; width: 100%; max-width: 900px; position: relative; z-index: 1; }
+  .mockup-window { background: #1C1B18; border-radius: 14px; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.06); }
+  .mockup-bar { background: #2A2A27; padding: 12px 16px; display: flex; align-items: center; gap: 8px; }
+  .mockup-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .mockup-screen { background: #1C1B18; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .m-card { background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); }
+  .m-label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #6C6B66; text-transform: uppercase; margin-bottom: 12px; }
+  .m-value { font-family: 'League Spartan', sans-serif; font-size: 32px; font-weight: 700; color: #F5F4EF; }
+  .m-value span { font-size: 14px; color: #9C9B96; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; }
+  .m-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
+  .tag-green  { background: rgba(52,211,153,0.15); color: #34D399; }
+  .tag-purple { background: rgba(138,43,226,0.15); color: #b066ff; }
+  .tag-soft   { background: rgba(176,102,255,0.12); color: #c084ff; }
+  .blur-demo  { grid-column: 1/-1; background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 16px; align-items: center; }
+  .blur-col { flex: 1; }
+  .blur-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6B66; margin-bottom: 8px; }
+  .blur-blurry { font-size: 18px; color: #9C9B96; filter: blur(3px); padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-clear  { font-size: 18px; color: #F5F4EF; padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-arrow  { color: var(--accent2); font-size: 24px; flex-shrink: 0; }
+  .slider-track { height: 4px; background: #3A3A37; border-radius: 2px; position: relative; margin-top: 8px; }
+  .slider-fill  { height: 100%; width: 72%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
+  .slider-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: -6px; left: 72%; transform: translateX(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 
-        @media (max-width: 900px) {
-            .bento-grid > * { grid-column: span 12 !important; }
-            .nav-links { display: none; }
-        }
-    </style>
+  /* ─────────────────────────────
+     SHARED
+  ───────────────────────────── */
+  .section { padding: 100px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; background: var(--accent-light); padding: 4px 12px; border-radius: 100px; }
+  /* dark section overrides */
+  .dark-section .section-tag { background: rgba(138,43,226,0.2); color: var(--accent2); }
+  h2 { font-family: 'League Spartan', sans-serif; font-size: clamp(32px, 5vw, 56px); letter-spacing: -1.5px; line-height: 1.0; margin-bottom: 20px; font-weight: 800; }
+  h2 em { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .section-sub { font-size: 18px; color: var(--ink2); max-width: 520px; line-height: 1.6; }
+
+  /* ─────────────────────────────
+     HOW IT WORKS  (dark)
+  ───────────────────────────── */
+  .how-section { background: var(--ink); }
+  .how-section h2 { color: #F5F4EF; }
+  .how-section .section-sub { color: #9C9B96; }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+  .step-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius); padding: 32px; position: relative;
+    transition: transform 0.3s ease, border-color 0.3s;
+  }
+  .step-card:hover { transform: translateY(-5px); border-color: rgba(138,43,226,0.45); }
+  .step-num { font-family: 'League Spartan', sans-serif; font-size: 72px; line-height: 1; font-weight: 900; color: rgba(255,255,255,0.05); position: absolute; top: 16px; right: 24px; pointer-events: none; }
+  .step-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; background: rgba(138,43,226,0.15); }
+  .step-card h3 { font-size: 20px; font-weight: 600; color: #F5F4EF; margin-bottom: 10px; }
+  .step-card p { font-size: 15px; color: #9C9B96; line-height: 1.6; }
+
+  /* ─────────────────────────────
+     FEATURES  (light)
+  ───────────────────────────── */
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+  .feature-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(138,43,226,0.1); border-color: var(--accent); }
+  .feature-card.wide { grid-column: 1/-1; }
+  .feature-icon { font-size: 32px; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .feature-card p { font-size: 15px; color: var(--ink2); line-height: 1.6; }
+  .feature-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .chip { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 100px; border: 1.5px solid var(--border); color: var(--ink2); background: var(--bg); }
+  .privacy-bar { background: var(--accent-light); border: 1.5px solid rgba(138,43,226,0.2); border-radius: var(--radius); padding: 28px 36px; margin-top: 48px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; }
+  .privacy-bar-icon { font-size: 32px; margin-top: 2px; }
+  .privacy-bar h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+  .privacy-bar p { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+  .privacy-list { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .privacy-tag { font-size: 12px; font-weight: 600; padding: 4px 12px; background: rgba(138,43,226,0.1); color: var(--accent); border-radius: 100px; border: 1px solid rgba(138,43,226,0.2); }
+
+  /* ─────────────────────────────
+     VISION TYPES  (dark)
+  ───────────────────────────── */
+  .vt-section { background: var(--ink); }
+  .vt-section h2 { color: #F5F4EF; }
+  .vt-section .section-sub { color: #9C9B96; }
+  .visiontypes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .vtype-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm); padding: 24px; text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
+  }
+  .vtype-card:hover { transform: translateY(-4px); border-color: rgba(138,43,226,0.45); box-shadow: 0 8px 28px rgba(138,43,226,0.15); }
+  .vtype-emoji { font-size: 36px; margin-bottom: 12px; }
+  .vtype-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #F5F4EF; }
+  .vtype-card p { font-size: 13px; color: #9C9B96; }
+
+  /* ─────────────────────────────
+     VISUAL FILTERS  (light)
+  ───────────────────────────── */
+  .filters-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .filter-card {
+    border-radius: var(--radius-sm); padding: 24px;
+    border: 1.5px solid var(--border); background: var(--card);
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
+  .filter-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.07); }
+  .filter-swatch { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 14px; }
+  .swatch-blue { background: linear-gradient(135deg, #3B5BDB, #74C0FC); }
+  .swatch-warm { background: linear-gradient(135deg, #FF922B, #FFD43B); }
+  .swatch-cb   { background: linear-gradient(135deg, #8a2be2, #b066ff); }
+  .filter-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .filter-card p  { font-size: 13px; color: var(--ink2); }
+
+  /* ─────────────────────────────
+     PRICING  (light / bg2)
+  ───────────────────────────── */
+  .pricing-section { background: var(--bg2); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 48px; }
+  .pricing-card {
+    background: var(--card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 36px; position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
+  .pricing-card.featured { background: linear-gradient(135deg, rgba(138,43,226,0.1), rgba(176,102,255,0.07)); border-color: var(--accent); }
+  .pricing-card.featured:hover { box-shadow: 0 20px 56px rgba(138,43,226,0.18); }
+  .featured-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 16px; border-radius: 100px; white-space: nowrap; }
+  .pricing-name { font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3); margin-bottom: 8px; }
+  .pricing-price { font-family: 'League Spartan', sans-serif; font-size: 52px; line-height: 1; margin-bottom: 4px; letter-spacing: -2px; font-weight: 800; }
+  .pricing-period { font-size: 14px; color: var(--ink3); margin-bottom: 6px; }
+  .pricing-yearly { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 20px; }
+  .pricing-divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; }
+  .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .pricing-features li.no { color: var(--ink3); }
+  .pricing-features li.no::before { content: '✕'; color: var(--ink3); }
+  .btn-pricing { font-family: 'Bricolage Grotesque', sans-serif; width: 100%; padding: 13px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all 0.25s; }
+  .btn-pricing-free { background: var(--bg2); color: var(--ink); }
+  .btn-pricing-free:hover { background: var(--border); }
+  .btn-pricing-premium { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; position: relative; overflow: hidden; }
+  .btn-pricing-premium::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: 0.5s; }
+  .btn-pricing-premium:hover::before { left: 100%; }
+  .btn-pricing-premium:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+  .pricing-handled { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 10px; }
+
+  /* ─────────────────────────────
+     WAITLIST  (dark)
+  ───────────────────────────── */
+  .waitlist-section { background: var(--ink); text-align: center; }
+  .waitlist-section h2 { color: #F5F4EF; }
+  .waitlist-section .section-sub { color: #9C9B96; margin: 0 auto 40px; }
+  .email-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; position: relative; }
+  .email-input { flex: 1; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; padding: 13px 18px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; background: rgba(255,255,255,0.06); color: #F5F4EF; outline: none; transition: border-color 0.2s; }
+  .email-input::placeholder { color: #6C6B66; }
+  .email-input:focus { border-color: var(--accent); }
+  .btn-join { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 600; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; padding: 13px 24px; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: all 0.2s; position: relative; overflow: hidden; }
+  .btn-join::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: 0.5s; }
+  .btn-join:hover::before { left: 100%; }
+  .btn-join:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+  .btn-join:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+  .waitlist-note { font-size: 13px; color: #6C6B66; margin-top: 14px; }
+  .waitlist-count { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+  .wc-avatars { display: flex; }
+  .wc-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); margin-left: -10px; font-size: 14px; display: flex; align-items: center; justify-content: center; background: #2A2A27; }
+  .wc-avatar:first-child { margin-left: 0; }
+  .wc-text { font-size: 14px; color: #9C9B96; }
+  .wc-text strong { color: #F5F4EF; }
+
+  /* ─────────────────────────────
+     FAQ  (light)
+  ───────────────────────────── */
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; position: relative; transition: border-color 0.3s, transform 0.2s; }
+  .faq-item::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: linear-gradient(180deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.3s; }
+  .faq-item:hover { border-color: rgba(138,43,226,0.3); transform: translateX(3px); }
+  .faq-item:hover::before { opacity: 1; }
+  .faq-q { width: 100%; padding: 20px 24px; text-align: left; background: none; border: none; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .faq-q .arrow { transition: transform 0.3s; font-size: 18px; color: var(--accent); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-size: 15px; color: var(--ink2); line-height: 1.7; padding: 0 24px; }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-item.open { border-color: var(--accent); }
+  .faq-item.open::before { opacity: 1; }
+  .ph-badge { text-align: center; margin-top: 48px; }
+
+  /* ─────────────────────────────
+     FOOTER  (dark)
+  ───────────────────────────── */
+  footer { background: var(--ink); color: #9C9B96; padding: 64px 40px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-logo img { height: 50px; width: auto; margin-bottom: 12px; }
+  .footer-desc { font-size: 14px; line-height: 1.6; color: #6C6B66; margin-top: 10px; }
+  .footer-col h5 { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #4A4A47; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { font-size: 14px; color: #6C6B66; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: #F5F4EF; }
+  .footer-divider { height: 1px; background: rgba(255,255,255,0.06); margin-bottom: 24px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; flex-wrap: wrap; gap: 8px; }
+  .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
+
+  /* ─────────────────────────────
+     ANIMATIONS
+  ───────────────────────────── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .hero > * { animation: fadeUp 0.7s ease both; }
+  .hero-badge   { animation-delay: 0.1s; }
+  h1            { animation-delay: 0.2s; }
+  .hero-sub     { animation-delay: 0.35s; }
+  .hero-actions { animation-delay: 0.45s; }
+  .hero-mockup  { animation-delay: 0.55s; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─────────────────────────────
+     RESPONSIVE
+  ───────────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.active {
+      display: flex; flex-direction: column;
+      position: absolute; top: 90px; right: 20px;
+      background: rgba(250,250,247,0.97);
+      padding: 16px 24px; gap: 14px; border-radius: 10px;
+      border: 1px solid var(--accent); z-index: 1000;
+      box-shadow: 0 8px 32px rgba(138,43,226,0.15);
+    }
+    nav.nav-dark .nav-links.active { background: rgba(36,35,32,0.97); }
+    .burger { display: flex; }
+    .nav-cta { display: none; }
+    .hero { padding: 120px 20px 60px; }
+    h1 { letter-spacing: -1px; }
+    .steps-grid, .features-grid, .visiontypes-grid, .pricing-grid, .filters-row { grid-template-columns: 1fr; }
+    .feature-card.wide { grid-column: auto; }
+    .mockup-screen { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .email-form { flex-direction: column; }
+    .section { padding: 60px 20px; }
+    .privacy-bar { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .wave svg { height: 48px; }
+  }
+</style>
 </head>
 <body>
 
-<div class="glow-engine"></div>
-
-<nav>
-    <a href="#" class="nav-logo"><img src="doaTransparent.png" alt="DOA"></a>
-    <ul class="nav-links">
-        <li><a href="#how">Technology</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-    </ul>
-    <a href="download.html" class="btn-main" style="padding: 10px 20px; font-size: 14px;">Download Now</a>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#waitlist" class="btn-ghost">Join waitlist</a>
+    <a href="download.html" class="btn-primary">Download ↓</a>
+  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
+<!-- ═══════════ HERO  (light) ═══════════ -->
 <section class="hero">
-    <div class="hero-badge">Next-Gen Optical AI</div>
-    <h1>Enhance your<br><em>digital vision</em></h1>
-    <p class="hero-sub">The world's first real-time software lens. Correct myopia, astigmatism, and eye strain without touching your glasses.</p>
-    <div class="hero-actions">
-        <a href="download.html" class="btn-main">Experience Clarity ↓</a>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="hero-badge"><div class="badge-dot"></div>Now in early access · Windows &amp; macOS</div>
+  <h1>Enhance your<br><em>digital vision</em></h1>
+  <p class="hero-sub">Experience clearer digital content without glasses. Smart screen correction tailored to your eyes — in real time.</p>
+  <div class="hero-actions">
+    <a href="download.html" class="btn-big btn-dark">Get started ↓</a>
+    <a href="#how-it-works" class="btn-big btn-outline">See how it works →</a>
+  </div>
+  <div class="hero-mockup">
+    <div class="mockup-window">
+      <div class="mockup-bar">
+        <div class="mockup-dot" style="background:#FF5F57"></div>
+        <div class="mockup-dot" style="background:#FEBC2E"></div>
+        <div class="mockup-dot" style="background:#28C840"></div>
+      </div>
+      <div class="mockup-screen">
+        <div class="m-card">
+          <div class="m-label">Active Prescription</div>
+          <div class="m-value">−3.25 <span>SPH</span></div>
+          <div class="m-tag tag-green">● Correction active</div>
+        </div>
+        <div class="m-card">
+          <div class="m-label">Astigmatism</div>
+          <div class="m-value">−1.50 <span>CYL @ 90°</span></div>
+          <div class="m-tag tag-purple">● Directional blur off</div>
+        </div>
+        <div class="blur-demo">
+          <div class="blur-col">
+            <div class="blur-lbl">Without DOA</div>
+            <div class="blur-blurry">Enhance your digital vision with real-time prescription correction.</div>
+          </div>
+          <div class="blur-arrow">→</div>
+          <div class="blur-col">
+            <div class="blur-lbl">With DOA</div>
+            <div class="blur-clear">Enhance your digital vision with real-time prescription correction.</div>
+          </div>
+        </div>
+        <div class="m-card">
+          <div class="m-label">Blue Light Filter</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:4px;">
+            <span style="font-size:12px;color:#6C6B66">Intensity</span>
+            <span style="font-size:12px;color:#F5F4EF">72%</span>
+          </div>
+          <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
+          <div class="m-tag tag-soft" style="margin-top:14px">● Warm tint on</div>
+        </div>
+        <div class="m-card">
+          <div class="m-label">Performance</div>
+          <div class="m-value">60 <span>fps</span></div>
+          <div class="m-tag tag-green">● GPU-accelerated</div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="section" id="how">
-    <span style="color:var(--primary); font-weight: 800; letter-spacing: 2px;">THE TECHNOLOGY</span>
-    <h2 style="font-family:'League Spartan'; font-size: 50px; margin-top: 10px;">Optics, redefined.</h2>
-    
-    <div class="bento-grid">
-        <div class="bento-card wide reveal">
-            <h3>Neural Refraction</h3>
-            <p>Our algorithm pre-distorts screen pixels to counteract the specific refractive errors of your eyes. It’s like putting glasses on your monitor instead of your face.</p>
-        </div>
-        <div class="bento-card reveal">
-            <h3>60 FPS Sync</h3>
-            <p>Zero ghosting. Zero lag. Built on GPU-accelerated kernels for seamless reading.</p>
-        </div>
-        <div class="bento-card reveal">
-            <h3>Privacy Guard</h3>
-            <p>Hard-coded to ignore secure windows. Your passwords and bank details never leave your OS.</p>
-        </div>
-        <div class="bento-card wide reveal">
-            <h3>Multi-Display IQ</h3>
-            <p>Different prescriptions for different distances? DOA handles up to 3 monitors with independent correction profiles.</p>
-        </div>
-    </div>
-</section>
 
-<section class="section" style="background: #080808;">
-    <h2 style="text-align:center; font-family:'League Spartan'; font-size: 40px;">Supported Conditions</h2>
-    <div class="v-grid">
-        <div class="v-pill reveal">
-            <span class="v-emoji">🔭</span>
-            <h4>Myopia</h4>
-            <p>Crisp text for near-sighted users.</p>
-        </div>
-        <div class="v-pill reveal" style="transition-delay: 0.1s;">
-            <span class="v-emoji">💫</span>
-            <h4>Astigmatism</h4>
-            <p>Cylindrical axis correction.</p>
-        </div>
-        <div class="v-pill reveal" style="transition-delay: 0.2s;">
-            <span class="v-emoji">📖</span>
-            <h4>Presbyopia</h4>
-            <p>Enhanced reading for aging eyes.</p>
-        </div>
-    </div>
-</section>
 
-<section class="section" id="filters" style="background: rgba(138, 43, 226, 0.02);">
-    <div style="text-align: center; margin-bottom: 50px;">
-        <span style="color:var(--primary); font-weight: 800; letter-spacing: 2px;">ENHANCEMENTS</span>
-        <h2 style="font-family:'League Spartan'; font-size: 40px; margin-top: 10px;">Beyond <em>Prescription</em></h2>
+<!-- ═══════════ HOW IT WORKS  (dark) ═══════════ -->
+<div class="how-section dark-section" id="how-it-works" data-theme="dark">
+  <div class="section">
+    <span class="section-tag">How it works</span>
+    <h2>Three steps to<br><em>glasses-free</em> screens</h2>
+    <p class="section-sub">No hardware changes. No doctor visits. Just install, enter your prescription, and see clearly.</p>
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <div class="step-icon">📋</div>
+        <h3>Enter Your Prescription</h3>
+        <p>Simply input your eyeglass prescription for myopia, hyperopia, or astigmatism. DOA supports SPH, CYL, AXIS, and ADD values.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.1s">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚡</div>
+        <h3>Smart Calculation</h3>
+        <p>Our advanced system calculates the perfect correction layer in real time — predistorting every pixel based on your exact optics.</p>
+      </div>
+      <div class="step-card reveal" style="transition-delay:0.2s">
+        <div class="step-num">03</div>
+        <div class="step-icon">👁️</div>
+        <h3>Enjoy Clear Vision</h3>
+        <p>Experience improved clarity across all your digital activities. Toggle DOA on or off instantly with a keyboard shortcut.</p>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div class="v-pill reveal" style="background: linear-gradient(145deg, #0a0a0a, #0f0f1a); border: 1px solid rgba(59, 91, 219, 0.3);">
-            <div style="width: 50px; height: 6px; background: #3B5BDB; border-radius: 10px; margin: 0 auto 20px; box-shadow: 0 0 15px #3B5BDB;"></div>
-            <h4>Blue Light Shield</h4>
-            <p style="font-size: 14px; margin-top: 10px;">Adaptive warming that shifts with your local sunset to protect your circadian rhythm.</p>
-        </div>
-        <div class="v-pill reveal" style="background: linear-gradient(145deg, #0a0a0a, #1a0f1a); border: 1px solid rgba(138, 43, 226, 0.3);" style="transition-delay: 0.1s;">
-            <div style="width: 50px; height: 6px; background: linear-gradient(90deg, #ff4e50, #f9d423); border-radius: 10px; margin: 0 auto 20px; box-shadow: 0 0 15px #ff4e50;"></div>
-            <h4>Daltonization</h4>
-            <p style="font-size: 14px; margin-top: 10px;">Protanopia, Deuteranopia, and Tritanopia modes with real-time color shifting.</p>
-        </div>
-        <div class="v-pill reveal" style="background: linear-gradient(145deg, #0a0a0a, #1a1a1a); border: 1px solid rgba(255, 255, 255, 0.2);" style="transition-delay: 0.2s;">
-            <div style="width: 50px; height: 6px; background: #fff; border-radius: 10px; margin: 0 auto 20px; box-shadow: 0 0 15px #fff;"></div>
-            <h4>AI Contrast</h4>
-            <p style="font-size: 14px; margin-top: 10px;">Intelligently boosts text edges and UI borders for low-light environments.</p>
-        </div>
-    </div>
-</section>
 
-<section class="section" style="border-top: 1px solid var(--border);">
-    <div class="bento-card wide reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-        <div>
-            <h2 style="font-family:'League Spartan'; font-size: 32px;">Privacy by <em style="color:var(--primary); font-style:normal;">Design</em></h2>
-            <p style="margin: 20px 0;">DOA never captures system UI, login screens, or passwords. Your data never leaves your GPU.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                <span style="background: rgba(138,43,226,0.1); color: var(--primary); padding: 5px 12px; border-radius: 6px; font-size: 12px; border: 1px solid var(--primary);">Secure Login Screens</span>
-                <span style="background: rgba(138,43,226,0.1); color: var(--primary); padding: 5px 12px; border-radius: 6px; font-size: 12px; border: 1px solid var(--primary);">Banking Windows</span>
-                <span style="background: rgba(138,43,226,0.1); color: var(--primary); padding: 5px 12px; border-radius: 6px; font-size: 12px; border: 1px solid var(--primary);">System Notifications</span>
+
+<!-- ═══════════ FEATURES  (light) ═══════════ -->
+<section id="features" style="background:var(--bg);">
+  <div class="section">
+    <span class="section-tag">Features</span>
+    <h2>Built for every eye,<br>every <em>screen</em></h2>
+    <p class="section-sub">One system. Full prescription support. Real-time 60fps performance across every app.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🎯</div>
+        <h3>Full Prescription Correction</h3>
+        <p>Maps your exact SPH, CYL, AXIS, and ADD values to prescription parameters. Supports correction up to ~5-6D</p>
+        <div class="feature-chips">
+          <span class="chip">Myopia</span><span class="chip">Hyperopia</span><span class="chip">Astigmatism</span><span class="chip">Presbyopia</span>
+        </div>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.1s">
+        <div class="feature-icon">⚡</div>
+        <h3>60fps, Near-Zero Lag</h3>
+        <p>Runs entirely on your GPU. There's a 30–50ms overlay delay — imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
+        <div class="feature-chips">
+          <span class="chip">GPU-accelerated</span><span class="chip">Correction System</span><span class="chip">60fps locked</span>
+        </div>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.05s">
+        <div class="feature-icon">🌈</div>
+        <h3>Visual Filters</h3>
+        <p>Daltonization modes (Protanopia, Deuteranopia, Tritanopia) — all processed smoothly. Works standalone, no prescription needed.</p>
+      </div>
+      <div class="feature-card reveal" style="transition-delay:0.15s">
+        <div class="feature-icon">🖥️</div>
+        <h3>Multi-Monitor Support</h3>
+        <p>Apply different correction settings per monitor. Ideal for setups where screens are at different viewing distances — premium feature.</p>
+      </div>
+      <div class="feature-card wide reveal">
+       <div class="feature-icon">🔒</div>
+       <h3>Privacy-First Design</h3>
+        <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design — not just by policy. Every information is precomputed and stays within your device.</p>
+        <div class="privacy-bar">
+          <div class="privacy-bar-icon">🛡️</div>
+          <div>
+            <h4>What DOA never sees</h4>
+            <p>Some Windows elements are protected by the OS and will not appear in the corrected overlay — keeping your data private.</p>
+            <div class="privacy-list">
+              <span class="privacy-tag">Login screens &amp; passwords</span>
+              <span class="privacy-tag">Banking &amp; payment windows</span>
+              <span class="privacy-tag">UAC prompts</span>
+              <span class="privacy-tag">System notifications</span>
             </div>
+          </div>
         </div>
-        <div style="text-align: center; font-size: 100px; opacity: 0.2; filter: drop-shadow(0 0 20px var(--primary));">🛡️</div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="section" id="pricing" style="position: relative; overflow: hidden;">
-    <div style="text-align: center; margin-bottom: 60px;">
-        <span style="color:var(--primary); font-weight: 800; letter-spacing: 2px;">PLANS</span>
-        <h2 style="font-family:'League Spartan'; font-size: 50px; margin-top: 10px;">Clarity for everyone.</h2>
-    </div>
 
-    <div class="pricing-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto;">
-        
-        <div class="bento-card reveal" style="display: flex; flex-direction: column; justify-content: space-between; height: auto; border: 1px solid rgba(255,255,255,0.05);">
-            <div>
-                <h4 style="text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); font-size: 14px;">Essential</h4>
-                <div style="font-family: 'League Spartan'; font-size: 48px; margin: 15px 0;">$0 <span style="font-size: 16px; color: var(--text-dim);">/forever</span></div>
-                <ul style="list-style: none; color: var(--text-dim); font-size: 15px; line-height: 2.2;">
-                    <li>✓ 3 hours daily usage</li>
-                    <li>✓ 1 saved prescription</li>
-                    <li>✓ Standard Visual Filters</li>
-                    <li style="opacity: 0.3;">✕ Multi-monitor support</li>
-                </ul>
-            </div>
-            <a href="download.html" class="btn-main" style="background: transparent; border: 1px solid var(--border); box-shadow: none; margin-top: 30px; justify-content: center;">Get Started</a>
-        </div>
 
-        <div class="bento-card reveal" style="grid-column: span 1; background: linear-gradient(145deg, rgba(138, 43, 226, 0.15), rgba(0,0,0,0.5)); border: 1px solid var(--primary); box-shadow: 0 0 30px rgba(138, 43, 226, 0.2);">
-            <div style="position: absolute; top: 20px; right: 20px; background: var(--primary); font-size: 10px; padding: 4px 10px; border-radius: 5px; font-weight: 800;">POPULAR</div>
-            <div>
-                <h4 style="text-transform: uppercase; letter-spacing: 1px; color: var(--primary); font-size: 14px;">Premium ✦</h4>
-                <div style="font-family: 'League Spartan'; font-size: 48px; margin: 15px 0;">$7.99 <span style="font-size: 16px; color: var(--text-dim);">/mo</span></div>
-                <ul style="list-style: none; font-size: 15px; line-height: 2.2;">
-                    <li>✓ <strong style="color:#fff;">Unlimited</strong> daily usage</li>
-                    <li>✓ Unlimited prescriptions</li>
-                    <li>✓ <strong style="color:#fff;">Multi-monitor</strong> support</li>
-                    <li>✓ No watermarks</li>
-                    <li>✓ Priority AI Support</li>
-                </ul>
-            </div>
-            <a href="#" class="btn-main" style="margin-top: 30px; justify-content: center;">Upgrade to Pro →</a>
-        </div>
+<!-- ═══════════ VISION TYPES  (dark) ═══════════ -->
+<div class="vt-section dark-section" data-theme="dark">
+  <div class="section">
+    <span class="section-tag">Vision correction</span>
+    <h2>Every condition,<br><em>covered</em></h2>
+    <p class="section-sub">DOA's correction handles the full range of common refractive errors with precision.</p>
+    <div class="visiontypes-grid">
+      <div class="vtype-card reveal"><div class="vtype-emoji">🔭</div><h4>Myopia</h4><p>Near-sighted? The correction adds opposing sharpness at the correct focal distance for comfortable screen use.</p></div>
+      <div class="vtype-card reveal" style="transition-delay:0.1s"><div class="vtype-emoji">🔬</div><h4>Hyperopia</h4><p>Far-sighted users who struggle to read small text benefit most — ideal for GPS and reading apps.</p></div>
+      <div class="vtype-card reveal" style="transition-delay:0.2s"><div class="vtype-emoji">💫</div><h4>Astigmatism</h4><p>Directional blur corrected with CYL strength mapped to an axis-rotated Gaussian kernel.</p></div>
+      <div class="vtype-card reveal" style="transition-delay:0.3s"><div class="vtype-emoji">📖</div><h4>Presbyopia</h4><p>Age-related near-vision loss compensated using your ADD power for comfortable reading.</p></div>
     </div>
+  </div>
+</div>
+
+
+
+<!-- ═══════════ VISUAL FILTERS  (light) ═══════════ -->
+<section style="background:var(--bg);">
+  <div class="section">
+    <span class="section-tag">Visual Filters</span>
+    <h2>More than just<br><em>vision correction</em></h2>
+    <p class="section-sub">Optional screen enhancements — works with or without a prescription active — no setup or calibration needed.</p>
+    <div class="filters-row">
+      <div class="filter-card reveal"><div class="filter-swatch swatch-blue"></div><h4>Tritanopia</h4><p>Blue deficiency color accomodation. Adjustable 0–100% intensity slider.</p></div>
+      <div class="filter-card reveal" style="transition-delay:0.1s"><div class="filter-swatch swatch-warm"></div><h4>Protanopia</h4><p>Red deficiency color accomodation.</p></div>
+      <div class="filter-card reveal" style="transition-delay:0.2s"><div class="filter-swatch swatch-cb"></div><h4>Deutranopia</h4><p>Green deficiency color accomodation.</p></div>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="waitlist" style="padding: 150px 6%;">
-    <div class="bento-card reveal wide" style="text-align: center; padding: 80px 20px; background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1), transparent);">
-        <h2 style="font-family:'League Spartan'; font-size: clamp(32px, 6vw, 64px); margin-bottom: 20px;">Ready to see the <br><em>digital world</em> differently?</h2>
-        <p style="color: var(--text-dim); max-width: 500px; margin: 0 auto 40px;">Join 1,200+ early adopters. Get 3 months of Premium free when we launch.</p>
-        
-        <form id="waitlistForm" style="display: flex; gap: 10px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center;">
-            <input type="email" placeholder="Enter your email" required 
-                   style="flex: 1; min-width: 280px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 18px; border-radius: 12px; color: white; outline: none; transition: 0.3s;"
-                   onfocus="this.style.borderColor='#8a2be2'">
-            <button type="submit" class="btn-main">Secure Access</button>
-        </form>
-        <p style="font-size: 12px; color: #444; margin-top: 20px;">No spam. Just clarity.</p>
+<!-- ═══════════ PRICING  (light / bg2 — no wave needed, same light family) ═══════════ -->
+<div class="pricing-section" id="pricing">
+  <div class="section">
+    <span class="section-tag">Pricing</span>
+    <h2>Start free.<br>Go premium <em>when ready.</em></h2>
+    <p class="section-sub">No credit card required to get started.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-name">Free</div>
+        <div class="pricing-price">$0</div>
+        <div class="pricing-period">Forever free, no card needed</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>3 hours of use per day</li>
+          <li>1 saved prescription</li>
+          <li>Single monitor</li>
+          <li>Blue light &amp; visual filters</li>
+          <li>Small watermark in corner</li>
+          <li class="no">Multi-monitor support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-free">Get started free</button>
+      </div>
+      <div class="pricing-card featured reveal" style="transition-delay:0.1s">
+        <div class="featured-badge">Most Popular</div>
+        <div class="pricing-name">✦ Premium</div>
+        <div class="pricing-price">$7.99</div>
+        <div class="pricing-period">per month, cancel anytime</div>
+        <div class="pricing-yearly">or $79.99/year — save 17%</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Unlimited daily usage</li>
+          <li>Unlimited saved prescriptions</li>
+          <li>Multi-monitor support</li>
+          <li>Full visual filters suite</li>
+          <li>No watermark</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-pricing btn-pricing-premium">Get Premium →</button>
+        <p class="pricing-handled">Payments handled by Creem</p>
+      </div>
     </div>
+  </div>
+</div>
+
+
+
+<!-- ═══════════ WAITLIST  (dark) ═══════════ -->
+<div class="waitlist-section dark-section" id="waitlist" data-theme="dark">
+  <div class="section" style="text-align:center; padding:100px 40px;">
+    <div class="waitlist-count">
+      <div class="wc-avatars">
+        <div class="wc-avatar">👁️</div>
+        <div class="wc-avatar">🕶️</div>
+        <div class="wc-avatar">👓</div>
+        <div class="wc-avatar">✨</div>
+      </div>
+      <span class="wc-text"><strong>1,200+ people</strong> on the waitlist</span>
+    </div>
+    <span class="section-tag">Early Access</span>
+    <h2 style="color:#F5F4EF; margin-top:8px;">Be the first to see <em>clearly</em></h2>
+    <p class="section-sub" style="margin:16px auto 40px; color:#9C9B96;">Get notified when DOA launches. Early access users get 3 months of Premium free.</p>
+    <form class="email-form" id="waitlistForm">
+      <input class="email-input" type="email" name="EMAIL" placeholder="your@email.com" required id="waitlistEmail">
+      <div style="position:absolute; left:-5000px;" aria-hidden="true">
+        <input type="text" name="b_97328c96475de66e7cad60b4c_3c78d33553" tabindex="-1" value="">
+      </div>
+      <button type="submit" class="btn-join" id="joinBtn">Join waitlist →</button>
+    </form>
+    <p class="waitlist-note" id="waitlist-confirm">No spam. Unsubscribe anytime. 🙏</p>
+  </div>
+</div>
+
+
+
+<!-- ═══════════ FAQ  (light) ═══════════ -->
+<section id="faq" style="background:var(--bg);">
+  <div class="section">
+    <span class="section-tag">FAQ</span>
+    <h2>Common questions,<br><em>straight answers</em></h2>
+    <div class="faq-list">
+      <div class="faq-item reveal"><button class="faq-q">How does DOA work? <span class="arrow">↓</span></button><div class="faq-a">DOA applies a specialized correction layer to your screen that replicates the effects of your prescription glasses, allowing you to see clearly without wearing them. Our advanced algorithms process the display in real time — correcting blur before it even reaches your eyes.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Will it work with my prescription? <span class="arrow">↓</span></button><div class="faq-a">DOA supports a wide range of prescriptions including myopia (up to −6.00D), hyperopia (up to +6.00D), and astigmatism (~5-6D). This greatly depends on the device's display. Higher DPI monitors (4K at 27") push this to ~8-10D. For prescriptions outside these ranges or questions about display limits, please contact our support team for personalized assistance.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Is there any noticeable lag? <span class="arrow">↓</span></button><div class="faq-a">There's a 30–50ms delay between screen updates and the corrected overlay display. This is imperceptible during reading, typing, and browsing — our primary use case. Competitive gaming may notice slight input lag, so we recommend disabling DOA for competitive play.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button><div class="faq-a">DOA corrects your screen — not your eyes. It's designed for screen use only, not for general vision or outdoor activities. You'd still need glasses for other activities away from screens.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button><div class="faq-a">DOA will be compatible with with Windows being the primary launch platform, MacOs and Linux in the future.</div></div>
+      <div class="faq-item reveal"><button class="faq-q">Is my prescription data secure? <span class="arrow">↓</span></button><div class="faq-a">Absolutely. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties. Anonymized, opt-in aggregate data may be used to help optometry research — but your individual data is yours alone.</div></div>
+
+    </div>
+    <div class="ph-badge">
+      <a href="https://www.producthunt.com/products/doa?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-doa" target="_blank">
+        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=991633&theme=dark&t=1752484599999" alt="DOA - Device optical aid | Product Hunt" style="width:250px;height:54px;" width="250" height="54">
+      </a>
+    </div>
+  </div>
 </section>
 
-<section class="section" id="faq">
-    <h2 style="text-align:center; font-family:'League Spartan'; font-size: 40px; margin-bottom: 50px;">Common Questions</h2>
-    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
-        
-        <div class="faq-item" style="background: #0a0a0a; border: 1px solid var(--border); border-radius: 15px; transition: 0.3s;">
-            <button class="faq-q" style="width: 100%; padding: 25px; background: none; border: none; color: #fff; font-family: 'Bricolage Grotesque'; font-size: 18px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                How does DOA work?
-                <span class="arrow" style="color: var(--primary);">↓</span>
-            </button>
-            <div class="faq-a" style="max-height: 0; overflow: hidden; transition: 0.4s ease; padding: 0 25px; color: var(--text-dim); line-height: 1.6;">
-                <p style="padding-bottom: 25px;">DOA applies a refractive correction layer to your display. Our algorithms process the screen in real-time—predistorting the image so that when it hits your eye, it appears perfectly crisp, effectively "undoing" the blur caused by myopia or astigmatism.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" style="background: #0a0a0a; border: 1px solid var(--border); border-radius: 15px; transition: 0.3s;">
-            <button class="faq-q" style="width: 100%; padding: 25px; background: none; border: none; color: #fff; font-family: 'Bricolage Grotesque'; font-size: 18px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                Will it work with my prescription?
-                <span class="arrow" style="color: var(--primary);">↓</span>
-            </button>
-            <div class="faq-a" style="max-height: 0; overflow: hidden; transition: 0.4s ease; padding: 0 25px; color: var(--text-dim); line-height: 1.6;">
-                <p style="padding-bottom: 25px;">DOA supports Myopia (up to -6.00D), Hyperopia (up to +6.00D), and Astigmatism. The effectiveness depends on your monitor's pixel density—high DPI (4K) screens offer the highest range of correction.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" style="background: #0a0a0a; border: 1px solid var(--border); border-radius: 15px; transition: 0.3s;">
-            <button class="faq-q" style="width: 100%; padding: 25px; background: none; border: none; color: #fff; font-family: 'Bricolage Grotesque'; font-size: 18px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
-                Is there any noticeable lag?
-                <span class="arrow" style="color: var(--primary);">↓</span>
-            </button>
-            <div class="faq-a" style="max-height: 0; overflow: hidden; transition: 0.4s ease; padding: 0 25px; color: var(--text-dim); line-height: 1.6;">
-                <p style="padding-bottom: 25px;">We use GPU-accelerated shaders to keep latency under 30-50ms. This is imperceptible for office work, coding, and browsing. We do recommend disabling it for competitive fast-twitch gaming.</p>
-            </div>
-        </div>
-
+<!-- ═══════════ FOOTER  (dark) ═══════════ -->
+<!-- No wave needed — FAQ is light and footer is dark, but footer starts naturally -->
+<footer data-theme="dark">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world. Real-time prescription correction for every screen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="Terms of Service.html">Terms of Service</a></li>
+          <li><a href="privacy policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="download.html">Download</a></li>
+        </ul>
+      </div>
     </div>
-</section>
-
-<footer class="section" style="text-align: center; border-top: 1px solid var(--border);">
-    <img src="doaTransparent.png" style="height: 60px; margin-bottom: 20px;">
-    <p style="color: var(--text-dim);">© 2026 Device Optical Aid. Built for the future of sight.</p>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Device Optical Aid is operated by Cedric Julien .E</span>
+      <span class="cj">CJ_</span>
+    </div>
+  </div>
 </footer>
 
 <script>
-    // Reveal Observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // Simple mouse glow effect
-    document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        document.querySelector('.glow-engine').style.background = 
-            `radial-gradient(circle at ${x}% ${y}%, rgba(138, 43, 226, 0.15), transparent 40%)`;
-    });
-document.querySelectorAll('.faq-item').forEach(item => {
+  // ── FAQ accordion ──
+  document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-q').addEventListener('click', () => {
-        const isOpen = item.style.borderColor === 'rgb(138, 43, 226)'; // This is #8a2be2
-        
-        // Reset all items
-        document.querySelectorAll('.faq-item').forEach(i => {
-            i.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-            i.querySelector('.faq-a').style.maxHeight = '0';
-            i.querySelector('.arrow').style.transform = 'rotate(0deg)';
-        });
-
-        // Open clicked item
-        if (!isOpen) {
-            item.style.borderColor = '#8a2be2';
-            item.querySelector('.faq-a').style.maxHeight = '200px';
-            item.querySelector('.arrow').style.transform = 'rotate(180deg)';
-        }
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
     });
-});
-</script>
+  });
 
+  // ── Burger menu ──
+  const burger   = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    burger.classList.toggle('active');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      burger.classList.remove('active');
+    });
+  });
+
+  // ── Adaptive nav ──
+  const navbar  = document.getElementById('navbar');
+  const darkEls = document.querySelectorAll('[data-theme="dark"]');
+  function updateNav() {
+    const mid = 45;
+    let dark = false;
+    darkEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) dark = true;
+    });
+    navbar.classList.toggle('nav-dark', dark);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  // ── Scroll reveal ──
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── Mailchimp waitlist ──
+  document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email   = document.getElementById('waitlistEmail').value;
+    const confirm = document.getElementById('waitlist-confirm');
+    const btn     = document.getElementById('joinBtn');
+
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+
+    const mcURL =
+      'https://app.us17.list-manage.com/subscribe/post-json' +
+      '?u=97328c96475de66e7cad60b4c' +
+      '&id=3c78d33553' +
+      '&f_id=009cc3e1f0' +
+      '&EMAIL=' + encodeURIComponent(email) +
+      '&c=mcCallback';
+
+    window.mcCallback = function(data) {
+      btn.textContent = 'Join waitlist →';
+      btn.disabled = false;
+      if (data.result === 'success') {
+        confirm.textContent = '✅ You\'re on the list! We\'ll be in touch when DOA launches.';
+        confirm.style.color = '#34D399';
+        document.getElementById('waitlistEmail').value = '';
+      } else if (data.msg && data.msg.toLowerCase().includes('already subscribed')) {
+        confirm.textContent = '👋 You\'re already on the list — we\'ve got you!';
+        confirm.style.color = '#b066ff';
+      } else {
+        confirm.textContent = '❌ Something went wrong. Please try again.';
+        confirm.style.color = '#f87171';
+        console.error('Mailchimp error:', data.msg);
+      }
+      const old = document.getElementById('mc-jsonp');
+      if (old) old.remove();
+    };
+
+    const script = document.createElement('script');
+    script.id  = 'mc-jsonp';
+    script.src = mcURL;
+    document.body.appendChild(script);
+
+    setTimeout(function() {
+      if (btn.disabled) {
+        btn.textContent = 'Join waitlist →';
+        btn.disabled = false;
+        confirm.textContent = '⚠️ Request timed out. Please try again.';
+        confirm.style.color = '#f87171';
+        const s = document.getElementById('mc-jsonp');
+        if (s) s.remove();
+      }
+    }, 8000);
+  });
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
