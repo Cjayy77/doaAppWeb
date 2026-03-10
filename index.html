@@ -577,11 +577,23 @@
   <div class="section">
     <span class="section-tag">Visual Filters</span>
     <h2>More than just<br><em>vision correction</em></h2>
-    <p class="section-sub">Optional screen enhancements — works with or without a prescription active — no setup or calibration needed.</p>
+    <p class="section-sub">Color blindness corrections run as a single shader pass — no setup, no calibration, and fully compatible with any active prescription.</p>
     <div class="filters-row">
-      <div class="filter-card reveal"><div class="filter-swatch swatch-blue"></div><h4>Tritanopia</h4><p>Blue deficiency color accomodation. Adjustable 0–100% intensity slider.</p></div>
-      <div class="filter-card reveal" style="transition-delay:0.1s"><div class="filter-swatch swatch-warm"></div><h4>Protanopia</h4><p>Red deficiency color accomodation.</p></div>
-      <div class="filter-card reveal" style="transition-delay:0.2s"><div class="filter-swatch swatch-cb"></div><h4>Deutranopia</h4><p>Green deficiency color accomodation.</p></div>
+      <div class="filter-card reveal">
+        <div class="filter-swatch swatch-protan"></div>
+        <h4>Protanopia</h4>
+        <p>Red deficiency correction. Shifts and amplifies red-spectrum wavelengths so affected users can distinguish colors that would otherwise appear identical.</p>
+      </div>
+      <div class="filter-card reveal" style="transition-delay:0.1s">
+        <div class="filter-swatch swatch-deutan"></div>
+        <h4>Deuteranopia</h4>
+        <p>Green deficiency correction. The most common form of color blindness — our matrix redistributes green channel data to restore contrast between red and green tones.</p>
+      </div>
+      <div class="filter-card reveal" style="transition-delay:0.2s">
+        <div class="filter-swatch swatch-tritan"></div>
+        <h4>Tritanopia</h4>
+        <p>Blue deficiency correction. Remaps blue and yellow spectrum values to make normally indistinguishable colors visually distinct.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -817,6 +829,7 @@
 </script>
 </body>
 </html>
+
 
 
 
