@@ -176,57 +176,89 @@
   .tag-green  { background: rgba(52,211,153,0.15); color: #34D399; }
   .tag-purple { background: rgba(138,43,226,0.15); color: #b066ff; }
   .tag-soft   { background: rgba(176,102,255,0.12); color: #c084ff; }
-  .blur-demo  { grid-column: 1/-1; background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 16px; align-items: center; }
   .blur-col { flex: 1; }
   .blur-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6B66; margin-bottom: 8px; }
   .blur-blurry { font-size: 18px; color: #9C9B96; padding: 10px; background: #1C1B18; border-radius: 6px; }
   .blur-clear  { font-size: 18px; color: #F5F4EF; padding: 10px; background: #1C1B18; border-radius: 6px; }
   .blur-arrow  { color: var(--accent2); font-size: 24px; flex-shrink: 0; }
+  .blur-slider-wrap { touch-action: none; }
   .slider-track { height: 4px; background: #3A3A37; border-radius: 2px; position: relative; margin-top: 8px; }
   .slider-fill  { height: 100%; width: 72%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
   .slider-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: -6px; left: 72%; transform: translateX(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 
 
   /* ── MOCKUP ANIMATIONS ── */
-@keyframes blurCycle {
-  0%, 30%   { filter: blur(3px); opacity: 0.6; }
-  50%, 80%  { filter: blur(0px); opacity: 1; }
-  100%      { filter: blur(3px); opacity: 0.6; }
+.blur-demo {
+  grid-column: 1/-1;
+  background: #2A2A27;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
 }
-@keyframes sliderMove {
-  0%, 100% { left: 55%; }
-  50%      { left: 85%; }
+.blur-slider-wrap {
+  position: relative;
+  height: 64px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
 }
-@keyframes sliderFill {
-  0%, 100% { width: 55%; }
-  50%      { width: 85%; }
+.blur-before, .blur-after {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  display: flex; align-items: center;
+  padding: 0 14px;
+  background: #1C1B18;
+  border-radius: 6px;
 }
-@keyframes tagPulse {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.5; }
+.blur-before .blur-text {
+  font-size: 16px;
+  color: #9C9B96;
+  filter: blur(3px);
+  line-height: 1.5;
 }
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+.blur-after {
+  width: 50%;
+  overflow: hidden;
+  border-radius: 6px 0 0 6px;
 }
-
-.blur-blurry {
-  animation: blurCycle 4s ease-in-out infinite;
+.blur-after .blur-text {
+  font-size: 16px;
+  color: #F5F4EF;
+  filter: none;
+  line-height: 1.5;
+  white-space: nowrap;
+  width: 100%;
+  min-width: 400px;
 }
-.blur-clear {
-  animation: blurCycle 4s ease-in-out infinite reverse;
+.blur-handle {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  z-index: 10;
+  cursor: ew-resize;
 }
-.slider-thumb {
-  animation: sliderMove 4s ease-in-out infinite;
+.blur-handle-line {
+  width: 2px;
+  flex: 1;
+  background: var(--accent2);
+  opacity: 0.6;
 }
-.slider-fill {
-  animation: sliderFill 4s ease-in-out infinite;
-}
-.tag-green {
-  animation: tagPulse 2s ease-in-out infinite;
-}
-.m-value {
-  animation: countUp 0.8s ease both;
+.blur-handle-icon {
+  font-size: 14px;
+  color: var(--accent2);
+  background: #2A2A27;
+  border: 1px solid rgba(176,102,255,0.4);
+  border-radius: 100px;
+  padding: 2px 6px;
+  flex-shrink: 0;
 }
 
   /* ─────────────────────────────
@@ -505,25 +537,26 @@
           <div class="m-tag tag-purple">● Directional blur off</div>
         </div>
         <div class="blur-demo">
-          <div class="blur-col">
-            <div class="blur-lbl">Without DOA</div>
-            <div class="blur-blurry">Enhance your digital vision with real-time prescription correction.</div>
-          </div>
-          <div class="blur-arrow">→</div>
-          <div class="blur-col">
-            <div class="blur-lbl">With DOA</div>
-            <div class="blur-clear">Enhance your digital vision with real-time prescription correction.</div>
-          </div>
-        </div>
-        <div class="m-card">
-          <div class="m-label">Blue Light Filter</div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:8px;margin-top:4px;">
-            <span style="font-size:12px;color:#6C6B66">Intensity</span>
-            <span style="font-size:12px;color:#F5F4EF">72%</span>
-          </div>
-          <div class="slider-track"><div class="slider-fill"></div><div class="slider-thumb"></div></div>
-          <div class="m-tag tag-soft" style="margin-top:14px">● Warm tint on</div>
-        </div>
+  <div class="blur-lbl" style="margin-bottom:8px;">Drag to compare</div>
+  <div class="blur-slider-wrap" id="blurSlider">
+    <div class="blur-before">
+      <div class="blur-text">Enhance your digital vision with real-time prescription correction.</div>
+    </div>
+    <div class="blur-after" id="blurAfter">
+      <div class="blur-text">Enhance your digital vision with real-time prescription correction.</div>
+    </div>
+    <div class="blur-handle" id="blurHandle">
+      <div class="blur-handle-line"></div>
+      <div class="blur-handle-icon">⟺</div>
+      <div class="blur-handle-line"></div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-top:8px;">
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6C6B66;">Without DOA</span>
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6C6B66;">With DOA</span>
+  </div>
+</div>
+ 
         <div class="m-card">
           <div class="m-label">Performance</div>
           <div class="m-value">60 <span>fps</span></div>
@@ -813,6 +846,27 @@
     });
   });
 
+  // ── Blur comparison slider ──
+const wrap   = document.getElementById('blurSlider');
+const after  = document.getElementById('blurAfter');
+const handle = document.getElementById('blurHandle');
+let dragging = false;
+
+function setSlider(x) {
+  const rect  = wrap.getBoundingClientRect();
+  let pct = (x - rect.left) / rect.width;
+  pct = Math.min(Math.max(pct, 0.05), 0.95);
+  after.style.width  = (pct * 100) + '%';
+  handle.style.left  = (pct * 100) + '%';
+}
+
+wrap.addEventListener('mousedown',  e => { dragging = true; setSlider(e.clientX); });
+wrap.addEventListener('touchstart', e => { dragging = true; setSlider(e.touches[0].clientX); }, { passive: true });
+window.addEventListener('mousemove',  e => { if (dragging) setSlider(e.clientX); });
+window.addEventListener('touchmove',  e => { if (dragging) setSlider(e.touches[0].clientX); }, { passive: true });
+window.addEventListener('mouseup',  () => dragging = false);
+window.addEventListener('touchend', () => dragging = false);
+
   // ── Adaptive nav ──
   const navbar  = document.getElementById('navbar');
   const darkEls = document.querySelectorAll('[data-theme="dark"]');
@@ -890,32 +944,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
