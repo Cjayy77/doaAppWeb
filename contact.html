@@ -46,6 +46,23 @@
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
+  .nav-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #F5F4EF;
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1.5px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+  text-transform: lowercase;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .nav-name { display: none; }
+}
   .nav-logo img { height: 48px; width: auto; }
   .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
@@ -255,7 +272,10 @@
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
+  <a href="index.html" class="nav-logo">
+  <img src="doaTransparent.png" alt="DOA Logo">
+  <span class="nav-name">device optical aid™</span>
+</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#features">Features</a></li>
