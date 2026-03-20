@@ -51,6 +51,23 @@
     font-size: 14px; font-weight: 500; color: var(--ink2);
     text-decoration: none; transition: color 0.2s; position: relative;
   }
+  .nav-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #100f12;
+  margin-left: 14px;
+  padding-left: 14px;
+  border-left: 1.5px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+  text-transform: lowercase;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .nav-name { display: none; }
+}
   .nav-links a::after {
     content: ''; position: absolute; width: 0; height: 2px;
     bottom: -4px; left: 0; background: var(--accent); transition: width 0.3s;
@@ -306,8 +323,9 @@
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="doaTransparent.png" alt="DOA Logo">
-  </a>
+  <img src="doaTransparent.png" alt="DOA Logo">
+  <span class="nav-name">device optical aid™</span>
+</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/index#how-it-works">How It Works</a></li>
     <li><a href="/index#features">Features</a></li>
