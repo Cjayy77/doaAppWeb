@@ -203,33 +203,43 @@
   cursor: ew-resize;
   user-select: none;
 }
-.blur-before, .blur-after {
-  position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
-  display: flex; align-items: center;
-  padding: 0 14px;
-  background: #1C1B18;
-  border-radius: 6px;
-}
-.blur-before .blur-text {
-  font-size: 16px;
-  color: #9C9B96;
-  filter: blur(3px);
-  line-height: 1.5;
-}
 .blur-after {
   width: 50%;
   overflow: hidden;
   border-radius: 6px 0 0 6px;
 }
+.blur-before, .blur-after {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background: #1C1B18;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.blur-after {
+  right: auto;
+  width: 50%;
+}
+
+.blur-before .blur-text,
 .blur-after .blur-text {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
   font-size: 16px;
+  line-height: 1.5;
+}
+
+.blur-before .blur-text {
+  color: #9C9B96;
+  filter: blur(3px);
+}
+
+.blur-after .blur-text {
   color: #F5F4EF;
   filter: none;
-  line-height: 1.5;
-  white-space: nowrap;
-  width: 100%;
-  min-width: 400px;
 }
 .blur-handle {
   position: absolute;
@@ -552,8 +562,8 @@
     </div>
   </div>
   <div style="display:flex;justify-content:space-between;margin-top:8px;">
-    <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6C6B66;">With DOA</span>
     <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6C6B66;">Without DOA</span>
+    <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#6C6B66;">With DOA</span>
   </div>
 </div>
  
