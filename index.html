@@ -100,9 +100,9 @@
 
   .nav-name {
   font-family: 'Bricolage Grotesque', sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   color: var(--ink);
   margin-left: 14px;
   padding-left: 14px;
@@ -179,12 +179,55 @@
   .blur-demo  { grid-column: 1/-1; background: #2A2A27; border-radius: 10px; padding: 20px; border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 16px; align-items: center; }
   .blur-col { flex: 1; }
   .blur-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6C6B66; margin-bottom: 8px; }
-  .blur-blurry { font-size: 18px; color: #9C9B96; filter: blur(3px); padding: 10px; background: #1C1B18; border-radius: 6px; }
+  .blur-blurry { font-size: 18px; color: #9C9B96; padding: 10px; background: #1C1B18; border-radius: 6px; }
   .blur-clear  { font-size: 18px; color: #F5F4EF; padding: 10px; background: #1C1B18; border-radius: 6px; }
   .blur-arrow  { color: var(--accent2); font-size: 24px; flex-shrink: 0; }
   .slider-track { height: 4px; background: #3A3A37; border-radius: 2px; position: relative; margin-top: 8px; }
   .slider-fill  { height: 100%; width: 72%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; }
   .slider-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; position: absolute; top: -6px; left: 72%; transform: translateX(-50%); box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+
+
+  /* ── MOCKUP ANIMATIONS ── */
+@keyframes blurCycle {
+  0%, 30%   { filter: blur(3px); opacity: 0.6; }
+  50%, 80%  { filter: blur(0px); opacity: 1; }
+  100%      { filter: blur(3px); opacity: 0.6; }
+}
+@keyframes sliderMove {
+  0%, 100% { left: 55%; }
+  50%      { left: 85%; }
+}
+@keyframes sliderFill {
+  0%, 100% { width: 55%; }
+  50%      { width: 85%; }
+}
+@keyframes tagPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.blur-blurry {
+  animation: blurCycle 4s ease-in-out infinite;
+}
+.blur-clear {
+  animation: blurCycle 4s ease-in-out infinite reverse;
+}
+.slider-thumb {
+  animation: sliderMove 4s ease-in-out infinite;
+}
+.slider-fill {
+  animation: sliderFill 4s ease-in-out infinite;
+}
+.tag-green {
+  animation: tagPulse 2s ease-in-out infinite;
+}
+.m-value {
+  animation: countUp 0.8s ease both;
+}
 
   /* ─────────────────────────────
      SHARED
