@@ -96,6 +96,21 @@
   .burger.active span:nth-child(2) { opacity: 0; }
   .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+  .nav-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-left: 10px;
+  white-space: nowrap;
+  text-transform: lowercase;
+}
+
+@media (max-width: 900px) {
+  .nav-name { display: none; }
+}
+
 
 
   /* ─────────────────────────────
@@ -374,6 +389,7 @@
       box-shadow: 0 8px 32px rgba(138,43,226,0.15);
     }
     nav.nav-dark .nav-links.active { background: rgba(36,35,32,0.97); }
+    nav.nav-dark .nav-name { color: #F5F4EF; }
     .burger { display: flex; }
     .nav-cta { display: none; }
     .hero { padding: 120px 20px 60px; }
@@ -394,7 +410,10 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
+  <a href="#" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#how-it-works">How It Works</a></li>
     <li><a href="#features">Features</a></li>
@@ -681,20 +700,12 @@
     <span class="section-tag">FAQ</span>
     <h2>Common questions,<br><em>straight answers</em></h2>
     <div class="faq-list">
-      <div class="faq-item reveal"><button class="faq-q">How does DOA work? <span class="arrow">↓</span></button><div class="faq-a">DOA applies a specialized correction layer to your screen that replicates the effects of your prescription glasses, allowing you to see clearly without wearing them. Our advanced algorithms process the display in real time — correcting blur before it even reaches your eyes.</div></div>
       <div class="faq-item reveal"><button class="faq-q">Will it work with my prescription? <span class="arrow">↓</span></button><div class="faq-a">DOA supports a wide range of prescriptions including myopia (up to −6.00D), hyperopia (up to +6.00D), and astigmatism (~5-6D). This greatly depends on the device's display. Higher DPI monitors (4K at 27") push this to ~8-10D. For prescriptions outside these ranges or questions about display limits, please contact our support team for personalized assistance.</div></div>
-      <div class="faq-item reveal"><button class="faq-q">Is there any noticeable lag? <span class="arrow">↓</span></button><div class="faq-a">There's a 30–50ms delay between screen updates and the corrected overlay display. This is imperceptible during reading, typing, and browsing — our primary use case. Competitive gaming may notice slight input lag, so we recommend disabling DOA for competitive play.</div></div>
       <div class="faq-item reveal"><button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button><div class="faq-a">DOA corrects your screen — not your eyes. It's designed for screen use only, not for general vision or outdoor activities. You'd still need glasses for other activities away from screens.</div></div>
       <div class="faq-item reveal"><button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button><div class="faq-a">DOA will be compatible with with Windows being the primary launch platform, MacOs and Linux in the future.</div></div>
-      <div class="faq-item reveal"><button class="faq-q">Is my prescription data secure? <span class="arrow">↓</span></button><div class="faq-a">Absolutely. All prescription data is encrypted using industry-standard protocols and stored securely. We never share your personal or medical information with third parties. Anonymized, opt-in aggregate data may be used to help optometry research — but your individual data is yours alone.</div></div>
       <div class="faq-item reveal"><button class="faq-q">Does DOA make my vision better? <span class="arrow">↓</span></button><div class="faq-a">No. DOA just helps you use your device without glasses in case your glasses are broken, missing, or you just don't feel like wearing them. It cannot make your vision better in real life, it just provides you with digital visual assistance.</div></div>
 
 
-    </div>
-    <div class="ph-badge">
-      <a href="https://www.producthunt.com/products/doa?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-doa" target="_blank">
-        <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=991633&theme=dark&t=1752484599999" alt="DOA - Device optical aid | Product Hunt" style="width:250px;height:54px;" width="250" height="54">
-      </a>
     </div>
   </div>
 </section>
@@ -727,8 +738,6 @@
     <div class="footer-divider"></div>
     <div class="footer-bottom">
       <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
-      <span>Device Optical Aid is operated by Cedric Julien .E</span>
-      <img src="cj-white.svg" alt="CJ_" height="24" style="display:block;">
     </div>
   </div>
 </footer>
