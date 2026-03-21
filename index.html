@@ -197,51 +197,57 @@
 }
 .blur-slider-wrap {
   position: relative;
-  height: 64px;
+  height: 56px;
   border-radius: 6px;
   overflow: hidden;
   cursor: ew-resize;
   user-select: none;
+  touch-action: none;
 }
-.blur-after {
-  width: 50%;
-  overflow: hidden;
-  border-radius: 6px 0 0 6px;
-}
-.blur-before, .blur-after {
+/* Full-width background layer — blurry */
+.blur-before {
   position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
+  inset: 0;
+  background: #1C1B18;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blur-before .blur-text {
+  font-size: 15px;
+  color: #9C9B96;
+  filter: blur(3px);
+  text-align: center;
+  padding: 0 14px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+/* Clipping layer — clear, sits on top, clips from left */
+.blur-after {
+  position: absolute;
+  inset: 0;
+  left: 0;
+  right: 50%; /* starts at 50% — JS overrides this */
   background: #1C1B18;
   border-radius: 6px;
   overflow: hidden;
 }
-
-.blur-after {
-  right: auto;
-  width: 50%;
-}
-
-.blur-before .blur-text,
+/* The clear text inside .blur-after must match blur-before exactly */
 .blur-after .blur-text {
   position: absolute;
-  left: 0;
-  right: 0;
   top: 50%;
+  left: 0;
+  /* width must match the full wrap, not the clipped container */
+  width: var(--wrap-width, 600px);
   transform: translateY(-50%);
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.5;
-  padding: 0 14px;
-}
-
-.blur-before .blur-text {
-  color: #9C9B96;
-  filter: blur(3px);
-}
-
-.blur-after .blur-text {
+  font-size: 15px;
   color: #F5F4EF;
   filter: none;
+  text-align: center;
+  padding: 0 14px;
+  pointer-events: none;
+  white-space: nowrap;
 }
 .blur-handle {
   position: absolute;
@@ -875,20 +881,41 @@ const after  = document.getElementById('blurAfter');
 const handle = document.getElementById('blurHandle');
 let dragging = false;
 
-function setSlider(x) {
-  const rect  = wrap.getBoundingClientRect();
-  let pct = (x - rect.left) / rect.width;
-  pct = Math.min(Math.max(pct, 0.05), 0.95);
-  after.style.width  = (pct * 100) + '%';
-  handle.style.left  = (pct * 100) + '%';
-}
-
 wrap.addEventListener('mousedown',  e => { dragging = true; setSlider(e.clientX); });
 wrap.addEventListener('touchstart', e => { dragging = true; setSlider(e.touches[0].clientX); }, { passive: true });
 window.addEventListener('mousemove',  e => { if (dragging) setSlider(e.clientX); });
 window.addEventListener('touchmove',  e => { if (dragging) setSlider(e.touches[0].clientX); }, { passive: true });
 window.addEventListener('mouseup',  () => dragging = false);
 window.addEventListener('touchend', () => dragging = false);
+
+function setSlider(x) {
+  const rect = wrap.getBoundingClientRect();
+  let pct = (x - rect.left) / rect.width;
+  pct = Math.min(Math.max(pct, 0.05), 0.95);
+
+  // Clip the clear layer by setting right instead of width
+  after.style.right = (100 - pct * 100) + '%';
+  after.style.width  = '';
+
+  // Tell the inner text how wide the full wrap is so it doesn't compress
+  after.querySelector('.blur-text').style.width = rect.width + 'px';
+
+  handle.style.left = (pct * 100) + '%';
+}
+
+// Set initial text width on load
+wrap.addEventListener('mouseenter', () => {
+  const rect = wrap.getBoundingClientRect();
+  const t = after.querySelector('.blur-text');
+  if (t) t.style.width = rect.width + 'px';
+});
+
+// Also set on page load
+window.addEventListener('load', () => {
+  const rect = wrap.getBoundingClientRect();
+  const t = after.querySelector('.blur-text');
+  if (t) t.style.width = rect.width + 'px';
+});                                                  
 
   // ── Adaptive nav ──
   const navbar  = document.getElementById('navbar');
