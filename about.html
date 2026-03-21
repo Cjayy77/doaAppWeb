@@ -26,169 +26,167 @@
     --radius-sm:  10px;
   }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-font-family: ‘Bricolage Grotesque’, sans-serif;
-background: var(–bg);
-color: var(–ink2);
-line-height: 1.7;
-overflow-x: hidden;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink2);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-/* ── NAV ── */
-nav {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-display: flex; align-items: center; justify-content: space-between;
-padding: 0 40px; height: 80px;
-background: rgba(28,27,24,0.92);
-backdrop-filter: blur(16px);
-border-bottom: 1px solid var(–border);
-}
-.nav-logo { display: flex; align-items: center; text-decoration: none; }
-.nav-logo img { height: 48px; width: auto; }
-.nav-name {
-font-family: ‘Bricolage Grotesque’, sans-serif;
-font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
-color: #F5F4EF; margin-left: 14px; padding-left: 14px;
-border-left: 1.5px solid rgba(255,255,255,0.1);
-white-space: nowrap; text-transform: lowercase; text-decoration: none;
-}
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { font-size: 14px; font-weight: 500; color: var(–ink2); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(–ink); }
-.btn-home {
-font-family: ‘Bricolage Grotesque’, sans-serif;
-font-size: 14px; font-weight: 600; color: #fff;
-background: var(–accent); border: none;
-padding: 8px 18px; border-radius: 8px;
-text-decoration: none; transition: all 0.2s;
-}
-.btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
-.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-.burger span { width: 22px; height: 2.5px; background: var(–ink2); border-radius: 2px; }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 80px;
+    background: rgba(28,27,24,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
+    color: #F5F4EF; margin-left: 14px; padding-left: 14px;
+    border-left: 1.5px solid rgba(255,255,255,0.1);
+    white-space: nowrap; text-transform: lowercase; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-home {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; }
 
-/* ── LAYOUT ── */
-main { max-width: 780px; margin: 0 auto; padding: 120px 40px 100px; }
+  /* ── LAYOUT ── */
+  main { max-width: 780px; margin: 0 auto; padding: 120px 40px 100px; }
 
-/* ── HERO ── */
-.page-tag {
-display: inline-block; font-size: 11px; font-weight: 700;
-letter-spacing: 0.12em; text-transform: uppercase;
-color: var(–accent2); background: var(–accent-dim);
-padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
-}
-.page-hero { margin-bottom: 64px; }
-.page-hero h1 {
-font-family: ‘League Spartan’, sans-serif;
-font-size: clamp(40px, 6vw, 68px);
-font-weight: 900; letter-spacing: -2px; line-height: 1.0;
-color: var(–ink); margin-bottom: 20px;
-}
-.page-hero h1 em {
-background: linear-gradient(135deg, var(–accent), var(–accent2));
--webkit-background-clip: text; background-clip: text;
-color: transparent; font-style: italic;
-}
-.page-hero .lead {
-font-size: 19px; color: var(–ink2); line-height: 1.7;
-max-width: 600px; font-weight: 400;
-}
+  /* ── HERO ── */
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); background: var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .page-hero { margin-bottom: 64px; }
+  .page-hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(40px, 6vw, 68px);
+    font-weight: 900; letter-spacing: -2px; line-height: 1.0;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .page-hero h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .page-hero .lead {
+    font-size: 19px; color: var(--ink2); line-height: 1.7;
+    max-width: 600px; font-weight: 400;
+  }
 
-/* ── DIVIDER ── */
-.divider { height: 1px; background: var(–border); margin: 56px 0; }
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 56px 0; }
 
-/* ── SECTIONS ── */
-.about-section { margin-bottom: 56px; }
-.about-section h2 {
-font-family: ‘League Spartan’, sans-serif;
-font-size: 26px; font-weight: 800; letter-spacing: -0.5px;
-color: var(–ink); margin-bottom: 16px; line-height: 1.1;
-}
-.about-section h2 em {
-background: linear-gradient(135deg, var(–accent), var(–accent2));
--webkit-background-clip: text; background-clip: text;
-color: transparent; font-style: italic;
-}
-.about-section p {
-font-size: 16px; color: var(–ink2);
-line-height: 1.8; margin-bottom: 16px;
-}
-.about-section p:last-child { margin-bottom: 0; }
-.about-section p strong { color: var(–ink); font-weight: 600; }
+  /* ── SECTIONS ── */
+  .about-section { margin-bottom: 56px; }
+  .about-section h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 26px; font-weight: 800; letter-spacing: -0.5px;
+    color: var(--ink); margin-bottom: 16px; line-height: 1.1;
+  }
+  .about-section h2 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .about-section p {
+    font-size: 16px; color: var(--ink2);
+    line-height: 1.8; margin-bottom: 16px;
+  }
+  .about-section p:last-child { margin-bottom: 0; }
+  .about-section p strong { color: var(--ink); font-weight: 600; }
 
-/* ── USE CASE CARDS ── */
-.usecase-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin: 24px 0;
-}
-.usecase-card {
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: var(–radius-sm);
-padding: 22px 24px;
-transition: border-color 0.3s;
-}
-.usecase-card:hover { border-color: rgba(138,43,226,0.3); }
-.usecase-icon { font-size: 22px; margin-bottom: 10px; }
-.usecase-card h4 { font-size: 14px; font-weight: 700; color: var(–ink); margin-bottom: 6px; }
-.usecase-card p { font-size: 13px; color: var(–ink2); line-height: 1.6; margin: 0; }
+  /* ── USE CASE CARDS ── */
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .usecase-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 22px 24px;
+    transition: border-color 0.3s;
+  }
+  .usecase-card:hover { border-color: rgba(138,43,226,0.3); }
+  .usecase-icon { font-size: 22px; margin-bottom: 10px; }
+  .usecase-card h4 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .usecase-card p { font-size: 13px; color: var(--ink2); line-height: 1.6; margin: 0; }
 
-/* ── IMPROVEMENT ITEMS ── */
-.improve-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
-.improve-item {
-background: var(–card);
-border: 1px solid var(–border);
-border-radius: var(–radius-sm);
-padding: 18px 24px;
-display: flex; gap: 14px; align-items: flex-start;
-transition: border-color 0.3s;
-}
-.improve-item:hover { border-color: rgba(138,43,226,0.25); }
-.improve-dot {
-width: 8px; height: 8px; border-radius: 50%;
-background: var(–accent2); flex-shrink: 0; margin-top: 6px;
-}
-.improve-item h4 { font-size: 14px; font-weight: 700; color: var(–ink); margin-bottom: 4px; }
-.improve-item p { font-size: 13px; color: var(–ink2); line-height: 1.6; margin: 0; }
+  /* ── IMPROVEMENT ITEMS ── */
+  .improve-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+  .improve-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 18px 24px;
+    display: flex; gap: 14px; align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .improve-item:hover { border-color: rgba(138,43,226,0.25); }
+  .improve-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent2); flex-shrink: 0; margin-top: 6px;
+  }
+  .improve-item h4 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .improve-item p { font-size: 13px; color: var(--ink2); line-height: 1.6; margin: 0; }
 
-/* ── FOOTER ── */
-footer { border-top: 1px solid var(–border); padding: 48px 40px 32px; }
-.footer-inner { max-width: 780px; margin: 0 auto; }
-.footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
-.footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
-.footer-desc { font-size: 13px; color: var(–ink3); max-width: 240px; line-height: 1.6; }
-.footer-links { display: flex; gap: 40px; }
-.footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(–ink3); margin-bottom: 12px; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.footer-col a { font-size: 13px; color: var(–ink3); text-decoration: none; transition: color 0.2s; }
-.footer-col a:hover { color: var(–ink); }
-.footer-divider { height: 1px; background: var(–border); margin-bottom: 20px; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(–ink3); flex-wrap: wrap; gap: 8px; }
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
+  .footer-inner { max-width: 780px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
+  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 40px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-nav { padding: 0 20px; }
-.nav-links { display: none; }
-.nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(–card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(–border); z-index: 200; }
-.burger { display: flex; }
-main { padding: 100px 20px 80px; }
-.usecase-grid { grid-template-columns: 1fr; }
-.footer-top { flex-direction: column; gap: 24px; }
-.footer-bottom { flex-direction: column; text-align: center; }
-}
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
+    .burger { display: flex; }
+    main { padding: 100px 20px 80px; }
+    .usecase-grid { grid-template-columns: 1fr; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
 
-@keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-.page-hero { animation: fadeUp 0.7s ease both 0.1s; }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  .page-hero { animation: fadeUp 0.7s ease both 0.1s; }
 </style>
-
 </head>
 <body>
 
 <!-- NAV -->
-
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="doaTransparent.png" alt="DOA Logo">
@@ -207,7 +205,6 @@ main { padding: 100px 20px 80px; }
 <main>
 
   <!-- HERO -->
-
   <div class="page-hero">
     <span class="page-tag">About</span>
     <h1>Screen clarity.<br><em>Without glasses.</em></h1>
@@ -215,7 +212,6 @@ main { padding: 100px 20px 80px; }
   </div>
 
   <!-- WHAT IT DOES -->
-
   <div class="about-section">
     <h2>What <em>DOA does</em></h2>
     <p>Most people with refractive errors can still see their screen — just not as well as they could. Text gets a little soft, fine detail blurs, and long sessions cause fatigue. DOA addresses this by applying a real-time correction layer to your entire screen, calibrated to your prescription.</p>
@@ -226,102 +222,93 @@ main { padding: 100px 20px 80px; }
   <div class="divider"></div>
 
   <!-- USE CASES -->
-
   <div class="about-section">
     <h2>Who it <em>helps</em></h2>
     <p>DOA is most useful for everyday screen activity — reading, writing, browsing, and working. Anyone who regularly uses a computer without glasses can benefit.</p>
 
-```
-<div class="usecase-grid">
-  <div class="usecase-card">
-    <div class="usecase-icon">📖</div>
-    <h4>Reading without glasses</h4>
-    <p>Articles, documents, and emails — comfortable to read without reaching for your glasses first.</p>
-  </div>
-  <div class="usecase-card">
-    <div class="usecase-icon">💼</div>
-    <h4>Long work sessions</h4>
-    <p>Reduced eye strain during extended screen time, particularly for near-sighted users working up close.</p>
-  </div>
-  <div class="usecase-card">
-    <div class="usecase-icon">👴</div>
-    <h4>Presbyopia — reading in bed</h4>
-    <p>Age-related near-vision loss makes reading screens uncomfortable at normal distances. DOA compensates for this directly.</p>
-  </div>
-  <div class="usecase-card">
-    <div class="usecase-icon">🕶️</div>
-    <h4>When glasses aren't available</h4>
-    <p>Glasses left in another room, broken, or simply not wanted — DOA keeps your screen usable.</p>
-  </div>
-  <div class="usecase-card">
-    <div class="usecase-icon">🌈</div>
-    <h4>Color blindness</h4>
-    <p>Daltonization modes for Protanopia, Deuteranopia, and Tritanopia — applied alongside any active prescription.</p>
-  </div>
-  <div class="usecase-card">
-    <div class="usecase-icon">🖥️</div>
-    <h4>Multiple monitors</h4>
-    <p>Different correction settings per display — useful for mixed setups where screens are at different distances.</p>
-  </div>
-</div>
-```
-
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <div class="usecase-icon">📖</div>
+        <h4>Reading without glasses</h4>
+        <p>Articles, documents, and emails — comfortable to read without reaching for your glasses first.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">💼</div>
+        <h4>Long work sessions</h4>
+        <p>Reduced eye strain during extended screen time, particularly for near-sighted users working up close.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">👴</div>
+        <h4>Presbyopia — reading in bed</h4>
+        <p>Age-related near-vision loss makes reading screens uncomfortable at normal distances. DOA compensates for this directly.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🕶️</div>
+        <h4>When glasses aren't available</h4>
+        <p>Glasses left in another room, broken, or simply not wanted — DOA keeps your screen usable.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🌈</div>
+        <h4>Color blindness</h4>
+        <p>Daltonization modes for Protanopia, Deuteranopia, and Tritanopia — applied alongside any active prescription.</p>
+      </div>
+      <div class="usecase-card">
+        <div class="usecase-icon">🖥️</div>
+        <h4>Multiple monitors</h4>
+        <p>Different correction settings per display — useful for mixed setups where screens are at different distances.</p>
+      </div>
+    </div>
   </div>
 
   <div class="divider"></div>
 
   <!-- WHAT WE'RE IMPROVING -->
-
   <div class="about-section">
     <h2>What we're <em>working to improve</em></h2>
     <p>DOA is in early access. The correction works — but there is real room to make it more accurate, more personal, and available on more platforms. Here is what we are actively focused on.</p>
 
-```
-<div class="improve-list">
-  <div class="improve-item">
-    <div class="improve-dot"></div>
-    <div>
-      <h4>More accurate correction at higher prescriptions</h4>
-      <p>Current correction quality is strongest for mild to moderate prescriptions. Extending reliable accuracy to higher prescriptions — particularly beyond −6D — is an active priority.</p>
+    <div class="improve-list">
+      <div class="improve-item">
+        <div class="improve-dot"></div>
+        <div>
+          <h4>More accurate correction at higher prescriptions</h4>
+          <p>Current correction quality is strongest for mild to moderate prescriptions. Extending reliable accuracy to higher prescriptions — particularly beyond −6D — is an active priority.</p>
+        </div>
+      </div>
+      <div class="improve-item">
+        <div class="improve-dot"></div>
+        <div>
+          <h4>Personalised calibration</h4>
+          <p>Prescription values are a starting point, not the full picture. Factors like screen distance, lighting, and individual optical variation affect how well the correction works. We are building a calibration system that adapts to you specifically, not just your prescription on paper.</p>
+        </div>
+      </div>
+      <div class="improve-item">
+        <div class="improve-dot"></div>
+        <div>
+          <h4>Better colour blindness correction</h4>
+          <p>Current daltonization modes apply established colour matrices. We are researching approaches that go further — improving real-world colour discrimination beyond what standard matrices achieve.</p>
+        </div>
+      </div>
+      <div class="improve-item">
+        <div class="improve-dot"></div>
+        <div>
+          <h4>macOS support</h4>
+          <p>The Windows version is the foundation. macOS is next.</p>
+        </div>
+      </div>
+      <div class="improve-item">
+        <div class="improve-dot"></div>
+        <div>
+          <h4>Correction without knowing your prescription</h4>
+          <p>Not everyone has an up-to-date prescription or access to an optometrist. We want DOA to be usable through guided calibration alone, without requiring a formal prescription as input.</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="improve-item">
-    <div class="improve-dot"></div>
-    <div>
-      <h4>Personalised calibration</h4>
-      <p>Prescription values are a starting point, not the full picture. Factors like screen distance, lighting, and individual optical variation affect how well the correction works. We are building a calibration system that adapts to you specifically, not just your prescription on paper.</p>
-    </div>
-  </div>
-  <div class="improve-item">
-    <div class="improve-dot"></div>
-    <div>
-      <h4>Better colour blindness correction</h4>
-      <p>Current daltonization modes apply established colour matrices. We are researching approaches that go further — improving real-world colour discrimination beyond what standard matrices achieve.</p>
-    </div>
-  </div>
-  <div class="improve-item">
-    <div class="improve-dot"></div>
-    <div>
-      <h4>macOS support</h4>
-      <p>The Windows version is the foundation. macOS is next.</p>
-    </div>
-  </div>
-  <div class="improve-item">
-    <div class="improve-dot"></div>
-    <div>
-      <h4>Correction without knowing your prescription</h4>
-      <p>Not everyone has an up-to-date prescription or access to an optometrist. We want DOA to be usable through guided calibration alone, without requiring a formal prescription as input.</p>
-    </div>
-  </div>
-</div>
-```
-
   </div>
 
 </main>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -350,10 +337,7 @@ main { padding: 100px 20px 80px; }
     <div class="footer-divider"></div>
     <div class="footer-bottom">
       <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
-      <span>Operated by Cedric Julien .E</span>
-      <a href="https://yourportfolio.com" target="_blank" rel="noopener">
-        <img src="cj-white.svg" alt="CJ_" height="28" style="display:block;">
-      </a>
+  
     </div>
   </div>
 </footer>
@@ -363,6 +347,5 @@ main { padding: 100px 20px 80px; }
   const nav    = document.getElementById('navLinks');
   burger.addEventListener('click', () => nav.classList.toggle('open'));
 </script>
-
 </body>
 </html>
