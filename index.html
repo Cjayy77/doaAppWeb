@@ -743,7 +743,7 @@
           <li>Small watermark in corner</li>
           <li class="no">Multi-monitor support</li>
         </ul>
-        <button class="btn-pricing btn-pricing-free" onclick="window.location.href='/download'>Get started free</button>
+        <button class="btn-pricing btn-pricing-free">Get started free</button>
       </div>
       <div class="pricing-card featured reveal" style="transition-delay:0.1s">
         <div class="featured-badge">Most Popular</div>
@@ -760,7 +760,7 @@
           <li>No watermark</li>
           <li>Priority support</li>
         </ul>
-        <button class="btn-pricing btn-pricing-premium" onclick="window.location.href='/download'>Get Premium</button>
+        <button class="btn-pricing btn-pricing-premium">Get Premium</button>
         <p class="pricing-handled">Payments handled by Creem</p>
       </div>
     </div>
@@ -910,6 +910,14 @@ window.addEventListener('touchend', () => dragging = false);
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ── Pricing buttons → download ──
+document.querySelector('.btn-pricing-free').addEventListener('click', () => {
+  window.location.href = '/download';
+});
+document.querySelector('.btn-pricing-premium').addEventListener('click', () => {
+  window.location.href = '/download';
+});
 
   // ── Mailchimp waitlist ──
   document.getElementById('waitlistForm').addEventListener('submit', function(e) {
