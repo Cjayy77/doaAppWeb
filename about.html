@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — DOA · Device Optical Aid</title>
+<meta name="description" content="The story behind DOA — how a simple frustration became a two-year technical journey to put glasses on your screen instead of your face.">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #1C1B18;
+    --bg2:        #232320;
+    --card:       #2A2A27;
+    --border:     rgba(255,255,255,0.08);
+    --ink:        #F5F4EF;
+    --ink2:       #9C9B96;
+    --ink3:       #6C6B66;
+    --accent:     #8a2be2;
+    --accent2:    #b066ff;
+    --accent-dim: rgba(138,43,226,0.15);
+    --radius:     14px;
+    --radius-sm:  10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink2);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 80px;
+    background: rgba(28,27,24,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
+    color: #F5F4EF; margin-left: 14px; padding-left: 14px;
+    border-left: 1.5px solid rgba(255,255,255,0.1);
+    white-space: nowrap; text-transform: lowercase; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-home {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; }
+
+  /* ── LAYOUT ── */
+  main { max-width: 780px; margin: 0 auto; padding: 120px 40px 100px; }
+
+  /* ── HERO ── */
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); background: var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .page-hero { margin-bottom: 72px; }
+  .page-hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 900; letter-spacing: -2px; line-height: 1.0;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .page-hero h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .page-hero .lead {
+    font-size: 18px; color: var(--ink2); line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* ── SECTIONS ── */
+  .about-section { margin-bottom: 64px; }
+  .about-section h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
+    color: var(--ink); margin-bottom: 16px; line-height: 1.1;
+  }
+  .about-section h2 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .about-section p {
+    font-size: 16px; color: var(--ink2); line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-section p:last-child { margin-bottom: 0; }
+  .about-section p strong { color: var(--ink); font-weight: 600; }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 120px 1px 1fr;
+    gap: 0 24px;
+    position: relative;
+  }
+  .tl-date {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--ink3);
+    text-align: right; padding-top: 4px; padding-bottom: 32px;
+  }
+  .tl-line {
+    display: flex; flex-direction: column; align-items: center;
+    position: relative;
+  }
+  .tl-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0; margin-top: 6px;
+    box-shadow: 0 0 0 3px rgba(138,43,226,0.2);
+  }
+  .tl-item.blocked .tl-dot { background: #f87171; box-shadow: 0 0 0 3px rgba(248,113,113,0.2); }
+  .tl-item.current .tl-dot {
+    background: #34D399; box-shadow: 0 0 0 3px rgba(52,211,153,0.2);
+    animation: tl-pulse 2s infinite;
+  }
+  @keyframes tl-pulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(52,211,153,0.2); }
+    50%      { box-shadow: 0 0 0 7px rgba(52,211,153,0); }
+  }
+  .tl-connector {
+    width: 1px; flex: 1; background: var(--border); margin-top: 4px;
+  }
+  .tl-item:last-child .tl-connector { display: none; }
+  .tl-content { padding-bottom: 32px; }
+  .tl-content h4 {
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .tl-content p { font-size: 14px; color: var(--ink2); line-height: 1.65; margin: 0; }
+  .tl-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 100px; margin-bottom: 6px;
+  }
+  .badge-warn { background: rgba(248,113,113,0.1); color: #f87171; }
+  .badge-now  { background: rgba(52,211,153,0.1); color: #34D399; }
+
+  /* ── SCIENCE CARD ── */
+  .science-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin: 32px 0;
+    position: relative; overflow: hidden;
+  }
+  .science-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+  }
+  .science-card h3 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .science-card p { font-size: 15px; color: var(--ink2); line-height: 1.75; margin-bottom: 12px; }
+  .science-card p:last-child { margin-bottom: 0; }
+  .science-card a { color: var(--accent2); text-decoration: none; }
+  .science-card a:hover { color: var(--ink); }
+
+  /* ── ROADMAP ITEMS ── */
+  .roadmap { display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+  .roadmap-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 20px 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .roadmap-item:hover { border-color: rgba(138,43,226,0.3); }
+  .roadmap-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .roadmap-item h4 { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .roadmap-item p { font-size: 13px; color: var(--ink2); line-height: 1.6; margin: 0; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 56px 0; }
+
+  /* ── CJ SIGNATURE ── */
+  .cj-block {
+    display: flex; align-items: center; gap: 24px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px 32px;
+    margin-top: 32px;
+  }
+  .cj-sig {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 48px; font-weight: 900; font-style: italic;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; flex-shrink: 0; line-height: 1;
+  }
+  .cj-text h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .cj-text p { font-size: 14px; color: var(--ink2); line-height: 1.6; margin: 0; }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
+  .footer-inner { max-width: 780px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
+  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 40px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
+    .burger { display: flex; }
+    main { padding: 100px 20px 80px; }
+    .tl-item { grid-template-columns: 80px 1px 1fr; gap: 0 16px; }
+    .tl-date { font-size: 10px; }
+    .science-card { padding: 24px 20px; }
+    .cj-block { flex-direction: column; gap: 16px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  .page-hero { animation: fadeUp 0.7s ease both 0.1s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html" class="btn-home">← Back to site</a>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="page-tag">About</span>
+    <h1>Glasses on your<br><em>screen, not your face.</em></h1>
+    <p class="lead">DOA started as a simple frustration and turned into a two-year technical journey through three platforms, two dead ends, and one insight that changed everything.</p>
+  </div>
+
+  <!-- ORIGIN -->
+  <div class="about-section">
+    <h2>Where it <em>started</em></h2>
+    <p>On November 4th, 2024, the idea was simple: if your glasses correct your vision by bending light before it reaches your eye, why couldn't a screen do the same thing — by adjusting the image before displaying it?</p>
+    <p>The answer turned out to be: it can. But getting there took longer than expected.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="about-section">
+    <h2>The <em>journey</em></h2>
+    <p>Three platforms. Two hard stops. One product that finally works.</p>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">Nov 2024</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <h4>The idea</h4>
+          <p>The concept clicks: pre-distort the screen image so that after passing through the user's imperfect optics, it arrives at the retina in focus. Like noise-cancelling headphones, but for vision.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Dec 2024</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <h4>Android app — first attempt</h4>
+          <p>Development starts on a mobile app. The vision correction works within the app itself — PDFs, videos, the built-in browser. It shows real promise.</p>
+        </div>
+      </div>
+
+      <div class="tl-item blocked">
+        <div class="tl-date">Aug 2025</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <span class="tl-badge badge-warn">Hard stop</span>
+          <h4>Mobile hits a wall</h4>
+          <p>Both Android and iOS security models block apps from applying overlays system-wide. Correction is locked to the app itself — useless for everyday screen use. Development pauses.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">Sep 2025</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <h4>Browser extension — second attempt</h4>
+          <p>A browser extension could apply correction to anything viewed in the browser. Development begins. Progress looks good.</p>
+        </div>
+      </div>
+
+      <div class="tl-item blocked">
+        <div class="tl-date">Late 2025</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <span class="tl-badge badge-warn">Hard stop</span>
+          <h4>Browser hits a wall</h4>
+          <p>Browser security models block extensions from reading pixel data across tabs and pages at the level required for real-time correction. Another dead end — by design, not by bug.</p>
+        </div>
+      </div>
+
+      <div class="tl-item current">
+        <div class="tl-date">Now</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
+        <div class="tl-content">
+          <span class="tl-badge badge-now">In progress</span>
+          <h4>Desktop app — the right path</h4>
+          <p>Windows Graphics Capture gives OS-level screen access. The correction engine processes every frame in real time. The correction works across every app, window, and content type. This is the one.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCIENCE -->
+  <div class="about-section">
+    <h2>The <em>science</em></h2>
+    <p>DOA isn't magic and it isn't new. The underlying concept was demonstrated by <a href="https://news.mit.edu/2014/new-display-technology-automatically-corrects-for-vision-defects-0731" target="_blank" rel="noopener" style="color:var(--accent2);text-decoration:none;font-weight:600;">MIT Media Lab researchers in 2014</a> — they called it "putting the glasses on the display rather than on your head." Their prototype used a pinhole mask over a screen to project slightly different images to different parts of the pupil, simulating a focused image for users with refractive errors.</p>
+    <p>DOA takes the same principle and implements it entirely in software — a correction engine that runs at 60fps and applies a calibrated layer to your screen based on your exact prescription in real time.</p>
+
+    <div class="science-card">
+      <h3>The noise-cancellation analogy</h3>
+      <p>Active noise-cancelling headphones work by measuring the sound coming in and generating an anti-sound — the exact inverse waveform — so the two cancel each other out and you hear silence.</p>
+      <p>DOA works the same way for vision. It measures how your eye distorts incoming light (your prescription) and applies the inverse distortion to the screen image. By the time the light from the screen reaches your retina, the distortions cancel out — and you see clearly.</p>
+      <p>No hardware. No lenses. Just math applied to pixels before they're displayed.</p>
+    </div>
+
+    <p>The correction isn't perfect — it's an approximation based on your stated prescription and screen DPI. It works best for everyday reading and productivity use. It doesn't replace glasses for all activities. But for the hours most people spend in front of a screen, it's genuinely useful.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FUTURE -->
+  <div class="about-section">
+    <h2>Where this <em>is going</em></h2>
+    <p>The desktop app is the beginning, not the destination. The real goal is to make this technology invisible — built into the displays and operating systems people already use, so nobody has to install anything.</p>
+
+    <div class="roadmap">
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🖥️</div>
+        <div>
+          <h4>Better correction over time</h4>
+          <p>Feedback from real users will improve how DOA calibrates correction parameters to different prescription profiles — moving from static math toward personalized accuracy.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🍎</div>
+        <div>
+          <h4>macOS</h4>
+          <p>A macOS port using ScreenCaptureKit and Metal. Same concept, different platform. After Windows is stable.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">🔬</div>
+        <div>
+          <h4>Efficacy study + provisional patent</h4>
+          <p>Independent validation of the correction quality. A prerequisite for the conversations that matter most.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">📺</div>
+        <div>
+          <h4>Monitor OEM integration</h4>
+          <p>The endgame — working with display manufacturers to build the correction directly into firmware. A monitor that corrects for your eyes without any software install.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-icon">📱</div>
+        <div>
+          <h4>Mobile OS integration</h4>
+          <p>Compositor-level integration on Android and iOS — correction applied at the OS level, before any app renders. The version of the original mobile idea that actually works.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DEVELOPER -->
+  <div class="about-section">
+    <h2>The <em>developer</em></h2>
+    <p>DOA is a solo project. One person, no team, no VC funding. Built in public, shipped iteratively, and honest about what works and what doesn't yet.</p>
+
+    <div class="cj-block">
+      <div class="cj-sig">CJ_</div>
+      <div class="cj-text">
+        <h3>Solo indie developer</h3>
+        <p>Building DOA alone — no team, no funding. Two years into a problem most people said was impossible. Still going.</p>
+      </div>
+    </div>
+
+    <p style="margin-top:24px;">If you have questions, feedback, or just want to say the idea is crazy — <a href="contact.html" style="color:var(--accent2);text-decoration:none;font-weight:600;">reach out</a>. Every message goes directly to me.</p>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/Terms-of-Service">Terms of Service</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/download">Download</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Operated by Cedric Julien .E</span>
+      <a href="https://yourportfolio.com" target="_blank" rel="noopener">
+        <img src="cj-white.svg" alt="CJ_" height="28" style="display:block;">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('navLinks');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+</body>
+</html>
