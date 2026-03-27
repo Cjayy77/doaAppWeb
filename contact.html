@@ -438,15 +438,16 @@
     const subject    = encodeURIComponent(`[DOA Contact] ${topicLabel}`);
     const body       = encodeURIComponent(`Name: ${name || 'Not provided'}\nEmail: ${email}\nTopic: ${topicLabel}\n\n${message}`);
 
-   fetch('https://formspree.io/f/xojkpazv', {
+// In contact.html, replace the fetch call with:
+fetch('https://doa-server-4jgb.onrender.com/contact', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    name: name,
-    email: email,
-    topic: topicLabel,
-    message: message
-  })
+  type:    topicLabel,
+  version: 'web',
+  message: `Name: ${name || 'Not provided'}\n\n${message}`,
+  ...(email && { replyTo: email }),
+})
 });
 
 // Show success after a short delay
