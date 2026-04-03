@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — DOA · Device Optical Aid</title>
+<meta name="description" content="Where DOA has been, where it is now, and where it is going — updated as we build.">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:          #1C1B18;
+    --bg2:         #232320;
+    --card:        #2A2A27;
+    --border:      rgba(255,255,255,0.08);
+    --ink:         #F5F4EF;
+    --ink2:        #9C9B96;
+    --ink3:        #6C6B66;
+    --accent:      #8a2be2;
+    --accent2:     #b066ff;
+    --accent-dim:  rgba(138,43,226,0.15);
+    --green:       #34D399;
+    --green-dim:   rgba(52,211,153,0.12);
+    --yellow:      #FBBF24;
+    --yellow-dim:  rgba(251,191,36,0.12);
+    --red:         #f87171;
+    --red-dim:     rgba(248,113,113,0.1);
+    --radius:      14px;
+    --radius-sm:   10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg);
+    color: var(--ink2);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 80px;
+    background: rgba(28,27,24,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
+    color: #F5F4EF; margin-left: 14px; padding-left: 14px;
+    border-left: 1.5px solid rgba(255,255,255,0.1);
+    white-space: nowrap; text-transform: lowercase; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-home {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; }
+
+  /* ── LAYOUT ── */
+  main { max-width: 820px; margin: 0 auto; padding: 120px 40px 100px; }
+
+  /* ── HERO ── */
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); background: var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .page-hero { margin-bottom: 16px; }
+  .page-hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 900; letter-spacing: -2px; line-height: 1.0;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .page-hero h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .page-hero .lead {
+    font-size: 16px; color: var(--ink2); line-height: 1.7; max-width: 580px;
+  }
+  .last-updated {
+    font-size: 12px; color: var(--ink3); margin-top: 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .last-updated::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green); display: inline-block; flex-shrink: 0;
+  }
+
+  /* ── QUALITY BAR ── */
+  .quality-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin: 48px 0 56px;
+  }
+  .quality-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 14px; flex-wrap: wrap; gap: 8px;
+  }
+  .quality-header h3 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--ink);
+  }
+  .quality-pct {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 28px; font-weight: 900; color: var(--accent2);
+    letter-spacing: -1px; line-height: 1;
+  }
+  .quality-bar-track {
+    height: 8px; background: rgba(255,255,255,0.06);
+    border-radius: 100px; overflow: hidden; margin-bottom: 16px;
+  }
+  .quality-bar-fill {
+    height: 100%; width: 80%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 100px;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .quality-note { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+  .quality-note strong { color: var(--ink); font-weight: 600; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── STATUS BADGES ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .badge::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50; flex-shrink: 0;
+  }
+  .badge-done    { background: var(--green-dim);  color: var(--green);  border: 1px solid rgba(52,211,153,0.2); }
+  .badge-done::before { background: var(--green); border-radius: 50%; }
+  .badge-active  { background: var(--accent-dim); color: var(--accent2); border: 1px solid rgba(138,43,226,0.2); animation: badge-pulse 2s infinite; }
+  .badge-active::before { background: var(--accent2); border-radius: 50%; }
+  .badge-next    { background: rgba(255,255,255,0.04); color: var(--ink2); border: 1px solid var(--border); }
+  .badge-next::before { background: var(--ink3); border-radius: 50%; }
+  .badge-long    { background: rgba(255,255,255,0.04); color: var(--ink3); border: 1px solid var(--border); }
+  .badge-long::before { background: var(--ink3); border-radius: 50%; }
+  .badge-stopped { background: var(--red-dim); color: var(--red); border: 1px solid rgba(248,113,113,0.2); }
+  .badge-stopped::before { background: var(--red); border-radius: 50%; }
+
+  @keyframes badge-pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(138,43,226,0.3); }
+    50%      { box-shadow: 0 0 0 4px rgba(138,43,226,0); }
+  }
+
+  /* ── ROADMAP CARDS ── */
+  .roadmap-group { margin-bottom: 48px; }
+
+  .roadmap-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 10px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .roadmap-card:hover { border-color: rgba(138,43,226,0.25); }
+  .roadmap-card.is-active {
+    border-color: rgba(138,43,226,0.35);
+    background: linear-gradient(135deg, rgba(138,43,226,0.06), rgba(176,102,255,0.02));
+  }
+  .roadmap-card.is-active::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+  }
+  .roadmap-card.is-done::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--green); opacity: 0.6;
+  }
+  .roadmap-card.is-stopped {
+    opacity: 0.7;
+  }
+  .roadmap-card.is-stopped::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--red); opacity: 0.5;
+  }
+
+  .card-top {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 12px; margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .card-title-wrap { display: flex; flex-direction: column; gap: 4px; }
+  .card-version {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink3);
+  }
+  .card-title {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 18px; font-weight: 800; color: var(--ink);
+    letter-spacing: -0.3px; line-height: 1.1;
+  }
+  .card-body { font-size: 15px; color: var(--ink2); line-height: 1.75; }
+  .card-body strong { color: var(--ink); font-weight: 600; }
+  .card-body p { margin-bottom: 8px; }
+  .card-body p:last-child { margin-bottom: 0; }
+
+  /* Sub-items inside a card */
+  .card-items { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .card-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 14px; color: var(--ink2); line-height: 1.6;
+  }
+  .card-item::before {
+    content: '→'; color: var(--accent2); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .card-item strong { color: var(--ink); font-weight: 600; }
+
+  /* ── DIVIDER ── */
+  .divider { height: 1px; background: var(--border); margin: 8px 0 40px; }
+
+  /* ── FOOTER ── */
+  footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
+  .footer-inner { max-width: 820px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
+  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 40px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
+    .burger { display: flex; }
+    main { padding: 100px 20px 80px; }
+    .quality-section { padding: 22px 20px; }
+    .roadmap-card { padding: 20px 20px; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  .page-hero { animation: fadeUp 0.6s ease both 0.1s; }
+  .quality-section { animation: fadeUp 0.6s ease both 0.2s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="index.html" class="btn-home">← Back to site</a>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="page-tag">Roadmap</span>
+    <h1>Building toward<br><em>perfect correction.</em></h1>
+    <p class="lead">A live view of where DOA has been, where it stands today, and what comes next. Updated as things change.</p>
+    <p class="last-updated">Last updated: April 2026</p>
+  </div>
+
+  <!-- CORRECTION QUALITY BAR -->
+  <div class="quality-section">
+    <div class="quality-header">
+      <h3>Current correction quality</h3>
+      <span class="quality-pct">~80%</span>
+    </div>
+    <div class="quality-bar-track">
+      <div class="quality-bar-fill" id="qualityFill" style="width:0%"></div>
+    </div>
+    <p class="quality-note">
+      DOA uses your prescription numbers as they are — the same values written for physical lenses. This gets you most of the way there. <strong>The remaining gap exists because your prescription was measured for a specific distance and set of conditions that may not match your screen setup exactly.</strong> Two people with the same prescription can experience different results depending on their screen, their distance from it, and how their eyes individually respond. Closing that gap — making the correction fit <em>you</em>, not just your prescription on paper — is what the next stages of development are about.
+    </p>
+  </div>
+
+  <!-- ═══ PAST ═══ -->
+  <div class="roadmap-group">
+    <div class="section-label">Where we've been</div>
+
+    <div class="roadmap-card is-done">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">November 2024</span>
+          <span class="card-title">The idea</span>
+        </div>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <div class="card-body">
+        <p>The concept: a screen can pre-adjust its image so that by the time the light reaches your eye, it looks the way it would through a corrective lens. No hardware, no glasses — just the image itself, adjusted before it's displayed.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-card is-done">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">December 2024 — August 2025</span>
+          <span class="card-title">Android app</span>
+        </div>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <div class="card-body">
+        <p>The first version was an Android app. The correction worked inside the app — documents, videos, the built-in browser. It showed the concept was real.</p>
+        <p>It never shipped as a full product because Android's security model prevents apps from applying any overlay to other apps or the home screen. Correction was stuck inside DOA's own interface — which defeats the purpose.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-card is-stopped">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">September 2025</span>
+          <span class="card-title">Browser extension</span>
+        </div>
+        <span class="badge badge-stopped">Discontinued</span>
+      </div>
+      <div class="card-body">
+        <p>A browser extension would let the correction apply to any webpage. Development started and made progress — until it hit the same wall in a different form. Browsers block extensions from accessing the screen content they would need to apply real-time correction. Another dead end, also by design.</p>
+        <p>Both platforms protect users by restricting what software can see and touch. Those restrictions are reasonable — they just made DOA impossible on those platforms.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ NOW ═══ -->
+  <div class="roadmap-group">
+    <div class="section-label">Where we are now</div>
+
+    <div class="roadmap-card is-active">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">Now — Beta</span>
+          <span class="card-title">Windows desktop app</span>
+        </div>
+        <span class="badge badge-active">In progress</span>
+      </div>
+      <div class="card-body">
+        <p>Windows gives DOA the OS-level access it needs to process every frame on your screen in real time — across every app, window, and content type simultaneously.</p>
+        <div class="card-items">
+          <div class="card-item"><span><strong>Prescription-based correction</strong> — you enter your values once, DOA applies them continuously</span></div>
+          <div class="card-item"><span><strong>60fps processing</strong> — no visible lag for reading, browsing, and everyday work</span></div>
+          <div class="card-item"><span><strong>Colour blindness modes</strong> — Protanopia, Deuteranopia, and Tritanopia, usable alongside correction</span></div>
+          <div class="card-item"><span><strong>Multi-monitor support</strong> — different settings per screen (Premium)</span></div>
+          <div class="card-item"><span><strong>Collecting feedback</strong> — real-world usage data that will improve the next stage</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ NEXT ═══ -->
+  <div class="roadmap-group">
+    <div class="section-label">What's next</div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">v1.1</span>
+          <span class="card-title">Smarter starting correction</span>
+        </div>
+        <span class="badge badge-next">Coming soon</span>
+      </div>
+      <div class="card-body">
+        <p>Right now, two people with the same prescription get the same correction. But prescriptions aren't the whole picture — screen size, viewing distance, and individual differences all affect how the correction should be applied.</p>
+        <p>Version 1.1 introduces a calibration system informed by feedback from real users across different setups. Your starting correction will be better matched to your situation from the moment you open the app — not just your numbers on paper.</p>
+        <p><strong>Expected improvement: ~80% → ~88%</strong></p>
+      </div>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">v1.2</span>
+          <span class="card-title">Content-aware correction + vision change alerts</span>
+        </div>
+        <span class="badge badge-next">Coming soon</span>
+      </div>
+      <div class="card-body">
+        <p>Reading text and watching video need different things from a correction. Text needs sharp edges and high detail. Video needs smoother correction to avoid visual noise between frames. Version 1.2 detects what's on your screen and adjusts automatically.</p>
+        <p>This version also introduces a subtle monitoring feature: if your correction preferences shift noticeably over time, DOA will suggest you consider checking in with your optometrist. Your vision can change, and DOA is well placed to notice before you do.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">v2.0</span>
+          <span class="card-title">Dynamic correction — your screen adapts to you</span>
+        </div>
+        <span class="badge badge-next">Coming soon</span>
+      </div>
+      <div class="card-body">
+        <p>The biggest upgrade. Correction quality depends in part on how far you are from your screen — that distance affects how the correction should be calculated. Today, you set that distance manually once. Version 2.0 estimates it automatically in real time using your webcam, and adjusts the correction as you naturally move.</p>
+        <p>This is also the version where the correction starts feeling less like a filter and more like the display itself was made for your eyes.</p>
+        <p><strong>Expected improvement: ~88% → ~95%</strong></p>
+      </div>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">v2.5</span>
+          <span class="card-title">Sharper text on every display type</span>
+        </div>
+        <span class="badge badge-next">Coming soon</span>
+      </div>
+      <div class="card-body">
+        <p>Different monitors display pixels differently depending on their technology and layout. Version 2.5 accounts for these differences at a sub-pixel level, making text noticeably sharper on standard monitors — particularly on high-resolution displays where the difference is most visible.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ LONG TERM ═══ -->
+  <div class="roadmap-group">
+    <div class="section-label">Long term</div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">macOS</span>
+          <span class="card-title">Mac support</span>
+        </div>
+        <span class="badge badge-long">Long term</span>
+      </div>
+      <div class="card-body">
+        <p>The same product, built for macOS. After the Windows version is stable and the calibration system is mature.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">Hardware</span>
+          <span class="card-title">Correction built into monitors</span>
+        </div>
+        <span class="badge badge-long">Long term</span>
+      </div>
+      <div class="card-body">
+        <p>The furthest goal: working with display manufacturers so that correction is built directly into the monitor firmware. You sit down, it recognises your profile, and your screen adjusts automatically — no app to install, no setup. Just a display that works for your eyes.</p>
+      </div>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="card-top">
+        <div class="card-title-wrap">
+          <span class="card-version">Android — revisited</span>
+          <span class="card-title">Correction at the OS level on Android</span>
+        </div>
+        <span class="badge badge-long">Long term</span>
+      </div>
+      <div class="card-body">
+        <p>The original Android idea — finally done properly. Not as an app, but as part of the operating system itself, working with device manufacturers to apply correction before anything is displayed. This is how the Android version should have always worked. It requires a different kind of partnership, which takes time — but it is on the roadmap.</p>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
+        <p class="footer-desc">Enhancing digital vision for a clearer world.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/Terms-of-Service">Terms of Service</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/download">Download</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Operated by Cedric Julien .E</span>
+      <a href="https://yourportfolio.com" target="_blank" rel="noopener">
+        <img src="cj-white.svg" alt="CJ_" height="28" style="display:block;">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Burger
+  const burger = document.getElementById('burger');
+  const nav    = document.getElementById('navLinks');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+  // Animate quality bar on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('qualityFill').style.width = '80%';
+    }, 400);
+  });
+</script>
+</body>
+</html>
