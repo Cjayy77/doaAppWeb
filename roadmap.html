@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Roadmap — DOA</title>
+<title>Roadmap — DOA · Device Optical Aid</title>
 <meta name="description" content="Where DOA has been, where it is now, and where it is going.">
 <meta name="author" content="CJ_">
 <meta name="robots" content="index, follow">
@@ -304,6 +304,85 @@
     background: var(--accent-dim); padding: 2px 8px; border-radius: 100px;
   }
 
+  /* ── SUGGESTION BOX ── */
+  .suggestion-section {
+    padding: 0 40px 72px;
+    max-width: 1600px; margin: 0 auto;
+  }
+  .suggestion-inner {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    max-width: 680px;
+  }
+  .suggestion-inner h2 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 22px; font-weight: 800; letter-spacing: -0.4px;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .suggestion-inner p {
+    font-size: 14px; color: var(--ink2); margin-bottom: 24px; line-height: 1.6;
+  }
+  .suggestion-types {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .type-btn {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px; font-weight: 600;
+    padding: 6px 14px; border-radius: 100px; cursor: pointer;
+    border: 1.5px solid var(--border); background: none;
+    color: var(--ink2); transition: all 0.2s;
+  }
+  .type-btn:hover { border-color: var(--accent2); color: var(--ink); }
+  .type-btn.active {
+    background: var(--accent-dim); border-color: var(--accent2);
+    color: var(--accent2);
+  }
+  .suggestion-textarea {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; color: var(--ink);
+    width: 100%; background: var(--bg2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+    resize: vertical; min-height: 100px;
+    outline: none; line-height: 1.6;
+    transition: border-color 0.2s;
+    margin-bottom: 12px;
+  }
+  .suggestion-textarea::placeholder { color: var(--ink3); }
+  .suggestion-textarea:focus { border-color: var(--accent); }
+  .suggestion-email {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; color: var(--ink);
+    width: 100%; background: var(--bg2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 12px 16px;
+    outline: none; margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .suggestion-email::placeholder { color: var(--ink3); }
+  .suggestion-email:focus { border-color: var(--accent); }
+  .suggestion-submit {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; padding: 12px 28px; border-radius: 8px;
+    cursor: pointer; position: relative; overflow: hidden;
+    transition: all 0.25s;
+  }
+  .suggestion-submit::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: 0.5s;
+  }
+  .suggestion-submit:hover::before { left: 100%; }
+  .suggestion-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+  .suggestion-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .suggestion-submit.success { background: linear-gradient(135deg, #27ae60, #34D399); }
+  .suggestion-note { font-size: 12px; color: var(--ink3); margin-top: 10px; }
+
   /* ── FOOTER ── */
   footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
   .footer-inner { max-width: 1600px; margin: 0 auto; }
@@ -328,6 +407,8 @@
     .quality-strip { margin: 0 20px 24px; padding: 16px 18px; }
     .quality-strip-note { display: none; }
     .board-wrapper { padding: 0 20px 60px; }
+    .suggestion-section { padding: 0 20px 56px; }
+    .suggestion-inner { padding: 24px 20px; }
     .footer-top { flex-direction: column; gap: 24px; }
     .footer-bottom { flex-direction: column; text-align: center; }
   }
@@ -532,18 +613,6 @@
       </div>
     </div>
 
-        <!-- CARD: macOS -->
-    <div class="card" data-status="next">
-      <div class="card-top">
-        <span class="card-title">macOS support</span>
-        <span class="card-tag tag-platform">Platform</span>
-      </div>
-      <div class="card-body">The same product, rebuilt for macOS. After the Windows version is stable and the calibration system is mature.</div>
-      <div class="card-footer">
-        <span class="card-version">Post v1.1</span>
-      </div>
-    </div>
-
     <!-- CARD: v1.2 content-aware -->
     <div class="card" data-status="next">
       <div class="card-top">
@@ -618,6 +687,17 @@
       </div>
     </div>
 
+    <!-- CARD: macOS -->
+    <div class="card" data-status="later">
+      <div class="card-top">
+        <span class="card-title">macOS support</span>
+        <span class="card-tag tag-platform">Platform</span>
+      </div>
+      <div class="card-body">The same product, rebuilt for macOS. After the Windows version is stable and the calibration system is mature.</div>
+      <div class="card-footer">
+        <span class="card-version">Post v2.0</span>
+      </div>
+    </div>
 
     <!-- CARD: Monitor OEM -->
     <div class="card" data-status="later">
@@ -647,6 +727,39 @@
 
 </div><!-- /board -->
 </div><!-- /board-wrapper -->
+
+<!-- SUGGESTION BOX -->
+<div class="suggestion-section">
+  <div class="suggestion-inner">
+    <h2>Shape what's next</h2>
+    <p>Have a feature in mind, a correction issue, or an idea for the roadmap? Send it directly — every suggestion is read.</p>
+
+    <div class="suggestion-types">
+      <button class="type-btn active" data-type="Feature request">Feature request</button>
+      <button class="type-btn" data-type="Correction issue">Correction issue</button>
+      <button class="type-btn" data-type="Platform request">Platform request</button>
+      <button class="type-btn" data-type="General idea">General idea</button>
+    </div>
+
+    <textarea
+      class="suggestion-textarea"
+      id="suggestionText"
+      placeholder="Describe your idea or issue as clearly as you can…"
+    ></textarea>
+
+    <input
+      class="suggestion-email"
+      type="email"
+      id="suggestionEmail"
+      placeholder="Your email (optional — if you want a reply)"
+    >
+
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <button class="suggestion-submit" id="suggestionSubmit">Send suggestion →</button>
+      <p class="suggestion-note" id="suggestionNote">Goes straight to the team. No spam.</p>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -698,7 +811,69 @@
     }, 500);
   });
 
-  // Auto-update column counts
+  // Suggestion type buttons
+  let selectedType = 'Feature request';
+  document.querySelectorAll('.type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedType = btn.dataset.type;
+    });
+  });
+
+  // Suggestion submit
+  document.getElementById('suggestionSubmit').addEventListener('click', async function () {
+    const textarea = document.getElementById('suggestionText');
+    const email    = document.getElementById('suggestionEmail').value.trim();
+    const note     = document.getElementById('suggestionNote');
+
+    if (!textarea.value.trim()) {
+      textarea.style.borderColor = 'rgba(248,113,113,0.5)';
+      setTimeout(() => textarea.style.borderColor = '', 1500);
+      return;
+    }
+
+    this.textContent = 'Sending…';
+    this.disabled = true;
+
+    try {
+      const res = await fetch('https://doa-server-4jgb.onrender.com/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type:    `Roadmap Suggestion — ${selectedType}`,
+          version: 'web',
+          message: textarea.value.trim(),
+          ...(email && { replyTo: email }),
+        }),
+      });
+
+      if (res.ok) {
+        this.classList.add('success');
+        this.textContent = '✓ Sent!';
+        textarea.value = '';
+        document.getElementById('suggestionEmail').value = '';
+        note.textContent = 'Thanks! We read every suggestion.';
+        note.style.color = '#34D399';
+        setTimeout(() => {
+          this.classList.remove('success');
+          this.textContent = 'Send suggestion →';
+          this.disabled = false;
+          note.textContent = 'Goes straight to the team. No spam.';
+          note.style.color = '';
+        }, 3000);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      this.textContent = 'Failed — try again';
+      setTimeout(() => {
+        this.textContent = 'Send suggestion →';
+        this.disabled = false;
+      }, 2500);
+    }
+  });
+
   document.querySelectorAll('.col').forEach(col => {
     const cards = col.querySelectorAll('.card').length;
     const countEl = col.querySelector('.col-count');
