@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms of Service | DOA</title>
 <meta name="description" content="Read the Terms of Service for Device Optical Aid — rules, responsibilities, and legal guidelines for using the app.">
-<meta name="keywords" content="DOA, DOA App, Device Optical Aid, Vision correction, Terms of Service">
 <meta name="author" content="CJ_">
-<meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="doaTransparent.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&display=swap" rel="stylesheet">
@@ -31,13 +29,9 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'Bricolage Grotesque', sans-serif;
-    background: var(--bg);
-    color: var(--ink2);
-    line-height: 1.7;
-    overflow-x: hidden;
+    background: var(--bg); color: var(--ink2);
+    line-height: 1.7; overflow-x: hidden;
   }
-
-  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -46,7 +40,15 @@
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 48px; width: auto; }
+  .nav-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
+    color: #F5F4EF; margin-left: 14px; padding-left: 14px;
+    border-left: 1.5px solid rgba(255,255,255,0.1);
+    white-space: nowrap; text-transform: lowercase; text-decoration: none;
+  }
   .nav-links { display: flex; gap: 28px; list-style: none; }
   .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--ink); }
@@ -60,12 +62,9 @@
   .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
   .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; transition: 0.3s; }
-
-  /* ── HERO BAND ── */
   .page-hero {
     padding: 140px 40px 72px;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px; margin: 0 auto;
   }
   .page-tag {
     display: inline-block; font-size: 11px; font-weight: 700;
@@ -93,22 +92,17 @@
     width: 6px; height: 6px; border-radius: 50%;
     background: var(--accent2);
   }
-
-  /* ── CONTENT ── */
   .legal-body {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px; margin: 0 auto;
     padding: 0 40px 120px;
   }
-
   .legal-section {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     background: var(--card);
     padding: 32px 36px;
     margin-bottom: 16px;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
     transition: border-color 0.3s;
   }
   .legal-section:hover { border-color: rgba(138,43,226,0.25); }
@@ -119,15 +113,12 @@
     opacity: 0; transition: opacity 0.3s;
   }
   .legal-section:hover::before { opacity: 1; }
-
-  /* Warning-tinted section (medical disclaimer) */
   .legal-section.warn {
     border-color: rgba(251,191,36,0.2);
     background: linear-gradient(135deg, var(--card), rgba(251,191,36,0.04));
   }
   .legal-section.warn::before { background: linear-gradient(180deg, var(--warn), rgba(251,191,36,0.3)); opacity: 1; }
   .legal-section.warn:hover { border-color: rgba(251,191,36,0.4); }
-
   .section-number {
     font-family: 'League Spartan', sans-serif;
     font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
@@ -135,7 +126,6 @@
     margin-bottom: 10px; display: block;
   }
   .legal-section.warn .section-number { color: var(--warn); }
-
   .legal-section h2 {
     font-family: 'League Spartan', sans-serif;
     font-size: 20px; font-weight: 700;
@@ -167,27 +157,20 @@
   .legal-section.warn ul li::before { color: var(--warn); }
   .legal-section a { color: var(--accent2); text-decoration: none; transition: color 0.2s; }
   .legal-section a:hover { color: var(--ink); }
-
-  /* Highlight box */
   .highlight-box {
     background: var(--accent-dim);
     border: 1px solid rgba(138,43,226,0.2);
-    border-radius: 10px; padding: 20px 24px;
-    margin: 16px 0 4px;
+    border-radius: 10px; padding: 20px 24px; margin: 16px 0 4px;
   }
   .highlight-box p { color: var(--ink); font-size: 14px; margin: 0; line-height: 1.7; }
   .highlight-box strong { color: var(--accent2); }
-
   .warn-box {
     background: var(--warn-dim);
     border: 1px solid rgba(251,191,36,0.2);
-    border-radius: 10px; padding: 20px 24px;
-    margin: 4px 0;
+    border-radius: 10px; padding: 20px 24px; margin: 4px 0;
   }
   .warn-box p { color: var(--ink); font-size: 14px; margin: 0; line-height: 1.7; }
   .warn-box strong { color: var(--warn); }
-
-  /* Contact card */
   .contact-card {
     background: var(--bg2); border-radius: 10px;
     padding: 20px 24px; margin-top: 8px;
@@ -196,8 +179,6 @@
   .contact-card span { font-size: 13px; color: var(--ink3); }
   .contact-card a { color: var(--accent2); font-size: 14px; text-decoration: none; }
   .contact-card a:hover { color: var(--ink); }
-
-  /* ── FOOTER ── */
   footer { background: var(--bg); border-top: 1px solid var(--border); padding: 48px 40px 32px; }
   .footer-inner { max-width: 800px; margin: 0 auto; }
   .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
@@ -210,9 +191,6 @@
   .footer-col a:hover { color: var(--ink); }
   .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
   .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
-  .cj { font-family: 'League Spartan', sans-serif; font-style: italic; font-weight: 700; color: var(--accent2); }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
@@ -228,9 +206,11 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo"><img src="doaTransparent.png" alt="DOA Logo"></a>
+  <a href="/index" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/index">Home</a></li>
     <li><a href="/index#features">Features</a></li>
@@ -241,183 +221,259 @@
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- HERO -->
 <div class="page-hero">
   <span class="page-tag">Legal</span>
   <h1>Terms of <em>Service</em></h1>
-  <p class="last-updated">Last updated: March 19, 2026</p>
+  <p class="last-updated">Last updated: April 7, 2026</p>
 </div>
 
-<!-- CONTENT -->
 <div class="legal-body">
 
   <div class="legal-section">
     <span class="section-number">01</span>
     <h2>Acceptance of Terms</h2>
-    <p>By downloading, installing, or using the Device Optical Aid (DOA) desktop application ("the App"), you agree to be bound by these Terms of Service. If you do not agree, please do not install or use the App.</p>
-    <p>These terms apply to the Windows desktop application and any future platform releases (macOS, Linux). Use of the DOA website is also subject to these terms.</p>
-  </div>
-
-  <div class="legal-section">
-    <span class="section-number">02</span>
-    <h2>Description of Service</h2>
-    <p>DOA is a desktop application that applies real-time GPU shader-based visual correction to your screen. It is designed for users with refractive errors who want clearer screen readability without wearing glasses. The App provides:</p>
-    <ul>
-      <li>Screen-wide vision correction for myopia, hyperopia, astigmatism, and presbyopia</li>
-      <li>GPU-accelerated overlay rendering at up to 60fps</li>
-      <li>Visual filters including blue light reduction and color blindness correction modes</li>
-      <li>Multi-monitor support (Premium tier)</li>
-      <li>Prescription management and cloud sync via Firebase</li>
-    </ul>
+    <p>By downloading, installing, or using the Device Optical Aid (DOA) desktop application or visiting the DOA website at deviceopticalaid.com ("the Service"), you agree to be bound by these Terms of Service ("Terms") and our <a href="/privacy-policy">Privacy Policy</a>, which is incorporated herein by reference.</p>
+    <p>If you do not agree to these Terms in their entirety, you must not install or use the application or access the website. Your continued use of the Service following any update to these Terms constitutes acceptance of the revised Terms.</p>
+    <p>These Terms apply to the Windows desktop application and any future platform releases (macOS, Linux). DOA is operated by Cedric Julien .E, an individual operator based in Douala, Cameroon.</p>
   </div>
 
   <div class="legal-section warn">
-    <span class="section-number">03</span>
-    <h2>Medical Disclaimer</h2>
+    <span class="section-number">02</span>
+    <h2>Medical &amp; Health Disclaimer — Read Carefully</h2>
     <div class="warn-box">
-      <p><strong>Important:</strong> DOA is not a medical device and is not regulated as one. It is not intended to replace prescription glasses, contact lenses, or any professional eye care treatment. The corrections applied by DOA are approximations based on user-entered prescription values and are not clinically validated substitutes for optical lenses.</p>
+      <p><strong>DOA is not a medical device.</strong> It is not regulated, certified, or approved as a medical device by any health authority including the FDA, CE, or any equivalent body. It is not a substitute for prescription eyewear, contact lenses, corrective surgery, or professional eye care of any kind.</p>
     </div>
-    <p style="margin-top:16px;">If you experience eye strain, headaches, blurred vision, or discomfort while using DOA, stop use immediately and consult a qualified eye care professional. Regular eye examinations remain necessary regardless of DOA usage.</p>
-    <p>DOA makes no claim that its correction is medically equivalent to wearing prescription eyewear.</p>
+    <p style="margin-top:16px;">The visual corrections applied by DOA are computational approximations based on user-entered prescription values. They are not clinically validated, optometrically certified, or equivalent to wearing professionally prescribed corrective lenses. Individual results will vary based on prescription accuracy, screen type, viewing distance, lighting, and individual physiology.</p>
+    <p><strong style="color:var(--ink)">Stop using DOA immediately and consult a qualified eye care professional if you experience any of the following:</strong></p>
+    <ul>
+      <li>Eye pain, irritation, tearing, or excessive dryness</li>
+      <li>Headaches, migraines, or pressure behind the eyes</li>
+      <li>Nausea, dizziness, or disorientation</li>
+      <li>Blurred, distorted, or worsened vision during or after use</li>
+      <li>Unusual sensitivity to light or visual disturbances</li>
+      <li>Any other physical symptom you associate with use of the application</li>
+    </ul>
+    <p>Regular comprehensive eye examinations remain necessary regardless of DOA usage. DOA does not replace and is not intended to delay any eye care treatment, examination, or professional consultation.</p>
+    <p>By using DOA, you expressly acknowledge that you understand and accept these limitations and assume full personal responsibility for any effects — physical, visual, or otherwise — that you attribute to use of the application.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">03</span>
+    <h2>Description of Service</h2>
+    <p>DOA is a desktop application that applies real-time visual correction to your screen. It is designed for users with refractive errors who want clearer screen readability in situations where they are not wearing glasses. The application provides:</p>
+    <ul>
+      <li>Screen-wide vision correction for myopia, hyperopia, astigmatism, and presbyopia</li>
+      <li>Real-time GPU-accelerated overlay rendering at up to 60fps</li>
+      <li>Visual filters including color blindness correction modes (Protanopia, Deuteranopia, Tritanopia)</li>
+      <li>Multi-monitor support (Premium tier)</li>
+      <li>Prescription management and cloud sync</li>
+    </ul>
+    <p>DOA is provided as a convenience tool for screen use only. It is not designed for, and should not be used as a substitute for, corrective eyewear in any context outside of screen-based activity.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">04</span>
-    <h2>Screen Capture &amp; Overlay</h2>
-    <p>To apply vision correction, DOA captures your screen in real time using the Windows Graphics Capture API. By using the App you acknowledge and consent to this. You should be aware that:</p>
+    <h2>Assumption of Risk</h2>
+    <p>You acknowledge and agree that:</p>
     <ul>
-      <li>Screen capture occurs locally on your device — no frames are transmitted externally</li>
-      <li>DOA does not record, log, or store any screen content</li>
-      <li>Certain OS-protected windows (login screens, UAC prompts, banking apps) are excluded from capture by Windows automatically</li>
-      <li>You are solely responsible for ensuring DOA is not active during activities where you do not wish the screen to be processed locally</li>
+      <li>Use of DOA is entirely voluntary and at your own risk</li>
+      <li>The correction quality provided by DOA is an approximation and may not match the quality of professionally prescribed corrective lenses</li>
+      <li>DOA has not been tested on or approved for use by persons with certain eye conditions including (but not limited to) amblyopia, glaucoma, macular degeneration, cataracts, or retinal disorders</li>
+      <li>Extended use of any screen-based application, including DOA, may contribute to digital eye strain — a condition unrelated to DOA's corrections</li>
+      <li>You have not been advised by an eye care professional to avoid screen use or visual stimulation of the type provided by DOA</li>
+      <li>You are solely responsible for determining whether DOA is appropriate for your individual eye health situation</li>
     </ul>
+    <p>If you have any existing eye condition, recent eye surgery, or have been advised by a medical professional to limit screen exposure, you must consult your eye care provider before using DOA.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">05</span>
-    <h2>Account Registration &amp; Security</h2>
-    <p>Some features require a DOA account. By registering you agree to:</p>
+    <h2>Screen Capture &amp; Overlay</h2>
+    <p>To apply vision correction, DOA captures your screen in real time using the Windows Graphics Capture API. By using the application you acknowledge and consent to this local screen processing. You should be aware that:</p>
     <ul>
-      <li>Provide accurate and current information</li>
-      <li>Maintain the security of your login credentials</li>
-      <li>Accept responsibility for all activity under your account</li>
-      <li>Notify us immediately at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a> if you suspect unauthorized access</li>
+      <li>Screen capture occurs entirely locally on your device — no frames are transmitted, uploaded, or stored externally</li>
+      <li>DOA does not record, log, screenshot, or retain any screen content in any form</li>
+      <li>Certain OS-protected windows (login screens, UAC prompts, certain banking and payment applications) are excluded from capture by the Windows operating system automatically — DOA cannot override this</li>
+      <li>You are responsible for ensuring DOA is not active during activities where you do not want any local screen processing to occur, including confidential professional work or personal communications</li>
     </ul>
-    <p>One account may be used on a reasonable number of personal devices. Sharing accounts across multiple users is not permitted.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">06</span>
-    <h2>Free Tier Limitations</h2>
-    <p>The free tier of DOA is subject to the following restrictions, which are enforced technically:</p>
+    <h2>Account Registration &amp; Security</h2>
+    <p>Certain features require a DOA account. By registering you agree to:</p>
     <ul>
-      <li>3 hours of active shader usage per calendar day</li>
-      <li>1 saved prescription at a time</li>
-      <li>Single monitor support only</li>
-      <li>A small, non-intrusive watermark rendered in the overlay</li>
+      <li>Provide accurate, current, and complete information</li>
+      <li>Maintain the security of your login credentials and not share them with others</li>
+      <li>Accept full responsibility for all activity conducted under your account</li>
+      <li>Notify us immediately at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a> if you suspect unauthorized access to your account</li>
     </ul>
-    <p>Attempting to circumvent these limits — including by manipulating local storage, system clocks, or network traffic — is a violation of these Terms and may result in account suspension.</p>
+    <p>One account may be used across a reasonable number of personal devices belonging to the same individual. Account sharing across multiple users or household members is not permitted under a single subscription.</p>
+    <p>We reserve the right to require you to update your information or to suspend accounts with inaccurate or outdated details.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">07</span>
-    <h2>Premium Subscription, Payments &amp; Renewal</h2>
-    <p>Premium removes all free tier restrictions and unlocks:</p>
+    <h2>Free Tier Limitations</h2>
+    <p>The free tier of DOA is subject to the following technical restrictions:</p>
     <ul>
-      <li>Unlimited daily usage</li>
-      <li>Unlimited saved prescriptions</li>
-      <li>Multi-monitor support</li>
-      <li>Full visual filters suite</li>
-      <li>No watermark</li>
-      <li>Priority support</li>
+      <li>3 hours of active correction usage per calendar day</li>
+      <li>1 saved prescription at a time</li>
+      <li>Single monitor support only</li>
+      <li>A small, non-intrusive watermark rendered within the correction overlay</li>
     </ul>
-    <h3>Billing</h3>
-    <p>Subscriptions are billed monthly ($4.99/mo) or annually ($39.99/yr) and renew automatically unless cancelled before the renewal date. All payments are processed by <strong style="color:var(--ink)">Creem</strong>, who acts as the Merchant of Record for all transactions. This means Creem is the legal seller of record and handles tax compliance, chargebacks, and payment disputes on your behalf. You may see "Creem" appear on your bank or card statement. DOA never stores your card details or billing information.</p>
-    <p>Cancellations take effect at the end of the current billing period. You retain Premium access until the period expires.</p>
-    <div class="highlight-box">
-      <p><strong>Early access coupon holders:</strong> If you received a free Premium code, it will not auto-renew into a paid subscription when it expires. You will be moved to the free tier automatically unless you choose to subscribe.</p>
-    </div>
+    <p>Attempting to circumvent these limits — including by manipulating local storage, system clocks, network traffic, application files, or by using multiple accounts — constitutes a material breach of these Terms and may result in immediate account suspension without refund.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">08</span>
-    <h2>Refund Policy</h2>
-    <p>We want every DOA user to have a good experience. If you are not satisfied, contact us within <strong style="color:var(--ink)">14 days</strong> of your purchase at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a>.</p>
-    <p>Refunds are reviewed individually. Approved refunds are credited to the original payment method within <strong style="color:var(--ink)">5–10 business days</strong> depending on your bank or provider.</p>
-    <p>We reserve the right to decline refund requests where the subscription has been extensively used or where abuse of the refund process is suspected.</p>
+    <h2>Premium Subscription, Billing &amp; Renewal</h2>
+    <p>Premium removes all free tier restrictions and unlocks unlimited daily usage, unlimited saved prescriptions, multi-monitor support, the full visual filters suite, watermark removal, and priority support.</p>
+    <h3>Billing</h3>
+    <p>Subscriptions are billed monthly ($4.99/month) or annually ($39.99/year) and renew automatically unless cancelled before the renewal date. All payments are processed by <strong style="color:var(--ink)">Creem</strong>, who acts as Merchant of Record for all transactions. Creem handles tax compliance, chargebacks, and payment disputes. You may see "Creem" on your bank or card statement. DOA never stores, accesses, or processes your payment card details or billing information.</p>
+    <h3>Cancellation</h3>
+    <p>You may cancel your subscription at any time through the app or by contacting support. Cancellations take effect at the end of the current billing period — you retain Premium access until the period expires. No partial-period refunds are issued for mid-cycle cancellations except where required by applicable law.</p>
+    <h3>EU / EEA Consumers — Right of Withdrawal</h3>
+    <p>If you are an EU or EEA consumer, you have a statutory right of withdrawal of 14 days from the date of purchase. However, by initiating use of the Premium service before the 14-day period expires, you expressly consent to the service beginning immediately and acknowledge that your right of withdrawal is waived upon first use of the Premium features. If you have not used Premium features, you may exercise your right of withdrawal by contacting us at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a> within 14 days of purchase.</p>
+    <div class="highlight-box">
+      <p><strong>Early access coupon holders:</strong> Free Premium codes issued during the beta period do not auto-renew into paid subscriptions when they expire. You will be moved to the free tier automatically unless you actively choose to subscribe.</p>
+    </div>
   </div>
 
   <div class="legal-section">
     <span class="section-number">09</span>
-    <h2>Privacy &amp; Data</h2>
-    <p>Your use of DOA is also governed by our <a href="/privacy-policy">Privacy Policy</a>, which is incorporated into these Terms by reference. It explains in detail what data we collect, how we use it, and your rights regarding it.</p>
+    <h2>Refund Policy</h2>
+    <p>We want every user to have a positive experience. If you are not satisfied, contact us within <strong style="color:var(--ink)">14 days</strong> of purchase at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a>.</p>
+    <p>Refund requests are reviewed individually. Approved refunds are credited to the original payment method within <strong style="color:var(--ink)">5–10 business days</strong> depending on your bank or card provider.</p>
+    <p>We reserve the right to decline refund requests where the subscription has been substantially used, where refund abuse is suspected, or where a prior refund has already been granted for the same account.</p>
+    <p>Refunds do not affect any obligations you have under these Terms, and a refund does not constitute acknowledgment of any fault or liability on DOA's part.</p>
+    <p>EU and EEA consumers retain all statutory refund rights under applicable consumer law, which take precedence over this policy where they conflict.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">10</span>
     <h2>Acceptable Use</h2>
-    <p>You agree not to:</p>
+    <p>You agree not to use DOA or the DOA website to:</p>
     <ul>
-      <li>Use DOA for any unlawful purpose or in violation of any applicable law</li>
-      <li>Attempt to reverse-engineer, decompile, or extract the source code of the App</li>
-      <li>Modify, repackage, or redistribute the App or any part of it</li>
-      <li>Attempt to bypass, disable, or circumvent any security or licensing mechanism</li>
-      <li>Use automated tools to abuse the service or stress-test the infrastructure without permission</li>
-      <li>Impersonate any person or entity or misrepresent your affiliation</li>
+      <li>Violate any applicable local, national, or international law or regulation</li>
+      <li>Reverse-engineer, decompile, disassemble, or attempt to extract the source code of the application</li>
+      <li>Modify, repackage, rebrand, or redistribute the application or any part of it</li>
+      <li>Bypass, disable, patch, or circumvent any security, licensing, watermark, or usage enforcement mechanism</li>
+      <li>Use automated tools, scripts, or bots to interact with the service in a way not intended by its design</li>
+      <li>Create or distribute derivative works based on DOA without explicit written permission</li>
+      <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity</li>
+      <li>Transmit any harmful, offensive, or unlawful content through any feedback or communication channel we provide</li>
     </ul>
   </div>
 
   <div class="legal-section">
     <span class="section-number">11</span>
     <h2>Intellectual Property</h2>
-    <p>The DOA application, its source code, shader logic, branding, design, and all related content are the intellectual property of Device Optical Aid, operated by Cedric Julien .E, and are protected by applicable copyright and intellectual property laws.</p>
-    <p>You are granted a limited, non-exclusive, non-transferable license to use the App for personal, non-commercial purposes. This license does not grant you any rights to the underlying code, assets, or technology.</p>
+    <p>The DOA application, its source code, correction algorithms, branding, design, website content, and all related materials are the intellectual property of Device Optical Aid, operated by Cedric Julien .E, and are protected by applicable copyright, trade secret, and intellectual property laws.</p>
+    <p>You are granted a limited, personal, non-exclusive, non-transferable, non-sublicensable license to install and use the application on your personal device(s) for personal, non-commercial purposes only, subject to these Terms. This license does not grant you any ownership rights, rights to the underlying technology, or rights to use the DOA brand or trademarks.</p>
+    <p>Any feedback, suggestions, or ideas you submit to us may be used by DOA without restriction or compensation to you. You waive any moral rights in such submissions to the maximum extent permitted by law.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">12</span>
-    <h2>Anti-Tampering</h2>
-    <p>DOA uses technical measures to protect its licensing and usage enforcement systems. Attempting to tamper with, patch, or disable these measures — including usage timers, watermark rendering, or subscription verification — is strictly prohibited and constitutes a material breach of these Terms.</p>
-    <p>Accounts found engaging in tampering may be permanently suspended without refund.</p>
+    <h2>Anti-Tampering &amp; Integrity</h2>
+    <p>DOA uses technical and cryptographic measures to protect its licensing, usage enforcement, and application integrity. These include but are not limited to usage timers, subscription verification via Firebase token authentication, ASAR integrity validation, and native addon version verification.</p>
+    <p>Attempting to tamper with, patch, modify, or disable any of these mechanisms is strictly prohibited and constitutes a material breach of these Terms. Accounts found engaging in tampering may be permanently suspended without refund and may be subject to legal action under applicable computer fraud and software protection laws.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">13</span>
-    <h2>Termination</h2>
-    <p>We reserve the right to suspend or terminate your account and access to DOA at our discretion, including but not limited to violations of these Terms. Where reasonably possible, we will notify you before termination.</p>
-    <p>You may terminate your account at any time by contacting support. Upon termination, your data will be deleted in accordance with our Privacy Policy.</p>
+    <h2>Limitation of Liability</h2>
+    <p>To the maximum extent permitted by applicable law, DOA, its operator (Cedric Julien .E), and any associated parties shall not be liable for any of the following arising from or related to your use of or inability to use the application:</p>
+    <ul>
+      <li>Eye strain, eye pain, tearing, dryness, headaches, visual disturbances, nausea, or any other physical symptom</li>
+      <li>Worsening of any pre-existing eye condition or vision problem</li>
+      <li>Indirect, incidental, special, consequential, or punitive damages of any kind</li>
+      <li>Loss of data, loss of productivity, or business interruption</li>
+      <li>Damages arising from reliance on DOA as a substitute for professional optical correction</li>
+      <li>Any damage resulting from unauthorized access to your account</li>
+      <li>Any damage arising from third-party services used within or alongside DOA</li>
+    </ul>
+    <p>Our total cumulative liability for any claim arising under these Terms, regardless of the nature of the claim, shall not exceed the total amount you paid to DOA in the twelve (12) months immediately preceding the event giving rise to the claim, or USD $10.00 — whichever is greater.</p>
+    <p>Some jurisdictions do not allow the exclusion or limitation of certain warranties or liabilities. In such jurisdictions, our liability is limited to the maximum extent permitted by law. Nothing in these Terms limits liability for death or personal injury caused by gross negligence, fraud, or any other liability that cannot be excluded by law.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">14</span>
-    <h2>Limitation of Liability</h2>
-    <p>To the maximum extent permitted by applicable law, DOA and its operator shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the App — including but not limited to eye strain, vision issues, data loss, or loss of productivity.</p>
-    <p>Our total liability for any claim arising under these Terms shall not exceed the amount you paid for the App in the 12 months preceding the claim.</p>
+    <h2>Disclaimer of Warranties</h2>
+    <p>DOA is provided "as is" and "as available" without warranties of any kind, whether express, implied, or statutory. To the maximum extent permitted by applicable law, we expressly disclaim all warranties including but not limited to:</p>
+    <ul>
+      <li>Implied warranties of merchantability and fitness for a particular purpose</li>
+      <li>Any warranty that the application will be error-free, uninterrupted, secure, or free of viruses</li>
+      <li>Any warranty that the vision correction applied will meet your individual visual needs or match the quality of prescription eyewear</li>
+      <li>Any warranty regarding the accuracy of correction for any specific prescription, screen type, or individual physiology</li>
+      <li>Any warranty regarding compatibility with specific GPU models, drivers, or system configurations</li>
+    </ul>
+    <p>GPU compatibility, driver versions, display technology, operating system configuration, and individual physiological factors may all affect correction quality and application performance. DOA does not guarantee consistent results across all hardware configurations.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">15</span>
-    <h2>Disclaimer of Warranties</h2>
-    <p>DOA is provided "as is" and "as available" without warranties of any kind, express or implied. We do not guarantee that the App will be error-free, uninterrupted, or that the vision correction it applies will meet your individual needs. GPU compatibility, driver versions, and system configuration may affect performance.</p>
+    <h2>Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless DOA, its operator (Cedric Julien .E), and any associated parties from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable legal fees) arising from or related to:</p>
+    <ul>
+      <li>Your violation of these Terms</li>
+      <li>Your use of the application in a manner not intended or authorized by these Terms</li>
+      <li>Your reliance on DOA as a medical or clinical tool</li>
+      <li>Any content you submit through DOA's feedback or contact channels</li>
+      <li>Your violation of any applicable law or regulation</li>
+    </ul>
   </div>
 
   <div class="legal-section">
     <span class="section-number">16</span>
-    <h2>Changes to These Terms</h2>
-    <p>We may update these Terms as the product evolves. When we make significant changes, registered users will be notified by email at least <strong style="color:var(--ink)">14 days</strong> before the changes take effect. Continued use of DOA after that date constitutes acceptance of the revised Terms.</p>
-    <p>The "Last Updated" date at the top of this page will always reflect the most recent revision.</p>
+    <h2>Privacy &amp; Data</h2>
+    <p>Your use of DOA is also governed by our <a href="/privacy-policy">Privacy Policy</a>, which is incorporated into these Terms by reference. The Privacy Policy explains in detail what data we collect, how it is used, your rights regarding it, and our compliance with GDPR, CCPA, and other applicable data protection regulations.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">17</span>
-    <h2>Governing Law</h2>
-    <p>These Terms are governed by and construed in accordance with the laws applicable in Cameroon, without regard to conflict of law provisions. Any disputes arising from these Terms shall be resolved through good-faith negotiation before any formal proceedings are initiated.</p>
+    <h2>Termination</h2>
+    <p>We reserve the right to suspend or terminate your access to DOA at any time at our discretion, including for violations of these Terms, fraudulent activity, attempted circumvention of technical protections, or abuse of the refund policy. Where reasonably practical, we will provide notice before termination.</p>
+    <p>You may terminate your account at any time by contacting support or using the account deletion option within the application. Upon termination, your personal data will be deleted in accordance with our Privacy Policy. Termination does not entitle you to a refund except as described in Section 09.</p>
+    <p>Sections 02, 04, 11, 13, 14, 15, and 19 of these Terms survive termination.</p>
   </div>
 
   <div class="legal-section">
     <span class="section-number">18</span>
+    <h2>Changes to These Terms</h2>
+    <p>We may update these Terms as the product, legal landscape, or operating context evolves. When we make significant changes, registered users will be notified by email at least <strong style="color:var(--ink)">14 days</strong> before the changes take effect. The "Last Updated" date at the top of this page always reflects the most recent revision.</p>
+    <p>Continued use of DOA after the effective date of updated Terms constitutes your acceptance of the changes. If you do not agree to updated Terms, you must stop using the application and delete your account before they take effect.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">19</span>
+    <h2>Governing Law &amp; Dispute Resolution</h2>
+    <p>These Terms are governed by the laws applicable in Cameroon, without regard to conflict of law provisions. This choice of governing law does not deprive you of any mandatory consumer protections available under the laws of your country of residence.</p>
+    <p><strong style="color:var(--ink)">For EU and EEA consumers:</strong> Nothing in these Terms limits your rights under applicable EU consumer protection law. EU law applies where it provides stronger protections than Cameroonian law. You may also have the right to refer disputes to your local consumer protection authority or alternative dispute resolution body.</p>
+    <p><strong style="color:var(--ink)">For California consumers:</strong> Nothing in these Terms limits your rights under the CCPA or other applicable California consumer law.</p>
+    <p>Any dispute arising from these Terms shall first be addressed through good-faith direct negotiation. Either party may initiate dispute resolution by providing written notice to the other. If a dispute cannot be resolved within 30 days of such notice, either party may pursue available legal remedies.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">20</span>
+    <h2>Regulatory Compliance Statement</h2>
+    <p>DOA is designed and operated in compliance with applicable laws and regulations, including but not limited to the EU General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and applicable consumer protection law in jurisdictions where DOA is made available.</p>
+    <p>DOA is not classified as a medical device under EU Regulation 2017/745 (MDR), FDA regulations, or equivalent regulations in other jurisdictions, and is not subject to regulatory approval processes applicable to medical devices. Users in jurisdictions with specific regulations regarding vision-assistance software are responsible for verifying compliance with their local laws before use.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">21</span>
+    <h2>Severability &amp; Entire Agreement</h2>
+    <p>If any provision of these Terms is found to be unenforceable or invalid under applicable law, that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions will continue in full force and effect.</p>
+    <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and DOA regarding use of the Service and supersede all prior agreements, representations, or understandings of any kind.</p>
+    <p>Our failure to enforce any provision of these Terms shall not constitute a waiver of our right to enforce that provision in the future.</p>
+  </div>
+
+  <div class="legal-section">
+    <span class="section-number">22</span>
     <h2>Contact</h2>
-    <p>For questions about these Terms of Service, reach out to us:</p>
+    <p>For questions about these Terms, legal notices, or compliance inquiries:</p>
     <div class="contact-card">
       <span>Email</span>
       <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a>
@@ -426,18 +482,17 @@
       <span style="margin-top:8px">Operated by</span>
       <a style="color:var(--ink2);cursor:default">Cedric Julien .E · Douala, Cameroon</a>
     </div>
-    <p style="margin-top:16px;">Also see our <a href="/privacy-policy">Privacy Policy</a> for data handling details.</p>
+    <p style="margin-top:16px;">For data and privacy questions specifically, see our <a href="/privacy-policy">Privacy Policy</a>.</p>
   </div>
 
   <div class="legal-section">
-    <span class="section-number">19</span>
+    <span class="section-number">23</span>
     <h2>Acknowledgment</h2>
-    <p>By installing and using DOA, you confirm that you have read, understood, and agreed to these Terms of Service and our Privacy Policy. If you do not agree, please uninstall the application.</p>
+    <p>By installing and using DOA, you confirm that you have read and understood these Terms of Service and our Privacy Policy, that you are at least 13 years of age (or 16 in the EU), that you are legally capable of entering into a binding agreement, and that you agree to be bound by these Terms. If you do not agree, please uninstall the application and do not use the Service.</p>
   </div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -480,4 +535,3 @@
 </script>
 </body>
 </html>
-
