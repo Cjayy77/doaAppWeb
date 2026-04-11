@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 
-# Point to sitemap
-Sitemap: https://doa-app-web.vercel.app/sitemap.xml
+# Block internal Vercel preview URLs from being indexed
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://deviceopticalaid.com/sitemap.xml
