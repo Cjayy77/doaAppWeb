@@ -25,6 +25,10 @@
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 54px; width: auto; }
   .nav-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.08em; color: var(--ink2); margin-left: 14px; padding-left: 14px; border-left: 1.5px solid var(--border); white-space: nowrap; text-transform: lowercase; text-decoration: none; }
+  .notice-banner { background: rgba(255,165,0,0.08); border: 1.5px solid rgba(255,165,0,0.25); border-radius: var(--radius-sm); padding: 20px 24px; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 32px; }
+  .notice-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .notice-text { font-size: 14px; color: var(--ink2); line-height: 1.6; }
+  .notice-text strong { color: var(--ink); font-weight: 600; }
   @media (max-width: 900px) { .nav-name { display: none; } }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; position: relative; }
@@ -200,12 +204,11 @@
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="/index#how-it-works">How It Works</a></li>
-    <li><a href="/index#features">Features</a></li>
+    <li><a href="/roadmap">Roadmap</a></li>
     <li><a href="/index#pricing">Pricing</a></li>
     <li><a href="/index#faq">FAQ</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="/index" class="btn-ghost">← Back to site</a>
   </div>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
@@ -218,15 +221,17 @@
     <!-- HEADER -->
     <div class="page-header">
       <span class="section-tag">Beta · Windows</span>
-      <h1>Download DOA.<br>See your screen <em>clearly.</em></h1>
+      <h1>Get DOA.<br>Use your screen, <em>your way.</em></h1>
       <p class="page-sub">Adjust your screen display to suit your glasses prescription — free to start, no card needed.</p>
       <span class="page-non-medical">ℹ Display accessibility tool · Not a medical device · Does not replace eye care</span>
     </div>
 
     <!-- BETA LIVE BANNER -->
-    <div class="beta-banner">
-      <div class="beta-banner-dot"></div>
-      <p><strong>Beta is live.</strong> DOA is available now for Windows 10 and 11. This is an early version — it works, and your feedback helps make it better.</p>
+   <div class="notice-banner">
+      <div class="notice-icon">📢</div>
+      <div class="notice-text">
+        <strong>Development update:</strong> The Windows app is now ready for Windows 10 &amp; 11.<strong> This is an early version.</strong> Bugs might exist and the correction might not be accurate. Your feedback shapes DOA.
+      </div>
     </div>
 
     <!-- MAIN LAYOUT: download card + side info -->
@@ -262,7 +267,7 @@
         </div>
         <ul class="dl-features">
           <li>Screen display adjusted to your glasses prescription</li>
-          <li>GPU accelerated — 60fps, near-zero lag</li>
+          <li>GPU accelerated</li>
           <li>System tray toggle + keyboard shortcut</li>
           <li>Color adjustment filters included</li>
           <li>Multi-monitor support (Premium)</li>
@@ -300,11 +305,11 @@
         </div>
 
         <div class="beta-expectations">
-          <h4>⚠️ Beta — what to expect</h4>
+          <h4>⚠️ Beta: what to expect</h4>
           <ul>
             <li>This is an early version. It works, but you may encounter occasional bugs or glitches.</li>
             <li>Some features are still being refined. Results vary by screen type and prescription strength.</li>
-            <li>Auto-updates are enabled — improvements land automatically.</li>
+            <li>Auto-updates are enabled, improvements land automatically.</li>
             <li>Found a bug? <a href="/contact" style="color:var(--accent);text-decoration:none;font-weight:600;">Let us know →</a></li>
           </ul>
         </div>
@@ -318,7 +323,7 @@
         <div class="fpm-icon">🎁</div>
         <div class="fpm-text">
           <h3>Get 7 days of Premium — free</h3>
-          <p>Use DOA for 60 seconds, turn it off, and answer the short feedback popup. <strong>7 days of Premium land in your account instantly.</strong> No code, no card needed.</p>
+          <p>Use DOA for 60 seconds, turn it off, and answer the short feedback popup. <strong>7 days of Premium land in your account instantly.</strong></p>
         </div>
       </div>
       <a href="/index#free-premium" class="btn-fpm">How it works →</a>
@@ -332,7 +337,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
-        <p class="footer-desc">A display accessibility tool for people who wear glasses. Not a medical device.</p>
+        <p class="footer-desc">A display accessibility tool for people who wear glasses.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
