@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOA | Device Optical Aid</title>
+<title>DOA - Device Optical Aid</title>
 <meta name="description" content="DOA adjusts your screen display so people who wear glasses can use their computer comfortably without them. A display accessibility tool for Windows.">
-<meta name="keywords" content="DOA, DOA App, Device Optical Aid, screen accessibility, display adjustment, vision accessibility, deviceopticalaid, doa device">
+<meta name="keywords" content="DOA, DOA App, Device Optical Aid, screen accessibility, display adjustment, vision accessibility, deviceopticalaid">
 <meta name="author" content="CJ_">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="doaTransparent.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
-  <link rel="canonical" href="https://deviceopticalaid.com" />
 <style>
   :root {
     --bg: #FAFAF7; --bg2: #F2F1EC; --ink: #1C1B18; --ink2: #5C5B56; --ink3: #9C9B96;
@@ -173,25 +172,59 @@
   .btn-pricing-premium:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
   .pricing-handled { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 10px; }
 
-  .waitlist-section { background: var(--ink); text-align: center; }
-  .waitlist-section h2 { color: #F5F4EF; }
-  .waitlist-section .section-sub { color: #9C9B96; margin: 0 auto 40px; }
-  .email-form { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; position: relative; }
-  .email-input { flex: 1; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; padding: 13px 18px; border: 1.5px solid rgba(255,255,255,0.12); border-radius: 8px; background: rgba(255,255,255,0.06); color: #F5F4EF; outline: none; transition: border-color 0.2s; }
-  .email-input::placeholder { color: #6C6B66; }
-  .email-input:focus { border-color: var(--accent); }
-  .btn-join { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 600; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; padding: 13px 24px; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: all 0.2s; position: relative; overflow: hidden; }
-  .btn-join::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: 0.5s; }
-  .btn-join:hover::before { left: 100%; }
-  .btn-join:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
-  .btn-join:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-  .waitlist-note { font-size: 13px; color: #6C6B66; margin-top: 14px; }
-  .waitlist-count { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 32px; }
-  .wc-avatars { display: flex; }
-  .wc-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--ink); margin-left: -10px; font-size: 14px; display: flex; align-items: center; justify-content: center; background: #2A2A27; }
-  .wc-avatar:first-child { margin-left: 0; }
-  .wc-text { font-size: 14px; color: #9C9B96; }
-  .wc-text strong { color: #F5F4EF; }
+  /* FREE PREMIUM SECTION */
+  .freepremium-section { background: var(--ink); }
+  .freepremium-section h2 { color: #F5F4EF; }
+  .freepremium-section .section-sub { color: #9C9B96; max-width: 560px; }
+  .steps-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .flow-step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .flow-step:hover { border-color: rgba(138,43,226,0.4); transform: translateY(-4px); }
+  .flow-step-num {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 14px; display: block;
+  }
+  .flow-step-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+  .flow-step h4 { font-size: 15px; font-weight: 700; color: #F5F4EF; margin-bottom: 8px; line-height: 1.2; }
+  .flow-step p { font-size: 13px; color: #9C9B96; line-height: 1.6; }
+  .flow-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(176,102,255,0.4); font-size: 20px;
+    padding-top: 48px; flex-shrink: 0;
+  }
+  .flow-reward {
+    margin-top: 24px;
+    background: linear-gradient(135deg, rgba(138,43,226,0.15), rgba(176,102,255,0.08));
+    border: 1px solid rgba(138,43,226,0.3);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+  }
+  .flow-reward-left { display: flex; align-items: center; gap: 16px; }
+  .flow-reward-icon { font-size: 36px; flex-shrink: 0; }
+  .flow-reward-text h4 { font-size: 18px; font-weight: 800; color: #F5F4EF; font-family: 'League Spartan', sans-serif; letter-spacing: -0.3px; margin-bottom: 4px; }
+  .flow-reward-text p { font-size: 14px; color: #9C9B96; line-height: 1.5; }
+  .flow-reward-text p strong { color: #34D399; }
+  .btn-download-cta {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600; color: #fff; white-space: nowrap;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: none; padding: 13px 28px; border-radius: 10px;
+    text-decoration: none; cursor: pointer; transition: all 0.25s;
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+  .btn-download-cta::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: 0.5s; }
+  .btn-download-cta:hover::before { left: 100%; }
+  .btn-download-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(138,43,226,0.4); }
 
   .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
   .faq-item { background: var(--card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; position: relative; transition: border-color 0.3s, transform 0.2s; }
@@ -239,7 +272,7 @@
     .nav-cta { display: none; }
     .hero { padding: 120px 20px 60px; }
     h1 { letter-spacing: -1px; }
-    .steps-grid, .features-grid, .visiontypes-grid, .pricing-grid, .filters-row { grid-template-columns: 1fr; }
+    .steps-grid, .features-grid, .visiontypes-grid, .pricing-grid, .filters-row, .steps-flow { grid-template-columns: 1fr; }
     .feature-card.wide { grid-column: auto; }
     .mockup-screen { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
@@ -258,13 +291,13 @@
     <span class="nav-name">device optical aid™</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/about">About</a></li>
-    <li><a href="/roadmap">Roadmap</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="#waitlist" class="btn-ghost">Join waitlist</a>
+    <a href="/download" class="btn-ghost">Download</a>
     <a href="/download" class="btn-primary">Download</a>
   </div>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -274,10 +307,10 @@
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
   <div class="blob blob3"></div>
-  <div class="hero-badge"><div class="badge-dot"></div>Now in early access · Windows</div>
+  <div class="hero-badge"><div class="badge-dot"></div>Beta · Now live on Windows</div>
   <h1>Your screen,<br><em>without your glasses.</em></h1>
-  <p class="hero-sub">DOA adjusts your screen display so people who wear glasses can use their computer comfortably without putting them on.</p>
-  <span class="non-medical-note">ℹ Display accessibility tool · Not a medical device · Does not replace professional eye care</span>
+  <p class="hero-sub">DOA adjusts your screen display so people who wear glasses can use their computer comfortably — without putting them on.</p>
+  <span class="non-medical-note">ℹ Display accessibility tool · Not a medical device · Does not replace eye care</span>
   <div class="hero-actions">
     <a href="/download" class="btn-big btn-dark">Get started</a>
     <a href="#how-it-works" class="btn-big btn-outline">See how it works</a>
@@ -351,7 +384,7 @@
         <div class="step-num">01</div>
         <div class="step-icon">📋</div>
         <h3>Enter Your Prescription</h3>
-        <p>Type in the numbers from your glasses prescription, the same ones your optician gave you. DOA works with SPH, CYL, AXIS, and ADD values.</p>
+        <p>Type in the numbers from your glasses prescription — the same ones your optician gave you. DOA works with SPH, CYL, AXIS, and ADD values.</p>
       </div>
       <div class="step-card reveal" style="transition-delay:0.1s">
         <div class="step-num">02</div>
@@ -363,7 +396,7 @@
         <div class="step-num">03</div>
         <div class="step-icon">👓</div>
         <h3>Use Your Screen, No Glasses</h3>
-        <p>Read, browse, work, and watch, all without reaching for your glasses. Toggle DOA on or off any time with a keyboard shortcut.</p>
+        <p>Read, browse, work, and watch — all without reaching for your glasses. Toggle DOA on or off any time with a keyboard shortcut.</p>
       </div>
     </div>
   </div>
@@ -386,7 +419,7 @@
       <div class="feature-card reveal" style="transition-delay:0.1s">
         <div class="feature-icon">⚡</div>
         <h3>60fps, Near-Zero Lag</h3>
-        <p>Runs entirely on your GPU. There's a 30–50ms overlay delay, imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
+        <p>Runs entirely on your GPU. There's a 30–50ms overlay delay — imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
         <div class="feature-chips">
           <span class="chip">GPU-accelerated</span><span class="chip">60fps locked</span><span class="chip">Always on</span>
         </div>
@@ -394,22 +427,22 @@
       <div class="feature-card reveal" style="transition-delay:0.05s">
         <div class="feature-icon">🌈</div>
         <h3>Color Filters</h3>
-        <p>Color adjustment modes for Protanopia, Deuteranopia, and Tritanopia for people who have difficulty distinguishing certain colors. Works on its own, no prescription needed.</p>
+        <p>Color adjustment modes for Protanopia, Deuteranopia, and Tritanopia — for people who have difficulty distinguishing certain colors. Works on its own, no prescription needed.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay:0.15s">
         <div class="feature-icon">🖥️</div>
         <h3>Multi-Monitor Support</h3>
-        <p>Apply different display settings per monitor, useful when screens are at different viewing distances. Premium feature.</p>
+        <p>Apply different display settings per monitor — useful when screens are at different viewing distances. Premium feature.</p>
       </div>
       <div class="feature-card wide reveal">
         <div class="feature-icon">🔒</div>
         <h3>Privacy-First Design</h3>
-        <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design, not just by policy. Everything is processed locally on your device and never transmitted.</p>
+        <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design — not just by policy. Everything is processed locally on your device and never transmitted.</p>
         <div class="privacy-bar">
           <div class="privacy-bar-icon">🛡️</div>
           <div>
             <h4>What DOA never sees</h4>
-            <p>Some Windows elements are protected by the OS and will not appear in DOA's display layer, keeping your data private.</p>
+            <p>Some Windows elements are protected by the OS and will not appear in DOA's display layer — keeping your data private.</p>
             <div class="privacy-list">
               <span class="privacy-tag">Login screens &amp; passwords</span>
               <span class="privacy-tag">Banking &amp; payment windows</span>
@@ -427,7 +460,7 @@
   <div class="section">
     <span class="section-tag">Who it's for</span>
     <h2>Works for<br><em>how you see</em></h2>
-    <p class="section-sub">DOA works with the most common glasses prescriptions;</p>
+    <p class="section-sub">DOA works with the most common glasses prescriptions — here's what each one means in plain English.</p>
     <div class="visiontypes-grid">
       <div class="vtype-card reveal">
         <div class="vtype-emoji">🔭</div>
@@ -457,7 +490,7 @@
   <div class="section">
     <span class="section-tag">Color Filters</span>
     <h2>More than just<br><em>prescription support</em></h2>
-    <p class="section-sub">Color adjustment modes run as a single display pass; no setup, no calibration, and fully compatible with any active prescription profile.</p>
+    <p class="section-sub">Color adjustment modes run as a single display pass — no setup, no calibration, and fully compatible with any active prescription profile.</p>
     <div class="filters-row">
       <div class="filter-card reveal">
         <div class="filter-swatch swatch-protan"></div>
@@ -467,7 +500,7 @@
       <div class="filter-card reveal" style="transition-delay:0.1s">
         <div class="filter-swatch swatch-deutan"></div>
         <h4>Deuteranopia</h4>
-        <p>The most common type, trouble telling red and green apart. DOA adjusts the color balance so those tones are easier to distinguish.</p>
+        <p>The most common type — trouble telling red and green apart. DOA adjusts the color balance so those tones are easier to distinguish.</p>
       </div>
       <div class="filter-card reveal" style="transition-delay:0.2s">
         <div class="filter-swatch swatch-tritan"></div>
@@ -521,28 +554,51 @@
   </div>
 </div>
 
-<div class="waitlist-section dark-section" id="waitlist" data-theme="dark">
-  <div class="section" style="text-align:center; padding:100px 40px;">
-    <div class="waitlist-count">
-      <div class="wc-avatars">
-        <div class="wc-avatar">👁️</div>
-        <div class="wc-avatar">🕶️</div>
-        <div class="wc-avatar">👓</div>
-        <div class="wc-avatar">✨</div>
+<!-- FREE PREMIUM SECTION -->
+<div class="freepremium-section dark-section" id="free-premium" data-theme="dark">
+  <div class="section">
+    <span class="section-tag">Free Premium</span>
+    <h2>Missed early access?<br><em>You can still get it free.</em></h2>
+    <p class="section-sub">Every user who submits correction feedback in the app gets 7 days of Premium — automatically, no code needed. Here's how.</p>
+
+    <div class="steps-flow">
+      <div class="flow-step reveal">
+        <span class="flow-step-num">Step 01</span>
+        <span class="flow-step-icon">⬇️</span>
+        <h4>Download &amp; sign in</h4>
+        <p>Download DOA for Windows and create a free account. Takes about a minute.</p>
       </div>
-      <span class="wc-text">Early access — <strong>limited spots</strong></span>
+      <div class="flow-step reveal" style="transition-delay:0.08s">
+        <span class="flow-step-num">Step 02</span>
+        <span class="flow-step-icon">📋</span>
+        <h4>Set up your prescription</h4>
+        <p>Enter the values from your glasses — SPH, CYL, AXIS, or ADD. DOA builds your display profile from these.</p>
+      </div>
+      <div class="flow-step reveal" style="transition-delay:0.16s">
+        <span class="flow-step-num">Step 03</span>
+        <span class="flow-step-icon">👁️</span>
+        <h4>Use DOA for at least 60 seconds</h4>
+        <p>Turn on the display adjustment and use your screen normally for at least one minute. Browse, read, work — whatever you'd normally do.</p>
+      </div>
+      <div class="flow-step reveal" style="transition-delay:0.24s">
+        <span class="flow-step-num">Step 04</span>
+        <span class="flow-step-icon">💬</span>
+        <h4>Turn it off — a feedback prompt appears</h4>
+        <p>When you deactivate the correction, a short feedback popup appears automatically. Answer a few quick questions about how the display felt.</p>
+      </div>
     </div>
-    <span class="section-tag">Early Access</span>
-    <h2 style="color:#F5F4EF; margin-top:8px;">Be first to try it <em>yourself</em></h2>
-    <p class="section-sub" style="margin:16px auto 40px; color:#9C9B96;">Get notified when DOA launches. Early access users get 3 months of Premium free.</p>
-    <form class="email-form" id="waitlistForm">
-      <input class="email-input" type="email" name="EMAIL" placeholder="your@email.com" required id="waitlistEmail">
-      <div style="position:absolute; left:-5000px;" aria-hidden="true">
-        <input type="text" name="b_97328c96475de66e7cad60b4c_3c78d33553" tabindex="-1" value="">
+
+    <div class="flow-reward reveal">
+      <div class="flow-reward-left">
+        <div class="flow-reward-icon">🎁</div>
+        <div class="flow-reward-text">
+          <h4>7 days of Premium — unlocked instantly</h4>
+          <p>The moment you submit your feedback, <strong>7 days of Premium are added to your account automatically.</strong> No coupon, no waiting, no card needed. You can earn this once every 30 days.</p>
+        </div>
       </div>
-      <button type="submit" class="btn-join" id="joinBtn">Join waitlist</button>
-    </form>
-    <p class="waitlist-note" id="waitlist-confirm">No spam. Unsubscribe anytime.</p>
+      <a href="/download" class="btn-download-cta">Download DOA →</a>
+    </div>
+
   </div>
 </div>
 
@@ -557,11 +613,11 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button>
-        <div class="faq-a">No. DOA adjusts your screen display, not your eyesight. It's designed for screen use only. You'd still need glasses for everything else — driving, reading printed text, and anything away from your screen.</div>
+        <div class="faq-a">No — DOA adjusts your screen display, not your eyesight. It's designed for screen use only. You'd still need glasses for everything else — driving, reading printed text, and anything away from your screen.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Is DOA a medical device? <span class="arrow">↓</span></button>
-        <div class="faq-a">No. DOA is a display accessibility tool; it adjusts how your screen looks. It is not a medical device, is not regulated as one, and does not treat, diagnose, or replace any professional eye care. If you have concerns about your eyesight, please see a qualified eye care professional.</div>
+        <div class="faq-a">No. DOA is a display accessibility tool — it adjusts how your screen looks. It is not a medical device, is not regulated as one, and does not treat, diagnose, or replace any professional eye care. If you have concerns about your eyesight, please see a qualified eye care professional.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button>
@@ -569,7 +625,7 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does DOA make my vision better? <span class="arrow">↓</span></button>
-        <div class="faq-a">No. DOA only adjusts your screen; it has no effect on your actual eyesight. It's a tool for making your screen easier to use when you don't have your glasses on. It cannot improve, treat, or change your vision in any way.</div>
+        <div class="faq-a">No. DOA only adjusts your screen — it has no effect on your actual eyesight. It's a tool for making your screen easier to use when you don't have your glasses on. It cannot improve, treat, or change your vision in any way.</div>
       </div>
     </div>
   </div>
@@ -580,7 +636,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
-        <p class="footer-desc">A display accessibility tool for people who wear glasses.</p>
+        <p class="footer-desc">A display accessibility tool for people who wear glasses. Not a medical device.</p>
       </div>
       <div class="footer-col">
         <h5>Product</h5>
@@ -648,25 +704,9 @@
   updateNav();
   const revealObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  // pricing buttons
   document.querySelector('.btn-pricing-free').addEventListener('click', () => { window.location.href = '/download'; });
   document.querySelector('.btn-pricing-premium').addEventListener('click', () => { window.location.href = '/download'; });
-  document.getElementById('waitlistForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('waitlistEmail').value;
-    const confirm = document.getElementById('waitlist-confirm');
-    const btn = document.getElementById('joinBtn');
-    btn.textContent = 'Joining...'; btn.disabled = true;
-    const mcURL = 'https://app.us17.list-manage.com/subscribe/post-json?u=97328c96475de66e7cad60b4c&id=3c78d33553&f_id=009cc3e1f0&EMAIL=' + encodeURIComponent(email) + '&c=mcCallback';
-    window.mcCallback = function(data) {
-      btn.textContent = 'Join waitlist →'; btn.disabled = false;
-      if (data.result === 'success') { confirm.textContent = '✅ You\'re on the list!'; confirm.style.color = '#34D399'; document.getElementById('waitlistEmail').value = ''; }
-      else if (data.msg && data.msg.toLowerCase().includes('already subscribed')) { confirm.textContent = '👋 You\'re already on the list!'; confirm.style.color = '#b066ff'; }
-      else { confirm.textContent = '❌ Something went wrong. Please try again.'; confirm.style.color = '#f87171'; }
-      const old = document.getElementById('mc-jsonp'); if (old) old.remove();
-    };
-    const script = document.createElement('script'); script.id = 'mc-jsonp'; script.src = mcURL; document.body.appendChild(script);
-    setTimeout(function() { if (btn.disabled) { btn.textContent = 'Join waitlist →'; btn.disabled = false; confirm.textContent = '⚠️ Timed out. Please try again.'; confirm.style.color = '#f87171'; const s = document.getElementById('mc-jsonp'); if (s) s.remove(); } }, 8000);
-  });
 </script>
 </body>
 </html>
