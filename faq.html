@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ | Device Optical Aid</title>
+<meta name="description" content="Answers to common questions about DOA — getting started, prescriptions, premium, privacy, and troubleshooting.">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:         #1C1B18;
+    --bg2:        #232320;
+    --card:       #2A2A27;
+    --card2:      #313130;
+    --border:     rgba(255,255,255,0.08);
+    --border2:    rgba(255,255,255,0.12);
+    --ink:        #F5F4EF;
+    --ink2:       #9C9B96;
+    --ink3:       #6C6B66;
+    --accent:     #8a2be2;
+    --accent2:    #b066ff;
+    --accent-dim: rgba(138,43,226,0.15);
+    --radius:     12px;
+    --radius-sm:  8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background: var(--bg); color: var(--ink2);
+    line-height: 1.7; overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 80px;
+    background: rgba(28,27,24,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
+    color: var(--ink); margin-left: 14px; padding-left: 14px;
+    border-left: 1.5px solid rgba(255,255,255,0.1);
+    white-space: nowrap; text-transform: lowercase; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn-home {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; color: #fff;
+    background: var(--accent); border: none;
+    padding: 8px 18px; border-radius: 8px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; }
+
+  /* PAGE */
+  main { max-width: 860px; margin: 0 auto; padding: 108px 40px 100px; }
+
+  /* HERO */
+  .page-tag {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); background: var(--accent-dim);
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .page-hero { margin-bottom: 40px; }
+  .page-hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 900; letter-spacing: -1.5px; line-height: 1.0;
+    color: var(--ink); margin-bottom: 14px;
+  }
+  .page-hero h1 em {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; font-style: italic;
+  }
+  .page-hero p { font-size: 16px; color: var(--ink2); max-width: 500px; line-height: 1.7; }
+
+  /* SEARCH */
+  .search-wrap {
+    position: relative; margin-bottom: 28px;
+  }
+  .search-icon {
+    position: absolute; left: 16px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink3); font-size: 16px; pointer-events: none;
+  }
+  .search-input {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; color: var(--ink);
+    width: 100%; background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 14px 16px 14px 44px;
+    outline: none; transition: border-color 0.2s, background 0.2s;
+  }
+  .search-input::placeholder { color: var(--ink3); }
+  .search-input:focus {
+    border-color: var(--accent);
+    background: rgba(138,43,226,0.04);
+  }
+  .search-clear {
+    position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none; cursor: pointer;
+    color: var(--ink3); font-size: 18px; line-height: 1;
+    display: none; padding: 2px 6px; border-radius: 4px;
+    transition: color 0.2s;
+  }
+  .search-clear:hover { color: var(--ink); }
+  .search-clear.visible { display: block; }
+
+  /* CATEGORY PILLS */
+  .category-pills {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px;
+  }
+  .pill {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px; font-weight: 600;
+    padding: 7px 16px; border-radius: 100px; cursor: pointer;
+    border: 1.5px solid var(--border); background: none;
+    color: var(--ink2); transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .pill:hover { border-color: var(--border2); color: var(--ink); }
+  .pill.active {
+    background: var(--accent-dim);
+    border-color: rgba(138,43,226,0.35);
+    color: var(--accent2);
+  }
+
+  /* RESULTS COUNT */
+  .results-meta {
+    font-size: 13px; color: var(--ink3);
+    margin-bottom: 20px; min-height: 20px;
+    transition: opacity 0.2s;
+  }
+
+  /* FAQ GROUPS */
+  .faq-group { margin-bottom: 48px; }
+  .faq-group-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink3);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .faq-group-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* FAQ ITEMS */
+  .faq-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden; margin-bottom: 8px;
+    transition: border-color 0.25s;
+    position: relative;
+  }
+  .faq-item::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .faq-item:hover { border-color: rgba(138,43,226,0.25); }
+  .faq-item.open { border-color: rgba(138,43,226,0.35); }
+  .faq-item.open::before { opacity: 1; }
+
+  .faq-q {
+    width: 100%; padding: 18px 20px;
+    text-align: left; background: none; border: none;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center;
+    gap: 16px; line-height: 1.4;
+  }
+  .faq-arrow {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 12px; color: var(--accent2);
+    transition: transform 0.3s, background 0.2s;
+  }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); background: var(--accent-dim); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    font-size: 14px; color: var(--ink2);
+    line-height: 1.75; padding: 0 20px;
+  }
+  .faq-item.open .faq-a { max-height: 400px; padding: 0 20px 18px; }
+  .faq-a a { color: var(--accent2); text-decoration: none; }
+  .faq-a a:hover { color: var(--ink); }
+  .faq-a strong { color: var(--ink); font-weight: 600; }
+
+  /* HIGHLIGHT SEARCH MATCH */
+  .faq-item.hidden { display: none; }
+  mark {
+    background: rgba(176,102,255,0.25);
+    color: var(--ink); border-radius: 2px;
+    padding: 0 2px;
+  }
+
+  /* NO RESULTS */
+  .no-results {
+    display: none; text-align: center;
+    padding: 60px 20px;
+  }
+  .no-results.visible { display: block; }
+  .no-results-icon { font-size: 40px; margin-bottom: 16px; }
+  .no-results h3 { font-family: 'League Spartan', sans-serif; font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+  .no-results p { font-size: 15px; color: var(--ink2); }
+  .no-results a { color: var(--accent2); text-decoration: none; }
+
+  /* CONTACT CTA */
+  .faq-cta {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 20px;
+    flex-wrap: wrap; margin-top: 48px;
+  }
+  .faq-cta-left h3 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .faq-cta-left p { font-size: 14px; color: var(--ink2); }
+  .btn-contact {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px; font-weight: 600; white-space: nowrap;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; border: none; padding: 11px 22px;
+    border-radius: 8px; text-decoration: none;
+    cursor: pointer; transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .btn-contact:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
+  .footer-inner { max-width: 860px; margin: 0 auto; }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
+  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
+  .footer-links { display: flex; gap: 40px; }
+  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--ink); }
+  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
+    .burger { display: flex; }
+    main { padding: 100px 20px 80px; }
+    .faq-cta { flex-direction: column; }
+    .footer-top { flex-direction: column; gap: 24px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+  .page-hero { animation: fadeUp 0.5s ease both 0.05s; }
+  .search-wrap { animation: fadeUp 0.5s ease both 0.1s; }
+  .category-pills { animation: fadeUp 0.5s ease both 0.15s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/index" class="nav-logo">
+    <img src="doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/index">Home</a></li>
+    <li><a href="/index#features">Features</a></li>
+    <li><a href="/index#pricing">Pricing</a></li>
+    <li><a href="/download">Download</a></li>
+  </ul>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<main>
+
+  <div class="page-hero">
+    <span class="page-tag">Help</span>
+    <h1>Got a question?<br><em>Find your answer.</em></h1>
+    <p>Everything you need to know about DOA — getting started, your prescription, premium, and more.</p>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      class="search-input"
+      type="text"
+      id="faqSearch"
+      placeholder="Search questions — try 'prescription', 'premium', 'install'…"
+      autocomplete="off"
+    >
+    <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+  </div>
+
+  <!-- CATEGORY PILLS -->
+  <div class="category-pills" id="categoryPills">
+    <button class="pill active" data-cat="all">All questions</button>
+    <button class="pill" data-cat="getting-started">Getting started</button>
+    <button class="pill" data-cat="prescription">Prescription</button>
+    <button class="pill" data-cat="using">Using DOA</button>
+    <button class="pill" data-cat="premium">Account &amp; Premium</button>
+    <button class="pill" data-cat="privacy">Privacy &amp; Security</button>
+    <button class="pill" data-cat="troubleshooting">Troubleshooting</button>
+  </div>
+
+  <!-- RESULTS META -->
+  <p class="results-meta" id="resultsMeta"></p>
+
+  <!-- NO RESULTS -->
+  <div class="no-results" id="noResults">
+    <div class="no-results-icon">🔎</div>
+    <h3>No results found</h3>
+    <p>Try different words, or <a href="/contact">send us your question directly</a> and we'll get back to you.</p>
+  </div>
+
+  <!-- ═══════════════════════════
+       FAQ GROUPS
+  ═══════════════════════════ -->
+
+  <!-- GETTING STARTED -->
+  <div class="faq-group" id="group-getting-started" data-group="getting-started">
+    <div class="faq-group-label">Getting started</div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="What is DOA?">
+      <button class="faq-q">What is DOA? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA is a Windows desktop application that adjusts your screen display based on your glasses prescription. If you wear glasses and sometimes want to use your computer without them — reading in bed, quick tasks without reaching for your glasses — DOA adjusts the screen to make it readable without them. It is a display accessibility tool, not a medical device.</div>
+    </div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="What do I need to run DOA?">
+      <button class="faq-q">What do I need to run DOA? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">You need a Windows 10 or 11 PC (64-bit), a graphics card compatible with DirectX 11, at least 4 GB of RAM, and an internet connection for your first sign-in. That's it — no special hardware, nothing to attach to your screen.</div>
+    </div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="How do I install DOA?">
+      <button class="faq-q">How do I install DOA? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Download the installer from the <a href="/download">download page</a>, run it, and follow the setup steps. DOA will ask you to create a free account and enter your glasses prescription. First-time setup takes about two minutes.</div>
+    </div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="Do I need an account to use DOA?">
+      <button class="faq-q">Do I need an account to use DOA? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Yes, a free account is required. It lets DOA save your prescription profile across devices and keeps track of your daily usage for the free tier. Signing up takes under a minute and only requires an email address — or you can sign in with Google or Apple.</div>
+    </div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="Is DOA free?">
+      <button class="faq-q">Is DOA free? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Yes. The free tier gives you 3 hours of use per day, one saved prescription, and access to the color filters. That is enough for most casual daily use. Premium removes all limits and adds multi-monitor support. You can also earn 7 days of Premium free by submitting feedback after a session — see <a href="/index#free-premium">how to get free Premium</a>.</div>
+    </div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="Is DOA available on Mac or Linux?">
+      <button class="faq-q">Is DOA available on Mac or Linux? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Not yet. Windows 10 and 11 are the only supported platforms right now. macOS and Linux support are on the <a href="/roadmap">roadmap</a>, but no release date has been set.</div>
+    </div>
+
+    <div class="faq-item" data-cat="getting-started" data-q="Is DOA a medical device?">
+      <button class="faq-q">Is DOA a medical device? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">No. DOA is a display accessibility tool — it adjusts what your screen shows. It is not classified or regulated as a medical device anywhere in the world and does not treat, diagnose, or replace professional eye care. If you have concerns about your eyesight, please consult a qualified eye care professional.</div>
+    </div>
+
+  </div>
+
+  <!-- PRESCRIPTION -->
+  <div class="faq-group" id="group-prescription" data-group="prescription">
+    <div class="faq-group-label">Prescription</div>
+
+    <div class="faq-item" data-cat="prescription" data-q="What prescription values does DOA use?">
+      <button class="faq-q">What prescription values does DOA use? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA uses the standard values from your glasses prescription: <strong>SPH</strong> (sphere — how strong the lens is), <strong>CYL</strong> (cylinder — astigmatism strength), <strong>AXIS</strong> (the direction of the astigmatism), and <strong>ADD</strong> (the reading addition, for bifocals or reading glasses). These are the same numbers printed on your prescription slip or glasses receipt.</div>
+    </div>
+
+    <div class="faq-item" data-cat="prescription" data-q="Where do I find my prescription?">
+      <button class="faq-q">Where do I find my prescription? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Your optician or optometrist gives you a printed prescription after an eye exam. You can also find it on the sticker on your glasses case, or request a copy from the optician who made your glasses. If you can't find it, your optician is required by law in most countries to provide a copy on request.</div>
+    </div>
+
+    <div class="faq-item" data-cat="prescription" data-q="Will DOA work with my prescription?">
+      <button class="faq-q">Will DOA work with my prescription? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA works with most standard glasses prescriptions — near-sightedness, far-sightedness, astigmatism, and reading glasses. Very strong prescriptions may see less improvement depending on your screen's resolution and pixel density. High-resolution screens (like 4K monitors) generally give better results at higher prescription strengths. The free tier lets you try it with no commitment.</div>
+    </div>
+
+    <div class="faq-item" data-cat="prescription" data-q="I don't know my prescription — can I still use DOA?">
+      <button class="faq-q">I don't know my prescription — can I still use DOA? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Currently DOA requires prescription values to set up the display adjustment. If you don't know your prescription, you can request it from your optician. A guided calibration mode that doesn't require a formal prescription is planned for a future version — you can follow updates on the <a href="/roadmap">roadmap</a>.</div>
+    </div>
+
+    <div class="faq-item" data-cat="prescription" data-q="My left and right eye have different prescriptions — what do I enter?">
+      <button class="faq-q">My left and right eye have different prescriptions — what do I enter? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA currently applies a single display adjustment to the whole screen. Enter the prescription for your dominant eye, or the values for the eye that you find more uncomfortable when using a screen without glasses. Per-eye adjustment is something we're evaluating for a future update.</div>
+    </div>
+
+    <div class="faq-item" data-cat="prescription" data-q="My prescription has changed — how do I update it?">
+      <button class="faq-q">My prescription has changed — how do I update it? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Open DOA, go to your prescription profile, and edit the values. Changes apply immediately next time you activate the display adjustment. Free accounts can save one prescription at a time — update it whenever your prescription changes. Premium accounts can save unlimited profiles.</div>
+    </div>
+
+  </div>
+
+  <!-- USING DOA -->
+  <div class="faq-group" id="group-using" data-group="using">
+    <div class="faq-group-label">Using DOA</div>
+
+    <div class="faq-item" data-cat="using" data-q="How do I turn DOA on and off?">
+      <button class="faq-q">How do I turn DOA on and off? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA lives in your system tray (the icon area near your clock). Click the tray icon to toggle it on or off. You can also use the keyboard shortcut — shown in the app settings — to toggle it instantly without opening anything.</div>
+    </div>
+
+    <div class="faq-item" data-cat="using" data-q="Does DOA work across all apps and windows?">
+      <button class="faq-q">Does DOA work across all apps and windows? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Yes — DOA works at the OS level and applies the display adjustment to everything on your screen simultaneously: browsers, documents, videos, games, and any other application. The only exceptions are certain Windows system elements (login screens, UAC prompts, some banking app windows) that the operating system intentionally protects from screen overlay — these are excluded automatically.</div>
+    </div>
+
+    <div class="faq-item" data-cat="using" data-q="There's a 30–50ms delay — will I notice it?">
+      <button class="faq-q">There's a 30–50ms delay — will I notice it? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">In practice, most users don't notice the delay during everyday activities like reading, writing, browsing, or watching video. It's most likely to be noticeable in fast-paced games or applications where split-second timing matters. For gaming, we recommend keeping DOA off.</div>
+    </div>
+
+    <div class="faq-item" data-cat="using" data-q="Does DOA affect my screen's colour accuracy?">
+      <button class="faq-q">Does DOA affect my screen's colour accuracy? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">The prescription adjustment is focused on sharpness and can introduce slight edge contrast changes, but it does not intentionally alter color rendering. The color filter modes (for color difficulty) do change how colors appear on screen — that's their purpose. If you need accurate color for design or photo editing work, turn DOA off for those tasks.</div>
+    </div>
+
+    <div class="faq-item" data-cat="using" data-q="What are the color filters for?">
+      <button class="faq-q">What are the color filters for? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">The color filters are for people who have difficulty distinguishing certain colors — Protanopia (red difficulty), Deuteranopia (red-green difficulty, the most common), and Tritanopia (blue-yellow difficulty). Each filter adjusts the color balance on your screen to make those colors more distinguishable. They work on their own without a prescription, or alongside one.</div>
+    </div>
+
+    <div class="faq-item" data-cat="using" data-q="Does DOA work on multiple monitors?">
+      <button class="faq-q">Does DOA work on multiple monitors? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Multi-monitor support is a Premium feature. With Premium you can apply different display settings to each monitor separately — useful when your screens are at different distances or have different resolutions.</div>
+    </div>
+
+    <div class="faq-item" data-cat="using" data-q="Can I use DOA while gaming?">
+      <button class="faq-q">Can I use DOA while gaming? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">You can, but we don't recommend it for fast-paced games. The 30–50ms overlay delay is imperceptible during normal use but can affect reaction-time-sensitive gameplay. For reading text in slower games or RPGs it's fine. Toggle it off before competitive or fast-paced gaming.</div>
+    </div>
+
+  </div>
+
+  <!-- ACCOUNT & PREMIUM -->
+  <div class="faq-group" id="group-premium" data-group="premium">
+    <div class="faq-group-label">Account &amp; Premium</div>
+
+    <div class="faq-item" data-cat="premium" data-q="How do I get 7 days of Premium for free?">
+      <button class="faq-q">How do I get 7 days of Premium for free? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Use DOA with your display adjustment active for at least 60 seconds, then turn it off. A short feedback popup will appear automatically asking a few questions about how the display felt. Submit the feedback and 7 days of Premium are added to your account instantly — no coupon, no card needed. You can do this once every 30 days.</div>
+    </div>
+
+    <div class="faq-item" data-cat="premium" data-q="What does Premium include?">
+      <button class="faq-q">What does Premium include? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Premium removes all free tier limits: unlimited daily usage (no 3-hour cap), unlimited saved prescription profiles, multi-monitor support, the full color filters suite, no watermark, and priority support. It costs $4.99/month or $39.99/year.</div>
+    </div>
+
+    <div class="faq-item" data-cat="premium" data-q="How do I subscribe to Premium?">
+      <button class="faq-q">How do I subscribe to Premium? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Open the DOA app and go to the Premium section. Payment is handled securely by Creem — you'll be directed to their payment page. Subscriptions are monthly or annual and renew automatically until cancelled. DOA never sees or stores your card details.</div>
+    </div>
+
+    <div class="faq-item" data-cat="premium" data-q="How do I cancel my subscription?">
+      <button class="faq-q">How do I cancel my subscription? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">You can cancel any time from inside the DOA app under account settings, or by contacting us at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a>. Cancellations take effect at the end of your current billing period — you keep Premium access until then. You won't be charged again after cancelling.</div>
+    </div>
+
+    <div class="faq-item" data-cat="premium" data-q="What happens when my Premium expires?">
+      <button class="faq-q">What happens when my Premium expires? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Your account moves to the free tier automatically. Your prescription profiles are saved — you won't lose anything. You'll be limited to 3 hours per day and one active prescription until you resubscribe or earn another free Premium period through feedback.</div>
+    </div>
+
+    <div class="faq-item" data-cat="premium" data-q="Can I get a refund?">
+      <button class="faq-q">Can I get a refund? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Yes — contact us within 14 days of your purchase at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a> and we'll review your request. Refunds are assessed individually. Approved refunds go back to your original payment method within 5–10 business days.</div>
+    </div>
+
+    <div class="faq-item" data-cat="premium" data-q="How do I delete my account?">
+      <button class="faq-q">How do I delete my account? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">You can delete your account from the app settings, or by contacting us at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a>. All personal data is permanently deleted within 30 days of the request. If you have an active subscription, cancel it first to avoid further charges.</div>
+    </div>
+
+  </div>
+
+  <!-- PRIVACY & SECURITY -->
+  <div class="faq-group" id="group-privacy" data-group="privacy">
+    <div class="faq-group-label">Privacy &amp; Security</div>
+
+    <div class="faq-item" data-cat="privacy" data-q="Does DOA record or store my screen?">
+      <button class="faq-q">Does DOA record or store my screen? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a"><strong>No.</strong> DOA captures your screen locally in real time to apply the display adjustment, but no frames are recorded, stored, transmitted, or sent anywhere. Every frame is processed on your GPU and discarded immediately after display. DOA has no access to what's on your screen beyond applying the visual adjustment.</div>
+    </div>
+
+    <div class="faq-item" data-cat="privacy" data-q="What data does DOA collect?">
+      <button class="faq-q">What data does DOA collect? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA collects your email address and account details for authentication, the prescription values you enter, basic device information (Windows version, screen resolution) for compatibility, and session usage duration for free-tier enforcement. Screen content is never collected. See the full <a href="/privacy-policy">Privacy Policy</a> for details.</div>
+    </div>
+
+    <div class="faq-item" data-cat="privacy" data-q="Can DOA see my passwords or banking screens?">
+      <button class="faq-q">Can DOA see my passwords or banking screens? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">No. Windows automatically excludes certain protected elements from screen capture — login screens, UAC prompts, and some banking or payment application windows are blocked at the operating system level, not just by DOA's policy. These elements will not appear in the DOA display layer regardless of settings.</div>
+    </div>
+
+    <div class="faq-item" data-cat="privacy" data-q="Is my prescription data safe?">
+      <button class="faq-q">Is my prescription data safe? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Yes. Your prescription values are stored in Firebase (Google Cloud) with encryption at rest and in transit. Access is restricted to your account only — no one else can read your prescription data. You can delete it at any time by deleting your account.</div>
+    </div>
+
+    <div class="faq-item" data-cat="privacy" data-q="Does DOA sell my data?">
+      <button class="faq-q">Does DOA sell my data? <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">No. DOA does not sell, rent, or share your personal data with any third party for advertising or commercial purposes. The only third-party services used are Firebase (account storage), Creem (payment processing), and Resend (transactional emails). None of them receive your data for their own use.</div>
+    </div>
+
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="faq-group" id="group-troubleshooting" data-group="troubleshooting">
+    <div class="faq-group-label">Troubleshooting</div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="DOA doesn't seem to be doing anything">
+      <button class="faq-q">DOA doesn't seem to be doing anything <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">First check the system tray — the DOA icon should show it's active. Make sure you've saved a prescription profile and it's selected as your active profile. If the values you entered are very mild (close to zero), the change may be subtle. Try toggling DOA off and on while looking at small text to see the difference clearly.</div>
+    </div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="The screen looks worse with DOA on">
+      <button class="faq-q">The screen looks worse with DOA on <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">This usually means the prescription values entered don't match your actual prescription well. Double-check your values — particularly that negative and positive signs are correct (myopia values are negative, hyperopia values are positive). Also make sure you're using your glasses prescription, not a contact lens prescription — they are different and not interchangeable.</div>
+    </div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="The app is running slowly or causing lag">
+      <button class="faq-q">The app is running slowly or causing lag <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">DOA runs on your GPU and should have minimal impact on most systems. If you're experiencing slowdowns, make sure your graphics drivers are up to date, and that no other GPU-intensive application is running at the same time. On very old or low-end graphics hardware the performance impact may be more noticeable.</div>
+    </div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="DOA crashed or stopped working">
+      <button class="faq-q">DOA crashed or stopped working <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Restart the app from the system tray or from your Start menu. If crashes happen repeatedly, make sure your Windows and graphics drivers are up to date. If the issue persists, <a href="/contact">contact support</a> with a description of what you were doing when it crashed — this helps us fix it quickly.</div>
+    </div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="The feedback popup didn't appear after I turned DOA off">
+      <button class="faq-q">The feedback popup didn't appear after I turned DOA off <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">The feedback popup only appears after you've used DOA for at least 60 continuous seconds with the display adjustment active. If the session was shorter than that, no popup will appear. Also, the popup only shows once per 30-day period per prescription profile — if you already submitted feedback recently, the next popup will appear after the cooldown.</div>
+    </div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="I submitted feedback but didn't get my free Premium">
+      <button class="faq-q">I submitted feedback but didn't get my free Premium <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Premium is added automatically within a few seconds of submitting feedback. Try refreshing the app. If it still doesn't show after a minute, <a href="/contact">contact support</a> with your account email and we'll sort it out manually.</div>
+    </div>
+
+    <div class="faq-item" data-cat="troubleshooting" data-q="Windows is warning me about the installer">
+      <button class="faq-q">Windows is warning me about the installer <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">Windows SmartScreen may show a warning for new applications that haven't yet built up enough download history — this is normal for new software. DOA is safe to install. Click "More info" then "Run anyway" to proceed. If you're uncertain, you can verify the file using Windows Defender before running it.</div>
+    </div>
+
+  </div>
+
+  <!-- CONTACT CTA -->
+  <div class="faq-cta">
+    <div class="faq-cta-left">
+      <h3>Still have a question?</h3>
+      <p>Send it directly — every message goes straight to the team and we reply within 48 hours.</p>
+    </div>
+    <a href="/contact" class="btn-contact">Contact us →</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
+        <p class="footer-desc">A display accessibility tool for people who wear glasses. Not a medical device.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Legal</h5>
+          <ul>
+            <li><a href="/Terms-of-Service">Terms of Service</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/download">Download</a></li>
+            <li><a href="/roadmap">Roadmap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <span>Operated by Cedric Julien .E</span>
+      <img src="cj-white.svg" alt="CJ_" height="24" style="display:block;">
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Burger
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('navLinks');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ── SEARCH + FILTER ENGINE ──
+  const searchInput  = document.getElementById('faqSearch');
+  const searchClear  = document.getElementById('searchClear');
+  const pills        = document.querySelectorAll('.pill');
+  const allItems     = document.querySelectorAll('.faq-item');
+  const allGroups    = document.querySelectorAll('.faq-group');
+  const resultsMeta  = document.getElementById('resultsMeta');
+  const noResults    = document.getElementById('noResults');
+
+  let activeCategory = 'all';
+  let searchQuery    = '';
+
+  function stripMark(el) {
+    // restore original text from data attributes
+    const q = el.querySelector('.faq-q');
+    const a = el.querySelector('.faq-a');
+    if (q._origHTML !== undefined) q.innerHTML = q._origHTML;
+    if (a._origHTML !== undefined) a.innerHTML = a._origHTML;
+  }
+
+  function applyMark(el, query) {
+    const q = el.querySelector('.faq-q');
+    const a = el.querySelector('.faq-a');
+    if (q._origHTML === undefined) q._origHTML = q.innerHTML;
+    if (a._origHTML === undefined) a._origHTML = a.innerHTML;
+
+    if (!query) {
+      q.innerHTML = q._origHTML;
+      a.innerHTML = a._origHTML;
+      return;
+    }
+
+    const esc = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(${esc})`, 'gi');
+    q.innerHTML = q._origHTML.replace(re, '<mark>$1</mark>');
+    a.innerHTML = a._origHTML.replace(re, '<mark>$1</mark>');
+  }
+
+  function runFilter() {
+    let visible = 0;
+
+    allItems.forEach(item => {
+      const cat      = item.dataset.cat;
+      const qText    = (item.dataset.q || '').toLowerCase();
+      const bodyText = item.querySelector('.faq-a').textContent.toLowerCase();
+      const combined = qText + ' ' + bodyText;
+
+      const catMatch   = activeCategory === 'all' || cat === activeCategory;
+      const queryMatch = !searchQuery || combined.includes(searchQuery.toLowerCase());
+      const show       = catMatch && queryMatch;
+
+      item.classList.toggle('hidden', !show);
+      if (show) {
+        visible++;
+        applyMark(item, searchQuery);
+      } else {
+        stripMark(item);
+      }
+    });
+
+    // Show/hide groups based on whether they have any visible items
+    allGroups.forEach(group => {
+      const hasVisible = group.querySelectorAll('.faq-item:not(.hidden)').length > 0;
+      group.style.display = hasVisible ? '' : 'none';
+    });
+
+    // Results meta
+    if (searchQuery) {
+      resultsMeta.textContent = visible === 0
+        ? ''
+        : `${visible} result${visible !== 1 ? 's' : ''} for "${searchQuery}"`;
+    } else {
+      resultsMeta.textContent = '';
+    }
+
+    // No results state
+    noResults.classList.toggle('visible', visible === 0);
+  }
+
+  // Search input
+  searchInput.addEventListener('input', () => {
+    searchQuery = searchInput.value.trim();
+    searchClear.classList.toggle('visible', searchQuery.length > 0);
+    // when searching, reset category pill to all
+    if (searchQuery) {
+      activeCategory = 'all';
+      pills.forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
+    }
+    runFilter();
+  });
+
+  // Clear button
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClear.classList.remove('visible');
+    runFilter();
+    searchInput.focus();
+  });
+
+  // Category pills
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      activeCategory = pill.dataset.cat;
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      // clear search when switching categories
+      searchInput.value = '';
+      searchQuery = '';
+      searchClear.classList.remove('visible');
+      runFilter();
+    });
+  });
+
+  // Initial run
+  runFilter();
+</script>
+</body>
+</html>
