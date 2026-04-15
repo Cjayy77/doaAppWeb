@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOA | Device Optical Aid</title>
+<title>DOA - Device Optical Aid</title>
 <meta name="description" content="DOA adjusts your screen display so people who wear glasses can use their computer comfortably without them. A display accessibility tool for Windows.">
 <meta name="keywords" content="DOA, DOA App, Device Optical Aid, screen accessibility, display adjustment, vision accessibility, deviceopticalaid">
 <meta name="author" content="CJ_">
@@ -102,6 +102,80 @@
   .how-section { background: var(--ink); }
   .how-section h2 { color: #F5F4EF; }
   .how-section .section-sub { color: #9C9B96; }
+
+  /* WHAT TO EXPECT — electric purple */
+  .expect-section {
+    background: #1a0a2e;
+    background: linear-gradient(160deg, #180826 0%, #1e0d35 40%, #16082a 100%);
+    position: relative; overflow: hidden;
+  }
+  .expect-section::before {
+    content: ''; position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(138,43,226,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .expect-section::after {
+    content: ''; position: absolute;
+    bottom: -150px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(176,102,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .expect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 48px;
+    position: relative; z-index: 1;
+  }
+  .expect-card {
+    background: rgba(138,43,226,0.08);
+    border: 1px solid rgba(138,43,226,0.2);
+    border-radius: var(--radius);
+    padding: 26px 24px;
+    transition: transform 0.3s ease, border-color 0.3s, background 0.3s;
+  }
+  .expect-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(176,102,255,0.45);
+    background: rgba(138,43,226,0.14);
+  }
+  .expect-icon {
+    font-size: 26px; margin-bottom: 14px; display: block;
+  }
+  .expect-card h4 {
+    font-size: 15px; font-weight: 700;
+    color: #e8d4ff; margin-bottom: 10px; line-height: 1.2;
+  }
+  .expect-card p {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+  .expect-card p em {
+    color: rgba(255,255,255,0.75); font-style: normal; font-weight: 600;
+  }
+  .expect-footer {
+    margin-top: 36px;
+    display: flex; align-items: center; gap: 20px;
+    padding: 20px 24px;
+    background: rgba(138,43,226,0.1);
+    border: 1px solid rgba(138,43,226,0.2);
+    border-radius: var(--radius-sm);
+    position: relative; z-index: 1;
+    flex-wrap: wrap;
+  }
+  .expect-footer p {
+    font-size: 14px; color: rgba(255,255,255,0.45); flex: 1;
+  }
+  .expect-faq-link {
+    font-size: 14px; font-weight: 700;
+    color: var(--accent2); text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .expect-faq-link:hover { color: #e8d4ff; }
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
   .step-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 32px; position: relative; transition: transform 0.3s ease, border-color 0.3s; }
   .step-card:hover { transform: translateY(-5px); border-color: rgba(138,43,226,0.45); }
@@ -272,7 +346,7 @@
     .nav-cta { display: none; }
     .hero { padding: 120px 20px 60px; }
     h1 { letter-spacing: -1px; }
-    .steps-grid, .features-grid, .visiontypes-grid, .pricing-grid, .filters-row, .steps-flow { grid-template-columns: 1fr; }
+    .steps-grid, .features-grid, .visiontypes-grid, .pricing-grid, .filters-row, .steps-flow, .expect-grid { grid-template-columns: 1fr; }
     .feature-card.wide { grid-column: auto; }
     .mockup-screen { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
@@ -291,12 +365,13 @@
     <span class="nav-name">device optical aid™</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/about">About</a></li>
-    <li><a href="/roadmap">Roadmap</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
     <li><a href="#pricing">Pricing</a></li>
-    <li><a href="/faq">FAQ</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <div class="nav-cta">
+    <a href="/download" class="btn-ghost">Download</a>
     <a href="/download" class="btn-primary">Download</a>
   </div>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -394,10 +469,65 @@
       <div class="step-card reveal" style="transition-delay:0.2s">
         <div class="step-num">03</div>
         <div class="step-icon">👓</div>
-        <h3>Use Your Screen, No Glasses</h3>
-        <p>Read, browse, work, and watch, all without reaching for your glasses. Toggle DOA on or off any time with a keyboard shortcut.</p>
+        <h3>Remove Your Glasses &amp; Look</h3>
+        <p>Take your glasses off and look at your screen. Read, browse, work, and watch — then toggle DOA off to compare. The difference is clearest when you go back and forth.</p>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- WHAT TO EXPECT — electric purple section -->
+<div class="expect-section dark-section" id="what-to-expect" data-theme="dark">
+  <div class="section">
+    <span class="section-tag" style="background:rgba(138,43,226,0.25);color:#d4a0ff;">Before you try it</span>
+    <h2 style="color:#F5F4EF;">A few things worth<br><em>knowing first</em></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.55);">DOA works differently from most apps. Understanding how it behaves will save you from thinking it's broken when it's actually working exactly as it should.</p>
+
+    <div class="expect-grid">
+
+      <div class="expect-card reveal">
+        <div class="expect-icon">👓</div>
+        <h4>Take your glasses off first</h4>
+        <p>This sounds obvious but it's the most common mistake. DOA is designed to be used <em>without</em> glasses. If you're wearing them while testing it, the screen will look over-sharpened or distorted. Take them off, then look.</p>
+      </div>
+
+      <div class="expect-card reveal" style="transition-delay:0.07s">
+        <div class="expect-icon">🎚️</div>
+        <h4>The effect is subtle by design</h4>
+        <p>DOA doesn't add visible filters or change your screen's colours. It makes fine adjustments to the display that your eye processes unconsciously. The best way to notice it is to toggle it off and on while looking at small text or fine detail — the difference becomes obvious in comparison.</p>
+      </div>
+
+      <div class="expect-card reveal" style="transition-delay:0.14s">
+        <div class="expect-icon">📏</div>
+        <h4>Distance matters</h4>
+        <p>DOA is calibrated for a typical screen-viewing distance — about 50–70cm from your face. If you're sitting much closer or much further away than usual, the adjustment won't be as precise. Sit at your normal distance and try again.</p>
+      </div>
+
+      <div class="expect-card reveal" style="transition-delay:0.21s">
+        <div class="expect-icon">🔢</div>
+        <h4>Stronger prescriptions see more difference</h4>
+        <p>If your prescription is strong — say, −3.00 or higher — the improvement will be immediately noticeable. If your prescription is very mild, you already see screens fairly well without glasses, so the change will be more subtle. DOA still works, it just has less to adjust.</p>
+      </div>
+
+      <div class="expect-card reveal" style="transition-delay:0.28s">
+        <div class="expect-icon">🖥️</div>
+        <h4>Your screen matters too</h4>
+        <p>DOA works best on high-resolution screens. A 4K monitor gives much better results than an old 1080p screen at the same size, because there are more pixels to work with. If you have a lower-resolution display, results will still improve — just less dramatically.</p>
+      </div>
+
+      <div class="expect-card reveal" style="transition-delay:0.35s">
+        <div class="expect-icon">🌡️</div>
+        <h4>Hyperopia responds especially well</h4>
+        <p>Far-sighted users (hyperopia) — people who struggle to read things up close — tend to see the clearest improvement with DOA. Screens are exactly the kind of close-up task that hyperopia makes uncomfortable, so the adjustment has a lot of impact.</p>
+      </div>
+
+    </div>
+
+    <div class="expect-footer reveal">
+      <p>Still have questions about how DOA behaves with your specific prescription or setup?</p>
+      <a href="/faq" class="expect-faq-link">Browse the full FAQ →</a>
+    </div>
+
   </div>
 </div>
 
@@ -418,7 +548,7 @@
       <div class="feature-card reveal" style="transition-delay:0.1s">
         <div class="feature-icon">⚡</div>
         <h3>60fps, Near-Zero Lag</h3>
-        <p>Runs entirely on your GPU. There's a 30–50ms overlay delay, imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
+        <p>Runs entirely on your GPU. There's a 30–50ms overlay delay — imperceptible during reading, typing, and browsing. Ideal for everyday use.</p>
         <div class="feature-chips">
           <span class="chip">GPU-accelerated</span><span class="chip">60fps locked</span><span class="chip">Always on</span>
         </div>
@@ -426,22 +556,22 @@
       <div class="feature-card reveal" style="transition-delay:0.05s">
         <div class="feature-icon">🌈</div>
         <h3>Color Filters</h3>
-        <p>Color adjustment modes for Protanopia, Deuteranopia, and Tritanopia, for people who have difficulty distinguishing certain colors. Works on its own, no prescription needed.</p>
+        <p>Color adjustment modes for Protanopia, Deuteranopia, and Tritanopia — for people who have difficulty distinguishing certain colors. Works on its own, no prescription needed.</p>
       </div>
       <div class="feature-card reveal" style="transition-delay:0.15s">
         <div class="feature-icon">🖥️</div>
         <h3>Multi-Monitor Support</h3>
-        <p>Apply different display settings per monitor, useful when screens are at different viewing distances. Premium feature.</p>
+        <p>Apply different display settings per monitor — useful when screens are at different viewing distances. Premium feature.</p>
       </div>
       <div class="feature-card wide reveal">
         <div class="feature-icon">🔒</div>
         <h3>Privacy-First Design</h3>
-        <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design, not just by policy. Everything is processed locally on your device and never transmitted.</p>
+        <p>DOA never captures Windows system UI, Start menu, login screens, or UAC prompts. Your sensitive information stays protected by design — not just by policy. Everything is processed locally on your device and never transmitted.</p>
         <div class="privacy-bar">
           <div class="privacy-bar-icon">🛡️</div>
           <div>
             <h4>What DOA never sees</h4>
-            <p>Some Windows elements are protected by the OS and will not appear in DOA's display layer, keeping your data private.</p>
+            <p>Some Windows elements are protected by the OS and will not appear in DOA's display layer — keeping your data private.</p>
             <div class="privacy-list">
               <span class="privacy-tag">Login screens &amp; passwords</span>
               <span class="privacy-tag">Banking &amp; payment windows</span>
@@ -459,7 +589,7 @@
   <div class="section">
     <span class="section-tag">Who it's for</span>
     <h2>Works for<br><em>how you see</em></h2>
-    <p class="section-sub">DOA works with the most common glasses prescriptions;</p>
+    <p class="section-sub">DOA works with the most common glasses prescriptions — here's what each one means in plain English.</p>
     <div class="visiontypes-grid">
       <div class="vtype-card reveal">
         <div class="vtype-emoji">🔭</div>
@@ -489,7 +619,7 @@
   <div class="section">
     <span class="section-tag">Color Filters</span>
     <h2>More than just<br><em>prescription support</em></h2>
-    <p class="section-sub">Color adjustment modes run as a single display pass, no setup, no calibration, and fully compatible with any active prescription profile.</p>
+    <p class="section-sub">Color adjustment modes run as a single display pass — no setup, no calibration, and fully compatible with any active prescription profile.</p>
     <div class="filters-row">
       <div class="filter-card reveal">
         <div class="filter-swatch swatch-protan"></div>
@@ -499,7 +629,7 @@
       <div class="filter-card reveal" style="transition-delay:0.1s">
         <div class="filter-swatch swatch-deutan"></div>
         <h4>Deuteranopia</h4>
-        <p>The most common type; trouble telling red and green apart. DOA adjusts the color balance so those tones are easier to distinguish.</p>
+        <p>The most common type — trouble telling red and green apart. DOA adjusts the color balance so those tones are easier to distinguish.</p>
       </div>
       <div class="filter-card reveal" style="transition-delay:0.2s">
         <div class="filter-swatch swatch-tritan"></div>
@@ -558,7 +688,7 @@
   <div class="section">
     <span class="section-tag">Free Premium</span>
     <h2>Missed early access?<br><em>You can still get it free.</em></h2>
-    <p class="section-sub">Every user who submits correction feedback in the app gets 7 days of Premium automatically, no code needed. Here's how.</p>
+    <p class="section-sub">Every user who submits correction feedback in the app gets 7 days of Premium — automatically, no code needed. Here's how.</p>
 
     <div class="steps-flow">
       <div class="flow-step reveal">
@@ -571,18 +701,18 @@
         <span class="flow-step-num">Step 02</span>
         <span class="flow-step-icon">📋</span>
         <h4>Set up your prescription</h4>
-        <p>Enter the values from your glasses; SPH, CYL, AXIS, or ADD. DOA builds your display profile from these.</p>
+        <p>Enter the values from your glasses — SPH, CYL, AXIS, or ADD. DOA builds your display profile from these.</p>
       </div>
       <div class="flow-step reveal" style="transition-delay:0.16s">
         <span class="flow-step-num">Step 03</span>
         <span class="flow-step-icon">👁️</span>
         <h4>Use DOA for at least 60 seconds</h4>
-        <p>Turn on the display adjustment and use your screen normally for at least one minute. Browse, read, work. whatever you'd normally do.</p>
+        <p>Turn on the display adjustment and use your screen normally for at least one minute. Browse, read, work — whatever you'd normally do.</p>
       </div>
       <div class="flow-step reveal" style="transition-delay:0.24s">
         <span class="flow-step-num">Step 04</span>
         <span class="flow-step-icon">💬</span>
-        <h4>Turn it off, a feedback prompt appears</h4>
+        <h4>Turn it off — a feedback prompt appears</h4>
         <p>When you deactivate the correction, a short feedback popup appears automatically. Answer a few quick questions about how the display felt.</p>
       </div>
     </div>
@@ -591,7 +721,7 @@
       <div class="flow-reward-left">
         <div class="flow-reward-icon">🎁</div>
         <div class="flow-reward-text">
-          <h4>7 days of Premium unlocked instantly</h4>
+          <h4>7 days of Premium — unlocked instantly</h4>
           <p>The moment you submit your feedback, <strong>7 days of Premium are added to your account automatically.</strong> No coupon, no waiting, no card needed. You can earn this once every 30 days.</p>
         </div>
       </div>
@@ -612,11 +742,11 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does this actually replace my glasses? <span class="arrow">↓</span></button>
-        <div class="faq-a">No — DOA adjusts your screen display, not your eyesight. It's designed for screen use only. You'd still need glasses for everything else; driving, reading printed text, and anything away from your screen.</div>
+        <div class="faq-a">No — DOA adjusts your screen display, not your eyesight. It's designed for screen use only. You'd still need glasses for everything else — driving, reading printed text, and anything away from your screen.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Is DOA a medical device? <span class="arrow">↓</span></button>
-        <div class="faq-a">No. DOA is a display accessibility tool, it adjusts how your screen looks. It is not a medical device, is not regulated as one, and does not treat, diagnose, or replace any professional eye care. If you have concerns about your eyesight, please see a qualified eye care professional.</div>
+        <div class="faq-a">No. DOA is a display accessibility tool — it adjusts how your screen looks. It is not a medical device, is not regulated as one, and does not treat, diagnose, or replace any professional eye care. If you have concerns about your eyesight, please see a qualified eye care professional.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does DOA work with all devices? <span class="arrow">↓</span></button>
@@ -624,13 +754,9 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does DOA make my vision better? <span class="arrow">↓</span></button>
-        <div class="faq-a">No. DOA only adjusts your screen, it has no effect on your actual eyesight. It's a tool for making your screen easier to use when you don't have your glasses on. It cannot improve, treat, or change your vision in any way.</div>
+        <div class="faq-a">No. DOA only adjusts your screen — it has no effect on your actual eyesight. It's a tool for making your screen easier to use when you don't have your glasses on. It cannot improve, treat, or change your vision in any way.</div>
       </div>
     </div>
-     <div class="nav-cta">
-       <br><br>
-    <a href="/faq" class="btn-primary">More FAQs</a>
-  </div>
   </div>
 </section>
 
@@ -639,7 +765,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
-        <p class="footer-desc">A display accessibility tool for people who wear glasses. </p>
+        <p class="footer-desc">A display accessibility tool for people who wear glasses. Not a medical device.</p>
       </div>
       <div class="footer-col">
         <h5>Product</h5>
