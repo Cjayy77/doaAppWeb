@@ -838,26 +838,39 @@ nav.nav-purple .burger span { background: #e8d4ff; }
   window.addEventListener('touchend', () => dragging = false);
   wrap.addEventListener('mouseenter', () => { const t = after.querySelector('.blur-text'); if (t) t.style.width = wrap.getBoundingClientRect().width + 'px'; });
   window.addEventListener('load', () => { const t = after.querySelector('.blur-text'); if (t) t.style.width = wrap.getBoundingClientRect().width + 'px'; });
+
   const navbar = document.getElementById('navbar');
   const darkEls = document.querySelectorAll('[data-theme="dark"]');
   const purpleEl = document.getElementById('what-to-expect');
 
-function updateNav() {
-  const mid = 45;
-  let dark = false;
-  let purple = false;
-  darkEls.forEach(el => {
-    const r = el.getBoundingClientRect();
-    if (r.top <= mid && r.bottom >= mid) dark = true;
-  });
-  if (purpleEl) {
-    const r = purpleEl.getBoundingClientRect();
-    if (r.top <= mid && r.bottom >= mid) purple = true;
+  function updateNav() {
+    const mid = 45;
+    let dark = false;
+    let purple = false;
+
+    // Check if we are in the purple section first
+    if (purpleEl) {
+      const r = purpleEl.getBoundingClientRect();
+      if (r.top <= mid && r.bottom >= mid) purple = true;
+    }
+
+    // Check other dark sections only if not in purple
+    if (!purple) {
+      darkEls.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top <= mid && r.bottom >= mid) dark = true;
+      });
+    }
+
+    // Apply classes
+    navbar.classList.toggle('nav-purple', purple);
+    navbar.classList.toggle('nav-dark', dark);
   }
-  // purple takes priority over dark
-  navbar.classList.toggle('nav-purple', purple);
-  navbar.classList.toggle('nav-dark', dark && !purple);
-}
+
+  // THE MISSING PIECE: Add the scroll listener and initial call
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
   const revealObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   // pricing buttons
