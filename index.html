@@ -135,39 +135,60 @@ nav.nav-purple .burger span { background: #e8d4ff; }
     background: radial-gradient(circle, rgba(176,102,255,0.12) 0%, transparent 70%);
     pointer-events: none;
   }
+  /* BENTO GRID REDESIGN */
   .expect-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(160px, auto);
+    gap: 16px;
     margin-top: 48px;
     position: relative; z-index: 1;
   }
   .expect-card {
-    background: rgba(138,43,226,0.08);
-    border: 1px solid rgba(138,43,226,0.2);
-    border-radius: var(--radius);
-    padding: 26px 24px;
-    transition: transform 0.3s ease, border-color 0.3s, background 0.3s;
+    background: rgba(138,43,226,0.05);
+    border: 1px solid rgba(138,43,226,0.15);
+    border-radius: 20px;
+    padding: 28px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+  .expect-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at top left, rgba(138,43,226,0.15), transparent 70%);
+    opacity: 0; transition: opacity 0.4s;
   }
   .expect-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(176,102,255,0.45);
-    background: rgba(138,43,226,0.14);
+    transform: translateY(-5px) scale(1.01);
+    border-color: rgba(176,102,255,0.4);
+    background: rgba(138,43,226,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(138,43,226,0.1);
   }
-  .expect-icon {
-    font-size: 26px; margin-bottom: 14px; display: block;
+  .expect-card:hover::before { opacity: 1; }
+  
+  /* Bento Sizes */
+  .expect-card.large { grid-column: span 2; grid-row: span 2; background: rgba(138,43,226,0.12); border-color: rgba(138,43,226,0.3); }
+  .expect-card.medium { grid-column: span 2; }
+  .expect-card.tall { grid-row: span 2; }
+
+  .expect-icon { font-size: 32px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(138,43,226,0.3)); }
+  .expect-card h4 { color: #f3e8ff; font-size: 18px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+  .expect-card.large h4 { font-size: 24px; }
+  .expect-card p { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .expect-card.large p { font-size: 16px; }
+
+  @media (max-width: 900px) {
+    .expect-grid { grid-template-columns: 1fr 1fr; }
+    .expect-card.large, .expect-card.medium { grid-column: span 2; }
   }
-  .expect-card h4 {
-    font-size: 15px; font-weight: 700;
-    color: #e8d4ff; margin-bottom: 10px; line-height: 1.2;
+  @media (max-width: 600px) {
+    .expect-grid { grid-template-columns: 1fr; }
+    .expect-card.large, .expect-card.medium, .expect-card.tall { grid-column: span 1; grid-row: span 1; }
   }
-  .expect-card p {
-    font-size: 13px; color: rgba(255,255,255,0.5);
-    line-height: 1.7;
-  }
-  .expect-card p em {
-    color: rgba(255,255,255,0.75); font-style: normal; font-weight: 600;
-  }
+
   .expect-footer {
     margin-top: 36px;
     display: flex; align-items: center; gap: 20px;
@@ -494,45 +515,50 @@ nav.nav-purple .burger span { background: #e8d4ff; }
     <h2 style="color:#F5F4EF;">A few things worth<br><em>knowing first</em></h2>
     <p class="section-sub" style="color:rgba(255,255,255,0.55);">DOA works differently from most apps. Understanding how it behaves will save you from thinking it's broken when it's actually working exactly as it should.</p>
 
-    <div class="expect-grid">
-
-      <div class="expect-card reveal">
+       <div class="expect-grid">
+      <!-- MAIN POINT (Large) -->
+      <div class="expect-card large reveal">
         <div class="expect-icon">👓</div>
         <h4>Take your glasses off first</h4>
         <p>This sounds obvious but it's the most common mistake. DOA is designed to be used <em>without</em> glasses. If you're wearing them while testing it, the screen will look over-sharpened or distorted. Take them off, then look.</p>
       </div>
 
-      <div class="expect-card reveal" style="transition-delay:0.07s">
+      <!-- SUBTLE EFFECT (Medium) -->
+      <div class="expect-card medium reveal" style="transition-delay:0.1s">
         <div class="expect-icon">🎚️</div>
         <h4>The effect is subtle by design</h4>
-        <p>DOA doesn't add visible filters or change your screen's colours. It makes fine adjustments to the display that your eye processes unconsciously. The best way to notice it is to toggle it off and on while looking at small text or fine detail — the difference becomes obvious in comparison.</p>
+        <p>DOA makes fine adjustments that your eye processes unconsciously. Toggle it off and on while looking at small text — the difference becomes obvious in comparison.</p>
       </div>
 
-      <div class="expect-card reveal" style="transition-delay:0.14s">
+      <!-- DISTANCE (Small/Tall) -->
+      <div class="expect-card tall reveal" style="transition-delay:0.2s">
         <div class="expect-icon">📏</div>
         <h4>Distance matters</h4>
-        <p>DOA is calibrated for a typical screen-viewing distance — about 50–70cm from your face. If you're sitting much closer or much further away than usual, the adjustment won't be as precise. Sit at your normal distance and try again.</p>
+        <p>Calibrated for 50–70cm. If you're too close or far, the adjustment won't be as precise. Sit at your normal distance.</p>
       </div>
 
-      <div class="expect-card reveal" style="transition-delay:0.21s">
+      <!-- PRESCRIPTION (Small) -->
+      <div class="expect-card reveal" style="transition-delay:0.3s">
         <div class="expect-icon">🔢</div>
-        <h4>Stronger prescriptions see more difference</h4>
-        <p>If your prescription is strong — say, −3.00 or higher — the improvement will be immediately noticeable. If your prescription is very mild, you already see screens fairly well without glasses, so the change will be more subtle. DOA still works, it just has less to adjust.</p>
+        <h4>Prescription Strength</h4>
+        <p>Stronger prescriptions (−3.00+) see immediate results. Mild ones see a more subtle change.</p>
       </div>
 
-      <div class="expect-card reveal" style="transition-delay:0.28s">
+      <!-- SCREEN (Medium) -->
+      <div class="expect-card medium reveal" style="transition-delay:0.4s">
         <div class="expect-icon">🖥️</div>
         <h4>Your screen matters too</h4>
-        <p>DOA works best on high-resolution screens. A 4K monitor gives much better results than an old 1080p screen at the same size, because there are more pixels to work with. If you have a lower-resolution display, results will still improve — just less dramatically.</p>
+        <p>High-resolution (4K) monitors give the best results because there are more pixels to work with for the adjustment.</p>
       </div>
 
-      <div class="expect-card reveal" style="transition-delay:0.35s">
+      <!-- HYPEROPIA (Small) -->
+      <div class="expect-card reveal" style="transition-delay:0.5s">
         <div class="expect-icon">🌡️</div>
-        <h4>Hyperopia responds especially well</h4>
-        <p>Far-sighted users (hyperopia) — people who struggle to read things up close — tend to see the clearest improvement with DOA. Screens are exactly the kind of close-up task that hyperopia makes uncomfortable, so the adjustment has a lot of impact.</p>
+        <h4>Hyperopia</h4>
+        <p>Far-sighted users often see the clearest improvement with close-up screen tasks.</p>
       </div>
-
     </div>
+
 
     <div class="expect-footer reveal">
       <p>Still have questions about how DOA behaves with your specific prescription or setup?</p>
