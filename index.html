@@ -32,6 +32,18 @@
   nav.nav-dark .burger span { background: #F5F4EF; }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 54px; width: auto; }
+  nav.nav-purple {
+  background: rgba(24,8,38,0.95);
+  border-bottom-color: rgba(138,43,226,0.2);
+}
+nav.nav-purple .nav-links a { color: rgba(255,255,255,0.5); }
+nav.nav-purple .nav-links a:hover { color: #e8d4ff; }
+nav.nav-purple .nav-links a::after { background: var(--accent2); }
+nav.nav-purple .btn-ghost { color: #e8d4ff; border-color: rgba(138,43,226,0.3); }
+nav.nav-purple .btn-ghost:hover { background: rgba(138,43,226,0.15); }
+nav.nav-purple .nav-name { color: #e8d4ff; }
+nav.nav-purple .btn-primary { background: var(--accent2); }
+nav.nav-purple .burger span { background: #e8d4ff; }
   .nav-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: 0.08em; color: var(--ink); margin-left: 14px; padding-left: 14px; border-left: 1.5px solid var(--border); white-space: nowrap; text-transform: lowercase; }
   @media (max-width: 900px) { .nav-name { display: none; } }
   .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -828,9 +840,24 @@
   window.addEventListener('load', () => { const t = after.querySelector('.blur-text'); if (t) t.style.width = wrap.getBoundingClientRect().width + 'px'; });
   const navbar = document.getElementById('navbar');
   const darkEls = document.querySelectorAll('[data-theme="dark"]');
-  function updateNav() { const mid = 45; let dark = false; darkEls.forEach(el => { const r = el.getBoundingClientRect(); if (r.top <= mid && r.bottom >= mid) dark = true; }); navbar.classList.toggle('nav-dark', dark); }
-  window.addEventListener('scroll', updateNav, { passive: true });
-  updateNav();
+  const purpleEl = document.getElementById('what-to-expect');
+
+function updateNav() {
+  const mid = 45;
+  let dark = false;
+  let purple = false;
+  darkEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top <= mid && r.bottom >= mid) dark = true;
+  });
+  if (purpleEl) {
+    const r = purpleEl.getBoundingClientRect();
+    if (r.top <= mid && r.bottom >= mid) purple = true;
+  }
+  // purple takes priority over dark
+  navbar.classList.toggle('nav-purple', purple);
+  navbar.classList.toggle('nav-dark', dark && !purple);
+}
   const revealObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   // pricing buttons
