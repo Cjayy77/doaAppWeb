@@ -96,6 +96,17 @@
   /* swatch dots in mockup */
   .swatch-dot { display: inline-block; width: 16px; height: 16px; border-radius: 50%; }
 
+  /* ── FOUNDER NOTE ── */
+  .founder-note {
+    max-width: 640px; margin: 0 auto;
+    padding: 72px 24px 8px; text-align: center;
+  }
+  .founder-note p {
+    font-size: clamp(17px, 2.2vw, 21px); color: var(--ink2);
+    line-height: 1.7; font-style: italic; margin-bottom: 14px;
+  }
+  .founder-note span { font-size: 13px; color: var(--ink3); font-style: normal; }
+
   /* ── STEPS ── */
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
   .step-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; position: relative; transition: border-color 0.25s; }
@@ -106,13 +117,14 @@
 
   /* ── WHAT TO EXPECT ── */
   .expect-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .expect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
-  .expect-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; transition: border-color 0.25s; }
-  .expect-card:hover { border-color: rgba(138,43,226,0.35); }
-  .expect-card.lead-card { grid-column: span 2; background: var(--accent-dim); border-color: rgba(138,43,226,0.3); }
-  .expect-card h4 { color: var(--ink); font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.02em; }
-  .expect-card.lead-card h4 { font-size: 21px; }
-  .expect-card p { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+  .expect-callout {
+    margin-top: 48px; max-width: 720px;
+    border-left: 3px solid var(--accent);
+    padding: 6px 0 6px 28px;
+  }
+  .expect-callout p { font-size: clamp(16px, 2vw, 18px); color: var(--ink2); line-height: 1.8; }
+  .expect-callout p + p { margin-top: 18px; }
+  .expect-callout em { color: var(--ink); font-style: italic; }
   .expect-footer {
     margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
     padding: 20px 24px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
@@ -142,8 +154,9 @@
 
   /* ── VISION TYPES ── */
   .vt-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .visiontypes-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 56px; }
-  .vtype-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px 20px; transition: border-color 0.25s; }
+  .visiontypes-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 56px; }
+  .vtype-card { grid-column: span 2; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px 20px; transition: border-color 0.25s; }
+  .vtype-card:nth-last-child(-n+2) { grid-column: span 3; }
   .vtype-card:hover { border-color: rgba(138,43,226,0.35); }
   .vtype-card .icon-tile { width: 38px; height: 38px; border-radius: 9px; margin-bottom: 14px; }
   .vtype-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
@@ -215,8 +228,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .visiontypes-grid { grid-template-columns: 1fr 1fr; }
-    .expect-grid { grid-template-columns: 1fr 1fr; }
-    .expect-card.lead-card { grid-column: span 2; }
+    .vtype-card, .vtype-card:nth-last-child(-n+2) { grid-column: auto; }
     .steps-flow { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 768px) {
@@ -227,8 +239,8 @@
     .privacy-bar { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .visiontypes-grid, .expect-grid, .steps-flow { grid-template-columns: 1fr; }
-    .expect-card.lead-card { grid-column: span 1; }
+    .visiontypes-grid, .steps-flow { grid-template-columns: 1fr; }
+    .expect-callout { padding-left: 20px; }
   }
 </style>
 </head>
@@ -255,7 +267,7 @@
 <section class="hero">
   <span class="kicker"><b>Beta</b> · Now live on Windows</span>
   <h1>Your screen,<br>without your <span class="deblur">glasses.</span></h1>
-  <p class="hero-sub">DOA adjusts your screen display so people who wear glasses can use their computer comfortably — without putting them on.</p>
+  <p class="hero-sub">Type in the prescription from your glasses, take them off, and your screen still reads sharp. That's the whole idea.</p>
   <span class="non-medical-note">Display accessibility tool · Not a medical device · Does not replace eye care</span>
   <div class="hero-actions">
     <a href="/download" class="btn btn-primary btn-big">Get started</a>
@@ -319,6 +331,11 @@
   </div>
 </section>
 
+<div class="founder-note reveal">
+  <p>"I wear glasses myself. DOA started as a tool I built for my own desk — I was tired of needing them just to glance at my own screen. Everything on this site is me trying to explain, honestly, what it can and can't do."</p>
+  <span>— Cedric, who builds DOA</span>
+</div>
+
 <div id="how-it-works">
   <div class="section">
     <span class="kicker"><b>01</b> — How it works</span>
@@ -350,41 +367,12 @@
 <!-- WHAT TO EXPECT -->
 <div class="expect-section" id="what-to-expect">
   <div class="section">
-    <span class="kicker"><b>02</b> — Before you try it</span>
-    <h2>A few things worth<br><em>knowing first</em></h2>
-    <p class="section-sub">DOA works differently from most apps. Understanding how it behaves will save you from thinking it's broken when it's actually working exactly as it should.</p>
+    <span class="kicker"><b>02</b> — Read this first</span>
+    <h2>It's subtle.<br><em>That's the point.</em></h2>
 
-    <div class="expect-grid">
-      <div class="expect-card lead-card reveal">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#glasses"/></svg></div>
-        <h4>Take your glasses off first</h4>
-        <p>This sounds obvious but it's the most common mistake. DOA is designed to be used <em>without</em> glasses. If you're wearing them while testing it, the screen will look over-sharpened or distorted. Take them off, then look.</p>
-      </div>
-      <div class="expect-card reveal" style="transition-delay:0.1s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#sliders"/></svg></div>
-        <h4>The effect is subtle by design</h4>
-        <p>DOA makes fine adjustments that your eye processes unconsciously. Toggle it off and on while looking at small text and the difference becomes obvious in comparison.</p>
-      </div>
-      <div class="expect-card reveal" style="transition-delay:0.2s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#ruler"/></svg></div>
-        <h4>Distance matters</h4>
-        <p>When calibrated for 50cm (for example), 5cm too close or far will make the adjustment not be as precise. Sit at your set screen distance.</p>
-      </div>
-      <div class="expect-card reveal" style="transition-delay:0.3s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#hash"/></svg></div>
-        <h4>Prescription strength</h4>
-        <p>Stronger prescriptions (−3.00+) see immediate results. Mild ones see a more subtle change since their eyes already adapt fairly well to close up content.</p>
-      </div>
-      <div class="expect-card reveal" style="transition-delay:0.4s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#monitor"/></svg></div>
-        <h4>Your screen matters too</h4>
-        <p>Display resolution plays a key role in correction quality. Lower PPI/DPI screens may limit effectiveness. Check your monitor's specs when setting up your prescription card.</p>
-      </div>
-      <div class="expect-card reveal" style="transition-delay:0.5s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#zoom-in"/></svg></div>
-        <h4>Hyperopia</h4>
-        <p>Far-sighted users often see the clearest improvement with close-up screen tasks.</p>
-      </div>
+    <div class="expect-callout reveal">
+      <p>Most people get the best result sitting at the distance they calibrated for — around 50cm — with their glasses <em>off</em>. That last part sounds obvious, but it's the most common mistake: with glasses on, the screen looks over-sharpened, and people assume it's broken. If the effect feels subtle, that's correct — DOA isn't a filter, it's a fine adjustment your eye processes without noticing. Toggle it off and on while looking at small text and the difference shows up in the comparison.</p>
+      <p>Two honest caveats: stronger prescriptions (around −3.00 and up) see the clearest change, and lower-resolution screens limit how precise the adjustment can be.</p>
     </div>
 
     <div class="expect-footer reveal">
