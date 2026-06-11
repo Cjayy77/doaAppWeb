@@ -8,188 +8,63 @@
 <meta name="author" content="CJ_">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="canonical" href="https://deviceopticalaid.com/faq" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root {
-    --bg:         #1C1B18;
-    --bg2:        #232320;
-    --card:       #2A2A27;
-    --card2:      #313130;
-    --border:     rgba(255,255,255,0.08);
-    --border2:    rgba(255,255,255,0.12);
-    --ink:        #F5F4EF;
-    --ink2:       #9C9B96;
-    --ink3:       #6C6B66;
-    --accent:     #8a2be2;
-    --accent2:    #b066ff;
-    --accent-dim: rgba(138,43,226,0.15);
-    --radius:     12px;
-    --radius-sm:  8px;
-  }
+  main { max-width: 860px; margin: 0 auto; padding: calc(var(--nav-h) + 40px) 40px 100px; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    background: var(--bg); color: var(--ink2);
-    line-height: 1.7; overflow-x: hidden;
-    min-height: 100vh;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px; height: 80px;
-    background: rgba(28,27,24,0.95);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo img { height: 48px; width: auto; }
-  .nav-name {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
-    color: var(--ink); margin-left: 14px; padding-left: 14px;
-    border-left: 1.5px solid rgba(255,255,255,0.1);
-    white-space: nowrap; text-transform: lowercase; text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
-  .btn-home {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 14px; font-weight: 600; color: #fff;
-    background: var(--accent); border: none;
-    padding: 8px 18px; border-radius: 8px;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
-  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; }
-
-  /* PAGE */
-  main { max-width: 860px; margin: 0 auto; padding: 108px 40px 100px; }
-
-  /* HERO */
-  .page-tag {
-    display: inline-block; font-size: 11px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent2); background: var(--accent-dim);
-    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
-  }
-  .page-hero { margin-bottom: 40px; }
-  .page-hero h1 {
-    font-family: 'League Spartan', sans-serif;
-    font-size: clamp(36px, 5vw, 58px);
-    font-weight: 900; letter-spacing: -1.5px; line-height: 1.0;
-    color: var(--ink); margin-bottom: 14px;
-  }
-  .page-hero h1 em {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent; font-style: italic;
-  }
+  .page-hero { margin-bottom: 40px; animation: fadeUp 0.5s ease both 0.05s; }
+  .page-hero h1 { font-size: clamp(36px, 5vw, 58px); margin-bottom: 14px; }
   .page-hero p { font-size: 16px; color: var(--ink2); max-width: 500px; line-height: 1.7; }
 
   /* SEARCH */
-  .search-wrap {
-    position: relative; margin-bottom: 28px;
-  }
-  .search-icon {
-    position: absolute; left: 16px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--ink3); font-size: 16px; pointer-events: none;
-  }
-  .search-input {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 15px; color: var(--ink);
-    width: 100%; background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius); padding: 14px 16px 14px 44px;
-    outline: none; transition: border-color 0.2s, background 0.2s;
-  }
-  .search-input::placeholder { color: var(--ink3); }
-  .search-input:focus {
-    border-color: var(--accent);
-    background: rgba(138,43,226,0.04);
-  }
+  .search-wrap { position: relative; margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.1s; }
+  .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--ink3); pointer-events: none; }
+  .search-input { padding-left: 46px; padding-top: 14px; padding-bottom: 14px; border-radius: var(--radius); }
   .search-clear {
-    position: absolute; right: 14px; top: 50%;
-    transform: translateY(-50%);
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
     background: none; border: none; cursor: pointer;
     color: var(--ink3); font-size: 18px; line-height: 1;
-    display: none; padding: 2px 6px; border-radius: 4px;
-    transition: color 0.2s;
+    display: none; padding: 2px 6px; border-radius: 4px; transition: color 0.2s;
   }
   .search-clear:hover { color: var(--ink); }
   .search-clear.visible { display: block; }
 
   /* CATEGORY PILLS */
-  .category-pills {
-    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px;
-  }
+  .category-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
   .pill {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 13px; font-weight: 600;
+    font-family: var(--font-body); font-size: 13px; font-weight: 600;
     padding: 7px 16px; border-radius: 100px; cursor: pointer;
     border: 1.5px solid var(--border); background: none;
-    color: var(--ink2); transition: all 0.2s;
-    white-space: nowrap;
+    color: var(--ink2); transition: all 0.2s; white-space: nowrap;
   }
   .pill:hover { border-color: var(--border2); color: var(--ink); }
-  .pill.active {
-    background: var(--accent-dim);
-    border-color: rgba(138,43,226,0.35);
-    color: var(--accent2);
-  }
+  .pill.active { background: var(--accent-dim); border-color: rgba(138,43,226,0.35); color: var(--accent2); }
 
-  /* RESULTS COUNT */
-  .results-meta {
-    font-size: 13px; color: var(--ink3);
-    margin-bottom: 20px; min-height: 20px;
-    transition: opacity 0.2s;
-  }
+  .results-meta { font-size: 13px; color: var(--ink3); margin-bottom: 20px; min-height: 20px; }
 
   /* FAQ GROUPS */
   .faq-group { margin-bottom: 48px; }
   .faq-group-label {
     font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--ink3);
-    margin-bottom: 12px;
-    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
   }
-  .faq-group-label::after {
-    content: ''; flex: 1; height: 1px; background: var(--border);
-  }
+  .faq-group-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
   /* FAQ ITEMS */
   .faq-item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    overflow: hidden; margin-bottom: 8px;
-    transition: border-color 0.25s;
-    position: relative;
-  }
-  .faq-item::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; width: 3px; height: 100%;
-    background: linear-gradient(180deg, var(--accent), var(--accent2));
-    opacity: 0; transition: opacity 0.25s;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    overflow: hidden; margin-bottom: 8px; transition: border-color 0.25s;
   }
   .faq-item:hover { border-color: rgba(138,43,226,0.25); }
-  .faq-item.open { border-color: rgba(138,43,226,0.35); }
-  .faq-item.open::before { opacity: 1; }
-
+  .faq-item.open { border-color: rgba(138,43,226,0.4); }
   .faq-q {
-    width: 100%; padding: 18px 20px;
-    text-align: left; background: none; border: none;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 15px; font-weight: 600; color: var(--ink);
-    cursor: pointer; display: flex;
-    justify-content: space-between; align-items: center;
+    width: 100%; padding: 18px 20px; text-align: left; background: none; border: none;
+    font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--ink);
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
     gap: 16px; line-height: 1.4;
   }
   .faq-arrow {
@@ -203,121 +78,72 @@
   .faq-a {
     max-height: 0; overflow: hidden;
     transition: max-height 0.4s ease, padding 0.3s;
-    font-size: 14px; color: var(--ink2);
-    line-height: 1.75; padding: 0 20px;
+    font-size: 14px; color: var(--ink2); line-height: 1.75; padding: 0 20px;
   }
   .faq-item.open .faq-a { max-height: 400px; padding: 0 20px 18px; }
   .faq-a a { color: var(--accent2); text-decoration: none; }
   .faq-a a:hover { color: var(--ink); }
   .faq-a strong { color: var(--ink); font-weight: 600; }
 
-  /* HIGHLIGHT SEARCH MATCH */
   .faq-item.hidden { display: none; }
-  mark {
-    background: rgba(176,102,255,0.25);
-    color: var(--ink); border-radius: 2px;
-    padding: 0 2px;
-  }
+  mark { background: rgba(176,102,255,0.25); color: var(--ink); border-radius: 2px; padding: 0 2px; }
 
   /* NO RESULTS */
-  .no-results {
-    display: none; text-align: center;
-    padding: 60px 20px;
-  }
+  .no-results { display: none; text-align: center; padding: 60px 20px; }
   .no-results.visible { display: block; }
-  .no-results-icon { font-size: 40px; margin-bottom: 16px; }
-  .no-results h3 { font-family: 'League Spartan', sans-serif; font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 8px; }
+  .no-results .icon-tile { margin: 0 auto 16px; }
+  .no-results h3 { font-family: var(--font-display); font-size: 22px; font-weight: 800; margin-bottom: 8px; }
   .no-results p { font-size: 15px; color: var(--ink2); }
   .no-results a { color: var(--accent2); text-decoration: none; }
 
   /* CONTACT CTA */
   .faq-cta {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 32px;
-    display: flex; align-items: center;
-    justify-content: space-between; gap: 20px;
-    flex-wrap: wrap; margin-top: 48px;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px 32px; display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap; margin-top: 48px;
   }
-  .faq-cta-left h3 {
-    font-family: 'League Spartan', sans-serif;
-    font-size: 18px; font-weight: 800;
-    color: var(--ink); margin-bottom: 4px;
-  }
+  .faq-cta-left h3 { font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 4px; }
   .faq-cta-left p { font-size: 14px; color: var(--ink2); }
-  .btn-contact {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 14px; font-weight: 600; white-space: nowrap;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #fff; border: none; padding: 11px 22px;
-    border-radius: 8px; text-decoration: none;
-    cursor: pointer; transition: all 0.2s;
-    flex-shrink: 0;
-  }
-  .btn-contact:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(138,43,226,0.4); }
 
-  /* FOOTER */
-  footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
-  .footer-inner { max-width: 860px; margin: 0 auto; }
-  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
-  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
-  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
-  .footer-links { display: flex; gap: 40px; }
-  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--ink); }
-  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
-
-  /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
-    .burger { display: flex; }
-    main { padding: 100px 20px 80px; }
+    main { padding: calc(var(--nav-h) + 24px) 20px 80px; }
     .faq-cta { flex-direction: column; }
-    .footer-top { flex-direction: column; gap: 24px; }
-    .footer-bottom { flex-direction: column; text-align: center; }
   }
-
-  @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-  .page-hero { animation: fadeUp 0.5s ease both 0.05s; }
-  .search-wrap { animation: fadeUp 0.5s ease both 0.1s; }
-  .category-pills { animation: fadeUp 0.5s ease both 0.15s; }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="/index" class="nav-logo">
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
     <img src="doaTransparent.png" alt="DOA Logo">
     <span class="nav-name">device optical aid™</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/index">Home</a></li>
-    <li><a href="/index#features">Features</a></li>
-    <li><a href="/index#pricing">Pricing</a></li>
-    <li><a href="/download">Download</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/#how-it-works">How it works</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/roadmap">Roadmap</a></li>
+    <li><a href="/faq">FAQ</a></li>
   </ul>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  <div class="nav-cta">
+    <a href="/download" class="btn btn-primary">Download</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <main>
 
   <div class="page-hero">
-    <span class="page-tag">Help</span>
+    <span class="kicker">Help</span>
     <h1>Got a question?<br><em>Find your answer.</em></h1>
     <p>Everything you need to know about DOA — getting started, your prescription, premium, and more.</p>
   </div>
 
   <!-- SEARCH -->
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
+    <svg class="icon icon-sm search-icon"><use href="icons.svg#search"/></svg>
     <input
-      class="search-input"
+      class="field search-input"
       type="text"
       id="faqSearch"
       placeholder="Search questions — try 'prescription', 'premium', 'install'…"
@@ -342,7 +168,7 @@
 
   <!-- NO RESULTS -->
   <div class="no-results" id="noResults">
-    <div class="no-results-icon">🔎</div>
+    <div class="icon-tile"><svg class="icon"><use href="icons.svg#search"/></svg></div>
     <h3>No results found</h3>
     <p>Try different words, or <a href="/contact">send us your question directly</a> and we'll get back to you.</p>
   </div>
@@ -377,7 +203,7 @@
 
     <div class="faq-item" data-cat="getting-started" data-q="Is DOA free?">
       <button class="faq-q">Is DOA free? <span class="faq-arrow">↓</span></button>
-      <div class="faq-a">Yes. The free tier gives you 3 hours of use per day, one saved prescription, and access to the color filters. That is enough for most casual daily use. Premium removes all limits and adds multi-monitor support. You can also earn 7 days of Premium free by submitting feedback after a session — see <a href="/index#free-premium">how to get free Premium</a>.</div>
+      <div class="faq-a">Yes. The free tier gives you 3 hours of use per day, one saved prescription, and access to the color filters. That is enough for most casual daily use. Premium removes all limits and adds multi-monitor support. You can also earn 7 days of Premium free by submitting feedback after a session — see <a href="/#free-premium">how to get free Premium</a>.</div>
     </div>
 
     <div class="faq-item" data-cat="getting-started" data-q="Is DOA available on Mac or Linux?">
@@ -433,9 +259,9 @@
     <div class="faq-group-label">Using DOA</div>
 
     <div class="faq-item" data-cat="using" data-q="I turned DOA on but can't see any difference">
-  <button class="faq-q">I turned DOA on but can't see any difference <span class="faq-arrow">↓</span></button>
-  <div class="faq-a">A few things to check. <strong>First: are your glasses off?</strong> DOA is designed to be used without glasses — if you're wearing them while testing, the screen will look wrong. Take them off, then compare. Second: try the toggle test — switch DOA off and on repeatedly while looking at small text. The difference is easier to spot in comparison than in isolation. Third: very mild prescriptions see a subtler effect, because your eyes already handle close-up screens fairly well. The adjustment is still there — it's just less dramatic. <strong>Screen distance is critical.</strong> Ensure you are looking at the screen from the distance you set in your prescription card. If none of this helps, <a href="/contact">contact support</a> and we'll look at your setup.</div>
-</div>
+      <button class="faq-q">I turned DOA on but can't see any difference <span class="faq-arrow">↓</span></button>
+      <div class="faq-a">A few things to check. <strong>First: are your glasses off?</strong> DOA is designed to be used without glasses — if you're wearing them while testing, the screen will look wrong. Take them off, then compare. Second: try the toggle test — switch DOA off and on repeatedly while looking at small text. The difference is easier to spot in comparison than in isolation. Third: very mild prescriptions see a subtler effect, because your eyes already handle close-up screens fairly well. The adjustment is still there — it's just less dramatic. <strong>Screen distance is critical.</strong> Ensure you are looking at the screen from the distance you set in your prescription card. If none of this helps, <a href="/contact">contact support</a> and we'll look at your setup.</div>
+    </div>
 
     <div class="faq-item" data-cat="using" data-q="How do I turn DOA on and off?">
       <button class="faq-q">How do I turn DOA on and off? <span class="faq-arrow">↓</span></button>
@@ -593,60 +419,60 @@
       <h3>Still have a question?</h3>
       <p>Send it directly — every message goes straight to the team and we reply within 48 hours.</p>
     </div>
-    <a href="/contact" class="btn-contact">Contact us →</a>
+    <a href="/contact" class="btn btn-primary">Contact us →</a>
   </div>
 
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <div>
-        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
-        <p class="footer-desc">A display accessibility tool for people who wear glasses. Not a medical device.</p>
+      <div class="footer-brand">
+        <img src="doaTransparent.png" alt="DOA Logo">
+        <p>A display accessibility tool for people who wear glasses. Not a medical device.</p>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <ul>
-            <li><a href="/Terms-of-Service">Terms of Service</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/download">Download</a></li>
-            <li><a href="/roadmap">Roadmap</a></li>
-          </ul>
-        </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/roadmap">Roadmap</a></li>
+          <li><a href="/download">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/Terms-of-Service">Terms of Service</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-divider"></div>
+    <p class="footer-legal-note">DOA is a display accessibility tool. It is not a medical device and does not treat, diagnose, or replace professional eye care. Always consult a qualified eye care professional for medical advice.</p>
     <div class="footer-bottom">
       <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
       <span>Operated by Cedric Julien .E</span>
-     <a href="https://cjayy77.github.io/cj-portfolio/" target="_blank" rel="noopener">
+      <a href="https://cjayy77.github.io/cj-portfolio/" target="_blank" rel="noopener">
         <img src="cj-white.svg" alt="CJ_" height="24" style="display:block;">
       </a>
     </div>
   </div>
 </footer>
 
+<script src="main.js"></script>
 <script>
-  // Burger
-  const burger = document.getElementById('burger');
-  const nav = document.getElementById('navLinks');
-  burger.addEventListener('click', () => nav.classList.toggle('open'));
-
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
       const wasOpen = item.classList.contains('open');
-      // close all
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!wasOpen) item.classList.add('open');
     });
@@ -665,7 +491,6 @@
   let searchQuery    = '';
 
   function stripMark(el) {
-    // restore original text from data attributes
     const q = el.querySelector('.faq-q');
     const a = el.querySelector('.faq-a');
     if (q._origHTML !== undefined) q.innerHTML = q._origHTML;
@@ -712,13 +537,11 @@
       }
     });
 
-    // Show/hide groups based on whether they have any visible items
     allGroups.forEach(group => {
       const hasVisible = group.querySelectorAll('.faq-item:not(.hidden)').length > 0;
       group.style.display = hasVisible ? '' : 'none';
     });
 
-    // Results meta
     if (searchQuery) {
       resultsMeta.textContent = visible === 0
         ? ''
@@ -727,15 +550,12 @@
       resultsMeta.textContent = '';
     }
 
-    // No results state
     noResults.classList.toggle('visible', visible === 0);
   }
 
-  // Search input
   searchInput.addEventListener('input', () => {
     searchQuery = searchInput.value.trim();
     searchClear.classList.toggle('visible', searchQuery.length > 0);
-    // when searching, reset category pill to all
     if (searchQuery) {
       activeCategory = 'all';
       pills.forEach(p => p.classList.toggle('active', p.dataset.cat === 'all'));
@@ -743,7 +563,6 @@
     runFilter();
   });
 
-  // Clear button
   searchClear.addEventListener('click', () => {
     searchInput.value = '';
     searchQuery = '';
@@ -752,13 +571,11 @@
     searchInput.focus();
   });
 
-  // Category pills
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       activeCategory = pill.dataset.cat;
       pills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
-      // clear search when switching categories
       searchInput.value = '';
       searchQuery = '';
       searchClear.classList.remove('visible');
@@ -766,7 +583,6 @@
     });
   });
 
-  // Initial run
   runFilter();
 </script>
 </body>
