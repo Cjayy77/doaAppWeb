@@ -8,205 +8,107 @@
 <meta name="author" content="CJ_">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="doaTransparent.png">
+<link rel="canonical" href="https://deviceopticalaid.com/about" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
-   <link rel="canonical" href="https://deviceopticalaid.com/about" />
+<link rel="stylesheet" href="styles.css">
 <style>
-  :root {
-    --bg:         #1C1B18;
-    --bg2:        #232320;
-    --card:       #2A2A27;
-    --border:     rgba(255,255,255,0.08);
-    --ink:        #F5F4EF;
-    --ink2:       #9C9B96;
-    --ink3:       #6C6B66;
-    --accent:     #8a2be2;
-    --accent2:    #b066ff;
-    --accent-dim: rgba(138,43,226,0.15);
-    --radius:     14px;
-    --radius-sm:  10px;
-  }
+  main { max-width: 800px; margin: 0 auto; padding: calc(var(--nav-h) + 56px) 40px 100px; }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    background: var(--bg);
-    color: var(--ink2);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+  .page-hero { margin-bottom: 64px; animation: fadeUp 0.7s ease both 0.1s; }
+  .page-hero h1 { font-size: clamp(40px, 6vw, 68px); margin-bottom: 20px; }
+  .page-hero .lead { font-size: 19px; color: var(--ink2); line-height: 1.7; max-width: 620px; }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px; height: 80px;
-    background: rgba(28,27,24,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo img { height: 48px; width: auto; }
-  .nav-name {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 18px; font-weight: 800; letter-spacing: 0.08em;
-    color: #F5F4EF; margin-left: 14px; padding-left: 14px;
-    border-left: 1.5px solid rgba(255,255,255,0.1);
-    white-space: nowrap; text-transform: lowercase; text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
-  .btn-home {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: 14px; font-weight: 600; color: #fff;
-    background: var(--accent); border: none;
-    padding: 8px 18px; border-radius: 8px;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .btn-home:hover { background: #7a20d2; transform: translateY(-1px); }
-  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .burger span { width: 22px; height: 2.5px; background: var(--ink2); border-radius: 2px; }
-
-  /* ── LAYOUT ── */
-  main { max-width: 780px; margin: 0 auto; padding: 120px 40px 100px; }
-
-  /* ── HERO ── */
-  .page-tag {
-    display: inline-block; font-size: 11px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent2); background: var(--accent-dim);
-    padding: 4px 12px; border-radius: 100px; margin-bottom: 20px;
-  }
-  .page-hero { margin-bottom: 64px; }
-  .page-hero h1 {
-    font-family: 'League Spartan', sans-serif;
-    font-size: clamp(40px, 6vw, 68px);
-    font-weight: 900; letter-spacing: -2px; line-height: 1.0;
-    color: var(--ink); margin-bottom: 20px;
-  }
-  .page-hero h1 em {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent; font-style: italic;
-  }
-  .page-hero .lead {
-    font-size: 19px; color: var(--ink2); line-height: 1.7;
-    max-width: 600px; font-weight: 400;
-  }
-
-  /* ── DIVIDER ── */
   .divider { height: 1px; background: var(--border); margin: 56px 0; }
 
-  /* ── SECTIONS ── */
   .about-section { margin-bottom: 56px; }
-  .about-section h2 {
-    font-family: 'League Spartan', sans-serif;
-    font-size: 26px; font-weight: 800; letter-spacing: -0.5px;
-    color: var(--ink); margin-bottom: 16px; line-height: 1.1;
-  }
-  .about-section h2 em {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent; font-style: italic;
-  }
-  .about-section p {
-    font-size: 16px; color: var(--ink2);
-    line-height: 1.8; margin-bottom: 16px;
-  }
+  .about-section h2 { font-size: 26px; letter-spacing: -0.5px; margin-bottom: 16px; line-height: 1.1; }
+  .about-section p { font-size: 16px; color: var(--ink2); line-height: 1.8; margin-bottom: 16px; }
   .about-section p:last-child { margin-bottom: 0; }
   .about-section p strong { color: var(--ink); font-weight: 600; }
+  .about-section a { color: var(--accent2); text-decoration: none; }
+  .about-section a:hover { color: var(--ink); }
 
-  /* ── USE CASE CARDS ── */
-  .usecase-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin: 24px 0;
-  }
-  .usecase-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 22px 24px;
-    transition: border-color 0.3s;
-  }
+  /* use case cards */
+  .usecase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0; }
+  .usecase-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 22px 24px; transition: border-color 0.3s; }
   .usecase-card:hover { border-color: rgba(138,43,226,0.3); }
-  .usecase-icon { font-size: 22px; margin-bottom: 10px; }
+  .usecase-card .icon-tile { width: 36px; height: 36px; border-radius: 9px; margin-bottom: 12px; }
   .usecase-card h4 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
   .usecase-card p { font-size: 13px; color: var(--ink2); line-height: 1.6; margin: 0; }
 
-  /* ── IMPROVEMENT ITEMS ── */
+  /* science section */
+  .science-box {
+    background: var(--card);
+    border: 1px solid rgba(138,43,226,0.25);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+  .science-box h4 {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 12px;
+  }
+  .science-box h4 svg { color: var(--accent2); }
+  .science-box p { font-size: 14px; line-height: 1.75; margin-bottom: 12px; }
+  .science-box p:last-child { margin-bottom: 0; }
+  .science-refs { list-style: none; margin: 16px 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .science-refs li {
+    font-size: 13px; color: var(--ink2); line-height: 1.6;
+    padding-left: 18px; position: relative;
+  }
+  .science-refs li::before {
+    content: ''; position: absolute; left: 0; top: 9px;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent2);
+  }
+  .science-disclaim {
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: 12.5px; color: var(--ink3); line-height: 1.6;
+  }
+
+  /* improvements list */
   .improve-list { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
   .improve-item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 18px 24px;
-    display: flex; gap: 14px; align-items: flex-start;
-    transition: border-color 0.3s;
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 18px 24px; display: flex; gap: 14px; align-items: flex-start; transition: border-color 0.3s;
   }
   .improve-item:hover { border-color: rgba(138,43,226,0.25); }
-  .improve-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--accent2); flex-shrink: 0; margin-top: 6px;
-  }
+  .improve-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent2); flex-shrink: 0; margin-top: 7px; }
   .improve-item h4 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
   .improve-item p { font-size: 13px; color: var(--ink2); line-height: 1.6; margin: 0; }
 
-  /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--border); padding: 48px 40px 32px; }
-  .footer-inner { max-width: 780px; margin: 0 auto; }
-  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
-  .footer-logo img { height: 44px; width: auto; margin-bottom: 8px; display: block; }
-  .footer-desc { font-size: 13px; color: var(--ink3); max-width: 240px; line-height: 1.6; }
-  .footer-links { display: flex; gap: 40px; }
-  .footer-col h5 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 12px; }
-  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .footer-col a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--ink); }
-  .footer-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
-  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px; }
-
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 80px; right: 20px; background: var(--card); padding: 16px 20px; gap: 12px; border-radius: 10px; border: 1px solid var(--border); z-index: 200; }
-    .burger { display: flex; }
-    main { padding: 100px 20px 80px; }
+    main { padding: calc(var(--nav-h) + 32px) 20px 80px; }
     .usecase-grid { grid-template-columns: 1fr; }
-    .footer-top { flex-direction: column; gap: 24px; }
-    .footer-bottom { flex-direction: column; text-align: center; }
+    .science-box { padding: 22px 20px; }
   }
-
-  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-  .page-hero { animation: fadeUp 0.7s ease both 0.1s; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
     <img src="doaTransparent.png" alt="DOA Logo">
     <span class="nav-name">device optical aid™</span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="/index">Home</a></li>
-    <li><a href="/index#features">Features</a></li>
-    <li><a href="/index#pricing">Pricing</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/#how-it-works">How it works</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/roadmap">Roadmap</a></li>
     <li><a href="/faq">FAQ</a></li>
   </ul>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  <div class="nav-cta">
+    <a href="/download" class="btn btn-primary">Download</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <main>
 
   <!-- HERO -->
   <div class="page-hero">
-    <span class="page-tag">About</span>
+    <span class="kicker">About</span>
     <h1>Your screen,<br><em>easier to read.</em></h1>
     <p class="lead">DOA is a Windows desktop application that adjusts what your screen displays so that people who wear glasses can use it comfortably, without putting them on.</p>
   </div>
@@ -221,6 +123,26 @@
 
   <div class="divider"></div>
 
+  <!-- THE SCIENCE -->
+  <div class="about-section" id="science">
+    <h2>The <em>science</em> behind it</h2>
+    <p>The idea of a screen that pre-adjusts its image to compensate for the viewer's eyesight isn't ours — it has been studied in academic research for over a decade. DOA builds on that body of work and applies it as practical, software-only display adjustment.</p>
+
+    <div class="science-box">
+      <h4><svg class="icon"><use href="icons.svg#atom"/></svg>Where the approach comes from</h4>
+      <p>In 2014, researchers from <strong>UC Berkeley and the MIT Media Lab</strong> presented "Eyeglasses-free Display" at SIGGRAPH — a display that pre-distorts what it shows based on the viewer's prescription, so the image appears sharp to that viewer without glasses. The concept has since been patented, extended, and built upon by further research.</p>
+      <ul class="science-refs">
+        <li>Huang, Wetzstein, Barsky &amp; Raskar — <a href="https://www.computationalimaging.org/publications/eyeglasses-free-display-towards-correcting-visual-aberrations-with-computational-light-field-displays-siggraph-2014/" target="_blank" rel="noopener">"Eyeglasses-free Display: Towards Correcting Visual Aberrations with Computational Light Field Displays"</a>, ACM SIGGRAPH 2014</li>
+        <li>UC Berkeley — <a href="https://vcresearch.berkeley.edu/news/vision-correcting-display-makes-reading-glasses-so-yesterday" target="_blank" rel="noopener">"Vision-correcting display makes reading glasses so yesterday"</a>, Berkeley Research news</li>
+      </ul>
+      <p class="science-disclaim">To be clear about what this means: the strongest results in that research used special light-field display hardware. DOA is software-only — it works on the screen you already own, which means results depend on your screen's resolution and your prescription strength. We'd rather you know that upfront. The research above is independent academic work; the institutions involved are not affiliated with and do not endorse DOA.</p>
+    </div>
+
+    <p>That hardware gap is exactly what our <a href="/roadmap">roadmap</a> is about: per-user calibration, content-aware adjustment, and — long term — working with display manufacturers to bring correction closer to what the research achieved in the lab.</p>
+  </div>
+
+  <div class="divider"></div>
+
   <!-- USE CASES -->
   <div class="about-section">
     <h2>Who it <em>helps</em></h2>
@@ -228,32 +150,32 @@
 
     <div class="usecase-grid">
       <div class="usecase-card">
-        <div class="usecase-icon">📖</div>
+        <div class="icon-tile"><svg class="icon"><use href="icons.svg#book-open"/></svg></div>
         <h4>Reading without glasses</h4>
         <p>Articles, documents, and emails. Comfortable to read without reaching for your glasses first.</p>
       </div>
       <div class="usecase-card">
-        <div class="usecase-icon">💼</div>
+        <div class="icon-tile"><svg class="icon"><use href="icons.svg#briefcase"/></svg></div>
         <h4>Long work sessions</h4>
         <p>Working at a screen for hours without your glasses is uncomfortable. DOA keeps your display readable throughout the day.</p>
       </div>
       <div class="usecase-card">
-        <div class="usecase-icon">👴</div>
+        <div class="icon-tile"><svg class="icon"><use href="icons.svg#user"/></svg></div>
         <h4>Reading glasses users</h4>
         <p>If you need reading glasses for screens, DOA adjusts your display so text is easier to read up close, without reaching for them.</p>
       </div>
       <div class="usecase-card">
-        <div class="usecase-icon">🕶️</div>
+        <div class="icon-tile"><svg class="icon"><use href="icons.svg#glasses"/></svg></div>
         <h4>When glasses aren't available</h4>
         <p>Glasses left in another room, broken, or simply not wanted; DOA keeps your screen usable.</p>
       </div>
       <div class="usecase-card">
-        <div class="usecase-icon">🌈</div>
+        <div class="icon-tile"><svg class="icon"><use href="icons.svg#palette"/></svg></div>
         <h4>Color difficulty</h4>
         <p>Color adjustment modes for Protanopia, Deuteranopia, and Tritanopia, for people who have difficulty distinguishing certain colors on screen.</p>
       </div>
       <div class="usecase-card">
-        <div class="usecase-icon">🖥️</div>
+        <div class="icon-tile"><svg class="icon"><use href="icons.svg#monitor"/></svg></div>
         <h4>Multiple monitors</h4>
         <p>Different display settings per screen, useful for mixed setups where monitors are at different viewing distances.</p>
       </div>
@@ -296,46 +218,49 @@
           <p>Not everyone has an up-to-date prescription. We want DOA to be usable through a guided in-app test alone, no formal prescription required.</p>
         </div>
       </div>
-      <p>You can see more and in detail in our <a href="/roadmap">Roadmap</a></p>
     </div>
+    <p>You can see more and in detail in our <a href="/roadmap">Roadmap</a>.</p>
   </div>
-   <div style="display: flex; justify-content: center; margin: 24px 0;">
-  <a href="https://backlinklog.com/listing/deviceopticalaid.com?utm_source=backlinklog&utm_medium=badge">
-    <img src="https://backlinklog.com/badge/deviceopticalaid.com.svg" alt="Listed on BacklinkLog" width="160" height="40" />
-  </a>
-</div>
+
+  <div style="display: flex; justify-content: center; margin: 24px 0;">
+    <a href="https://backlinklog.com/listing/deviceopticalaid.com?utm_source=backlinklog&utm_medium=badge">
+      <img src="https://backlinklog.com/badge/deviceopticalaid.com.svg" alt="Listed on BacklinkLog" width="160" height="40" />
+    </a>
+  </div>
 </main>
 
-  
-
-<!-- FOOTER -->
-<footer>
+<footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-top">
-      <div>
-        <div class="footer-logo"><img src="doaTransparent.png" alt="DOA Logo"></div>
-        <p class="footer-desc">A display accessibility tool for people who wear glasses.</p>
+      <div class="footer-brand">
+        <img src="doaTransparent.png" alt="DOA Logo">
+        <p>A display accessibility tool for people who wear glasses. Not a medical device.</p>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <h5>Legal</h5>
-          <ul>
-            <li><a href="/Terms-of-Service">Terms of Service</a></li>
-            <li><a href="/privacy-policy">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-            <li><a href="/download">Download</a></li>
-          </ul>
-        </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/roadmap">Roadmap</a></li>
+          <li><a href="/download">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/Terms-of-Service">Terms of Service</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-divider"></div>
-    <p style="font-size:12px;color:#4A4A47;text-align:center;margin-bottom:16px;line-height:1.6;max-width:700px;margin-left:auto;margin-right:auto;">DOA is a display accessibility tool. It is not a medical device and does not treat, diagnose, or replace professional eye care. Always consult a qualified eye care professional for medical advice.</p>
+    <p class="footer-legal-note">DOA is a display accessibility tool. It is not a medical device and does not treat, diagnose, or replace professional eye care. Always consult a qualified eye care professional for medical advice.</p>
     <div class="footer-bottom">
       <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
       <span>Operated by Cedric Julien .E</span>
@@ -346,10 +271,6 @@
   </div>
 </footer>
 
-<script>
-  const burger = document.getElementById('burger');
-  const nav    = document.getElementById('navLinks');
-  burger.addEventListener('click', () => nav.classList.toggle('open'));
-</script>
+<script src="main.js"></script>
 </body>
 </html>
