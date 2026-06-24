@@ -31,7 +31,15 @@
   }
   .hero::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(ellipse 60% 45% at 50% 0%, rgba(138,43,226,0.13), transparent 70%);
+    background:
+      radial-gradient(ellipse 80% 55% at 50% -5%, rgba(138,43,226,0.22), transparent 65%),
+      radial-gradient(ellipse 35% 25% at 85% 40%, rgba(176,102,255,0.07), transparent 55%),
+      radial-gradient(ellipse 35% 25% at 15% 60%, rgba(138,43,226,0.05), transparent 55%);
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, var(--bg));
   }
   .hero > * { position: relative; animation: fadeUp 0.7s ease both; }
   .hero .kicker { animation-delay: 0.05s; margin-bottom: 26px; }
@@ -61,8 +69,8 @@
   .hero-mockup { margin-top: 72px; width: 100%; max-width: 880px; }
   .mockup-window {
     background: var(--bg2); border-radius: 12px; overflow: hidden;
-    border: 1px solid var(--border2);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.55);
+    border: 1px solid rgba(176,102,255,0.2);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(138,43,226,0.12), 0 0 80px rgba(138,43,226,0.14);
     text-align: left;
   }
   .mockup-bar {
@@ -106,21 +114,31 @@
 
   /* ── FOUNDER NOTE ── */
   .founder-note {
-    max-width: 640px; margin: 0 auto;
-    padding: 72px 24px 8px; text-align: center;
+    max-width: 660px; margin: 0 auto;
+    padding: 80px 24px 16px; text-align: center;
+    position: relative;
+  }
+  .founder-note::before {
+    content: '\201C';
+    position: absolute; top: 48px; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-display); font-size: 120px; line-height: 1;
+    color: var(--accent2); opacity: 0.18; pointer-events: none;
   }
   .founder-note p {
-    font-size: clamp(17px, 2.2vw, 21px); color: var(--ink2);
-    line-height: 1.7; font-style: italic; margin-bottom: 14px;
+    font-size: clamp(17px, 2.2vw, 20px); color: var(--ink);
+    line-height: 1.75; font-style: italic; margin-bottom: 20px;
+    position: relative;
   }
-  .founder-note span { font-size: 13px; color: var(--ink3); font-style: normal; }
+  .founder-note span { font-size: 13px; color: var(--ink3); font-style: normal; letter-spacing: 0.04em; }
 
   /* ── STAT BREAK ── */
   .stat-break {
-    background: #120b20;
+    background: #0d0818;
+    background-image:
+      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(138,43,226,0.12), transparent 70%);
     border-top: 1px solid rgba(138,43,226,0.35);
     border-bottom: 1px solid rgba(138,43,226,0.35);
-    padding: 80px 40px;
+    padding: 96px 40px;
   }
   .stat-inner {
     max-width: 900px; margin: 0 auto 28px;
@@ -133,9 +151,12 @@
   .stat-num {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(60px, 8vw, 96px);
+    font-size: clamp(64px, 9vw, 104px);
     font-weight: 900; letter-spacing: -3px; line-height: 1;
-    color: var(--ink); margin-bottom: 14px;
+    margin-bottom: 14px;
+    background: linear-gradient(135deg, #f5f4ef 0%, #c48aff 60%, #8a2be2 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .stat-item p { font-size: 14px; color: var(--ink2); line-height: 1.65; max-width: 200px; margin: 0 auto; }
   .stat-source { text-align: center; font-size: 11px; color: var(--ink3); }
@@ -144,8 +165,8 @@
 
   /* ── STEPS ── */
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
-  .step-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; position: relative; transition: border-color 0.25s; }
-  .step-card:hover { border-color: rgba(138,43,226,0.35); }
+  .step-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; position: relative; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+  .step-card:hover { border-color: rgba(138,43,226,0.35); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
   .step-num { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.1em; color: var(--ink3); margin-bottom: 22px; display: block; }
   .step-card h3 { font-size: 19px; font-weight: 600; margin: 0 0 10px; }
   .step-card p { font-size: 15px; color: var(--ink2); line-height: 1.7; }
@@ -170,8 +191,8 @@
 
   /* ── FEATURES ── */
   .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
-  .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: border-color 0.25s; }
-  .feature-card:hover { border-color: rgba(138,43,226,0.35); }
+  .feature-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+  .feature-card:hover { border-color: rgba(138,43,226,0.35); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
   .feature-card.wide { grid-column: 1/-1; }
   .feature-card h3 { font-size: 19px; font-weight: 600; margin-bottom: 8px; }
   .feature-card p { font-size: 15px; color: var(--ink2); line-height: 1.7; }
@@ -192,7 +213,7 @@
   .visiontypes-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 56px; }
   .vtype-card { grid-column: span 2; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px 20px; transition: border-color 0.25s; }
   .vtype-card:nth-last-child(-n+2) { grid-column: span 3; }
-  .vtype-card:hover { border-color: rgba(138,43,226,0.35); }
+  .vtype-card:hover { border-color: rgba(138,43,226,0.35); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
   .vtype-card .icon-tile { width: 38px; height: 38px; border-radius: 9px; margin-bottom: 14px; }
   .vtype-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
   .vtype-card p { font-size: 13px; color: var(--ink2); line-height: 1.6; }
@@ -220,7 +241,12 @@
   /* ── PRICING ── */
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
   .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; position: relative; transition: border-color 0.25s; }
-  .pricing-card.featured { border-color: rgba(138,43,226,0.5); background: linear-gradient(180deg, rgba(138,43,226,0.1), var(--card) 55%); }
+  .pricing-card.featured {
+    border: 1.5px solid transparent;
+    background:
+      linear-gradient(180deg, rgba(138,43,226,0.1) 0%, var(--card) 55%) padding-box,
+      linear-gradient(160deg, rgba(176,102,255,0.9) 0%, rgba(138,43,226,0.5) 45%, rgba(138,43,226,0.15) 100%) border-box;
+  }
   .featured-badge {
     position: absolute; top: -13px; left: 36px;
     background: var(--accent); color: #fff;

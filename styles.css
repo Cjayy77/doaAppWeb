@@ -59,6 +59,15 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+/* grain texture — the single most common trait of a "crafted" dark site */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
 ::selection { background: rgba(138,43,226,0.4); color: var(--ink); }
 
 img { max-width: 100%; }
@@ -106,10 +115,10 @@ svg.icon-sm { width: 18px; height: 18px; }
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   border: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-.btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent-deep); }
+.btn-primary { background: linear-gradient(135deg, #9d3ef5, var(--accent)); color: #fff; box-shadow: 0 4px 18px rgba(138,43,226,0.35); }
+.btn-primary:hover { background: linear-gradient(135deg, #8a2be2, #6d1fd0); box-shadow: 0 6px 24px rgba(138,43,226,0.45); }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border2); }
-.btn-ghost:hover { border-color: var(--accent2); }
+.btn-ghost:hover { border-color: var(--accent2); color: var(--ink); }
 .btn-big { font-size: 16px; padding: 15px 32px; border-radius: 11px; }
 
 /* ── Nav ── */
@@ -154,9 +163,9 @@ svg.icon-sm { width: 18px; height: 18px; }
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
-.card-base:hover { border-color: rgba(138,43,226,0.35); }
+.card-base:hover { border-color: rgba(138,43,226,0.35); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.25); }
 
 /* ── Forms ── */
 input.field, select.field, textarea.field {
