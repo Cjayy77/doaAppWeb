@@ -44,7 +44,7 @@
   --nav-h: 84px;
 
   /* fonts */
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Fraunces', Georgia, serif;
   --font-display: 'League Spartan', sans-serif;
 }
 
@@ -55,9 +55,11 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink2);
-  line-height: 1.7;
+  line-height: 1.75;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+  font-size: 16px;
 }
 /* grain texture — the single most common trait of a "crafted" dark site */
 body::after {
@@ -108,7 +110,7 @@ svg.icon-sm { width: 18px; height: 18px; }
 
 /* ── Buttons ── */
 .btn {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 14px; font-weight: 600;
   padding: 10px 22px; border-radius: 9px;
   cursor: pointer; text-decoration: none;
@@ -141,7 +143,8 @@ svg.icon-sm { width: 18px; height: 18px; }
 }
 .nav-links { display: flex; gap: 30px; list-style: none; }
 .nav-links a {
-  font-size: 14px; font-weight: 500; color: var(--ink2);
+  font-family: var(--font-display);
+  font-size: 13px; font-weight: 500; color: var(--ink2);
   text-decoration: none; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
