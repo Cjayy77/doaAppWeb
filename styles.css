@@ -44,7 +44,7 @@
   --nav-h: 84px;
 
   /* fonts */
-  --font-body: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'League Spartan', sans-serif;
 }
 
@@ -55,11 +55,9 @@ body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--ink2);
-  line-height: 1.75;
+  line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  font-optical-sizing: auto;
-  font-size: 16px;
 }
 /* grain texture — the single most common trait of a "crafted" dark site */
 body::after {
@@ -76,10 +74,10 @@ img { max-width: 100%; }
 
 /* ── Typography ── */
 h1, h2, h3 { color: var(--ink); }
-h1, h2 { font-family: var(--font-display); font-weight: 900; line-height: 0.98; }
-h1 { font-size: clamp(48px, 7.6vw, 96px); letter-spacing: -0.035em; }
-h2 { font-size: clamp(33px, 5vw, 58px); letter-spacing: -0.03em; }
-h1 em, h2 em { color: var(--accent2); font-style: italic; font-weight: 800; }
+h1, h2 { font-family: var(--font-display); font-weight: 700; line-height: 1.02; }
+h1 { font-size: clamp(44px, 6.5vw, 80px); letter-spacing: -0.025em; }
+h2 { font-size: clamp(30px, 4.5vw, 50px); letter-spacing: -0.02em; }
+h1 em, h2 em { color: var(--accent2); font-style: italic; font-weight: 700; }
 
 .kicker {
   display: block;
@@ -110,7 +108,7 @@ svg.icon-sm { width: 18px; height: 18px; }
 
 /* ── Buttons ── */
 .btn {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 14px; font-weight: 600;
   padding: 10px 22px; border-radius: 9px;
   cursor: pointer; text-decoration: none;
@@ -143,8 +141,7 @@ svg.icon-sm { width: 18px; height: 18px; }
 }
 .nav-links { display: flex; gap: 30px; list-style: none; }
 .nav-links a {
-  font-family: var(--font-display);
-  font-size: 13px; font-weight: 500; color: var(--ink2);
+  font-size: 14px; font-weight: 500; color: var(--ink2);
   text-decoration: none; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
