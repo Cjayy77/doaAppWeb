@@ -31,10 +31,7 @@
   }
   .hero::before {
     content: ''; position: absolute; inset: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 80% 55% at 50% -5%, rgba(138,43,226,0.22), transparent 65%),
-      radial-gradient(ellipse 35% 25% at 85% 40%, rgba(176,102,255,0.07), transparent 55%),
-      radial-gradient(ellipse 35% 25% at 15% 60%, rgba(138,43,226,0.05), transparent 55%);
+    background: radial-gradient(ellipse 70% 50% at 50% -5%, rgba(138,43,226,0.12), transparent 62%);
   }
   .hero::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
@@ -69,8 +66,8 @@
   .hero-mockup { margin-top: 72px; width: 100%; max-width: 880px; }
   .mockup-window {
     background: var(--bg2); border-radius: 12px; overflow: hidden;
-    border: 1px solid rgba(176,102,255,0.2);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(138,43,226,0.12), 0 0 80px rgba(138,43,226,0.14);
+    border: 1px solid var(--border2);
+    box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
     text-align: left;
   }
   .mockup-bar {
@@ -134,11 +131,9 @@
   /* ── STAT BREAK ── */
   .stat-break {
     background: #0d0818;
-    background-image:
-      radial-gradient(ellipse 60% 80% at 50% 50%, rgba(138,43,226,0.12), transparent 70%);
-    border-top: 1px solid rgba(138,43,226,0.35);
-    border-bottom: 1px solid rgba(138,43,226,0.35);
-    padding: 96px 40px;
+    border-top: 1px solid rgba(138,43,226,0.28);
+    border-bottom: 1px solid rgba(138,43,226,0.28);
+    padding: 100px 40px;
   }
   .stat-inner {
     max-width: 900px; margin: 0 auto 28px;
@@ -151,12 +146,9 @@
   .stat-num {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(64px, 9vw, 104px);
-    font-weight: 900; letter-spacing: -3px; line-height: 1;
-    margin-bottom: 14px;
-    background: linear-gradient(135deg, #f5f4ef 0%, #c48aff 60%, #8a2be2 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: clamp(66px, 9.5vw, 112px);
+    font-weight: 900; letter-spacing: -0.04em; line-height: 0.92;
+    color: var(--ink); margin-bottom: 16px;
   }
   .stat-item p { font-size: 14px; color: var(--ink2); line-height: 1.65; max-width: 200px; margin: 0 auto; }
   .stat-source { text-align: center; font-size: 11px; color: var(--ink3); }
@@ -242,10 +234,8 @@
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 56px; }
   .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; position: relative; transition: border-color 0.25s; }
   .pricing-card.featured {
-    border: 1.5px solid transparent;
-    background:
-      linear-gradient(180deg, rgba(138,43,226,0.1) 0%, var(--card) 55%) padding-box,
-      linear-gradient(160deg, rgba(176,102,255,0.9) 0%, rgba(138,43,226,0.5) 45%, rgba(138,43,226,0.15) 100%) border-box;
+    border: 1.5px solid var(--accent);
+    background: var(--card);
   }
   .featured-badge {
     position: absolute; top: -13px; left: 36px;
