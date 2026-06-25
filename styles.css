@@ -74,10 +74,10 @@ img { max-width: 100%; }
 
 /* ── Typography ── */
 h1, h2, h3 { color: var(--ink); }
-h1, h2 { font-family: var(--font-display); font-weight: 700; line-height: 1.02; }
+h1, h2 { font-family: var(--font-display); font-weight: 800; line-height: 1.02; }
 h1 { font-size: clamp(44px, 6.5vw, 80px); letter-spacing: -0.025em; }
 h2 { font-size: clamp(30px, 4.5vw, 50px); letter-spacing: -0.02em; }
-h1 em, h2 em { color: var(--accent2); font-style: italic; font-weight: 700; }
+h1 em, h2 em { color: var(--accent2); font-style: italic; font-weight: 800; }
 
 .kicker {
   display: block;
