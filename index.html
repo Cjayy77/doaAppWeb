@@ -171,7 +171,8 @@
     padding: 6px 0 6px 28px;
   }
   .expect-callout p { font-size: clamp(16px, 2vw, 18px); color: var(--ink2); line-height: 1.8; }
-  .expect-callout p + p { margin-top: 18px; }
+  .expect-callout p + p { margin-top: 30px; }
+  .expect-callout p strong { color: var(--ink); font-weight: 700; }
   .expect-callout em { color: var(--ink); font-style: italic; }
   .expect-footer {
     margin-top: 32px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
@@ -457,10 +458,10 @@
     <h2>It's subtle, and that's the point.</h2>
 
     <div class="expect-callout reveal">
-      <p>Most people get the best result sitting at the distance they calibrated for, around 50cm, with their glasses <em>off</em>. That last part sounds obvious, but it's the most common mistake: with glasses on, the screen looks over-sharpened, and people assume it's broken. If the effect feels subtle, that's correct. DOA isn't a filter; it's a fine adjustment your eye processes without noticing. Toggle it off and on while looking at small text and the difference shows up in the comparison.</p>
-      <p>Two honest caveats: DOA works best with mild to moderate prescriptions. Very strong ones (roughly −5.00 and above) may see less improvement, because screen resolution becomes the limiting factor. Lower-resolution displays reduce precision for everyone.</p>
-      <p>And give it a few days. The first session can feel slightly odd: a little contrasty, edges not quite where you expect. That's not it failing; it's your visual system meeting an unfamiliar image for the first time. Vision research shows the brain re-tunes to a consistent new input over hours and days, and reading gets measurably easier as it settles. Most people find day three feels noticeably cleaner than day one, so don't judge it on the first try. <a href="/about#science" style="color:var(--accent2);font-weight:600;text-decoration:none;">Why this happens →</a></p>
-      <p>One more thing worth knowing: DOA applies correction at the display level, so it only affects what your own eyes see on your monitor. Screen recording software, OBS, Zoom, Teams, and any other screen share tool capture the raw output before DOA touches it. What the other person sees on their end is always the uncorrected image. That's by design, not a bug. (Free users: the DOA logo in the bottom left of your screen is a standard window overlay and will still be visible in recordings.)</p>
+      <p><strong>Glasses off.</strong> Most people get the best result sitting at the distance they calibrated for, around 50cm, without their glasses. With glasses on, the screen looks over-sharpened and people assume it's broken. If the effect feels subtle, that's correct. DOA isn't a filter; it's a fine adjustment your eye processes without noticing. Toggle it off and on while looking at small text and the difference shows up in the comparison.</p>
+      <p><strong>Strong prescriptions.</strong> DOA works best with mild to moderate values. Very strong ones (roughly −5.00 and above) may see less improvement, because screen resolution becomes the limiting factor. Lower-resolution displays reduce precision for everyone.</p>
+      <p><strong>Give it a few days.</strong> The first session can feel slightly odd: a little contrasty, edges not quite where you expect. That's not it failing; it's your visual system meeting an unfamiliar image for the first time. The brain re-tunes to a consistent new input over hours and days, and reading gets measurably easier as it settles. Most people find day three feels noticeably cleaner than day one. <a href="/about#science" style="color:var(--accent2);font-weight:600;text-decoration:none;">Why this happens →</a></p>
+      <p><strong>Screen recordings.</strong> DOA applies correction at the display level, so it only affects what your own eyes see on your monitor. Screen recording software, OBS, Zoom, Teams, and any other screen share tool capture the raw output before DOA touches it. What the other person sees is always the uncorrected image. That's by design, not a bug. (Free users: the DOA logo in the bottom left is a standard window overlay and will still be visible in recordings.)</p>
     </div>
 
     <div class="expect-footer reveal">
