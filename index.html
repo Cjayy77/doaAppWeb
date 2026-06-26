@@ -203,14 +203,16 @@
 
   /* ── VISION TYPES ── */
   .vt-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .vt-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; align-items: start; }
-  .vt-conditions { display: flex; flex-direction: column; gap: 22px; margin-top: 28px; }
-  .vt-condition { display: flex; gap: 16px; align-items: flex-start; }
-  .vt-condition .icon-tile { width: 38px; height: 38px; border-radius: 9px; margin-bottom: 0; flex-shrink: 0; }
-  .vt-condition h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
-  .vt-condition p { font-size: 13px; color: var(--ink2); line-height: 1.6; }
-  .vt-screenshot { position: sticky; top: calc(var(--nav-h) + 24px); }
-  .vt-screenshot img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
+  .vt-list { margin-top: 56px; }
+  .vt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; align-items: center; padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .vt-row:first-child { padding-top: 0; }
+  .vt-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .vt-row.reverse .vt-visual-wrap { order: 2; }
+  .vt-row.reverse .vt-text { order: 1; }
+  .vt-visual-wrap { display: flex; justify-content: center; align-items: center; }
+  .vt-visual { width: 100%; max-width: 320px; height: auto; display: block; }
+  .vt-text h4 { font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--ink); margin-bottom: 12px; font-family: var(--font-display); letter-spacing: -0.5px; }
+  .vt-text p { font-size: 16px; color: var(--ink2); line-height: 1.75; }
   .afford-note {
     margin-top: 20px; padding: 18px 24px;
     border-left: 3px solid rgba(138,43,226,0.5);
@@ -293,8 +295,9 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .vt-split { grid-template-columns: 1fr; }
-    .vt-screenshot { position: static; }
+    .vt-row { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+    .vt-row.reverse .vt-visual-wrap, .vt-row.reverse .vt-text { order: unset; }
+    .vt-visual { max-width: 260px; margin: 0 auto; }
     .steps-flow { grid-template-columns: 1fr 1fr; }
     .stat-inner { grid-template-columns: 1fr; gap: 32px; }
     .stat-rule { width: 48px; height: 1px; justify-self: center; }
@@ -535,39 +538,161 @@
 
 <div class="vt-section">
   <div class="section">
-    <div class="vt-split">
-      <div class="vt-left">
-        <span class="kicker">Who it's for</span>
-        <h2>Most prescriptions are covered. <em>Yours probably is.</em></h2>
-        <p class="section-sub">Here's what each condition means, and how DOA adjusts for it.</p>
-        <div class="vt-conditions">
-          <div class="vt-condition reveal">
-            <div class="icon-tile"><svg class="icon"><use href="icons.svg#mountain"/></svg></div>
-            <div><h4>Near-sighted</h4><p>Things far away look blurry. DOA adjusts your screen so text and images look sharp even without your glasses on.</p></div>
-          </div>
-          <div class="vt-condition reveal" style="transition-delay:0.08s">
-            <div class="icon-tile"><svg class="icon"><use href="icons.svg#zoom-in"/></svg></div>
-            <div><h4>Far-sighted</h4><p>Things close up are harder to read. DOA makes small text and fine detail on your screen easier to see up close.</p></div>
-          </div>
-          <div class="vt-condition reveal" style="transition-delay:0.16s">
-            <div class="icon-tile"><svg class="icon"><use href="icons.svg#waves"/></svg></div>
-            <div><h4>Astigmatism</h4><p>Everything looks a bit stretched or smeared in one direction. DOA adjusts for that based on your CYL and AXIS values.</p></div>
-          </div>
-          <div class="vt-condition reveal" style="transition-delay:0.24s">
-            <div class="icon-tile"><svg class="icon"><use href="icons.svg#book-open"/></svg></div>
-            <div><h4>Reading glasses</h4><p>If you use reading glasses for screens and books, DOA can adjust your display so reading is more comfortable up close.</p></div>
-          </div>
-          <div class="vt-condition reveal" style="transition-delay:0.32s">
-            <div class="icon-tile"><svg class="icon"><use href="icons.svg#copy"/></svg></div>
-            <div><h4>Binocular imbalance</h4><p>When both eyes don't naturally align, screens can cause double vision or persistent strain. DOA's prism correction adjusts for this so both eyes land on the same image.</p></div>
-          </div>
+    <span class="kicker">Who it's for</span>
+    <h2>Most prescriptions are covered. <em>Yours probably is.</em></h2>
+    <div class="vt-list">
+
+      <!-- Near-sighted: eye-chart with progressive blur -->
+      <div class="vt-row reveal">
+        <div class="vt-visual-wrap">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="vt-visual" aria-hidden="true">
+            <defs>
+              <filter id="vt-nb2" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="1.5"/></filter>
+              <filter id="vt-nb3" x="-40%" y="-100%" width="180%" height="300%"><feGaussianBlur stdDeviation="3.5"/></filter>
+              <filter id="vt-nb4" x="-60%" y="-150%" width="220%" height="400%"><feGaussianBlur stdDeviation="6"/></filter>
+              <filter id="vt-nb5" x="-80%" y="-200%" width="260%" height="500%"><feGaussianBlur stdDeviation="9"/></filter>
+            </defs>
+            <rect width="300" height="200" fill="#0d0c0a" rx="14"/>
+            <text x="150" y="46" text-anchor="middle" font-size="36" font-weight="700" fill="#e5e4df" font-family="monospace">E</text>
+            <g filter="url(#vt-nb2)"><text x="150" y="78" text-anchor="middle" font-size="24" font-weight="600" fill="#dddbd5" font-family="monospace" letter-spacing="8">F P</text></g>
+            <g filter="url(#vt-nb3)"><text x="150" y="106" text-anchor="middle" font-size="16" font-weight="500" fill="#c8c6c0" font-family="monospace" letter-spacing="5">T O Z L</text></g>
+            <g filter="url(#vt-nb4)"><text x="150" y="128" text-anchor="middle" font-size="11" font-weight="500" fill="#a8a6a0" font-family="monospace" letter-spacing="3">L E P D F C</text></g>
+            <g filter="url(#vt-nb5)"><text x="150" y="146" text-anchor="middle" font-size="8" font-weight="400" fill="#888680" font-family="monospace" letter-spacing="2">D E F P O T E C Z L</text></g>
+            <line x1="40" y1="158" x2="260" y2="158" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+            <text x="150" y="176" text-anchor="middle" font-size="8.5" fill="#5a5955" font-family="sans-serif">Distant content blurs — letters lose definition at a distance</text>
+          </svg>
         </div>
-        <div class="afford-note reveal">
-          <p>Can't afford glasses right now? DOA can still help. A rough estimate of your difficulty, or even just trial-and-error with the sliders, gives the display something to work with. <a href="/roadmap">Prescription-free auto-detection is on the roadmap →</a></p>
+        <div class="vt-text">
+          <h4>Near-sighted</h4>
+          <p>Things far away look blurry. DOA adjusts your screen so text and images look sharp even without your glasses on.</p>
         </div>
       </div>
-      <div class="vt-screenshot">
-        <img src="DOA_conditions_covered.png" alt="DOA condition selection screen showing Myopia, Astigmatism, Presbyopia and Prism Correction" loading="lazy">
+
+      <!-- Far-sighted: blurry desktop UI -->
+      <div class="vt-row reverse reveal">
+        <div class="vt-visual-wrap">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="vt-visual" aria-hidden="true">
+            <defs>
+              <filter id="vt-fh" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="1.8"/></filter>
+            </defs>
+            <rect width="300" height="200" fill="#0d0c0a" rx="14"/>
+            <rect x="20" y="15" width="260" height="162" fill="#161514" rx="10" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
+            <rect x="20" y="15" width="260" height="24" fill="#1e1d1b" rx="10"/>
+            <rect x="20" y="27" width="260" height="12" fill="#1e1d1b"/>
+            <circle cx="36" cy="27" r="5" fill="#ff5f57" opacity="0.6"/>
+            <circle cx="50" cy="27" r="5" fill="#febc2e" opacity="0.6"/>
+            <circle cx="64" cy="27" r="5" fill="#28c840" opacity="0.6"/>
+            <g filter="url(#vt-fh)">
+              <text x="38" y="58" font-size="13" font-weight="700" fill="#e5e4df" font-family="sans-serif">Calibration Settings</text>
+              <rect x="38" y="67" width="190" height="4" rx="2" fill="#4a4947"/>
+              <rect x="38" y="76" width="155" height="4" rx="2" fill="#4a4947"/>
+              <rect x="38" y="90" width="220" height="4" rx="2" fill="#3a3937"/>
+              <rect x="38" y="99" width="175" height="4" rx="2" fill="#3a3937"/>
+              <rect x="38" y="108" width="195" height="4" rx="2" fill="#3a3937"/>
+              <rect x="38" y="122" width="72" height="20" rx="5" fill="rgba(138,43,226,0.55)"/>
+              <text x="74" y="135" text-anchor="middle" font-size="9" fill="#ddd" font-family="sans-serif">Apply</text>
+              <rect x="118" y="122" width="72" height="20" rx="5" fill="rgba(255,255,255,0.07)"/>
+              <text x="154" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="sans-serif">Cancel</text>
+            </g>
+            <text x="150" y="190" text-anchor="middle" font-size="8.5" fill="#5a5955" font-family="sans-serif">Close-up content blurs — screens at reading distance strain the eyes</text>
+          </svg>
+        </div>
+        <div class="vt-text">
+          <h4>Far-sighted</h4>
+          <p>Things close up are harder to read. DOA makes small text and fine detail on your screen easier to see up close.</p>
+        </div>
+      </div>
+
+      <!-- Astigmatism: asymmetric starburst halo -->
+      <div class="vt-row reveal">
+        <div class="vt-visual-wrap">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="vt-visual" aria-hidden="true">
+            <defs>
+              <filter id="vt-astig" x="-100%" y="-40%" width="300%" height="180%"><feGaussianBlur in="SourceGraphic" stdDeviation="24 3"/></filter>
+              <filter id="vt-astig-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/></filter>
+              <radialGradient id="vt-astig-glow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#d4b0ff" stop-opacity="0.95"/>
+                <stop offset="40%" stop-color="#8a2be2" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#8a2be2" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="300" height="200" fill="#060504" rx="14"/>
+            <circle cx="150" cy="96" r="40" fill="url(#vt-astig-glow)" filter="url(#vt-astig)"/>
+            <circle cx="150" cy="96" r="22" fill="#b066ff" opacity="0.2" filter="url(#vt-astig-soft)"/>
+            <circle cx="150" cy="96" r="5" fill="#ffffff" opacity="0.9"/>
+            <circle cx="150" cy="96" r="2" fill="#ffffff"/>
+            <text x="150" y="178" text-anchor="middle" font-size="8.5" fill="#5a5955" font-family="sans-serif">Light sources streak and smear — especially at night on screens</text>
+          </svg>
+        </div>
+        <div class="vt-text">
+          <h4>Astigmatism</h4>
+          <p>Everything looks a bit stretched or smeared in one direction. DOA adjusts for that based on your CYL and AXIS values.</p>
+        </div>
+      </div>
+
+      <!-- Reading glasses: fine print blurry (document context) -->
+      <div class="vt-row reverse reveal">
+        <div class="vt-visual-wrap">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="vt-visual" aria-hidden="true">
+            <defs>
+              <filter id="vt-pres" x="-8%" y="-20%" width="116%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter>
+            </defs>
+            <rect width="300" height="200" fill="#0d0c0a" rx="14"/>
+            <rect x="30" y="18" width="240" height="158" fill="#151413" rx="8" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+            <rect x="52" y="34" width="110" height="8" rx="3" fill="#353331"/>
+            <g filter="url(#vt-pres)">
+              <rect x="52" y="54" width="196" height="3.5" rx="1.5" fill="#555351"/>
+              <rect x="52" y="62" width="185" height="3.5" rx="1.5" fill="#555351"/>
+              <rect x="52" y="70" width="196" height="3.5" rx="1.5" fill="#555351"/>
+              <rect x="52" y="78" width="165" height="3.5" rx="1.5" fill="#555351"/>
+              <rect x="52" y="90" width="196" height="3.5" rx="1.5" fill="#474543"/>
+              <rect x="52" y="98" width="180" height="3.5" rx="1.5" fill="#474543"/>
+              <rect x="52" y="106" width="196" height="3.5" rx="1.5" fill="#474543"/>
+              <rect x="52" y="114" width="170" height="3.5" rx="1.5" fill="#474543"/>
+              <rect x="52" y="126" width="196" height="3.5" rx="1.5" fill="#3d3b39"/>
+              <rect x="52" y="134" width="155" height="3.5" rx="1.5" fill="#3d3b39"/>
+              <rect x="52" y="142" width="196" height="3.5" rx="1.5" fill="#3d3b39"/>
+              <rect x="52" y="150" width="175" height="3.5" rx="1.5" fill="#3d3b39"/>
+            </g>
+            <text x="150" y="190" text-anchor="middle" font-size="8.5" fill="#5a5955" font-family="sans-serif">Fine print blurs up close — reading on a screen strains focus</text>
+          </svg>
+        </div>
+        <div class="vt-text">
+          <h4>Reading glasses</h4>
+          <p>If you use reading glasses for screens and books, DOA can adjust your display so reading is more comfortable up close.</p>
+        </div>
+      </div>
+
+      <!-- Binocular imbalance: double-vision ghost offset -->
+      <div class="vt-row reveal">
+        <div class="vt-visual-wrap">
+          <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="vt-visual" aria-hidden="true">
+            <rect width="300" height="200" fill="#0d0c0a" rx="14"/>
+            <!-- Ghost duplicate: offset and faded -->
+            <g opacity="0.28" transform="translate(14,10)">
+              <rect x="75" y="65" width="150" height="70" rx="8" fill="none" stroke="#b066ff" stroke-width="1.5"/>
+              <line x1="150" y1="55" x2="150" y2="145" stroke="#b066ff" stroke-width="1"/>
+              <line x1="65" y1="100" x2="235" y2="100" stroke="#b066ff" stroke-width="1"/>
+              <circle cx="150" cy="100" r="26" fill="none" stroke="#b066ff" stroke-width="1"/>
+              <circle cx="150" cy="100" r="3" fill="#b066ff"/>
+            </g>
+            <!-- Primary image -->
+            <rect x="75" y="65" width="150" height="70" rx="8" fill="none" stroke="#e5e4df" stroke-width="1.5"/>
+            <line x1="150" y1="55" x2="150" y2="145" stroke="#e5e4df" stroke-width="1" opacity="0.6"/>
+            <line x1="65" y1="100" x2="235" y2="100" stroke="#e5e4df" stroke-width="1" opacity="0.6"/>
+            <circle cx="150" cy="100" r="26" fill="none" stroke="#e5e4df" stroke-width="1" opacity="0.8"/>
+            <circle cx="150" cy="100" r="3" fill="#e5e4df"/>
+            <text x="150" y="178" text-anchor="middle" font-size="8.5" fill="#5a5955" font-family="sans-serif">Images ghost and double — eyes struggle to converge on one point</text>
+          </svg>
+        </div>
+        <div class="vt-text">
+          <h4>Binocular imbalance</h4>
+          <p>When both eyes don't naturally align, screens can cause double vision or persistent strain. DOA's prism correction adjusts for this so both eyes land on the same image.</p>
+        </div>
+      </div>
+
+      <div class="afford-note reveal">
+        <p>Can't afford glasses right now? DOA can still help. A rough estimate of your difficulty, or even just trial-and-error with the sliders, gives the display something to work with. <a href="/roadmap">Prescription-free auto-detection is on the roadmap →</a></p>
       </div>
     </div>
   </div>
