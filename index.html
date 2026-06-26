@@ -258,7 +258,7 @@
   .pricing-handled { font-size: 12px; color: var(--ink3); text-align: center; margin-top: 10px; }
 
   /* ── FREE PREMIUM ── */
-  .freepremium-section { background: #0f0a1c; border-top: 1px solid rgba(138,43,226,0.35); border-bottom: 1px solid rgba(138,43,226,0.35); }
+  .freepremium-section { background: #1e0b44; border-top: 1px solid rgba(138,43,226,0.5); border-bottom: 1px solid rgba(138,43,226,0.5); }
   .steps-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 56px; }
   .flow-step { background: rgba(138,43,226,0.07); border: 1px solid rgba(138,43,226,0.2); border-radius: var(--radius); padding: 28px 24px; transition: border-color 0.25s; }
   .flow-step:hover { border-color: rgba(138,43,226,0.45); }
@@ -285,6 +285,14 @@
   .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-size: 15px; color: var(--ink2); line-height: 1.75; padding: 0 24px; }
   .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
   .faq-item.open .arrow { transform: rotate(180deg); }
+
+  /* ── MARQUEE ── */
+  .marquee-strip { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
+  .marquee-track { display: flex; width: max-content; animation: marquee 34s linear infinite; }
+  .marquee-item { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink3); white-space: nowrap; padding: 0 6px; }
+  .marquee-dot { color: var(--accent2); padding: 0 14px; font-size: 13px; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -423,6 +431,27 @@
   <p class="stat-source">Myopia projection: <a href="https://www.aaojournal.org/article/s0161-6420(16)00025-7/fulltext" target="_blank" rel="noopener">Holden et al., <em>Ophthalmology</em> 2016</a> · Screen time: DataReportal 2024</p>
 </div>
 
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">GPU-accelerated</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Works across every app</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Free to start</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">60fps locked</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">No hardware needed</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Windows 10 &amp; 11</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Auto-updates</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Privacy first</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">GPU-accelerated</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Works across every app</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Free to start</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">60fps locked</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">No hardware needed</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Windows 10 &amp; 11</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Auto-updates</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Privacy first</span><span class="marquee-dot">·</span>
+  </div>
+</div>
+
 <div id="how-it-works">
   <div class="section">
     <span class="kicker">How it works</span>
@@ -524,6 +553,27 @@
     </div>
   </div>
 </section>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Near-sighted</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Far-sighted</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Astigmatism</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Reading glasses</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Colour blindness filters</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Prism correction</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Single monitor</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">System tray toggle</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Near-sighted</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Far-sighted</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Astigmatism</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Reading glasses</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Colour blindness filters</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Prism correction</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">Single monitor</span><span class="marquee-dot">·</span>
+    <span class="marquee-item">System tray toggle</span><span class="marquee-dot">·</span>
+  </div>
+</div>
 
 <div class="vt-section">
   <div class="section">
