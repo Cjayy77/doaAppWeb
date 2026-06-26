@@ -203,13 +203,14 @@
 
   /* ── VISION TYPES ── */
   .vt-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .visiontypes-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 56px; }
-  .vtype-card { grid-column: span 2; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px 20px; transition: border-color 0.25s; }
-  .vtype-card:nth-last-child(-n+2) { grid-column: span 3; }
-  .vtype-card:hover { border-color: rgba(138,43,226,0.35); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-  .vtype-card .icon-tile { width: 38px; height: 38px; border-radius: 9px; margin-bottom: 14px; }
-  .vtype-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
-  .vtype-card p { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+  .vt-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; align-items: start; }
+  .vt-conditions { display: flex; flex-direction: column; gap: 22px; margin-top: 28px; }
+  .vt-condition { display: flex; gap: 16px; align-items: flex-start; }
+  .vt-condition .icon-tile { width: 38px; height: 38px; border-radius: 9px; margin-bottom: 0; flex-shrink: 0; }
+  .vt-condition h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .vt-condition p { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+  .vt-screenshot { position: sticky; top: calc(var(--nav-h) + 24px); }
+  .vt-screenshot img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
   .afford-note {
     margin-top: 20px; padding: 18px 24px;
     border-left: 3px solid rgba(138,43,226,0.5);
@@ -228,7 +229,9 @@
   .filter-row.reverse .filter-plate-wrap { order: 2; }
   .filter-row.reverse .filter-text { order: 1; }
   .filter-plate-wrap { display: flex; justify-content: center; }
-  .filter-plate-lg { width: 220px; height: 220px; display: block; }
+  .filter-plate-lg { width: 220px; height: 220px; display: block; transform: scale(0.35); opacity: 0; transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease; }
+  .filter-plate-lg.grown { transform: scale(1); opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .filter-plate-lg { transform: scale(1); opacity: 1; transition: none; } }
   .filter-text h4 { font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--ink); margin-bottom: 12px; font-family: var(--font-display); letter-spacing: -0.5px; }
   .filter-text p { font-size: 16px; color: var(--ink2); line-height: 1.75; }
 
@@ -290,8 +293,8 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .visiontypes-grid { grid-template-columns: 1fr 1fr; }
-    .vtype-card, .vtype-card:nth-last-child(-n+2) { grid-column: auto; }
+    .vt-split { grid-template-columns: 1fr; }
+    .vt-screenshot { position: static; }
     .steps-flow { grid-template-columns: 1fr 1fr; }
     .stat-inner { grid-template-columns: 1fr; gap: 32px; }
     .stat-rule { width: 48px; height: 1px; justify-self: center; }
@@ -310,7 +313,7 @@
     .stat-break { padding: 60px 24px; }
   }
   @media (max-width: 600px) {
-    .visiontypes-grid, .steps-flow { grid-template-columns: 1fr; }
+    .steps-flow { grid-template-columns: 1fr; }
     .expect-callout { padding-left: 20px; }
   }
 </style>
@@ -532,38 +535,40 @@
 
 <div class="vt-section">
   <div class="section">
-    <span class="kicker">Who it's for</span>
-    <h2>Most prescriptions are covered. <em>Yours probably is.</em></h2>
-    <p class="section-sub">Here's what each condition means in plain English, and how DOA adjusts for it.</p>
-    <div class="visiontypes-grid">
-      <div class="vtype-card reveal">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#mountain"/></svg></div>
-        <h4>Near-sighted</h4>
-        <p>Things far away look blurry. DOA adjusts your screen so text and images look sharp even without your glasses on.</p>
+    <div class="vt-split">
+      <div class="vt-left">
+        <span class="kicker">Who it's for</span>
+        <h2>Most prescriptions are covered. <em>Yours probably is.</em></h2>
+        <p class="section-sub">Here's what each condition means, and how DOA adjusts for it.</p>
+        <div class="vt-conditions">
+          <div class="vt-condition reveal">
+            <div class="icon-tile"><svg class="icon"><use href="icons.svg#mountain"/></svg></div>
+            <div><h4>Near-sighted</h4><p>Things far away look blurry. DOA adjusts your screen so text and images look sharp even without your glasses on.</p></div>
+          </div>
+          <div class="vt-condition reveal" style="transition-delay:0.08s">
+            <div class="icon-tile"><svg class="icon"><use href="icons.svg#zoom-in"/></svg></div>
+            <div><h4>Far-sighted</h4><p>Things close up are harder to read. DOA makes small text and fine detail on your screen easier to see up close.</p></div>
+          </div>
+          <div class="vt-condition reveal" style="transition-delay:0.16s">
+            <div class="icon-tile"><svg class="icon"><use href="icons.svg#waves"/></svg></div>
+            <div><h4>Astigmatism</h4><p>Everything looks a bit stretched or smeared in one direction. DOA adjusts for that based on your CYL and AXIS values.</p></div>
+          </div>
+          <div class="vt-condition reveal" style="transition-delay:0.24s">
+            <div class="icon-tile"><svg class="icon"><use href="icons.svg#book-open"/></svg></div>
+            <div><h4>Reading glasses</h4><p>If you use reading glasses for screens and books, DOA can adjust your display so reading is more comfortable up close.</p></div>
+          </div>
+          <div class="vt-condition reveal" style="transition-delay:0.32s">
+            <div class="icon-tile"><svg class="icon"><use href="icons.svg#copy"/></svg></div>
+            <div><h4>Binocular imbalance</h4><p>When both eyes don't naturally align, screens can cause double vision or persistent strain. DOA's prism correction adjusts for this so both eyes land on the same image.</p></div>
+          </div>
+        </div>
+        <div class="afford-note reveal">
+          <p>Can't afford glasses right now? DOA can still help. A rough estimate of your difficulty, or even just trial-and-error with the sliders, gives the display something to work with. <a href="/roadmap">Prescription-free auto-detection is on the roadmap →</a></p>
+        </div>
       </div>
-      <div class="vtype-card reveal" style="transition-delay:0.1s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#zoom-in"/></svg></div>
-        <h4>Far-sighted</h4>
-        <p>Things close up are harder to read. DOA makes small text and fine detail on your screen easier to see up close.</p>
+      <div class="vt-screenshot">
+        <img src="DOA_conditions_covered.png" alt="DOA condition selection screen showing Myopia, Astigmatism, Presbyopia and Prism Correction" loading="lazy">
       </div>
-      <div class="vtype-card reveal" style="transition-delay:0.2s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#waves"/></svg></div>
-        <h4>Astigmatism</h4>
-        <p>Everything looks a bit stretched or smeared in one direction. DOA adjusts for that based on your CYL and AXIS values.</p>
-      </div>
-      <div class="vtype-card reveal" style="transition-delay:0.3s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#book-open"/></svg></div>
-        <h4>Reading glasses</h4>
-        <p>If you use reading glasses for screens and books, DOA can adjust your display so reading is more comfortable up close.</p>
-      </div>
-      <div class="vtype-card reveal" style="transition-delay:0.4s">
-        <div class="icon-tile"><svg class="icon"><use href="icons.svg#copy"/></svg></div>
-        <h4>Binocular imbalance</h4>
-        <p>When both eyes don't naturally align on the same point, screens can cause double vision or persistent strain. DOA's prism correction adjusts for this offset so both eyes land comfortably on the same image.</p>
-      </div>
-    </div>
-    <div class="afford-note reveal">
-      <p>Can't afford glasses right now? DOA can still help. A rough estimate of your difficulty, or even just trial-and-error with the sliders, gives the display something to work with. <a href="/roadmap">Prescription-free auto-detection is on the roadmap →</a></p>
     </div>
   </div>
 </div>
