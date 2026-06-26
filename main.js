@@ -22,6 +22,19 @@
     });
   });
 
+  const plateEls = document.querySelectorAll('.filter-plate-lg');
+  if (plateEls.length) {
+    const plateObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('grown'), 150);
+          plateObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    plateEls.forEach(el => plateObs.observe(el));
+  }
+
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length) {
     const obs = new IntersectionObserver(entries => {
