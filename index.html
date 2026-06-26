@@ -224,10 +224,7 @@
   .filters-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
   .filter-card { border-radius: var(--radius-sm); padding: 26px; border: 1px solid var(--border); background: var(--card); transition: border-color 0.25s; }
   .filter-card:hover { border-color: var(--border2); }
-  .filter-swatch { width: 40px; height: 40px; border-radius: 10px; margin-bottom: 16px; }
-  .swatch-protan { background: linear-gradient(135deg, #c0392b, #ff6b6b); }
-  .swatch-deutan { background: linear-gradient(135deg, #27ae60, #6fcf97); }
-  .swatch-tritan { background: linear-gradient(135deg, #2980b9, #74C0FC); }
+  .filter-plate { width: 80px; height: 80px; margin-bottom: 16px; display: block; }
   .filter-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
   .filter-card p { font-size: 13px; color: var(--ink2); line-height: 1.65; }
 
@@ -571,17 +568,71 @@
     <p class="section-sub">Color adjustment modes run as a single display pass. No setup, no calibration, no prescription needed. Just turn it on.</p>
     <div class="filters-row">
       <div class="filter-card reveal">
-        <div class="filter-swatch swatch-protan"></div>
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="filter-plate" aria-hidden="true">
+          <defs><clipPath id="cp-protan"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+          <circle cx="60" cy="60" r="56" fill="#f0ece6"/>
+          <g clip-path="url(#cp-protan)">
+            <circle cx="60" cy="60" r="8" fill="#c84848"/><circle cx="48" cy="50" r="6" fill="#48944a"/><circle cx="73" cy="53" r="7" fill="#48944a"/>
+            <circle cx="54" cy="73" r="6" fill="#c84848"/><circle cx="70" cy="70" r="5" fill="#9a8a64"/><circle cx="38" cy="42" r="7" fill="#48944a"/>
+            <circle cx="82" cy="40" r="6" fill="#c84848"/><circle cx="35" cy="64" r="8" fill="#9a8a64"/><circle cx="86" cy="66" r="6" fill="#48944a"/>
+            <circle cx="48" cy="87" r="7" fill="#c84848"/><circle cx="73" cy="89" r="6" fill="#48944a"/><circle cx="60" cy="26" r="7" fill="#d45a5a"/>
+            <circle cx="60" cy="94" r="6" fill="#5aaa5c"/><circle cx="26" cy="56" r="5" fill="#5aaa5c"/><circle cx="95" cy="57" r="7" fill="#b83838"/>
+            <circle cx="30" cy="36" r="5" fill="#c84848"/><circle cx="90" cy="34" r="5" fill="#48944a"/><circle cx="28" cy="76" r="6" fill="#48944a"/>
+            <circle cx="93" cy="78" r="5" fill="#c84848"/><circle cx="42" cy="22" r="6" fill="#9a8a64"/><circle cx="80" cy="20" r="5" fill="#5aaa5c"/>
+            <circle cx="40" cy="100" r="5" fill="#d45a5a"/><circle cx="82" cy="100" r="6" fill="#3a7a3c"/><circle cx="16" cy="60" r="4" fill="#5aaa5c"/>
+            <circle cx="105" cy="62" r="5" fill="#c84848"/><circle cx="22" cy="42" r="4" fill="#b83838"/><circle cx="100" cy="44" r="4" fill="#5aaa5c"/>
+            <circle cx="18" cy="78" r="5" fill="#9a8a64"/><circle cx="102" cy="76" r="4" fill="#48944a"/><circle cx="50" cy="12" r="4" fill="#c84848"/>
+            <circle cx="72" cy="12" r="5" fill="#48944a"/><circle cx="46" cy="108" r="4" fill="#48944a"/><circle cx="74" cy="108" r="4" fill="#b83838"/>
+            <circle cx="28" cy="26" r="4" fill="#5aaa5c"/><circle cx="88" cy="22" r="3" fill="#c84848"/>
+          </g>
+          <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+        </svg>
         <h4>Protanopia</h4>
         <p>For people who have difficulty seeing red. DOA shifts and amplifies red-spectrum colors so they stand out more clearly on screen.</p>
       </div>
       <div class="filter-card reveal" style="transition-delay:0.1s">
-        <div class="filter-swatch swatch-deutan"></div>
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="filter-plate" aria-hidden="true">
+          <defs><clipPath id="cp-deutan"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+          <circle cx="60" cy="60" r="56" fill="#edeaf4"/>
+          <g clip-path="url(#cp-deutan)">
+            <circle cx="60" cy="60" r="8" fill="#c44020"/><circle cx="47" cy="50" r="6" fill="#4a9040"/><circle cx="74" cy="52" r="7" fill="#4a9040"/>
+            <circle cx="53" cy="73" r="6" fill="#c44020"/><circle cx="69" cy="69" r="5" fill="#907060"/><circle cx="37" cy="42" r="7" fill="#4a9040"/>
+            <circle cx="83" cy="40" r="6" fill="#c44020"/><circle cx="34" cy="65" r="8" fill="#907060"/><circle cx="87" cy="65" r="6" fill="#4a9040"/>
+            <circle cx="47" cy="87" r="7" fill="#c44020"/><circle cx="74" cy="88" r="6" fill="#4a9040"/><circle cx="61" cy="26" r="7" fill="#d45030"/>
+            <circle cx="59" cy="94" r="6" fill="#5aa050"/><circle cx="25" cy="57" r="5" fill="#5aa050"/><circle cx="96" cy="56" r="7" fill="#b03010"/>
+            <circle cx="29" cy="36" r="5" fill="#c44020"/><circle cx="91" cy="34" r="5" fill="#4a9040"/><circle cx="27" cy="77" r="6" fill="#4a9040"/>
+            <circle cx="94" cy="77" r="5" fill="#c44020"/><circle cx="41" cy="22" r="6" fill="#907060"/><circle cx="81" cy="20" r="5" fill="#5aa050"/>
+            <circle cx="39" cy="100" r="5" fill="#d45030"/><circle cx="83" cy="100" r="6" fill="#3c8030"/><circle cx="15" cy="61" r="4" fill="#5aa050"/>
+            <circle cx="106" cy="61" r="5" fill="#c44020"/><circle cx="21" cy="43" r="4" fill="#b03010"/><circle cx="101" cy="43" r="4" fill="#5aa050"/>
+            <circle cx="17" cy="79" r="5" fill="#907060"/><circle cx="103" cy="77" r="4" fill="#4a9040"/><circle cx="51" cy="12" r="4" fill="#c44020"/>
+            <circle cx="73" cy="12" r="5" fill="#4a9040"/><circle cx="45" cy="109" r="4" fill="#4a9040"/><circle cx="75" cy="107" r="4" fill="#b03010"/>
+            <circle cx="27" cy="27" r="4" fill="#5aa050"/><circle cx="89" cy="22" r="3" fill="#c44020"/>
+          </g>
+          <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+        </svg>
         <h4>Deuteranopia</h4>
         <p>The most common type: trouble telling red and green apart. DOA adjusts the color balance so those tones are easier to distinguish.</p>
       </div>
       <div class="filter-card reveal" style="transition-delay:0.2s">
-        <div class="filter-swatch swatch-tritan"></div>
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" class="filter-plate" aria-hidden="true">
+          <defs><clipPath id="cp-tritan"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+          <circle cx="60" cy="60" r="56" fill="#e8eef5"/>
+          <g clip-path="url(#cp-tritan)">
+            <circle cx="60" cy="60" r="8" fill="#3a6ab0"/><circle cx="47" cy="50" r="6" fill="#c89010"/><circle cx="74" cy="52" r="7" fill="#c89010"/>
+            <circle cx="54" cy="73" r="6" fill="#3a6ab0"/><circle cx="70" cy="70" r="5" fill="#607080"/><circle cx="38" cy="42" r="7" fill="#c89010"/>
+            <circle cx="82" cy="40" r="6" fill="#3a6ab0"/><circle cx="34" cy="64" r="8" fill="#607080"/><circle cx="87" cy="66" r="6" fill="#c89010"/>
+            <circle cx="47" cy="87" r="7" fill="#3a6ab0"/><circle cx="74" cy="88" r="6" fill="#c89010"/><circle cx="60" cy="26" r="7" fill="#4a7ac0"/>
+            <circle cx="60" cy="94" r="6" fill="#d8a020"/><circle cx="26" cy="56" r="5" fill="#d8a020"/><circle cx="95" cy="57" r="7" fill="#2858a0"/>
+            <circle cx="30" cy="36" r="5" fill="#3a6ab0"/><circle cx="90" cy="34" r="5" fill="#c89010"/><circle cx="28" cy="76" r="6" fill="#c89010"/>
+            <circle cx="93" cy="78" r="5" fill="#3a6ab0"/><circle cx="42" cy="22" r="6" fill="#607080"/><circle cx="80" cy="20" r="5" fill="#d8a020"/>
+            <circle cx="40" cy="100" r="5" fill="#4a7ac0"/><circle cx="82" cy="100" r="6" fill="#b8860a"/><circle cx="16" cy="60" r="4" fill="#d8a020"/>
+            <circle cx="105" cy="62" r="5" fill="#3a6ab0"/><circle cx="22" cy="42" r="4" fill="#2858a0"/><circle cx="100" cy="44" r="4" fill="#d8a020"/>
+            <circle cx="18" cy="78" r="5" fill="#607080"/><circle cx="102" cy="76" r="4" fill="#c89010"/><circle cx="50" cy="12" r="4" fill="#3a6ab0"/>
+            <circle cx="72" cy="12" r="5" fill="#c89010"/><circle cx="46" cy="108" r="4" fill="#c89010"/><circle cx="74" cy="108" r="4" fill="#2858a0"/>
+            <circle cx="28" cy="26" r="4" fill="#d8a020"/><circle cx="88" cy="22" r="3" fill="#3a6ab0"/>
+          </g>
+          <circle cx="60" cy="60" r="56" fill="none" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+        </svg>
         <h4>Tritanopia</h4>
         <p>For people who have difficulty seeing blue and yellow. DOA remaps those colors on screen so they become visually distinct.</p>
       </div>
