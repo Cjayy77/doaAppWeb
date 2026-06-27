@@ -1,5 +1,19 @@
 // DOA — shared behaviours: mobile nav + scroll reveal
 (function () {
+  // ── Vercel Web Analytics: page views (all pages) + download-click event ──
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  const vaScript = document.createElement('script');
+  vaScript.defer = true;
+  vaScript.src = '/_vercel/insights/script.js';
+  document.head.appendChild(vaScript);
+
+  // Fire a custom event whenever someone clicks the actual installer download
+  document.querySelectorAll('a[href*="releases/latest/download"]').forEach(a => {
+    a.addEventListener('click', () => {
+      window.va('event', { name: 'Download Clicked', data: { page: location.pathname } });
+    });
+  });
+
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
