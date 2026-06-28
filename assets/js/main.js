@@ -18,13 +18,15 @@
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
     burger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      const open = navLinks.classList.toggle('open');
       burger.classList.toggle('active');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     navLinks.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         navLinks.classList.remove('open');
         burger.classList.remove('active');
+        burger.setAttribute('aria-expanded', 'false');
       });
     });
   }

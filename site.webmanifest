@@ -1,0 +1,22 @@
+{
+  "name": "Device Optical Aid",
+  "short_name": "DOA",
+  "description": "Adjust your screen display to your glasses prescription and use your computer comfortably without them.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#161513",
+  "theme_color": "#161513",
+  "icons": [
+    {
+      "src": "/assets/img/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
