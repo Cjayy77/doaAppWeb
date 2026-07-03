@@ -69,6 +69,14 @@ body::after {
   background-repeat: repeat;
 }
 ::selection { background: rgba(138,43,226,0.4); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent2); outline-offset: 3px; border-radius: 3px; }
+
+/* custom scrollbar */
+html { scrollbar-width: thin; scrollbar-color: #34312d var(--bg); }
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #34312d; border-radius: 6px; border: 3px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 img { max-width: 100%; }
 
@@ -79,12 +87,26 @@ h1 { font-size: clamp(44px, 6.5vw, 80px); letter-spacing: -0.025em; }
 h2 { font-size: clamp(30px, 4.5vw, 50px); letter-spacing: -0.02em; }
 h1 em, h2 em { color: var(--accent2); font-style: italic; font-weight: 800; }
 
+/* Section labels framed like a camera's autofocus brackets: the site "locks focus"
+   on each section. Corner marks are drawn with 8 tiny background gradients. */
 .kicker {
-  display: block;
+  display: inline-block;
   font-size: 12px; font-weight: 700;
   letter-spacing: 0.16em; text-transform: uppercase;
   color: var(--ink3);
   margin-bottom: 18px;
+  padding: 9px 16px;
+  --bkt: rgba(176,102,255,0.5);
+  background:
+    linear-gradient(var(--bkt), var(--bkt)) left 0 top 0 / 11px 1.5px,
+    linear-gradient(var(--bkt), var(--bkt)) left 0 top 0 / 1.5px 11px,
+    linear-gradient(var(--bkt), var(--bkt)) right 0 top 0 / 11px 1.5px,
+    linear-gradient(var(--bkt), var(--bkt)) right 0 top 0 / 1.5px 11px,
+    linear-gradient(var(--bkt), var(--bkt)) left 0 bottom 0 / 11px 1.5px,
+    linear-gradient(var(--bkt), var(--bkt)) left 0 bottom 0 / 1.5px 11px,
+    linear-gradient(var(--bkt), var(--bkt)) right 0 bottom 0 / 11px 1.5px,
+    linear-gradient(var(--bkt), var(--bkt)) right 0 bottom 0 / 1.5px 11px;
+  background-repeat: no-repeat;
 }
 .kicker b { color: var(--accent2); font-weight: 700; }
 
@@ -113,10 +135,11 @@ svg.icon-sm { width: 18px; height: 18px; }
   padding: 10px 22px; border-radius: 9px;
   cursor: pointer; text-decoration: none;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  border: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
+  border: none; transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 12px rgba(138,43,226,0.25); }
-.btn-primary:hover { background: var(--accent-deep); box-shadow: 0 4px 18px rgba(138,43,226,0.35); }
+.btn-primary:hover { background: var(--accent-deep); box-shadow: 0 6px 22px rgba(138,43,226,0.4); transform: translateY(-1.5px); }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 2px 12px rgba(138,43,226,0.25); }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border2); }
 .btn-ghost:hover { border-color: var(--accent2); color: var(--ink); }
 .btn-big { font-size: 16px; padding: 15px 32px; border-radius: 11px; }
@@ -209,12 +232,12 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
   font-size: 12px; color: var(--ink3); flex-wrap: wrap; gap: 8px;
 }
 
-/* ── Reveal on scroll ── */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* ── Reveal on scroll: everything comes INTO FOCUS, like the product ── */
+.reveal { opacity: 0; transform: translateY(18px); filter: blur(7px); transition: opacity 0.65s ease, transform 0.65s ease, filter 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); filter: blur(6px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .reveal { opacity: 1; transform: none; filter: none; transition: none; }
   html { scroll-behavior: auto; }
 }
 
