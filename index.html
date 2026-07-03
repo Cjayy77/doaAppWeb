@@ -350,34 +350,6 @@
   }
   h2.reveal.visible { text-shadow: 0 0 rgba(255,70,70,0), 0 0 rgba(80,130,255,0); }
 
-  /* Diopter rail: fixed scale on the right edge. Scrolling the page dials the
-     prescription down from −4.00 D to 0.00 D — the page comes into focus */
-  .diopter-rail {
-    position: fixed; right: 26px; top: 50%; transform: translateY(-50%);
-    height: 42vh; width: 70px; z-index: 60; pointer-events: none;
-  }
-  .diopter-ticks {
-    position: absolute; top: 0; bottom: 0; right: 0; width: 16px;
-    background:
-      repeating-linear-gradient(to bottom, rgba(255,255,255,0.26) 0 1px, transparent 1px 10.5%) right / 16px calc(100% + 1px),
-      repeating-linear-gradient(to bottom, rgba(255,255,255,0.12) 0 1px, transparent 1px 2.1%) right / 9px calc(100% + 1px);
-    background-repeat: no-repeat;
-  }
-  .diopter-thumb { position: absolute; right: 0; top: 0; transform: translateY(-50%); display: flex; align-items: center; gap: 8px; }
-  .diopter-thumb::after { content: ''; width: 22px; height: 2px; background: var(--accent2); box-shadow: 0 0 8px rgba(176,102,255,0.8); }
-  .diopter-value {
-    font-family: var(--font-display); font-size: 12px; font-weight: 700;
-    letter-spacing: 0.06em; color: var(--accent2); white-space: nowrap;
-    font-variant-numeric: tabular-nums;
-  }
-  .diopter-cap {
-    position: absolute; right: 0; width: 16px; text-align: center;
-    font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3);
-  }
-  .diopter-cap.top { bottom: 100%; margin-bottom: 10px; }
-  .diopter-cap.bottom { top: 100%; margin-top: 10px; }
-  @media (max-width: 1220px) { .diopter-rail { display: none; } }
-
   /* Ghost Snellen chart, each row one step more out of focus */
   #how-it-works .section { position: relative; }
   .ghost-chart {
@@ -462,14 +434,6 @@
   </div>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- Diopter rail: scroll progress as a prescription dialling down to 0.00 D -->
-<div class="diopter-rail" aria-hidden="true">
-  <span class="diopter-cap top">Blur</span>
-  <div class="diopter-ticks"></div>
-  <div class="diopter-thumb" id="diopterThumb"><span class="diopter-value" id="diopterVal">&minus;4.00 D</span></div>
-  <span class="diopter-cap bottom">Sharp</span>
-</div>
 
 <section class="hero">
   <span class="kicker"><b>Beta</b> · Now live on Windows</span>
@@ -1151,26 +1115,6 @@
         mockWin.style.transform = 'perspective(1200px)';
       });
     }
-  }
-
-  // Diopter rail: scroll position dials the prescription down to 0.00 D
-  const dThumb = document.getElementById('diopterThumb');
-  const dVal = document.getElementById('diopterVal');
-  if (dThumb && dVal) {
-    let dTicking = false;
-    const dUpdate = () => {
-      dTicking = false;
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const p = max > 0 ? Math.min(window.scrollY / max, 1) : 1;
-      dThumb.style.top = (p * 100) + '%';
-      const d = 4 * (1 - p);
-      dVal.textContent = d < 0.005 ? '0.00 D · sharp' : '−' + d.toFixed(2) + ' D';
-    };
-    window.addEventListener('scroll', () => {
-      if (!dTicking) { dTicking = true; requestAnimationFrame(dUpdate); }
-    }, { passive: true });
-    window.addEventListener('resize', dUpdate, { passive: true });
-    dUpdate();
   }
 
   // Stat break: numbers count up when scrolled into view
