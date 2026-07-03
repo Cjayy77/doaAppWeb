@@ -71,14 +71,51 @@
   .hero-sub { font-size: clamp(16px, 2vw, 19px); color: var(--ink2); max-width: 520px; margin-bottom: 14px; line-height: 1.7; }
   .non-medical-note { font-size: 12px; color: var(--ink3); margin-bottom: 32px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .hero-expect-link {
+    animation-delay: 0.45s;
+    margin-top: 22px; font-size: 13px; color: var(--ink3);
+    text-decoration: none; border-bottom: 1px dotted var(--ink3);
+    padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
+  }
+  .hero-expect-link:hover { color: var(--accent2); border-color: var(--accent2); }
+
+  /* ── PRESCRIPTION TICKER ── */
+  .rx-ticker {
+    overflow: hidden; padding: 26px 0;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+  .rx-track {
+    display: flex; align-items: center; width: max-content;
+    animation: rx-scroll 46s linear infinite;
+  }
+  .rx-ticker:hover .rx-track { animation-play-state: paused; }
+  .rx-track span {
+    font-family: var(--font-display); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink3); white-space: nowrap; margin-right: 28px;
+  }
+  .rx-track i { font-style: normal; font-size: 6px; color: var(--accent); margin-right: 28px; }
+  @keyframes rx-scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .rx-track { animation: none; } }
 
   /* ── MOCKUP (Windows-style app window) ── */
-  .hero-mockup { margin-top: 72px; width: 100%; max-width: 880px; }
+  .hero-mockup { margin-top: 72px; width: 100%; max-width: 880px; position: relative; }
+  .hero-mockup::before {
+    content: ''; position: absolute; inset: -8% -6%;
+    background: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(138,43,226,0.16), transparent 70%);
+    pointer-events: none;
+  }
   .mockup-window {
     background: var(--bg2); border-radius: 12px; overflow: hidden;
     border: 1px solid var(--border2);
     box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
     text-align: left;
+    position: relative;
+    transition: transform 0.25s ease-out;
+    transform: perspective(1200px);
+    will-change: transform;
   }
   .mockup-bar {
     background: var(--card2); padding: 10px 8px 10px 16px;
@@ -159,6 +196,7 @@
     font-size: clamp(60px, 8vw, 96px);
     font-weight: 800; letter-spacing: -0.03em; line-height: 1;
     color: var(--ink); margin-bottom: 14px;
+    font-variant-numeric: tabular-nums;
   }
   .stat-item p { font-size: 14px; color: var(--ink2); line-height: 1.65; max-width: 200px; margin: 0 auto; }
   .stat-source { text-align: center; font-size: 11px; color: var(--ink3); }
@@ -373,12 +411,13 @@
 <section class="hero">
   <span class="kicker"><b>Beta</b> · Now live on Windows</span>
   <h1>Your screen,<br>without your <span class="deblur">glasses.</span></h1>
-  <p class="hero-sub">Enter your prescription, take your glasses off, and your screen should be more comfortable to read without them. That's the whole idea.</p>
+  <p class="hero-sub">Take your glasses off and still read your screen comfortably. Type in your prescription once, and DOA adjusts the display to suit your eyes. That's the whole idea.</p>
   <span class="non-medical-note">Display accessibility tool · Not a medical device · Does not replace eye care</span>
   <div class="hero-actions">
     <a href="/download" class="btn btn-primary btn-big">Get started</a>
     <a href="#how-it-works" class="btn btn-ghost btn-big">See how it works</a>
   </div>
+  <a href="#what-to-expect" class="hero-expect-link">The effect is subtle by design. Read what to expect &darr;</a>
   <div class="hero-mockup">
     <div class="mockup-window">
       <div class="mockup-bar">
@@ -438,6 +477,13 @@
   </div>
 </section>
 
+<!-- Prescription ticker: everything DOA reads and corrects -->
+<div class="rx-ticker" aria-hidden="true">
+  <div class="rx-track">
+    <span>SPH &minus;3.25</span><i>&#9679;</i><span>CYL &minus;1.50 @ 90&deg;</span><i>&#9679;</i><span>ADD +2.00</span><i>&#9679;</i><span>Near-sighted</span><i>&#9679;</i><span>Far-sighted</span><i>&#9679;</i><span>Astigmatism</span><i>&#9679;</i><span>Reading glasses</span><i>&#9679;</i><span>Prism 1.5&Delta;</span><i>&#9679;</i><span>Deuteranopia</span><i>&#9679;</i><span>Protanopia</span><i>&#9679;</i><span>Tritanopia</span><i>&#9679;</i><span>60 fps</span><i>&#9679;</i><span>GPU-accelerated</span><i>&#9679;</i><span>Windows 10 &amp; 11</span><i>&#9679;</i><span>SPH &minus;3.25</span><i>&#9679;</i><span>CYL &minus;1.50 @ 90&deg;</span><i>&#9679;</i><span>ADD +2.00</span><i>&#9679;</i><span>Near-sighted</span><i>&#9679;</i><span>Far-sighted</span><i>&#9679;</i><span>Astigmatism</span><i>&#9679;</i><span>Reading glasses</span><i>&#9679;</i><span>Prism 1.5&Delta;</span><i>&#9679;</i><span>Deuteranopia</span><i>&#9679;</i><span>Protanopia</span><i>&#9679;</i><span>Tritanopia</span><i>&#9679;</i><span>60 fps</span><i>&#9679;</i><span>GPU-accelerated</span><i>&#9679;</i><span>Windows 10 &amp; 11</span><i>&#9679;</i>
+  </div>
+</div>
+
 <div class="founder-note reveal">
   <p>"I wear glasses myself. DOA started as a tool I built for my own desk. I was tired of needing them just to glance at my own screen. Everything on this site is me trying to explain, honestly, what it can and can't do."</p>
   <span>Cedric, who builds DOA</span>
@@ -495,7 +541,7 @@
 <div class="expect-section" id="what-to-expect">
   <div class="section">
     <span class="kicker">Read this first</span>
-    <h2>It's subtle, and that's the point.</h2>
+    <h2>It's subtle, <em>and that's the point.</em></h2>
 
     <div class="expect-callout reveal">
       <p><strong>Glasses off.</strong> Use DOA without your glasses, at the distance you calibrated for (around 50cm). With them on it looks over-sharpened, so don't assume it's broken. If the effect feels subtle, that's correct: it's a fine adjustment your eye processes without noticing. Toggle it off and on while reading small text and the difference shows up in the comparison. <strong>It only fixes blur you actually have.</strong> If your screen already looks sharp at that distance, there's little to correct and you'll barely notice it. The blurrier it looks now, the more DOA does.</p>
@@ -514,7 +560,7 @@
 <section id="features">
   <div class="section">
     <span class="kicker">Features</span>
-    <h2>One tool, every app on your screen.</h2>
+    <h2>One tool, <em>every app</em> on your screen.</h2>
     <p class="section-sub">Works with your glasses prescription. GPU-accelerated, always on, 60fps, with no exceptions for which app is open.</p>
     <div class="features-grid">
       <div class="feature-card reveal">
@@ -730,7 +776,7 @@
 <section>
   <div class="section">
     <span class="kicker">Color filters</span>
-    <h2>No prescription? It still helps.</h2>
+    <h2>No prescription? <em>It still helps.</em></h2>
     <p class="section-sub">Color adjustment modes run as a single display pass. No setup, no calibration, no prescription needed. Just turn it on.</p>
     <div class="filters-list">
 
@@ -871,8 +917,8 @@
 <div class="freepremium-section" id="free-premium">
   <div class="section">
     <span class="kicker">Free Premium</span>
-    <h2>Missed early access? Premium's still free.</h2>
-    <p class="section-sub">Every user who submits display feedback in the app gets 7 days of Premium, automatically, no code needed. Here's how.</p>
+    <h2>7 days of Premium, <em>free.</em></h2>
+    <p class="section-sub">Share quick feedback inside the app and Premium unlocks on its own. No card, no code, and you can earn it again every 30 days. Here's the whole flow.</p>
 
     <div class="steps-flow">
       <div class="flow-step reveal">
@@ -905,7 +951,7 @@
       <div class="flow-reward-left">
         <div class="icon-tile"><svg class="icon"><use href="assets/icons/icons.svg#gift"/></svg></div>
         <div class="flow-reward-text">
-          <h4>7 days of Premium, unlocked instantly</h4>
+          <h4>Unlocked the moment you submit</h4>
           <p>The moment you submit your feedback, <strong>7 days of Premium are added to your account automatically.</strong> No coupon, no waiting, no card needed. You can earn this once every 30 days.</p>
         </div>
       </div>
@@ -1018,6 +1064,49 @@
   window.addEventListener('mouseup', () => dragging = false);
   window.addEventListener('touchend', () => dragging = false);
   window.addEventListener('load', () => { const t = after.querySelector('.blur-text'); if (t) t.style.width = wrap.getBoundingClientRect().width + 'px'; });
+
+  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mockup window: subtle 3D tilt following the cursor
+  if (!noMotion) {
+    const mockWrap = document.querySelector('.hero-mockup');
+    const mockWin = document.querySelector('.mockup-window');
+    if (mockWrap && mockWin) {
+      mockWrap.addEventListener('mousemove', e => {
+        const r = mockWrap.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        mockWin.style.transform = 'perspective(1200px) rotateX(' + (-y * 3).toFixed(2) + 'deg) rotateY(' + (x * 4).toFixed(2) + 'deg)';
+      });
+      mockWrap.addEventListener('mouseleave', () => {
+        mockWin.style.transform = 'perspective(1200px)';
+      });
+    }
+  }
+
+  // Stat break: numbers count up when scrolled into view
+  const statNums = document.querySelectorAll('.stat-num');
+  if (statNums.length && !noMotion && 'IntersectionObserver' in window) {
+    const easeOut = p => 1 - Math.pow(1 - p, 3);
+    const runCount = el => {
+      const m = el.textContent.match(/^([^0-9]*)(\d+)(.*)$/);
+      if (!m) return;
+      const prefix = m[1], target = parseInt(m[2], 10), suffix = m[3];
+      if (!target) return;
+      const dur = 1300, start = performance.now();
+      (function frame(now) {
+        const p = Math.min((now - start) / dur, 1);
+        el.textContent = prefix + Math.round(easeOut(p) * target) + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      })(start);
+    };
+    const statObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { runCount(e.target); statObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    statNums.forEach(el => statObs.observe(el));
+  }
 </script>
 </body>
 </html>

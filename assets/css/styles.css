@@ -69,6 +69,7 @@ body::after {
   background-repeat: repeat;
 }
 ::selection { background: rgba(138,43,226,0.4); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--accent2); outline-offset: 3px; border-radius: 3px; }
 
 img { max-width: 100%; }
 
@@ -113,10 +114,11 @@ svg.icon-sm { width: 18px; height: 18px; }
   padding: 10px 22px; border-radius: 9px;
   cursor: pointer; text-decoration: none;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  border: none; transition: background 0.2s, border-color 0.2s, color 0.2s;
+  border: none; transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 12px rgba(138,43,226,0.25); }
-.btn-primary:hover { background: var(--accent-deep); box-shadow: 0 4px 18px rgba(138,43,226,0.35); }
+.btn-primary:hover { background: var(--accent-deep); box-shadow: 0 6px 22px rgba(138,43,226,0.4); transform: translateY(-1.5px); }
+.btn-primary:active { transform: translateY(0); box-shadow: 0 2px 12px rgba(138,43,226,0.25); }
 .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border2); }
 .btn-ghost:hover { border-color: var(--accent2); color: var(--ink); }
 .btn-big { font-size: 16px; padding: 15px 32px; border-radius: 11px; }
