@@ -261,6 +261,18 @@
   .vt-visual { width: 100%; max-width: 320px; height: auto; display: block; }
   .vt-text h4 { font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--ink); margin-bottom: 12px; font-family: var(--font-display); letter-spacing: -0.5px; }
   .vt-text p { font-size: 16px; color: var(--ink2); line-height: 1.75; }
+  .self-test {
+    margin-top: 44px; max-width: 720px;
+    padding: 26px 30px;
+    background: var(--card); border: 1px solid rgba(138,43,226,0.32);
+    border-radius: var(--radius);
+  }
+  .self-test-label {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 10px;
+  }
+  .self-test p { font-size: 16.5px; color: var(--ink); line-height: 1.75; }
   .afford-note {
     margin-top: 20px; padding: 18px 24px;
     border-left: 3px solid rgba(138,43,226,0.5);
@@ -644,6 +656,12 @@
   <div class="section">
     <span class="kicker">Who it's for</span>
     <h2 class="reveal">Most prescriptions are covered. <em>Yours probably is.</em></h2>
+
+    <div class="self-test reveal">
+      <span class="self-test-label">10-second check, right now</span>
+      <p>Take your glasses off and stay where you're sitting. If this sentence has gone soft or blurry, that blur is exactly what DOA corrects. If you can still read it clearly, your eyes already handle this distance on their own, and DOA won't have much to add.</p>
+    </div>
+
     <div class="vt-list">
 
       <!-- Near-sighted: eye-chart with progressive blur -->
@@ -997,7 +1015,7 @@
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q">Will it work with my prescription? <svg class="icon icon-sm arrow"><use href="assets/icons/icons.svg#arrow-right" transform="rotate(90 12 12)"/></svg></button>
-        <div class="faq-a">DOA works with most standard glasses prescriptions including near-sightedness, far-sightedness, astigmatism, and reading glasses. Very strong prescriptions may see less improvement depending on your screen's resolution and size. The free tier lets you try it with no commitment.</div>
+        <div class="faq-a">DOA works with most standard glasses prescriptions including near-sightedness, far-sightedness, astigmatism, and reading glasses. Very strong prescriptions may see less improvement depending on your screen's resolution and size. One honest caveat: if you can already read your screen clearly without your glasses at your normal sitting distance, there's no blur to correct and you won't feel much. DOA is for people whose screen is genuinely blurry without correction. The free tier lets you try it with no commitment.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Does this actually replace my glasses? <svg class="icon icon-sm arrow"><use href="assets/icons/icons.svg#arrow-right" transform="rotate(90 12 12)"/></svg></button>
