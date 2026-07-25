@@ -1,8 +1,12 @@
 {
   "cleanUrls": true,
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/404.html" }
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.deviceopticalaid.com" }],
+      "destination": "https://deviceopticalaid.com/:path*",
+      "permanent": true
+    }
   ],
   "headers": [
     {
@@ -11,6 +15,16 @@
         {
           "key": "Content-Type",
           "value": "application/xml"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "(.*)\\.vercel\\.app" }],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     }
