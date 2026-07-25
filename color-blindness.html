@@ -11,12 +11,12 @@
 <meta property="og:title" content="Colorblind filters for your whole Windows screen">
 <meta property="og:description" content="Color correction for Protanopia, Deuteranopia, and Tritanopia across every app. No prescription needed. Try the live simulator.">
 <meta property="og:url" content="https://deviceopticalaid.com/color-blindness">
-<meta property="og:image" content="https://deviceopticalaid.com/assets/img/og-image.png">
+<meta property="og:image" content="https://deviceopticalaid.com/assets/img/og-color.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Device Optical Aid: color filters for your whole screen">
+<meta property="og:image:alt" content="Device Optical Aid: colorblind filters for your whole screen, showing category colors before and after correction">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://deviceopticalaid.com/assets/img/og-image.png">
+<meta name="twitter:image" content="https://deviceopticalaid.com/assets/img/og-color.png">
 <meta name="twitter:title" content="Colorblind filters for your whole Windows screen">
 <meta name="twitter:description" content="Color correction for Protanopia, Deuteranopia, and Tritanopia across every app. Try the live simulator.">
 <meta name="author" content="CJ_">
@@ -82,6 +82,14 @@
 
   .sim-status { margin-top: 16px; font-size: 13.5px; color: var(--ink2); line-height: 1.65; min-height: 40px; }
   .sim-status strong { color: var(--ink); font-weight: 600; }
+
+  .sim-appnote {
+    margin-top: 16px; padding: 16px 20px;
+    background: var(--accent-dim); border: 1px solid rgba(138,43,226,0.28);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px; color: var(--ink2); line-height: 1.7;
+  }
+  .sim-appnote strong { color: var(--ink); font-weight: 600; }
 
   .sim-note {
     margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border);
@@ -275,7 +283,9 @@
 
     <p class="sim-status" id="simStatus"><strong>Normal vision.</strong> This is the reference: five clearly distinct category colors, and a red line you can tell apart from a green one. Pick a vision type above to see how much of that survives.</p>
 
-    <p class="sim-note">The simulation runs in your browser using published color vision matrices (Machado, Oliveira &amp; Fernandes, 2009), and the correction uses the same daltonization approach DOA applies to your screen. Real color vision deficiency varies from person to person; these settings show the strongest form of each type, so treat this as an illustration rather than a measurement of your own vision. <a href="/faq">More in the FAQ</a>.</p>
+    <p class="sim-appnote"><strong>This is a showcase, not the product.</strong> What you see here is one fixed setting applied to one sample image in a browser. The correction inside DOA is stronger and adjustable: you choose your deficiency type, tune the intensity to your own vision rather than a textbook average, and it runs live across everything on your screen instead of a single picture. Treat this as a rough preview of the idea, not a measure of how well it will work for you.</p>
+
+    <p class="sim-note">The simulation runs in your browser using published color vision matrices (Machado, Oliveira &amp; Fernandes, 2009), and the correction uses the same daltonization approach DOA builds on. Real color vision deficiency varies from person to person; these settings show the strongest form of each type, so treat this as an illustration rather than a measurement of your own vision. <a href="/faq">More in the FAQ</a>.</p>
   </div>
 
   <!-- ══ WHY IT MATTERS ══ -->
@@ -317,6 +327,7 @@
       <ul>
         <li><strong>It does not cure or change your color vision.</strong> It changes what your screen sends, so colors that used to collapse together arrive separated. Away from your screen, nothing is different.</li>
         <li><strong>The simulator above is not a test.</strong> It shows what the strongest form of each type does to a sample image. It cannot tell you whether you have a color vision deficiency, and screen calibration varies too much for any web page to do that reliably. An optometrist can.</li>
+        <li><strong>The simulator is also not the product.</strong> It runs one fixed correction on one image to demonstrate the idea. The app applies a stronger correction that you tune to your own vision, in real time, across your whole screen. Expect the real thing to do more than the preview.</li>
         <li><strong>Correction is a trade.</strong> Pulling confusable colors apart shifts other colors slightly in the process. It's the right trade when you need to read information, and the wrong one for color-critical design or photo work, so turn it off for those.</li>
         <li><strong>It's free.</strong> Color filters are included in the free tier, no prescription and no card needed. The free tier's limits are a daily usage cap and a small logo in the corner.</li>
       </ul>
