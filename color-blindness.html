@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorblind Filters for Windows | Device Optical Aid</title>
+<meta name="description" content="DOA applies color correction across your whole Windows screen for Protanopia, Deuteranopia, and Tritanopia. No prescription, no setup. Try the live simulator to see the difference before you download.">
+<meta name="keywords" content="colorblind filter windows, color blind mode pc, colorblind mode windows 11, deuteranopia filter, protanopia filter, tritanopia filter, color blindness software, colour blindness filter, color correction screen, colorblind accessibility windows, color vision deficiency screen, daltonization, colorblind simulator, DOA, Device Optical Aid">
+<meta property="og:site_name" content="Device Optical Aid">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Colorblind filters for your whole Windows screen">
+<meta property="og:description" content="Color correction for Protanopia, Deuteranopia, and Tritanopia across every app. No prescription needed. Try the live simulator.">
+<meta property="og:url" content="https://deviceopticalaid.com/color-blindness">
+<meta property="og:image" content="https://deviceopticalaid.com/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Device Optical Aid: color filters for your whole screen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deviceopticalaid.com/assets/img/og-image.png">
+<meta name="twitter:title" content="Colorblind filters for your whole Windows screen">
+<meta name="twitter:description" content="Color correction for Protanopia, Deuteranopia, and Tritanopia across every app. Try the live simulator.">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" href="assets/img/doaTransparent.png">
+<link rel="apple-touch-icon" href="assets/img/android-chrome-512x512.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#161513">
+<link rel="canonical" href="https://deviceopticalaid.com/color-blindness" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  main { max-width: 900px; margin: 0 auto; padding: calc(var(--nav-h) + 52px) 40px 100px; }
+
+  .page-hero { margin-bottom: 52px; animation: fadeUp 0.7s ease both 0.1s; }
+  .page-hero h1 { font-size: clamp(38px, 5.6vw, 64px); margin-bottom: 20px; }
+  .page-hero .lead { font-size: 19px; color: var(--ink2); line-height: 1.7; max-width: 640px; }
+  .hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+  .hero-pill { font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; background: var(--accent-dim); color: var(--accent2); border: 1px solid rgba(138,43,226,0.25); }
+
+  /* ── SIMULATOR ── */
+  .sim {
+    background: var(--card); border: 1px solid var(--border2); border-radius: var(--radius);
+    padding: 30px 32px; margin-bottom: 20px;
+  }
+  .sim-head { margin-bottom: 22px; }
+  .sim-head h2 { font-size: 22px; letter-spacing: -0.4px; margin-bottom: 8px; }
+  .sim-head p { font-size: 14.5px; color: var(--ink2); line-height: 1.7; }
+
+  .sim-controls { display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-end; margin-bottom: 24px; }
+  .sim-group { display: flex; flex-direction: column; gap: 9px; }
+  .sim-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); }
+  .sim-btns { display: flex; gap: 7px; flex-wrap: wrap; }
+  .sim-btn {
+    font-family: var(--font-body); font-size: 13px; font-weight: 600;
+    padding: 8px 15px; border-radius: 100px; cursor: pointer;
+    border: 1.5px solid var(--border); background: none; color: var(--ink2);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .sim-btn:hover { border-color: var(--border2); color: var(--ink); }
+  .sim-btn.active { background: var(--accent-dim); border-color: rgba(138,43,226,0.45); color: var(--accent2); }
+
+  .sim-toggle {
+    display: inline-flex; align-items: center; gap: 11px; cursor: pointer;
+    padding: 8px 16px 8px 12px; border-radius: 100px;
+    border: 1.5px solid var(--border); background: none;
+    font-family: var(--font-body); font-size: 13px; font-weight: 600; color: var(--ink2);
+    transition: border-color 0.2s, color 0.2s, background 0.2s, opacity 0.2s;
+  }
+  .sim-toggle:hover:not(:disabled) { border-color: var(--border2); color: var(--ink); }
+  .sim-toggle:disabled { opacity: 0.4; cursor: not-allowed; }
+  .sim-toggle.on { background: rgba(52,211,153,0.1); border-color: rgba(52,211,153,0.45); color: var(--green); }
+  .sim-switch { width: 34px; height: 19px; border-radius: 100px; background: rgba(255,255,255,0.12); position: relative; transition: background 0.2s; flex-shrink: 0; }
+  .sim-switch::after { content: ''; position: absolute; top: 2.5px; left: 2.5px; width: 14px; height: 14px; border-radius: 50%; background: var(--ink2); transition: transform 0.2s, background 0.2s; }
+  .sim-toggle.on .sim-switch { background: rgba(52,211,153,0.35); }
+  .sim-toggle.on .sim-switch::after { transform: translateX(15px); background: var(--green); }
+
+  .sim-stage { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; overflow-x: auto; }
+  .sim-stage svg { width: 100%; height: auto; min-width: 460px; display: block; }
+
+  .sim-status { margin-top: 16px; font-size: 13.5px; color: var(--ink2); line-height: 1.65; min-height: 40px; }
+  .sim-status strong { color: var(--ink); font-weight: 600; }
+
+  .sim-note {
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border);
+    font-size: 12.5px; color: var(--ink3); line-height: 1.65;
+  }
+  .sim-note a { color: var(--ink2); text-decoration: underline; text-underline-offset: 2px; }
+  .sim-note a:hover { color: var(--ink); }
+
+  /* ── SECTIONS ── */
+  .cb-section { margin: 56px 0; }
+  .cb-section h2 { font-size: 26px; letter-spacing: -0.5px; margin-bottom: 14px; }
+  .cb-section p { font-size: 16px; color: var(--ink2); line-height: 1.8; margin-bottom: 16px; }
+  .cb-section p strong { color: var(--ink); font-weight: 600; }
+  .cb-section a { color: var(--accent2); text-decoration: none; }
+  .cb-section a:hover { color: var(--ink); }
+
+  .type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; }
+  .type-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 22px 24px; transition: border-color 0.25s; }
+  .type-card:hover { border-color: rgba(138,43,226,0.32); }
+  .type-card h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .type-card .type-sub { font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; display: block; }
+  .type-card p { font-size: 13.5px; color: var(--ink2); line-height: 1.65; margin: 0; }
+
+  .honest-box {
+    background: var(--card); border: 1px solid rgba(138,43,226,0.28); border-radius: var(--radius);
+    padding: 26px 30px; margin: 30px 0;
+  }
+  .honest-box h3 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+  .honest-box ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .honest-box li { font-size: 14.5px; color: var(--ink2); line-height: 1.7; padding-left: 18px; position: relative; }
+  .honest-box li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); }
+  .honest-box li strong { color: var(--ink); font-weight: 600; }
+
+  .cta-box {
+    background: var(--accent-dim); border: 1px solid rgba(138,43,226,0.3); border-radius: var(--radius);
+    padding: 30px 34px; margin-top: 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .cta-box h3 { font-size: 20px; font-weight: 800; font-family: var(--font-display); letter-spacing: -0.3px; margin-bottom: 6px; }
+  .cta-box p { font-size: 14px; color: var(--ink2); margin: 0; }
+
+  .related { margin-top: 52px; padding-top: 30px; border-top: 1px solid var(--border); }
+  .related h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 16px; }
+  .related-links { display: flex; flex-direction: column; gap: 10px; }
+  .related-links a { display: block; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 22px; font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color 0.25s; }
+  .related-links a:hover { border-color: rgba(138,43,226,0.4); }
+  .related-links a span { display: block; font-size: 13px; font-weight: 400; color: var(--ink3); margin-top: 3px; }
+
+  @media (max-width: 860px) { .type-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) {
+    main { padding: calc(var(--nav-h) + 32px) 20px 80px; }
+    .sim { padding: 22px 18px; }
+    .sim-controls { gap: 18px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Colorblind Filters for Windows | Device Optical Aid",
+  "description": "DOA applies color correction across your whole Windows screen for Protanopia, Deuteranopia, and Tritanopia. Includes a live in-browser color vision simulator.",
+  "url": "https://deviceopticalaid.com/color-blindness"
+}
+</script>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
+    <img src="assets/img/doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/about">About</a></li>
+    <li><a href="/#how-it-works">How it works</a></li>
+    <li><a href="/color-blindness">Color filters</a></li>
+    <li><a href="/roadmap">Roadmap</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="/download" class="btn btn-primary">Download</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <span class="kicker">Color filters</span>
+    <h1>Color correction for <em>your whole screen.</em></h1>
+    <p class="lead">DOA's other half. Color adjustment modes for Protanopia, Deuteranopia, and Tritanopia, applied across every app on your Windows desktop. No prescription, no calibration, no setup. Turn it on and it works.</p>
+    <div class="hero-pills">
+      <span class="hero-pill">No prescription needed</span>
+      <span class="hero-pill">Works in every app</span>
+      <span class="hero-pill">Included in the free tier</span>
+    </div>
+  </div>
+
+  <!-- ══ SIMULATOR ══ -->
+  <div class="sim">
+    <div class="sim-head">
+      <h2>See it before you download</h2>
+      <p>This dashboard is the kind of screen that breaks with color vision deficiency: a red line and a green line, a pass and a fail, a row of category colors. Pick a vision type to see what happens to it, then switch the correction on.</p>
+    </div>
+
+    <div class="sim-controls">
+      <div class="sim-group">
+        <span class="sim-label" id="visionLabel">Vision type</span>
+        <div class="sim-btns" role="group" aria-labelledby="visionLabel">
+          <button class="sim-btn active" data-type="normal">Normal vision</button>
+          <button class="sim-btn" data-type="protanopia">Protanopia</button>
+          <button class="sim-btn" data-type="deuteranopia">Deuteranopia</button>
+          <button class="sim-btn" data-type="tritanopia">Tritanopia</button>
+        </div>
+      </div>
+      <div class="sim-group">
+        <span class="sim-label">DOA correction</span>
+        <button class="sim-toggle" id="fixToggle" disabled aria-pressed="false">
+          <span class="sim-switch" aria-hidden="true"></span>
+          <span id="fixLabel">Off</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sim-stage">
+      <svg viewBox="0 0 620 402" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Simulated dashboard with red and green data series, status indicators, and category color swatches">
+        <defs>
+          <filter id="cvd" color-interpolation-filters="sRGB" x="0%" y="0%" width="100%" height="100%">
+            <feColorMatrix id="cvdMatrix" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+          </filter>
+        </defs>
+
+        <g filter="url(#cvd)">
+          <rect width="620" height="402" rx="10" fill="#171614"/>
+
+          <!-- chart panel -->
+          <text x="26" y="34" font-family="sans-serif" font-size="14" font-weight="700" fill="#F5F4EF">Quarterly performance</text>
+          <circle cx="424" cy="29" r="5" fill="#2f9e44"/>
+          <text x="436" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Revenue</text>
+          <circle cx="520" cy="29" r="5" fill="#e03131"/>
+          <text x="532" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Costs</text>
+
+          <line x1="26" y1="70" x2="594" y2="70" stroke="#ffffff" stroke-opacity="0.05"/>
+          <line x1="26" y1="112" x2="594" y2="112" stroke="#ffffff" stroke-opacity="0.05"/>
+          <line x1="26" y1="154" x2="594" y2="154" stroke="#ffffff" stroke-opacity="0.05"/>
+          <line x1="26" y1="196" x2="594" y2="196" stroke="#ffffff" stroke-opacity="0.05"/>
+
+          <polyline fill="none" stroke="#2f9e44" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="26,186 97,172 168,158 239,126 310,132 381,100 452,90 523,66 594,58"/>
+          <polyline fill="none" stroke="#e03131" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="26,150 97,158 168,120 239,140 310,102 381,116 452,146 523,124 594,150"/>
+
+          <line x1="26" y1="212" x2="594" y2="212" stroke="#ffffff" stroke-opacity="0.09"/>
+
+          <!-- status rows -->
+          <text x="26" y="246" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="1.4" fill="#6C6B66">SERVICE STATUS</text>
+
+          <rect x="26" y="258" width="270" height="42" rx="8" fill="#211F1C"/>
+          <circle cx="48" cy="279" r="6" fill="#2f9e44"/>
+          <text x="66" y="277" font-family="sans-serif" font-size="12.5" font-weight="600" fill="#F5F4EF">api-gateway</text>
+          <text x="66" y="292" font-family="sans-serif" font-size="11" fill="#A3A29C">Operational</text>
+
+          <rect x="324" y="258" width="270" height="42" rx="8" fill="#211F1C"/>
+          <circle cx="346" cy="279" r="6" fill="#e03131"/>
+          <text x="364" y="277" font-family="sans-serif" font-size="12.5" font-weight="600" fill="#F5F4EF">auth-service</text>
+          <text x="364" y="292" font-family="sans-serif" font-size="11" fill="#A3A29C">Failing</text>
+
+          <!-- swatches -->
+          <text x="26" y="338" font-family="sans-serif" font-size="11" font-weight="700" letter-spacing="1.4" fill="#6C6B66">CATEGORY COLORS</text>
+
+          <rect x="26" y="350" width="102" height="34" rx="7" fill="#e03131"/>
+          <text x="77" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Critical</text>
+
+          <rect x="140" y="350" width="102" height="34" rx="7" fill="#2f9e44"/>
+          <text x="191" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Healthy</text>
+
+          <rect x="254" y="350" width="102" height="34" rx="7" fill="#f08c00"/>
+          <text x="305" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Warning</text>
+
+          <rect x="368" y="350" width="102" height="34" rx="7" fill="#74b816"/>
+          <text x="419" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Staging</text>
+
+          <rect x="482" y="350" width="112" height="34" rx="7" fill="#8a5a2b"/>
+          <text x="538" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Archived</text>
+        </g>
+      </svg>
+    </div>
+
+    <p class="sim-status" id="simStatus"><strong>Normal vision.</strong> This is the reference: five clearly distinct category colors, and a red line you can tell apart from a green one. Pick a vision type above to see how much of that survives.</p>
+
+    <p class="sim-note">The simulation runs in your browser using published color vision matrices (Machado, Oliveira &amp; Fernandes, 2009), and the correction uses the same daltonization approach DOA applies to your screen. Real color vision deficiency varies from person to person; these settings show the strongest form of each type, so treat this as an illustration rather than a measurement of your own vision. <a href="/faq">More in the FAQ</a>.</p>
+  </div>
+
+  <!-- ══ WHY IT MATTERS ══ -->
+  <div class="cb-section">
+    <h2>Why a screen-wide filter, and not per-app settings</h2>
+    <p>Some apps ship a colorblind mode. Most don't. That leaves you toggling settings in the few places that offer them and squinting everywhere else, and it does nothing for a website, a spreadsheet, a video, or a game that never considered it.</p>
+    <p>DOA works at the display level, so the adjustment applies to <strong>everything on screen at once</strong>: every app, every browser tab, every document. You set it once and stop thinking about it. Windows has its own built-in color filters, and they're a reasonable starting point, but they apply a single fixed transform. DOA's modes are built per deficiency type and sit alongside the rest of what the app does.</p>
+  </div>
+
+  <!-- ══ TYPES ══ -->
+  <div class="cb-section">
+    <h2>The three types DOA covers</h2>
+    <p>Color vision deficiency affects roughly 1 in 12 men and 1 in 200 women. It comes in three main forms, and they need different corrections.</p>
+    <div class="type-grid">
+      <div class="type-card">
+        <span class="type-sub">Red-weak</span>
+        <h3>Protanopia</h3>
+        <p>Reds look much darker than they are, sometimes close to black, and blur into dark greens and browns. DOA amplifies the red channel so those tones register.</p>
+      </div>
+      <div class="type-card">
+        <span class="type-sub">Green-weak · most common</span>
+        <h3>Deuteranopia</h3>
+        <p>Greens shift toward brown and orange until they're hard to separate from reds. DOA rebalances the green channel so the two pull apart.</p>
+      </div>
+      <div class="type-card">
+        <span class="type-sub">Blue-weak · rarest</span>
+        <h3>Tritanopia</h3>
+        <p>Blues and greens collapse together and yellows can look pink or vanish. DOA remaps the blue-yellow axis so those colors stay distinct.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HONEST ══ -->
+  <div class="cb-section">
+    <h2>What this is, and what it isn't</h2>
+    <div class="honest-box">
+      <h3>Straight answers before you download</h3>
+      <ul>
+        <li><strong>It does not cure or change your color vision.</strong> It changes what your screen sends, so colors that used to collapse together arrive separated. Away from your screen, nothing is different.</li>
+        <li><strong>The simulator above is not a test.</strong> It shows what the strongest form of each type does to a sample image. It cannot tell you whether you have a color vision deficiency, and screen calibration varies too much for any web page to do that reliably. An optometrist can.</li>
+        <li><strong>Correction is a trade.</strong> Pulling confusable colors apart shifts other colors slightly in the process. It's the right trade when you need to read information, and the wrong one for color-critical design or photo work, so turn it off for those.</li>
+        <li><strong>It's free.</strong> Color filters are included in the free tier, no prescription and no card needed. The free tier's limits are a daily usage cap and a small logo in the corner.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <div>
+      <h3>Turn it on and see for yourself</h3>
+      <p>Free on Windows 10 and 11. No prescription, no card, about a minute to set up.</p>
+    </div>
+    <a href="/download" class="btn btn-primary btn-big">Download DOA</a>
+  </div>
+
+  <div class="related">
+    <h3>Keep reading</h3>
+    <div class="related-links">
+      <a href="/faq">Frequently asked questions<span>Color filters, prescriptions, privacy, billing, and troubleshooting.</span></a>
+      <a href="/about#science">The science behind DOA<span>The research the display correction is built on, and its limits.</span></a>
+      <a href="/guides">Guides: screens and eyesight<span>Honest explainers on blur, astigmatism, and using screens without glasses.</span></a>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/doaTransparent.png" alt="DOA Logo">
+        <p>A display accessibility tool for people who wear glasses. Not a medical device.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/color-blindness">Color filters</a></li>
+          <li><a href="/roadmap">Roadmap</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/download">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/Terms-of-Service">Terms of Service</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-legal-note">DOA is a display accessibility tool. It is not a medical device and does not treat, diagnose, or replace professional eye care. Always consult a qualified eye care professional for medical advice.</p>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <a href="https://cjayy77.github.io/cj-portfolio/" target="_blank" rel="noopener">
+        <img src="assets/img/cj-white.svg" alt="CJ_" height="24" style="display:block;">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  // Color vision simulation matrices — Machado, Oliveira & Fernandes (2009), severity 1.0
+  const SIM = {
+    protanopia: [
+      [ 0.152286,  1.052583, -0.204868],
+      [ 0.114503,  0.786281,  0.099216],
+      [-0.003882, -0.048116,  1.051998]
+    ],
+    deuteranopia: [
+      [ 0.367322,  0.860646, -0.227968],
+      [ 0.280085,  0.672501,  0.047413],
+      [-0.011820,  0.042940,  0.968881]
+    ],
+    tritanopia: [
+      [ 1.255528, -0.076749, -0.178779],
+      [-0.078411,  0.930809,  0.147602],
+      [ 0.004733,  0.691367,  0.303900]
+    ]
+  };
+
+  // Daltonization: redistribute the error a deficient eye loses onto channels it still sees
+  const ERR = {
+    protanopia:   [[0, 0, 0], [0.7, 1, 0], [0.7, 0, 1]],
+    deuteranopia: [[0, 0, 0], [0.7, 1, 0], [0.7, 0, 1]],
+    tritanopia:   [[1, 0, 0.7], [0, 1, 0.7], [0, 0, 0]]
+  };
+
+  const I3 = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+
+  const mul = (A, B) => A.map((row, i) =>
+    [0, 1, 2].map(j => row[0] * B[0][j] + row[1] * B[1][j] + row[2] * B[2][j]));
+  const sub = (A, B) => A.map((row, i) => row.map((v, j) => v - B[i][j]));
+  const add = (A, B) => A.map((row, i) => row.map((v, j) => v + B[i][j]));
+
+  const toFilter = M => [
+    M[0][0], M[0][1], M[0][2], 0, 0,
+    M[1][0], M[1][1], M[1][2], 0, 0,
+    M[2][0], M[2][1], M[2][2], 0, 0,
+    0, 0, 0, 1, 0
+  ].map(n => (Math.round(n * 1e6) / 1e6)).join(' ');
+
+  const STATUS = {
+    normal: '<strong>Normal vision.</strong> This is the reference: five clearly distinct category colors, and a red line you can tell apart from a green one. Pick a vision type above to see how much of that survives.',
+    protanopia: {
+      off: '<strong>Protanopia, correction off.</strong> Red has gone dark and muddy. "Critical" and "Archived" are closing in on each other, and the red cost line is losing its separation from the green revenue line.',
+      on:  '<strong>Protanopia, correction on.</strong> The lost red-green difference is moved into the blue channel, so one side cools while the other stays warm. The two chart lines separate again and the status dots stop competing.'
+    },
+    deuteranopia: {
+      off: '<strong>Deuteranopia, correction off.</strong> The most common type, and the most destructive here: red and green collapse into near-identical yellow-browns. "Critical", "Healthy", "Warning" and "Staging" are now nearly one color, and pass/fail is a guess.',
+      on:  '<strong>Deuteranopia, correction on.</strong> Same information, separated again. The difference your eye was losing is moved into the blue channel, so the failing service cools toward grey while the healthy one stays warm gold. Pass and fail no longer depend on telling red from green.'
+    },
+    tritanopia: {
+      off: '<strong>Tritanopia, correction off.</strong> The rarest type. Blues and greens run together and the warmer swatches drift toward pink, so the category row loses its ordering.',
+      on:  '<strong>Tritanopia, correction on.</strong> The blue-yellow axis is remapped and the error moves into red and green, where your vision is intact, so the swatches pull back apart.'
+    }
+  };
+
+  const matrixEl = document.getElementById('cvdMatrix');
+  const statusEl = document.getElementById('simStatus');
+  const toggle   = document.getElementById('fixToggle');
+  const fixLabel = document.getElementById('fixLabel');
+  const btns     = Array.from(document.querySelectorAll('.sim-btn'));
+
+  let type = 'normal';
+  let corrected = false;
+
+  function render() {
+    let M;
+    if (type === 'normal') {
+      M = I3;
+    } else {
+      const S = SIM[type];
+      // What a deficient eye sees. With correction, daltonize first, then simulate.
+      M = corrected ? mul(S, add(I3, mul(ERR[type], sub(I3, S)))) : S;
+    }
+    matrixEl.setAttribute('values', toFilter(M));
+
+    statusEl.innerHTML = type === 'normal'
+      ? STATUS.normal
+      : STATUS[type][corrected ? 'on' : 'off'];
+
+    toggle.disabled = (type === 'normal');
+    toggle.classList.toggle('on', corrected && type !== 'normal');
+    toggle.setAttribute('aria-pressed', corrected && type !== 'normal' ? 'true' : 'false');
+    fixLabel.textContent = (corrected && type !== 'normal') ? 'On' : 'Off';
+
+    btns.forEach(b => b.classList.toggle('active', b.dataset.type === type));
+  }
+
+  btns.forEach(b => b.addEventListener('click', () => {
+    type = b.dataset.type;
+    if (type === 'normal') corrected = false;
+    render();
+  }));
+
+  toggle.addEventListener('click', () => {
+    if (type === 'normal') return;
+    corrected = !corrected;
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
