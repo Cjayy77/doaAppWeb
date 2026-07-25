@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorblind Settings on Windows: What Actually Helps | DOA Guides</title>
+<meta name="description" content="Windows has built-in color filters, some apps have colorblind modes, and extensions cover the browser. Here's what each one actually fixes, graded honestly, and how to pick the right combination.">
+<meta name="keywords" content="colorblind settings windows, colorblind mode windows 11, windows color filters, color filters windows 10, colorblind mode pc, colour blind settings computer, deuteranopia windows settings, colorblind gaming settings, accessibility color settings windows, DOA, Device Optical Aid">
+<meta property="og:site_name" content="Device Optical Aid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Colorblind settings on Windows: what actually helps">
+<meta property="og:description" content="Built-in filters, per-app modes, extensions, screen-wide correction. What each one fixes, graded honestly.">
+<meta property="og:url" content="https://deviceopticalaid.com/colorblind-settings-windows">
+<meta property="og:image" content="https://deviceopticalaid.com/assets/img/og-colorblind-guide.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Colorblind settings on Windows: four options graded, from Windows color filters to turning up saturation">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://deviceopticalaid.com/assets/img/og-colorblind-guide.png">
+<meta name="twitter:title" content="Colorblind settings on Windows: what actually helps">
+<meta name="twitter:description" content="Built-in filters, per-app modes, extensions, screen-wide correction. What each one fixes, graded honestly.">
+<meta name="author" content="CJ_">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+<link rel="icon" type="image/png" href="assets/img/doaTransparent.png">
+<link rel="apple-touch-icon" href="assets/img/android-chrome-512x512.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#161513">
+<link rel="canonical" href="https://deviceopticalaid.com/colorblind-settings-windows" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  main { max-width: 760px; margin: 0 auto; padding: calc(var(--nav-h) + 48px) 40px 100px; }
+  .crumb { font-size: 13px; color: var(--ink3); margin-bottom: 28px; display: block; animation: fadeUp 0.6s ease both; }
+  .crumb a { color: var(--accent2); text-decoration: none; }
+  .crumb a:hover { color: var(--ink); }
+  article h1 { font-size: clamp(34px, 5vw, 54px); margin-bottom: 18px; animation: fadeUp 0.7s ease both 0.05s; }
+  .article-meta { font-size: 13px; color: var(--ink3); margin-bottom: 40px; animation: fadeUp 0.7s ease both 0.1s; }
+  article .lead { font-size: 18px; color: var(--ink2); line-height: 1.8; margin-bottom: 36px; }
+  article h2 { font-size: 24px; letter-spacing: -0.5px; margin: 46px 0 14px; }
+  article h3 { font-size: 17px; color: var(--ink); margin: 28px 0 8px; font-weight: 700; }
+  article p { font-size: 16px; color: var(--ink2); line-height: 1.85; margin-bottom: 16px; }
+  article p strong { color: var(--ink); font-weight: 600; }
+  article a { color: var(--accent2); text-decoration: none; }
+  article a:hover { color: var(--ink); }
+  article ul { margin: 0 0 16px 20px; color: var(--ink2); line-height: 1.8; font-size: 16px; }
+  article li { margin-bottom: 10px; }
+  article li strong { color: var(--ink); font-weight: 600; }
+  .callout { background: var(--card); border: 1px solid rgba(138,43,226,0.32); border-radius: var(--radius); padding: 24px 28px; margin: 28px 0; }
+  .callout .label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+  .callout p { color: var(--ink); margin: 0; }
+  .callout p + p { margin-top: 12px; }
+  .verdict { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-left: 8px; vertical-align: 2px; }
+  .verdict.no { background: var(--red-dim); color: var(--red); }
+  .verdict.partial { background: var(--yellow-dim); color: var(--yellow); }
+  .verdict.yes { background: var(--green-dim); color: var(--green); }
+  .path { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 3px 10px; font-size: 14px; color: var(--ink); font-weight: 500; white-space: nowrap; }
+  .cta-box { background: var(--accent-dim); border: 1px solid rgba(138,43,226,0.3); border-radius: var(--radius); padding: 30px 34px; margin: 48px 0 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cta-box h3 { font-size: 20px; font-weight: 800; font-family: var(--font-display); letter-spacing: -0.3px; margin: 0 0 6px; }
+  .cta-box p { font-size: 14px; margin: 0; }
+  .related { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .related h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin: 0 0 16px; }
+  .related-links { display: flex; flex-direction: column; gap: 10px; }
+  .related-links a { display: block; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 22px; font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; transition: border-color 0.25s; }
+  .related-links a:hover { border-color: rgba(138,43,226,0.4); }
+  .related-links a span { display: block; font-size: 13px; font-weight: 400; color: var(--ink3); margin-top: 3px; }
+  .article-disclaim { margin-top: 40px; font-size: 12.5px; color: var(--ink3); line-height: 1.6; padding-top: 20px; border-top: 1px solid var(--border); }
+  @media (max-width: 768px) { main { padding: calc(var(--nav-h) + 32px) 20px 80px; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Colorblind settings on Windows: what actually helps",
+  "description": "Built-in color filters, per-app colorblind modes, browser extensions and screen-wide correction, graded honestly.",
+  "author": { "@type": "Organization", "name": "Device Optical Aid" },
+  "publisher": { "@type": "Organization", "name": "Device Optical Aid", "logo": { "@type": "ImageObject", "url": "https://deviceopticalaid.com/assets/img/android-chrome-512x512.png" } },
+  "image": "https://deviceopticalaid.com/assets/img/og-colorblind-guide.png",
+  "datePublished": "2026-07-25",
+  "dateModified": "2026-07-25",
+  "mainEntityOfPage": "https://deviceopticalaid.com/colorblind-settings-windows"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Guides", "item": "https://deviceopticalaid.com/guides" },
+    { "@type": "ListItem", "position": 2, "name": "Colorblind settings on Windows: what actually helps", "item": "https://deviceopticalaid.com/colorblind-settings-windows" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
+    <img src="assets/img/doaTransparent.png" alt="DOA Logo">
+    <span class="nav-name">device optical aid™</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/about">About</a></li>
+    <li><a href="/#how-it-works">How it works</a></li>
+    <li><a href="/color-blindness">Color filters</a></li>
+    <li><a href="/#pricing">Pricing</a></li>
+    <li><a href="/roadmap">Roadmap</a></li>
+    <li><a href="/faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="/download" class="btn btn-primary">Download</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<main>
+  <span class="crumb"><a href="/guides">Guides</a> / Colorblind settings on Windows</span>
+
+  <article>
+    <h1>Colorblind settings on Windows: what actually helps</h1>
+    <p class="article-meta">Updated July 2026 · 8 minute read · By the DOA team</p>
+
+    <p class="lead">There are four different places you can change color on a Windows machine, and they fix four different amounts of the problem. Most advice online names one of them and stops. Here's the whole picture, including where the free built-in option is genuinely the right answer.</p>
+
+    <h2>Start by knowing which axis you're on</h2>
+    <p>This matters more than any setting, because picking the wrong filter type makes things worse rather than better. Color vision deficiency runs along <strong>two separate axes</strong>:</p>
+    <ul>
+      <li><strong>Red-green</strong> (protan and deutan types). Reds and greens converge; blues and yellows are fine. This is by far the most common, affecting roughly 1 in 12 men.</li>
+      <li><strong>Blue-yellow</strong> (tritan types). Blues drift toward green and yellows wash toward pink; reds and greens stay readable. Much rarer.</li>
+    </ul>
+    <p>A red-green filter applied to a blue-yellow deficiency does nothing useful, and vice versa. If you're not certain which one you have, our <a href="/color-blindness">color filter page has a live simulator</a> that shows what each type does to the same dashboard, and an optometrist can tell you properly.</p>
+
+    <h2>The four options, graded</h2>
+
+    <h3>1. Windows built-in color filters <span class="verdict yes">Start here, it's free</span></h3>
+    <p>Windows ships with system-wide color filters and most people who need them don't know they exist. They apply to everything on screen, they cost nothing, and they're already installed.</p>
+    <p>Find them at <span class="path">Settings → Accessibility → Color filters</span> on Windows 11, or <span class="path">Settings → Ease of Access → Color filters</span> on Windows 10. You'll get presets for red-green (two variants, for protan and deutan types) and blue-yellow, plus grayscale and inverted options that aren't relevant here. There's a keyboard shortcut too: <strong>Windows + Ctrl + C</strong> toggles the filter on and off, which is the fastest way to compare and the fastest way to switch it off when you need true colors.</p>
+    <p>Honest assessment: for a lot of people this is enough, and anyone writing about colorblind settings who skips past it to sell something is doing you a disservice. Try it for a week before spending money on anything. Its limits are that you get preset strengths rather than fine control, and the presets are built around the strongest form of each type, so a milder deficiency can find them heavy-handed.</p>
+
+    <h3>2. Per-app colorblind modes <span class="verdict partial">Good where they exist</span></h3>
+    <p>Plenty of games ship colorblind modes, and they're often better than a system filter because the developer can recolor specific game elements rather than transforming the whole image. The same is true of some charting and data tools, which offer colorblind-safe palettes that change the source colors instead of filtering them.</p>
+    <p>Where this falls down is coverage. You'll configure it in the three apps that offer it and get nothing in the dozens that don't, and it does nothing for websites, spreadsheets, PDFs, or video. Use these when available; don't expect them to be a strategy.</p>
+
+    <h3>3. Browser extensions <span class="verdict partial">Browser only</span></h3>
+    <p>Daltonization extensions exist for Chrome and Firefox and can work well on web pages. Two caveats: they only cover the browser, so the rest of your desktop is untouched, and because they manipulate page rendering they occasionally break layouts or fight with a site's own styling. Worth having if the browser is where you spend your day, but it's a partial fix by design.</p>
+
+    <h3>4. Screen-wide correction software <span class="verdict yes">Covers everything, tunable</span></h3>
+    <p>This is the category the built-in filters belong to, done with more control. Software like <a href="/color-blindness">DOA</a> applies correction at the display level for Protanopia, Deuteranopia, and Tritanopia, so it reaches every app, browser tab, document, and video at once, and it lets you tune the intensity rather than accepting a single preset.</p>
+    <p>The honest comparison with the Windows built-in option: same fundamental idea, more adjustment, and it sits alongside the rest of what the app does. If the Windows presets already work for you, use them and keep your money. If they overshoot, undershoot, or you want the correction dialled to your own vision rather than a textbook average, that's the gap this fills. It's in DOA's free tier, so you can compare them directly on your own screen.</p>
+
+    <h3>Turning up saturation or contrast <span class="verdict no">Doesn't address it</span></h3>
+    <p>A recurring suggestion that doesn't work. Saturation makes every color more intense, including the two you can't tell apart, so they stay just as confusable while everything gets louder. Color vision deficiency is about which hues collapse together, not how vivid they are.</p>
+
+    <div class="callout">
+      <span class="label">If you build things, do this too</span>
+      <p>Filters help the person looking at the screen. The durable fix is not depending on color alone in the first place: pair a red/green status with an icon or a word, label chart lines directly instead of relying on a color legend, and use shape or pattern as well as hue.</p>
+      <p>It costs almost nothing at design time and it means nobody needs a filter to read your work. It also happens to be what the accessibility guidelines ask for.</p>
+    </div>
+
+    <h2>What to actually do, in order</h2>
+    <ul>
+      <li><strong>Work out your axis first</strong> (red-green or blue-yellow). Everything else depends on it.</li>
+      <li><strong>Turn on the Windows filter and live with it for a few days.</strong> Free, instant, system-wide. Use Windows + Ctrl + C to compare on and off rather than judging it cold.</li>
+      <li><strong>Switch on per-app colorblind modes</strong> in the games and tools that offer them; they can beat a global filter in their own window.</li>
+      <li><strong>If the presets don't fit,</strong> try screen-wide correction you can tune, and compare it against the built-in filter directly.</li>
+      <li><strong>Keep a way to switch it off.</strong> Any correction shifts colors that weren't a problem, so turn it off for photo editing, design work, or anything where the true color matters.</li>
+    </ul>
+
+    <h2>Two things no setting will do</h2>
+    <p>None of this changes your color vision; it changes what the screen sends, and only while you're looking at that screen. Printed material, traffic lights, and the world in general are unaffected.</p>
+    <p>And no filter, web page, or app is a diagnosis. Screen-based color tests are unreliable because every monitor renders color differently. If you want to know your exact type and severity, an optometrist can test it properly in a few minutes, and knowing the answer makes every option above work better.</p>
+
+    <div class="cta-box">
+      <div>
+        <h3>Compare it on your own screen</h3>
+        <p>Color filters are in DOA's free tier. No prescription, no card, Windows 10 and 11.</p>
+      </div>
+      <a href="/download" class="btn btn-primary btn-big">Download DOA</a>
+    </div>
+
+    <div class="related">
+      <h3>Keep reading</h3>
+      <div class="related-links">
+        <a href="/color-blindness">Try the live color vision simulator<span>See what each type does to the same dashboard, then switch the correction on.</span></a>
+        <a href="/screen-blurry-without-glasses">Screen blurry without your glasses? What actually helps<span>The same honest grading, applied to blur instead of color.</span></a>
+        <a href="/faq">Frequently asked questions<span>Color filters, prescriptions, privacy, and troubleshooting.</span></a>
+      </div>
+    </div>
+
+    <p class="article-disclaim">DOA is a display accessibility tool, not a medical device. It does not treat, diagnose, or replace professional eye care. Menu paths described above reflect current Windows 10 and 11 builds and may move between updates.</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/doaTransparent.png" alt="DOA Logo">
+        <p>A display accessibility tool for people who wear glasses. Not a medical device.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/color-blindness">Color filters</a></li>
+          <li><a href="/roadmap">Roadmap</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/download">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="/Terms-of-Service">Terms of Service</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-legal-note">DOA is a display accessibility tool. It is not a medical device and does not treat, diagnose, or replace professional eye care. Always consult a qualified eye care professional for medical advice.</p>
+    <div class="footer-bottom">
+      <span>© 2026 DOA - Device Optical Aid. All rights reserved.</span>
+      <a href="https://cjayy77.github.io/cj-portfolio/" target="_blank" rel="noopener">
+        <img src="assets/img/cj-white.svg" alt="CJ_" height="24" style="display:block;">
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
