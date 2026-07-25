@@ -129,6 +129,414 @@
     .faq-cta { flex-direction: column; }
   }
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is DOA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA is a Windows desktop application that adjusts your screen display based on your glasses prescription. If you wear glasses and sometimes want to use your computer without them (reading in bed, quick tasks without reaching for your glasses), DOA adjusts the screen to make it readable without them. It is a display accessibility tool, not a medical device."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What do I need to run DOA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You need a Windows 10 or 11 PC (64-bit), a graphics card compatible with DirectX 11, at least 4 GB of RAM, and an internet connection for your first sign-in. That's it. No special hardware, nothing to attach to your screen."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I install DOA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Download the installer from the download page, run it, and follow the setup steps. DOA will ask you to create a free account and enter your glasses prescription. First-time setup takes about two minutes. You will get a warning from SmartScreen, so please continue and download the app, it is safe."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do I need an account to use DOA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, a free account is required. It lets DOA save your prescription profile across devices and keeps track of your daily usage for the free tier. Signing up takes under a minute and only requires an email address, or you can sign in with Google or Apple."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is DOA free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The free tier gives you 3 hours of use per day, one saved prescription, and access to the color filters. That is enough for most casual daily use. Premium removes all limits and adds multi-monitor support. You can also earn 7 days of Premium free by submitting feedback after a session; see how to get free Premium."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why not just wear my glasses?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Glasses are the clearer option when they're on your face, and DOA isn't trying to change that. It's for the times you'd rather not have them on. Reading at night with your glasses on the bedside table. Sitting at your desk without wanting the weight and pressure on your nose and ears. Quick tasks that don't feel worth the effort of going to find them. Longer sessions where glasses become physically tiring. DOA is for those gaps: not a replacement, just an option for when you'd rather go without."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is DOA available on Mac or Linux?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not yet. Windows 10 and 11 are the only supported platforms right now. macOS and Linux support are on the roadmap, but no release date has been set."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is DOA a medical device?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. DOA is a display accessibility tool; it adjusts what your screen shows. It is not classified or regulated as a medical device anywhere in the world and does not treat, diagnose, or replace professional eye care. If you have concerns about your eyesight, please consult a qualified eye care professional."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What prescription values does DOA use?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA uses the standard values from your glasses prescription: SPH (sphere, how strong the lens is), CYL (cylinder, astigmatism strength), AXIS (the direction of the astigmatism), and ADD (the reading addition, for bifocals or reading glasses). These are the same numbers printed on your prescription slip or glasses receipt."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where do I find my prescription?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Your optician or optometrist gives you a printed prescription after an eye exam. You can also find it on the sticker on your glasses case, or request a copy from the optician who made your glasses. If you can't find it, your optician is required by law in most countries to provide a copy on request."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will DOA work with my prescription?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA works with most standard glasses prescriptions: near-sightedness, far-sightedness, astigmatism, and reading glasses. For near-sighted users the sweet spot is roughly −2.00 to −4.50 at a normal desk distance (around 50cm). Stronger prescriptions see less improvement because screen resolution becomes the limiting factor, though sitting a little closer extends the range: a prescription out of reach at 60cm can come back into range at 45cm. High-resolution screens (like 4K monitors) generally give better results at higher prescription strengths. The free tier lets you try it with no commitment."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why do milder prescriptions notice less of a difference?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It comes down to something opticians call your far point: the distance where the world starts to blur for you. You can estimate yours by dividing 1 metre by your prescription strength. A −1.00 prescription blurs beyond 1 metre. −2.00 blurs beyond 50cm. −4.00 blurs beyond 25cm. Now compare that to how far you sit from your screen, usually 50 to 60cm at a desk. If your far point is further away than your screen, your screen was already sharp without glasses, so there is very little for DOA to correct and you will barely feel it working. That is DOA being accurate, not broken. If your far point is closer than your screen, the screen sits inside your blurry zone, and that blur is exactly what DOA removes. The rule of thumb: the blurrier your screen looks without glasses at your normal sitting distance, the more DOA does for you."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What screen settings help with astigmatism?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Regular display settings — brightness, contrast, font scaling, night mode — make text bigger or warmer, but they can't correct the directional blur astigmatism causes, so screens still look smeared even at full sharpness. DOA is different: it adjusts the actual display using your CYL and AXIS values (the two numbers on your prescription that describe your astigmatism), shaping the screen to counter the blur in the exact direction your eyes need. It's the closest thing to \"screen settings for astigmatism\" that actually accounts for your prescription."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "I don't know my prescription. Can I still use DOA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Currently DOA requires prescription values to set up the display adjustment. If you don't know your prescription, you can request it from your optician. A guided calibration mode that doesn't require a formal prescription is planned for a future version. You can follow updates on the roadmap."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "My left and right eye have different prescriptions. What do I enter?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA currently applies a single display adjustment to the whole screen. Enter the prescription for your dominant eye, or the values for the eye that you find more uncomfortable when using a screen without glasses. Per-eye adjustment is something we're evaluating for a future update."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "My prescription has changed. How do I update it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Open DOA, go to your prescription profile, and edit the values. Changes apply immediately next time you activate the display adjustment. Free accounts can save one prescription at a time, so update it whenever your prescription changes. Premium accounts can save unlimited profiles."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use DOA with contact lenses?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "For now, DOA needs your glasses prescription, not your contact lens prescription. The values are different because contacts sit directly on the eye (~0mm), while glasses sit roughly 12mm in front, and that working distance changes the effective power, especially above 4D. If you only have your contact lens values, your optician is required to provide your glasses Rx on request in most countries. Contact lens prescription support is coming. DOA will let you flag your values as a contacts prescription and convert them automatically using the standard vertex distance formula. This is applied optics, not a medical conversion, and DOA will label it clearly as an approximation. For mild prescriptions the difference is small anyway. Calibration then measures the actual best correction for your specific screen and refines it from there, so even a slightly off starting value finds the right result."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "I turned DOA on but can't see any difference",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A few things to check. First: are your glasses off? DOA is designed to be used without glasses, so if you're wearing them while testing, the screen will look wrong. Take them off, then compare. Second: try the toggle test, switching DOA off and on repeatedly while looking at small text. The difference is easier to spot in comparison than in isolation. Third, and most important: was your screen actually blurry to begin with? Take your glasses off at your normal sitting distance. If the screen already looks sharp, your eyes handle that distance fine on their own, and DOA correctly applies almost no correction, because there is no blur to remove. This is common with milder prescriptions at typical desk distances. DOA fixes blur; it cannot add sharpness you already have. Screen distance is critical. Ensure you are looking at the screen from the distance you set in your prescription card. If none of this helps, contact support and we'll look at your setup."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use my computer without my glasses?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes — that's exactly what DOA is built for. Instead of correcting your vision with a lens in front of your eyes, it adjusts the screen itself to match your glasses prescription, so the display looks sharp to you with your glasses off. It won't sharpen the rest of the room, but for the screen you're working on, you can use your computer without your glasses."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can DOA reduce eye strain from screens?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It can help, though it works differently from a blue-light filter. A lot of screen eye strain comes from your eyes constantly straining to focus on a display that isn't quite sharp — whether you're wearing glasses that aren't ideal for screen distance, or going without them. DOA sharpens the screen to your own prescription so your eyes don't have to work as hard to focus, which many people find more comfortable over long sessions. It isn't a medical treatment for eye strain, but easing the focusing effort is often where screen fatigue starts."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I turn DOA on and off?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA lives in your system tray (the icon area near your clock). Right click the tray icon to toggle it on or off. You can also use the keyboard shortcut (ctrl + shift + f12) to toggle it instantly without opening anything."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does DOA work across all apps and windows?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. DOA works at the OS level and applies the display adjustment to everything on your screen simultaneously: browsers, documents, videos, games, and any other application. The only exceptions are certain Windows system elements (login screens, UAC prompts, some banking app windows) that the operating system intentionally protects from screen overlay, and these are excluded automatically."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "There's a 30–50ms delay. Will I notice it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "In practice, most users don't notice the delay during everyday activities like reading, writing, browsing, or watching video. It's most likely to be noticeable in fast-paced games or applications where split-second timing matters. For gaming, we recommend keeping DOA off."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does DOA affect my screen's colour accuracy?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The prescription adjustment is focused on sharpness and can introduce slight edge contrast changes, but it does not intentionally alter color rendering. The color filter modes (for color difficulty) do change how colors appear on screen; that's their purpose. If you need accurate color for design or photo editing work, turn DOA off for those tasks."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What are the color filters for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The color filters are for people who have difficulty distinguishing certain colors: Protanopia (red difficulty), Deuteranopia (red-green difficulty, the most common), and Tritanopia (blue-yellow difficulty). Each filter adjusts the color balance on your screen to make those colors more distinguishable. They work on their own without a prescription, or alongside one."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is prism correction and do I need it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Prism correction is for people whose eyes don't naturally align, a condition sometimes called binocular vision dysfunction. Without correction, the brain works constantly to fuse two slightly offset images, which can cause headaches, eye strain, or double vision. DOA shifts the screen image slightly to compensate for that offset. Most people don't need it — it's only relevant if your optometrist has prescribed prism in your glasses. It can be used on its own or alongside a prescription correction."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does DOA work on multiple monitors?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Multi-monitor support is a Premium feature. With Premium you can apply different display settings to each monitor separately. This is useful when your screens are at different distances or have different resolutions."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use DOA while gaming?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You can, but we don't recommend it for fast-paced games. The 30–50ms overlay delay is imperceptible during normal use but can affect reaction-time-sensitive gameplay. For reading text in slower games or RPGs it's fine. Toggle it off before competitive or fast-paced gaming."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can children use DOA?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. DOA is intended for adults only. Our Terms of Service require users to be at least 18 years old. Children's visual systems are still developing, and applying screen-level optical correction to a developing eye is not something DOA is designed or tested for. If a child has vision difficulties, please consult a qualified eye care professional."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does DOA work offline?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. DOA works offline for up to 3 days on the free tier and 7 days on Premium. After that, a brief internet connection is needed to re-verify your account before the display adjustment can continue. Your prescription and settings are stored locally and are always available regardless of connection status."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will the correction show up in screen recordings or Zoom?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No, and that's expected. DOA applies correction at the display level, after the operating system sends the image to your screen. Screen recording software, OBS, Zoom, Teams, Google Meet, and any other screen share tool all capture the image before that final display stage, so the correction is never included in what they record or broadcast. What other people see on their end is always the original, uncorrected image. If you record your screen while DOA is running and play it back, it will look uncorrected. This is not a bug; it's how display-level processing works. (Free users: the DOA logo that appears in the bottom left of your screen is a standard window overlay, so it will still be visible in recordings and screen shares.)"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I get 7 days of Premium for free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Use DOA with your display adjustment active for at least 60 seconds, then turn it off. A short feedback popup will appear automatically asking a few questions about how the display felt. Submit the feedback and 7 days of Premium are added to your account instantly, with no coupon and no card needed. You can do this once every 30 days."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What does Premium include?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Premium removes all free tier limits: unlimited daily usage (no 3-hour cap), unlimited saved prescription profiles, multi-monitor support, the full color filters suite, no watermark, and priority support. It costs $4.99/month or $39.99/year."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I subscribe to Premium?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Open the DOA app and go to the Premium section. Payment is handled securely by Creem — you'll be directed to their payment page. Subscriptions are monthly or annual and renew automatically until cancelled. DOA never sees or stores your card details."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I cancel my subscription?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You can cancel any time from inside the DOA app under account settings, or by contacting us at support@deviceopticalaid.com. Cancellations take effect at the end of your current billing period, so you keep Premium access until then. You won't be charged again after cancelling."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens when my Premium expires?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Your account moves to the free tier automatically. Your prescription profiles are saved, so you won't lose anything. You'll be limited to 3 hours per day and one active prescription until you resubscribe or earn another free Premium period through feedback."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I get a refund?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Contact us within 14 days of your purchase at support@deviceopticalaid.com and we'll review your request. Refunds are assessed individually. Approved refunds go back to your original payment method within 5–10 business days."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I delete my account?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You can delete your account from the app settings, or by contacting us at support@deviceopticalaid.com. All personal data is permanently deleted within 30 days of the request. If you have an active subscription, cancel it first to avoid further charges."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does DOA record or store my screen?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. DOA captures your screen locally in real time to apply the display adjustment, but no frames are recorded, stored, transmitted, or sent anywhere. Every frame is processed on your GPU and discarded immediately after display. DOA has no access to what's on your screen beyond applying the visual adjustment."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What data does DOA collect?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA collects your email address and account details for authentication, the prescription values you enter, basic device information (Windows version, screen resolution) for compatibility, and session usage duration for free-tier enforcement. Screen content is never collected. See the full Privacy Policy for details."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can DOA see my passwords or banking screens?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Windows automatically excludes certain protected elements from screen capture: login screens, UAC prompts, and some banking or payment application windows are blocked at the operating system level, not just by DOA's policy. These elements will not appear in the DOA display layer regardless of settings."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my prescription data safe?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Your prescription values are stored in Firebase (Google Cloud) with encryption at rest and in transit. Access is restricted to your account only — no one else can read your prescription data. You can delete it at any time by deleting your account."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does DOA sell my data?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. DOA does not sell, rent, or share your personal data with any third party for advertising or commercial purposes. The only third-party services used are Firebase (account storage), Creem (payment processing), and Resend (transactional emails). None of them receive your data for their own use."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "DOA doesn't seem to be doing anything",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "First check the system tray. The DOA icon should show it's active. Make sure you've saved a prescription profile and it's selected as your active profile. If the values you entered are very mild (close to zero), the change may be subtle. Try toggling DOA off and on while looking at small text to see the difference clearly."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "The screen looks worse with DOA on",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "This usually means the prescription values entered don't match your actual prescription well. Double-check your values, particularly that negative and positive signs are correct (myopia values are negative, hyperopia values are positive). Also make sure you're using your glasses prescription, not a contact lens prescription; they are different and not interchangeable."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "The app is running slowly or causing lag",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "DOA runs on your GPU and should have minimal impact on most systems. If you're experiencing slowdowns, make sure your graphics drivers are up to date, and that no other GPU-intensive application is running at the same time. On very old or low-end graphics hardware the performance impact may be more noticeable."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "DOA crashed or stopped working",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Restart the app from the system tray or from your Start menu. If crashes happen repeatedly, make sure your Windows and graphics drivers are up to date. If the issue persists, contact support with a description of what you were doing when it crashed; this helps us fix it quickly."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "The feedback popup didn't appear after I turned DOA off",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The feedback popup only appears after you've used DOA for at least 60 continuous seconds with the display adjustment active. If the session was shorter than that, no popup will appear. Also, the popup only shows once per 30-day period per prescription profile. If you already submitted feedback recently, the next popup will appear after the cooldown."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "I submitted feedback but didn't get my free Premium",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Premium is added automatically within a few seconds of submitting feedback. Try refreshing the app. If it still doesn't show after a minute, contact support with your account email and we'll sort it out manually."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Windows is warning me about the installer",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Windows SmartScreen may show a warning for new applications that haven't yet built up enough download history; this is normal for new software. DOA is safe to install. Click \"More info\" then \"Run anyway\" to proceed. If you're uncertain, you can verify the file using Windows Defender before running it."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
