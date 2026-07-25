@@ -218,10 +218,12 @@
 
           <!-- chart panel -->
           <text x="26" y="34" font-family="sans-serif" font-size="14" font-weight="700" fill="#F5F4EF">Quarterly performance</text>
-          <circle cx="424" cy="29" r="5" fill="#2f9e44"/>
-          <text x="436" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Revenue</text>
-          <circle cx="520" cy="29" r="5" fill="#e03131"/>
-          <text x="532" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Costs</text>
+          <circle cx="330" cy="29" r="5" fill="#2f9e44"/>
+          <text x="342" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Revenue</text>
+          <circle cx="412" cy="29" r="5" fill="#e03131"/>
+          <text x="424" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Costs</text>
+          <circle cx="482" cy="29" r="5" fill="#1c7ed6"/>
+          <text x="494" y="34" font-family="sans-serif" font-size="12" fill="#A3A29C">Forecast</text>
 
           <line x1="26" y1="70" x2="594" y2="70" stroke="#ffffff" stroke-opacity="0.05"/>
           <line x1="26" y1="112" x2="594" y2="112" stroke="#ffffff" stroke-opacity="0.05"/>
@@ -232,6 +234,8 @@
             points="26,186 97,172 168,158 239,126 310,132 381,100 452,90 523,66 594,58"/>
           <polyline fill="none" stroke="#e03131" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
             points="26,150 97,158 168,120 239,140 310,102 381,116 452,146 523,124 594,150"/>
+          <polyline fill="none" stroke="#1c7ed6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+            points="26,198 97,188 168,178 239,152 310,158 381,130 452,116 523,96 594,84"/>
 
           <line x1="26" y1="212" x2="594" y2="212" stroke="#ffffff" stroke-opacity="0.09"/>
 
@@ -257,14 +261,14 @@
           <rect x="140" y="350" width="102" height="34" rx="7" fill="#2f9e44"/>
           <text x="191" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Healthy</text>
 
-          <rect x="254" y="350" width="102" height="34" rx="7" fill="#f08c00"/>
-          <text x="305" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Warning</text>
+          <rect x="254" y="350" width="102" height="34" rx="7" fill="#f0b400"/>
+          <text x="305" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#3d2c00">Pending</text>
 
-          <rect x="368" y="350" width="102" height="34" rx="7" fill="#74b816"/>
-          <text x="419" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Staging</text>
+          <rect x="368" y="350" width="102" height="34" rx="7" fill="#1c7ed6"/>
+          <text x="419" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Info</text>
 
-          <rect x="482" y="350" width="112" height="34" rx="7" fill="#8a5a2b"/>
-          <text x="538" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Archived</text>
+          <rect x="482" y="350" width="112" height="34" rx="7" fill="#12b886"/>
+          <text x="538" y="371" text-anchor="middle" font-family="sans-serif" font-size="11.5" font-weight="600" fill="#ffffff">Synced</text>
         </g>
       </svg>
     </div>
@@ -284,24 +288,25 @@
   <!-- ══ TYPES ══ -->
   <div class="cb-section">
     <h2>The three types DOA covers</h2>
-    <p>Color vision deficiency affects roughly 1 in 12 men and 1 in 200 women. It comes in three main forms, and they need different corrections.</p>
+    <p>Color vision deficiency affects roughly 1 in 12 men and 1 in 200 women. It runs along two different confusion axes, which is why one filter can't cover everything.</p>
     <div class="type-grid">
       <div class="type-card">
-        <span class="type-sub">Red-weak</span>
+        <span class="type-sub">Red-green axis · no red cones</span>
         <h3>Protanopia</h3>
         <p>Reds look much darker than they are, sometimes close to black, and blur into dark greens and browns. DOA amplifies the red channel so those tones register.</p>
       </div>
       <div class="type-card">
-        <span class="type-sub">Green-weak · most common</span>
+        <span class="type-sub">Red-green axis · no green cones</span>
         <h3>Deuteranopia</h3>
-        <p>Greens shift toward brown and orange until they're hard to separate from reds. DOA rebalances the green channel so the two pull apart.</p>
+        <p>Greens shift toward brown and orange until they're hard to separate from reds. The red-green family is by far the most common. DOA rebalances the green channel so the two pull apart.</p>
       </div>
       <div class="type-card">
-        <span class="type-sub">Blue-weak · rarest</span>
+        <span class="type-sub">Blue-yellow axis · no blue cones</span>
         <h3>Tritanopia</h3>
-        <p>Blues and greens collapse together and yellows can look pink or vanish. DOA remaps the blue-yellow axis so those colors stay distinct.</p>
+        <p>A different axis entirely: blues drift toward green and yellows toward pink or white, so red and green stay readable while blue and yellow stop working. The rarest type. DOA remaps that axis instead.</p>
       </div>
     </div>
+    <p style="margin-top:20px;font-size:14.5px;color:var(--ink3);">A note on naming: the <em>-anopia</em> names above mean a cone type is missing altogether. The milder and more common versions, where a cone is present but shifted, are called <em>protanomaly</em>, <em>deuteranomaly</em>, and <em>tritanomaly</em>. The simulator shows the full <em>-anopia</em> forms, so what you see there is the strongest case rather than the typical one.</p>
   </div>
 
   <!-- ══ HONEST ══ -->
@@ -423,18 +428,18 @@
   ].map(n => (Math.round(n * 1e6) / 1e6)).join(' ');
 
   const STATUS = {
-    normal: '<strong>Normal vision.</strong> This is the reference: five clearly distinct category colors, and a red line you can tell apart from a green one. Pick a vision type above to see how much of that survives.',
+    normal: '<strong>Normal vision.</strong> The reference: three separable chart lines, a red fail and a green pass, and five distinct category colors. Pick a vision type above to see how much of that survives.',
     protanopia: {
-      off: '<strong>Protanopia, correction off.</strong> Red has gone dark and muddy. "Critical" and "Archived" are closing in on each other, and the red cost line is losing its separation from the green revenue line.',
-      on:  '<strong>Protanopia, correction on.</strong> The lost red-green difference is moved into the blue channel, so one side cools while the other stays warm. The two chart lines separate again and the status dots stop competing.'
+      off: '<strong>Protanopia, correction off.</strong> No red cones, so red loses its brightness as well as its hue: the red cost line goes dark and muddy and drifts toward the green revenue line. "Critical" sinks toward brown. Blue and yellow are unaffected, because this is the red-green axis.',
+      on:  '<strong>Protanopia, correction on.</strong> The lost red-green difference is moved into the blue channel, so one side cools while the other stays warm. The chart lines separate and the status dots stop competing.'
     },
     deuteranopia: {
-      off: '<strong>Deuteranopia, correction off.</strong> The most common type, and the most destructive here: red and green collapse into near-identical yellow-browns. "Critical", "Healthy", "Warning" and "Staging" are now nearly one color, and pass/fail is a guess.',
-      on:  '<strong>Deuteranopia, correction on.</strong> Same information, separated again. The difference your eye was losing is moved into the blue channel, so the failing service cools toward grey while the healthy one stays warm gold. Pass and fail no longer depend on telling red from green.'
+      off: '<strong>Deuteranopia, correction off.</strong> The most destructive case here. Red and green collapse into near-identical yellow-browns: the revenue and cost lines merge, and "Critical", "Healthy" and "Pending" become nearly one color. Pass or fail is now a guess. Blue survives, because this is still the red-green axis.',
+      on:  '<strong>Deuteranopia, correction on.</strong> Same information, separated again. The difference your eye was losing moves into the blue channel, so the failing service cools toward grey while the healthy one stays warm. Pass and fail no longer depend on telling red from green.'
     },
     tritanopia: {
-      off: '<strong>Tritanopia, correction off.</strong> The rarest type. Blues and greens run together and the warmer swatches drift toward pink, so the category row loses its ordering.',
-      on:  '<strong>Tritanopia, correction on.</strong> The blue-yellow axis is remapped and the error moves into red and green, where your vision is intact, so the swatches pull back apart.'
+      off: '<strong>Tritanopia, correction off.</strong> A completely different axis. Red and green stay perfectly readable here, but blue and yellow break: the blue forecast line drifts toward the green revenue line, "Info" turns teal against "Synced", and "Pending" washes toward pink. This is why one filter cannot cover every type.',
+      on:  '<strong>Tritanopia, correction on.</strong> The blue-yellow error is redistributed into red and green, where your cones still work, so the forecast line lifts away from revenue and the blue and yellow swatches pull back apart.'
     }
   };
 
