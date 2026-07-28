@@ -6,6 +6,12 @@
       "has": [{ "type": "host", "value": "www.deviceopticalaid.com" }],
       "destination": "https://deviceopticalaid.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "doa-app-web.vercel.app" }],
+      "destination": "https://deviceopticalaid.com/:path*",
+      "permanent": true
     }
   ],
   "headers": [
