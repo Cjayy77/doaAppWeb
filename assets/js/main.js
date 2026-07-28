@@ -46,6 +46,27 @@
     });
   }
 
+  // Overflow "More" menu in the desktop nav
+  const moreEl = document.querySelector('.nav-more');
+  if (moreEl) {
+    const moreBtn = moreEl.querySelector('.nav-more-btn');
+    const setMore = open => {
+      moreEl.classList.toggle('open', open);
+      moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    moreBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      setMore(!moreEl.classList.contains('open'));
+    });
+    document.addEventListener('click', e => { if (!moreEl.contains(e.target)) setMore(false); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && moreEl.classList.contains('open')) { setMore(false); moreBtn.focus(); }
+    });
+    moreEl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMore(false)));
+    // Breakpoint changes swap which links live in here, so close on resize
+    window.addEventListener('resize', () => setMore(false));
+  }
+
   // Auto-stagger children inside grids so they cascade in rather than pop all at once
   document.querySelectorAll('.features-grid, .pricing-grid, .steps-flow, .visiontypes-grid').forEach(grid => {
     Array.from(grid.querySelectorAll('.reveal')).forEach((el, i) => {

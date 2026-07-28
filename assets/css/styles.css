@@ -156,6 +156,38 @@ svg.icon-sm { width: 18px; height: 18px; }
 .nav-links a:hover { color: var(--ink); }
 /* Secondary tier: only surfaces inside the mobile menu sheet */
 .nav-only-mobile, .nav-legal { display: none; }
+
+/* ── Overflow menu (priority+ nav) ──
+   Appears only at widths where the bar has had to drop a link, and holds
+   exactly those links plus Contact. Hidden entirely on mobile, where the
+   full-screen sheet already lists everything. */
+.nav-more { display: none; position: relative; }
+.nav-more-btn {
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  color: var(--ink2); background: none; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px; padding: 0;
+  transition: color 0.2s;
+}
+.nav-more-btn svg { width: 11px; height: 11px; transition: transform 0.25s ease; }
+.nav-more-btn:hover, .nav-more.open .nav-more-btn { color: var(--ink); }
+.nav-more.open .nav-more-btn svg { transform: rotate(180deg); }
+.nav-more-menu {
+  position: absolute; top: calc(100% + 16px); right: 0;
+  min-width: 178px; display: flex; flex-direction: column; gap: 2px;
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: var(--radius-sm); padding: 8px;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.55);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.nav-more.open .nav-more-menu { opacity: 1; visibility: visible; transform: none; }
+.nav-more-menu a {
+  display: block; padding: 9px 12px; border-radius: 7px;
+  font-size: 14px; font-weight: 500; color: var(--ink2); text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-more-menu a:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
+.nav-more-menu .nav-o1, .nav-more-menu .nav-o2, .nav-more-menu .nav-o3 { display: none; }
 .nav-cta { display: flex; align-items: center; gap: 10px; }
 .burger {
   display: none; flex-direction: column; gap: 5px;
@@ -234,10 +266,22 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
    drop the least essential one at each step down. Ranges start at 769px so
    the mobile sheet below that still lists everything.
    Drop order: Roadmap, then Guides, then FAQ.
-   Always kept: About, How it works, Color filters, Pricing, Download. */
-@media (min-width: 769px) and (max-width: 1200px) { .nav-lvl1 { display: none; } }
-@media (min-width: 769px) and (max-width: 1075px) { .nav-lvl2 { display: none; } }
-@media (min-width: 769px) and (max-width: 960px)  { .nav-lvl3 { display: none; } }
+   Always kept: About, How it works, Color filters, Pricing, Download.
+   Each dropped link reappears inside the "More" menu at the same breakpoint,
+   so nothing is ever unreachable. */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .nav-lvl1 { display: none; }
+  .nav-more { display: block; }
+  .nav-more-menu .nav-o1 { display: block; }
+}
+@media (min-width: 769px) and (max-width: 1075px) {
+  .nav-lvl2 { display: none; }
+  .nav-more-menu .nav-o2 { display: block; }
+}
+@media (min-width: 769px) and (max-width: 960px) {
+  .nav-lvl3 { display: none; }
+  .nav-more-menu .nav-o3 { display: block; }
+}
 
 @media (max-width: 900px) {
   .nav-name { display: none; }
