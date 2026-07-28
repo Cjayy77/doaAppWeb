@@ -371,7 +371,11 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
     to   { opacity: 1; transform: none; }
   }
 
-  html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
+  /* Pin the page behind the sheet. Body is fixed with a negative top set in
+     JS so the reading position is held visually and restored on close;
+     hiding overflow alone loses it and snaps the page back to the top. */
+  html.nav-open { overflow: hidden; }
+  body.nav-open { position: fixed; left: 0; right: 0; width: 100%; overflow: hidden; }
   body.nav-open .site-nav { border-bottom-color: transparent; }
 
   .section { padding: 64px 20px; }

@@ -79,26 +79,6 @@
   }
   .hero-expect-link:hover { color: var(--accent2); border-color: var(--accent2); }
 
-  /* ── PRESCRIPTION TICKER ── */
-  .rx-ticker {
-    overflow: hidden; padding: 26px 0;
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
-  }
-  .rx-track {
-    display: flex; align-items: center; width: max-content;
-    animation: rx-scroll 46s linear infinite;
-  }
-  .rx-ticker:hover .rx-track { animation-play-state: paused; }
-  .rx-track span {
-    font-family: var(--font-display); font-size: 13px; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink3); white-space: nowrap; margin-right: 28px;
-  }
-  .rx-track i { font-style: normal; font-size: 6px; color: var(--accent); margin-right: 28px; }
-  @keyframes rx-scroll { to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) { .rx-track { animation: none; } }
 
   /* ── MOCKUP (Windows-style app window) ── */
   .hero-mockup { margin-top: 72px; width: 100%; max-width: 880px; position: relative; }
@@ -532,12 +512,6 @@
   </div>
 </section>
 
-<!-- Prescription ticker: everything DOA reads and corrects -->
-<div class="rx-ticker" aria-hidden="true">
-  <div class="rx-track">
-    <span>SPH &minus;3.25</span><i>&#9679;</i><span>CYL &minus;1.50 @ 90&deg;</span><i>&#9679;</i><span>ADD +2.00</span><i>&#9679;</i><span>Near-sighted</span><i>&#9679;</i><span>Far-sighted</span><i>&#9679;</i><span>Astigmatism</span><i>&#9679;</i><span>Reading glasses</span><i>&#9679;</i><span>Prism 1.5&Delta;</span><i>&#9679;</i><span>Deuteranopia</span><i>&#9679;</i><span>Protanopia</span><i>&#9679;</i><span>Tritanopia</span><i>&#9679;</i><span>60 fps</span><i>&#9679;</i><span>Real-time</span><i>&#9679;</i><span>Windows 10 &amp; 11</span><i>&#9679;</i><span>SPH &minus;3.25</span><i>&#9679;</i><span>CYL &minus;1.50 @ 90&deg;</span><i>&#9679;</i><span>ADD +2.00</span><i>&#9679;</i><span>Near-sighted</span><i>&#9679;</i><span>Far-sighted</span><i>&#9679;</i><span>Astigmatism</span><i>&#9679;</i><span>Reading glasses</span><i>&#9679;</i><span>Prism 1.5&Delta;</span><i>&#9679;</i><span>Deuteranopia</span><i>&#9679;</i><span>Protanopia</span><i>&#9679;</i><span>Tritanopia</span><i>&#9679;</i><span>60 fps</span><i>&#9679;</i><span>Real-time</span><i>&#9679;</i><span>Windows 10 &amp; 11</span><i>&#9679;</i>
-  </div>
-</div>
 
 <div class="founder-note reveal">
   <p>"I wear glasses myself. DOA started as a tool I built for my own desk. I was tired of needing them just to glance at my own screen. Everything on this site is me trying to explain, honestly, what it can and can't do."</p>
