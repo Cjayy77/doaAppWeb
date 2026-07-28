@@ -232,19 +232,81 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
   .nav-name { display: none; }
 }
 @media (max-width: 768px) {
-  .site-nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .nav-links.open {
-    display: flex; flex-direction: column;
-    position: absolute; top: var(--nav-h); right: 20px;
-    background: var(--card); padding: 18px 24px; gap: 14px;
-    border-radius: var(--radius-sm); border: 1px solid var(--border2);
-    z-index: 200; box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  /* backdrop-filter makes an element a containing block for fixed-position
+     descendants, which would anchor the menu sheet to the nav bar instead of
+     the viewport. Solid background on mobile instead. */
+  .site-nav {
+    padding: 0 20px;
+    background: var(--bg);
+    backdrop-filter: none; -webkit-backdrop-filter: none;
   }
+  .nav-logo { position: relative; z-index: 95; }
+  .burger { display: flex; position: relative; z-index: 96; }
+
+  /* ── Mobile menu: full-screen sheet ──
+     Sits below the fixed nav (z-index 100) so the logo and the burger,
+     which animates into a close icon, stay visible and tappable on top. */
+  .nav-links {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column; align-items: stretch;
+    gap: 0; list-style: none;
+    background: var(--bg);
+    padding: calc(var(--nav-h) + 16px) 22px 130px;
+    overflow-y: auto; overscroll-behavior: contain;
+    z-index: 90;
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+  .nav-links.open { opacity: 1; visibility: visible; transform: none; }
+
+  .nav-links li { width: 100%; border-bottom: 1px solid var(--border); }
+  .nav-links a {
+    display: block; width: 100%;
+    font-family: var(--font-display);
+    font-size: 25px; font-weight: 600; letter-spacing: -0.01em;
+    color: var(--ink);
+    padding: 23px 2px;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+  .nav-links a:hover, .nav-links a:active { color: var(--accent2); padding-left: 8px; }
+
+  /* Primary action pinned to the bottom of the sheet.
+     .nav-cta follows .nav-links in the DOM, so the sibling selector
+     reaches it without touching markup on any page. */
   .nav-cta { display: none; }
-  .burger { display: flex; }
+  .nav-links.open ~ .nav-cta {
+    display: flex; flex-direction: column; gap: 10px;
+    position: fixed; left: 22px; right: 22px; bottom: 34px;
+    z-index: 95;
+    animation: navItemIn 0.4s ease both 0.26s;
+  }
+  .nav-links.open ~ .nav-cta .btn {
+    width: 100%; padding: 16px 24px; font-size: 16px; border-radius: 11px;
+  }
+
+  /* Links cascade in rather than appearing all at once */
+  .nav-links.open li { animation: navItemIn 0.4s ease both; }
+  .nav-links.open li:nth-child(1) { animation-delay: 0.03s; }
+  .nav-links.open li:nth-child(2) { animation-delay: 0.07s; }
+  .nav-links.open li:nth-child(3) { animation-delay: 0.11s; }
+  .nav-links.open li:nth-child(4) { animation-delay: 0.15s; }
+  .nav-links.open li:nth-child(5) { animation-delay: 0.19s; }
+  .nav-links.open li:nth-child(6) { animation-delay: 0.23s; }
+  @keyframes navItemIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  html.nav-open, body.nav-open { overflow: hidden; height: 100%; }
+  body.nav-open .site-nav { border-bottom-color: transparent; }
+
   .section { padding: 64px 20px; }
   .site-footer { padding: 48px 20px 24px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .nav-links { transition: none; }
+  .nav-links.open li, .nav-links.open ~ .nav-cta { animation: none; }
 }
