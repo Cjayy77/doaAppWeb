@@ -19,15 +19,30 @@
   if (burger && navLinks) {
     burger.setAttribute('aria-controls', 'navLinks');
 
+    let savedScroll = 0;
     const setMenu = open => {
+      const wasOpen = navLinks.classList.contains('open');
       navLinks.classList.toggle('open', open);
       burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       burger.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
-      // Lock the page behind the full-screen sheet. Both elements: hiding
-      // overflow on body alone still lets the root element scroll.
-      document.body.classList.toggle('nav-open', open);
-      document.documentElement.classList.toggle('nav-open', open);
+
+      if (open && !wasOpen) {
+        // Remember where they were, then pin the page at that offset
+        savedScroll = window.scrollY;
+        document.body.style.top = -savedScroll + 'px';
+        document.documentElement.classList.add('nav-open');
+        document.body.classList.add('nav-open');
+      } else if (!open && wasOpen) {
+        document.documentElement.classList.remove('nav-open');
+        document.body.classList.remove('nav-open');
+        document.body.style.top = '';
+        // Jump straight back, bypassing the site's smooth-scroll behaviour
+        const prev = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        window.scrollTo(0, savedScroll);
+        document.documentElement.style.scrollBehavior = prev;
+      }
     };
 
     burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
