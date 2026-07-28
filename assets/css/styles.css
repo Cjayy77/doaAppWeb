@@ -154,6 +154,8 @@ svg.icon-sm { width: 18px; height: 18px; }
   text-decoration: none; transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--ink); }
+/* Secondary tier: only surfaces inside the mobile menu sheet */
+.nav-only-mobile, .nav-legal { display: none; }
 .nav-cta { display: flex; align-items: center; gap: 10px; }
 .burger {
   display: none; flex-direction: column; gap: 5px;
@@ -228,6 +230,15 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
 }
 
 /* ── Responsive ── */
+/* Progressive nav collapse: rather than shrinking type to cram links in,
+   drop the least essential one at each step down. Ranges start at 769px so
+   the mobile sheet below that still lists everything.
+   Drop order: Roadmap, then Guides, then FAQ.
+   Always kept: About, How it works, Color filters, Pricing, Download. */
+@media (min-width: 769px) and (max-width: 1200px) { .nav-lvl1 { display: none; } }
+@media (min-width: 769px) and (max-width: 1075px) { .nav-lvl2 { display: none; } }
+@media (min-width: 769px) and (max-width: 960px)  { .nav-lvl3 { display: none; } }
+
 @media (max-width: 900px) {
   .nav-name { display: none; }
 }
@@ -263,12 +274,25 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
   .nav-links a {
     display: block; width: 100%;
     font-family: var(--font-display);
-    font-size: 25px; font-weight: 600; letter-spacing: -0.01em;
+    font-size: 23px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25;
     color: var(--ink);
-    padding: 23px 2px;
+    padding: 19px 2px;
     transition: color 0.2s ease, padding-left 0.2s ease;
   }
   .nav-links a:hover, .nav-links a:active { color: var(--accent2); padding-left: 8px; }
+
+  .nav-links .nav-only-mobile { display: block; }
+  /* Legal links sit quieter than the rest, as a footer to the sheet */
+  .nav-links .nav-legal {
+    display: flex; flex-wrap: wrap; gap: 8px 22px;
+    border-bottom: none; padding: 26px 2px 0;
+  }
+  .nav-links .nav-legal a {
+    display: inline; width: auto; padding: 0;
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    color: var(--ink3);
+  }
+  .nav-links .nav-legal a:hover, .nav-links .nav-legal a:active { color: var(--ink2); padding-left: 0; }
 
   /* Primary action pinned to the bottom of the sheet.
      .nav-cta follows .nav-links in the DOM, so the sibling selector
@@ -276,7 +300,10 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
   .nav-cta { display: none; }
   .nav-links.open ~ .nav-cta {
     display: flex; flex-direction: column; gap: 10px;
-    position: fixed; left: 22px; right: 22px; bottom: 34px;
+    position: fixed; left: 0; right: 0; bottom: 0;
+    padding: 34px 22px 32px;
+    /* fades the list out beneath it on shorter screens where the sheet scrolls */
+    background: linear-gradient(to bottom, transparent, var(--bg) 38%);
     z-index: 95;
     animation: navItemIn 0.4s ease both 0.26s;
   }
@@ -292,6 +319,9 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
   .nav-links.open li:nth-child(4) { animation-delay: 0.15s; }
   .nav-links.open li:nth-child(5) { animation-delay: 0.19s; }
   .nav-links.open li:nth-child(6) { animation-delay: 0.23s; }
+  .nav-links.open li:nth-child(7) { animation-delay: 0.27s; }
+  .nav-links.open li:nth-child(8) { animation-delay: 0.31s; }
+  .nav-links.open li:nth-child(9) { animation-delay: 0.35s; }
   @keyframes navItemIn {
     from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: none; }
