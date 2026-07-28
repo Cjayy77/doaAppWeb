@@ -17,17 +17,32 @@
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
-    burger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      burger.classList.toggle('active');
+    burger.setAttribute('aria-controls', 'navLinks');
+
+    const setMenu = open => {
+      navLinks.classList.toggle('open', open);
+      burger.classList.toggle('active', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+      // Lock the page behind the full-screen sheet. Both elements: hiding
+      // overflow on body alone still lets the root element scroll.
+      document.body.classList.toggle('nav-open', open);
+      document.documentElement.classList.toggle('nav-open', open);
+    };
+
+    burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+        setMenu(false);
+        burger.focus();
+      }
     });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        burger.classList.remove('active');
-        burger.setAttribute('aria-expanded', 'false');
-      });
+
+    // Leaving mobile width with the sheet open would strand the scroll lock
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navLinks.classList.contains('open')) setMenu(false);
     });
   }
 
