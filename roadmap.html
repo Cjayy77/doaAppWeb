@@ -239,18 +239,18 @@
 
     <div class="card" data-status="done">
       <div class="card-top">
-        <span class="card-title">Android app — built & tested</span>
+        <span class="card-title">Android app: built & tested</span>
         <span class="card-tag tag-platform">Platform</span>
       </div>
       <div class="card-body">Correction worked inside the app. Proved the concept was real and technically feasible.</div>
       <div class="card-footer">
-        <span class="card-version">Dec 2024 — Aug 2025</span>
+        <span class="card-version">Dec 2024 to Aug 2025</span>
       </div>
     </div>
 
     <div class="card" data-status="stopped">
       <div class="card-top">
-        <span class="card-title">Android — system-wide correction blocked</span>
+        <span class="card-title">Android: system-wide correction blocked</span>
         <span class="card-tag tag-stopped">Discontinued</span>
       </div>
       <div class="card-body">Android's security model prevents apps from applying overlays to other apps or the home screen. Correction was restricted to inside DOA, which was not useful enough.</div>
@@ -261,23 +261,23 @@
 
     <div class="card" data-status="stopped">
       <div class="card-top">
-        <span class="card-title">Browser extension — pixel access blocked</span>
+        <span class="card-title">Browser extension: pixel access blocked</span>
         <span class="card-tag tag-stopped">Discontinued</span>
       </div>
       <div class="card-body">Browser security prevents extensions from accessing screen content at the level needed for real-time correction. Another architectural dead end.</div>
       <div class="card-footer">
-        <span class="card-version">Sep 2025 — Jan 2026</span>
+        <span class="card-version">Sep 2025 to Jan 2026</span>
       </div>
     </div>
 
     <div class="card" data-status="done">
       <div class="card-top">
-        <span class="card-title">Windows desktop app — shipped</span>
+        <span class="card-title">Windows desktop app: shipped</span>
         <span class="card-tag tag-platform">Platform</span>
       </div>
       <div class="card-body">OS-level screen access solves the platform problem. Real-time correction across every app and window, at 60fps.</div>
       <div class="card-footer">
-        <span class="card-version">2026 — Beta</span>
+        <span class="card-version">2026 Beta</span>
       </div>
     </div>
 
@@ -317,7 +317,7 @@
 
     <div class="card" data-status="active">
       <div class="card-top">
-        <span class="card-title">Beta — live correction + feedback</span>
+        <span class="card-title">Beta: live correction + feedback</span>
         <span class="card-tag tag-feature">Feature</span>
       </div>
       <div class="card-body">Static correction based on your prescription. Collecting real-world feedback across different screen setups and prescription profiles to improve the next stage.</div>
@@ -354,7 +354,7 @@
         <span class="card-title">Extending correction to higher prescriptions</span>
         <span class="card-tag tag-correction">Correction</span>
       </div>
-      <div class="card-body">Current correction is strongest for mild to moderate prescriptions. Work is underway to push reliable quality further — toward −8D and beyond.</div>
+      <div class="card-body">Current correction is strongest for mild to moderate prescriptions. Work is underway to push reliable quality further, toward −8D and beyond.</div>
       <div class="card-footer">
         <span class="card-version">v1.0 → v1.1</span>
       </div>
@@ -475,7 +475,7 @@
 
     <div class="card" data-status="later">
       <div class="card-top">
-        <span class="card-title">Dynamic correction — screen adapts to you</span>
+        <span class="card-title">Dynamic correction: screen adapts to you</span>
         <span class="card-tag tag-correction">Correction</span>
       </div>
       <div class="card-body">Your webcam estimates your distance from the screen in real time. The correction adjusts automatically as you naturally move, with no manual setup.</div>
@@ -557,7 +557,7 @@
       class="field suggestion-email"
       type="email"
       id="suggestionEmail"
-      placeholder="Your email (optional — if you want a reply)"
+      placeholder="Your email (optional, if you want a reply)"
     >
 
     <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
@@ -651,7 +651,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type:    `Roadmap Suggestion — ${selectedType}`,
+          type:    `Roadmap Suggestion: ${selectedType}`,
           version: 'web',
           message: textarea.value.trim(),
           ...(email && { replyTo: email }),
@@ -676,7 +676,7 @@
         throw new Error('Server error');
       }
     } catch (err) {
-      this.textContent = 'Failed — try again';
+      this.textContent = 'Failed, try again';
       setTimeout(() => {
         this.textContent = 'Send suggestion →';
         this.disabled = false;

@@ -9,7 +9,7 @@
 <meta property="og:site_name" content="Device Optical Aid">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy Policy | Device Optical Aid">
-<meta property="og:description" content="Device Optical Aid privacy policy — how we collect, use, and protect your data including prescription values. GDPR and CCPA compliant.">
+<meta property="og:description" content="Device Optical Aid privacy policy: how we collect, use, and protect your data including prescription values. GDPR and CCPA compliant.">
 <meta property="og:url" content="https://deviceopticalaid.com/privacy-policy">
 <meta property="og:image" content="https://deviceopticalaid.com/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -38,12 +38,10 @@
   .page-hero h1 {
     font-size: clamp(2.2rem, 6vw, 3rem);
     line-height: 1.12; margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; background-clip: text;
-    color: transparent;
+    color: var(--ink);
   }
   .last-updated {
-    color: var(--accent2); font-style: italic;
+    color: var(--ink); font-style: italic;
     font-size: 15px; margin-bottom: 2rem;
   }
 
@@ -164,7 +162,7 @@
     <p>We comply with applicable data protection laws including the EU General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA), and other applicable regional regulations. By using DOA, you acknowledge this policy. If you do not agree, please do not use the application.</p>
     <div class="contact-card">
       <span>Data Controller</span>
-      <a style="color:var(--ink2);cursor:default">Cedric Julien .E — Douala, Cameroon</a>
+      <a style="color:var(--ink2);cursor:default">Cedric Julien .E · Douala, Cameroon</a>
       <span style="margin-top:6px">Data Protection Contact</span>
       <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a>
     </div>
@@ -177,11 +175,11 @@
     <ul>
       <li>Email address and display name when you create an account</li>
       <li>Authentication tokens when you sign in via Google, Apple, or email/password</li>
-      <li>Subscription and payment status (processed by Creem — DOA never receives or stores card details)</li>
+      <li>Subscription and payment status (processed by Creem; DOA never receives or stores card details)</li>
     </ul>
     <h3>2.2 Prescription &amp; Settings Data</h3>
     <ul>
-      <li>Optical prescription values you enter (SPH, CYL, AXIS, ADD) — treated as sensitive personal information concerning your health (see Sections 03 and 11)</li>
+      <li>Optical prescription values you enter (SPH, CYL, AXIS, ADD), treated as sensitive personal information concerning your health (see Sections 03 and 11)</li>
       <li>Visual filter preferences (color blindness mode, correction strength)</li>
       <li>App configuration and toggle states</li>
     </ul>
@@ -189,7 +187,7 @@
     <ul>
       <li>Device and OS information (Windows version, screen resolution, DPI)</li>
       <li>Feature usage patterns and session duration for free-tier enforcement</li>
-      <li>Crash reports and error logs — no screen content is ever included</li>
+      <li>Crash reports and error logs, with no screen content is ever included</li>
       <li>GPU model and driver version for compatibility purposes</li>
     </ul>
     <h3>2.4 Display Feedback</h3>
@@ -199,7 +197,7 @@
     </ul>
     <h3>2.5 What We Do Not Collect</h3>
     <ul>
-      <li>Screen content — frames are processed locally and never transmitted</li>
+      <li>Screen content. Frames are processed locally and never transmitted</li>
       <li>Payment card details, bank information, or billing addresses</li>
       <li>Precise geolocation data</li>
       <li>Any data from OS-protected windows (login screens, UAC prompts, banking windows)</li>
@@ -213,7 +211,7 @@
     <p>Under GDPR Article 6, we process your personal data only where a lawful basis exists. The following table identifies the basis for each processing activity:</p>
     <ul>
       <li><strong style="color:var(--ink)">Contract necessity (Art. 6(1)(b)):</strong> Account creation, authentication, prescription storage, subscription enforcement, and transactional emails are necessary to provide the service you have agreed to receive.</li>
-      <li><strong style="color:var(--ink)">Legitimate interests (Art. 6(1)(f)):</strong> Anonymized usage diagnostics and crash reporting are processed to improve application stability and performance. These interests do not override your rights — you can opt out.</li>
+      <li><strong style="color:var(--ink)">Legitimate interests (Art. 6(1)(f)):</strong> Anonymized usage diagnostics and crash reporting are processed to improve application stability and performance. These interests do not override your rights, and you can opt out.</li>
       <li><strong style="color:var(--ink)">Consent (Art. 6(1)(a)):</strong> Anonymized aggregate prescription data collection (Section 07) is only processed where you have given explicit, informed, and withdrawable consent.</li>
       <li><strong style="color:var(--ink)">Legal obligation (Art. 6(1)(c)):</strong> Where required, we may process data to comply with applicable law or a court order.</li>
     </ul>
@@ -226,13 +224,13 @@
     <p>DOA captures your screen in real time to apply visual correction. This is the core technical mechanism of the product. Here is exactly what happens and what does not happen:</p>
     <ul>
       <li>Screen frames are captured locally on your device using the Windows Graphics Capture API (WGC)</li>
-      <li>Frames are processed entirely on your own device — they are never uploaded, transmitted, or logged anywhere</li>
+      <li>Frames are processed entirely on your own device. They are never uploaded, transmitted, or logged anywhere</li>
       <li>DOA does not read, interpret, store, or analyze the content of what is on your screen</li>
       <li>The corrected image is sent straight to your display and discarded immediately after each frame</li>
       <li>No screen recording, screenshot, or image of your screen is ever created or stored</li>
     </ul>
     <div class="highlight-box">
-      <p><strong>What DOA never captures:</strong> Windows system UI, login screens, UAC (User Account Control) prompts, and certain protected application windows are excluded from capture by the operating system automatically — not merely by policy. These exclusions are enforced at the OS level and cannot be overridden by DOA.</p>
+      <p><strong>What DOA never captures:</strong> Windows system UI, login screens, UAC (User Account Control) prompts, and certain protected application windows are excluded from capture by the operating system automatically, not merely by policy. These exclusions are enforced at the OS level and cannot be overridden by DOA.</p>
     </div>
   </div>
 
@@ -259,11 +257,11 @@
     <ul>
       <li>Account and prescription data is stored in Firebase (Google Cloud) with encryption at rest and in transit using industry-standard TLS</li>
       <li>Usage timers and session state are stored locally on your device and synced to prevent circumvention</li>
-      <li>Payment records are held exclusively by Creem — DOA has no access to card numbers, bank details, or billing addresses</li>
+      <li>Payment records are held exclusively by Creem; DOA has no access to card numbers, bank details, or billing addresses</li>
     </ul>
     <h3>Access Controls</h3>
     <ul>
-      <li>Access to user data in Firebase is restricted using Firebase Security Rules — users can only access their own data</li>
+      <li>Access to user data in Firebase is restricted using Firebase Security Rules, so users can only access their own data</li>
       <li>Administrative access to the database is limited to the operator and protected by multi-factor authentication</li>
       <li>No third-party analytics service has access to identifiable user data</li>
     </ul>
@@ -276,11 +274,11 @@
     <h2>Third-Party Services &amp; Processor Roles</h2>
     <p>DOA uses the following third-party services. Each acts as a data processor on our behalf, processing data only on our instructions and subject to their own data processing agreements:</p>
     <ul>
-      <li><strong style="color:var(--ink)">Firebase (Google LLC)</strong> — authentication and Firestore database. Acts as a data processor. Data may be stored in the United States. Governed by Google's Data Processing Terms. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy →</a></li>
-      <li><strong style="color:var(--ink)">Creem</strong> — subscription and payment processing. Acts as Merchant of Record and independent data controller for payment data. DOA does not receive or store card or billing details. <a href="https://creem.io/privacy" target="_blank" rel="noopener">Privacy policy →</a></li>
-      <li><strong style="color:var(--ink)">Vercel</strong> — website hosting and cookieless web analytics. Processes request data including IP address transiently for delivery, security, and aggregate visit statistics. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy policy →</a></li>
-      <li><strong style="color:var(--ink)">Resend</strong> — transactional email delivery. Processes email addresses for the purpose of sending account-related notifications only.</li>
-      <li><strong style="color:var(--ink)">Google / Apple OAuth</strong> — optional sign-in providers. Only your email and display name are received when you use these sign-in methods.</li>
+      <li><strong style="color:var(--ink)">Firebase (Google LLC)</strong>: authentication and Firestore database. Acts as a data processor. Data may be stored in the United States. Governed by Google's Data Processing Terms. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy →</a></li>
+      <li><strong style="color:var(--ink)">Creem</strong>: subscription and payment processing. Acts as Merchant of Record and independent data controller for payment data. DOA does not receive or store card or billing details. <a href="https://creem.io/privacy" target="_blank" rel="noopener">Privacy policy →</a></li>
+      <li><strong style="color:var(--ink)">Vercel</strong>: website hosting and cookieless web analytics. Processes request data including IP address transiently for delivery, security, and aggregate visit statistics. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Privacy policy →</a></li>
+      <li><strong style="color:var(--ink)">Resend</strong>: transactional email delivery. Processes email addresses for the purpose of sending account-related notifications only.</li>
+      <li><strong style="color:var(--ink)">Google / Apple OAuth</strong>: optional sign-in providers. Only your email and display name are received when you use these sign-in methods.</li>
     </ul>
     <p>We do not sell, rent, trade, or share your personal data with advertisers, data brokers, or any third party not listed above. We do not permit any third party to use your data for their own purposes.</p>
   </div>
@@ -338,7 +336,7 @@
     </ul>
     <p>Categories of personal information collected: identifiers (email, user ID), commercial information (subscription status), internet or electronic network activity (session duration, feature usage), and inferences drawn to apply visual correction.</p>
     <div class="highlight-box">
-      <p><strong>Sensitive personal information:</strong> Your optical prescription values are personal information concerning your health, and we treat them as <strong>sensitive personal information</strong> under the CPRA. We use them for one purpose only — to apply the display adjustment you have asked DOA to perform. That is a use permitted under Cal. Civ. Code § 1798.121, so there is no further use to limit. We do not use or disclose your prescription data to infer characteristics about you, for advertising, or for any purpose beyond providing the service. You may still request that we limit, delete, or stop processing it at any time by contacting us.</p>
+      <p><strong>Sensitive personal information:</strong> Your optical prescription values are personal information concerning your health, and we treat them as <strong>sensitive personal information</strong> under the CPRA. We use them for one purpose only: to apply the display adjustment you have asked DOA to perform. That is a use permitted under Cal. Civ. Code § 1798.121, so there is no further use to limit. We do not use or disclose your prescription data to infer characteristics about you, for advertising, or for any purpose beyond providing the service. You may still request that we limit, delete, or stop processing it at any time by contacting us.</p>
     </div>
     <p>Because we do not sell or share personal information for cross-context behavioral advertising, there is nothing for an opt-out preference signal to act on. Where the DOA website does not set tracking cookies, no Global Privacy Control (GPC) or "Do Not Track" signal changes what we collect. If this ever changes, we will honor recognized opt-out preference signals as required by the CPRA.</p>
     <p>To submit a CCPA request, contact us at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a> with the subject line "CCPA Request". We will respond within 45 days. We will not discriminate against you for submitting a request, and you may use an authorized agent to submit one on your behalf.</p>
@@ -378,7 +376,7 @@
   <div class="legal-section">
     <span class="section-number">15</span>
     <h2>Children's Privacy</h2>
-    <p>DOA is an accessibility tool intended for adults. It is not directed at or intended for children under the age of 13 (or under the applicable age of digital consent in your country, which is up to 16 in parts of the European Union). Creating an account requires confirming you meet this minimum age, and we do not knowingly collect, store, or process personal information — including prescription data — from anyone below it.</p>
+    <p>DOA is an accessibility tool intended for adults. It is not directed at or intended for children under the age of 13 (or under the applicable age of digital consent in your country, which is up to 16 in parts of the European Union). Creating an account requires confirming you meet this minimum age, and we do not knowingly collect, store, or process personal information, including prescription data, from anyone below it.</p>
     <p>If we learn that we have collected personal information from a child below the applicable age, we will terminate the account and delete the associated data promptly. If you are a parent or guardian and believe your child has provided personal information to us, please contact us at <a href="mailto:support@deviceopticalaid.com">support@deviceopticalaid.com</a> and we will delete it. This approach is consistent with the U.S. Children's Online Privacy Protection Act (COPPA) and Article 8 of the GDPR.</p>
   </div>
 
