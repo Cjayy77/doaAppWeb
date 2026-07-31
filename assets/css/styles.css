@@ -7,6 +7,10 @@
    ════════════════════════════════════════════════════════ */
 
 :root {
+  /* Tells the browser this is a dark UI, so native scrollbars, form
+     controls, autofill and focus rings render dark instead of light */
+  color-scheme: dark;
+
   /* surfaces */
   --bg:      #161513;
   --bg2:     #1C1B18;
@@ -79,6 +83,19 @@ html { scrollbar-width: thin; scrollbar-color: #34312d var(--bg); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 img { max-width: 100%; }
+
+/* ── Skip to content ──
+   Hidden until focused, so keyboard and screen-reader users can jump past
+   the nav instead of tabbing through every link on every page. */
+.skip-link {
+  position: absolute; left: 50%; top: 0; transform: translate(-50%, -120%);
+  z-index: 500; padding: 12px 22px;
+  background: var(--accent); color: #fff;
+  font-family: var(--font-body); font-size: 14px; font-weight: 600;
+  text-decoration: none; border-radius: 0 0 10px 10px;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus { transform: translate(-50%, 0); }
 
 /* ── Typography ── */
 h1, h2, h3 { color: var(--ink); }
@@ -389,4 +406,21 @@ textarea.field { resize: vertical; min-height: 120px; line-height: 1.6; }
 @media (max-width: 768px) and (prefers-reduced-motion: reduce) {
   .nav-links { transition: none; }
   .nav-links.open li, .nav-links.open ~ .nav-cta { animation: none; }
+}
+
+/* ── Print ──
+   People print or save the legal pages. Give them black on white, no
+   chrome, and visible link targets. */
+@media print {
+  html, body { background: #fff !important; color: #000 !important; }
+  body::after { display: none !important; }           /* grain overlay */
+  .site-nav, .burger, .site-footer, .skip-link,
+  .nav-cta, .btn, .faq-cta, .cta-box { display: none !important; }
+  main, .legal-section, article { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  h1, h2, h3, h4, p, li, td, th, strong, em, span { color: #000 !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: #444; }
+  .legal-section { page-break-inside: avoid; border: none !important; }
+  .section-number { color: #666 !important; }
+  .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
